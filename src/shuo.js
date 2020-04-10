@@ -5,7 +5,7 @@ document.write("<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/
     }
     function savecontent(){
         var shuoshuo=  document.getElementById("neirong").value;
-        var key = document.getElsmentById("key").value;
+        var key = document.getElementById("key").value;
         hash = hex_md5(key);
         for(var i=0;i<100;i++){
             hash=hex_md5(hash);
