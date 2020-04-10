@@ -1,6 +1,13 @@
 # Hexo-shuoshuo
 基于leancloud提供的存储功能实现的Hexo动态说说界面。
 
+详细教程参考：[为你的hexo博客添加动态的（可直接发布说说的）说说页面](https://cndrew.cn/2020/04/10/hexo-shuoshuo/)
+
+Demo: [Hexo-shuoshuo](https://cndrew.cn/shuoshuo/)
+
+效果图
+![](https://cdn.jsdelivr.net/gh/drew233/cdn/lc6.webp)
+
 ## 😎功能
 在Hexo中显示一个说说页面，并且支持站长实时发布，可移步leancloud后台进行修改。
 
