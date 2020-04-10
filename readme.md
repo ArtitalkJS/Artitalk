@@ -5,8 +5,6 @@
 
 Demo: [Hexo-shuoshuo](https://cndrew.cn/shuoshuo/)
 
-效果图
-![](https://cdn.jsdelivr.net/gh/drew233/cdn/lc6.webp)
 
 ## 😎功能
 在Hexo中显示一个说说页面，并且支持站长实时发布，可移步leancloud后台进行修改。
