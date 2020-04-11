@@ -25,7 +25,6 @@ var string="<ul class=\"cbp_tmtimeline\" id=\"maina\" pagesize="+per+">";
                     for (var i = pagesize; i < $children.length; i++) {
                         $children.eq(i).hide();
                     }
-                    alert("CAo");
                     $("<div class=\"vpage txt-center\" style=\"display: block; text-align: center;\"><button type=\"button\" class=\"button-success pure-button\">加载更多...</button></div>").insertAfter($(this)).click(function () {
                         if (cbp_tmtimeline($children, pagesize) <= 0) {
                             //如果目标元素已经没有隐藏的子元素了，就隐藏“点击更多的按钮条”
