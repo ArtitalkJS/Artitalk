@@ -35,7 +35,10 @@ var passw=""; #这里填写密码（为了不轻易爆露密码，我们这里�
 </div>
 </body>
 ```
-5. 如果不知道如何得到加密的密码，就跑一遍这个js
+5. 如果不知道如何得到加密的密码
+去这里获取：http://world.codeforces.site/hexo-shuoshuo/
+输入你想用的密码，点击查看即可。
+或者自己就跑一遍这个js
 ```
 document.write("<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/gh/drew233/css/md5.js\"></script>");
 var key="";#(你的原密码)
