@@ -27,6 +27,7 @@ document.write("<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/
         testObject.set('content', shuoshuo);
         testObject.save().then(function (testObject) {
         })
+        alert("上传成功");
         location.reload();
     }
     function seecontent(){
