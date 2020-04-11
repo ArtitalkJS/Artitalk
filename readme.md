@@ -32,7 +32,7 @@ var passw=""; #这里填写密码（为了不轻易爆露密码，我们这里�
         </div>
 <textarea id="neirong" placeholder="本页面仅支持站长发表说说，由于特殊原因关闭本页面评论功能" style="width:100%;height:150px;background-image: url(https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp);background-size: contain;background-repeat: no-repeat;background-position: right;"></textarea>
 <button onclick="savecontent()" style="float :right;">biu~</button>
-<input type="text" id="key" value="" class="mytxt" placeholder="是时候验证你的身份了！" />
+<input type="password" id="key" value="" class="mytxt" placeholder="是时候验证你的身份了！" />
 </div>
 </body>
 ```
