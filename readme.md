@@ -22,7 +22,7 @@ var appID=""; #这里填写leancloud的appId
 var appKEY=""; #这里填写leancloud的appKey
 var passw=""; #这里填写密码（为了不轻易爆露密码，我们这里使用的是md5加密，加密101次，当然如果有些人非要闲的暴力去破解密码也没办法，不过应该不会有这么无聊的人）
 </script>
-<script type="text/javascript" src="/js/shuo.js"></script>
+<script type="text/javascript" src="/js/nshuo.js"></script>
 <body>
   <div id="primary" class="content-area" style="">
     <main id="main" class="site-main" role="main">
@@ -32,7 +32,10 @@ var passw=""; #这里填写密码（为了不轻易爆露密码，我们这里�
         </div>
 <textarea id="neirong" placeholder="本页面仅支持站长发表说说，由于特殊原因关闭本页面评论功能" style="width:100%;height:150px;background-image: url(https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp);background-size: contain;background-repeat: no-repeat;background-position: right;"></textarea>
 <button onclick="savecontent()" style="float :right;">biu~</button>
-<input type="password" id="key" value="" class="mytxt" placeholder="是时候验证你的身份了！" />
+<button onclick="preview()" style="float :right;">预览</button>
+<input type="password" id="key" value="" class="mytxt" placeholder="是时候验证你的身份了！" autocomplete="off"/>
+<br>
+<div id="preview"></div>
 </div>
 </body>
 ```
@@ -61,3 +64,4 @@ console.log(hash)
 ## 🚀更新
 * 2020.4.11 9:01 更新时间显示
 * 2020.4.11 9:10 修改密码输入框的type为password，可自选浏览器记住密码。方便以后使用。
+* 2020.4.11 9:58  添加简略的预览，晚些进行样式的美化。
