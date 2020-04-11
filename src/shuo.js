@@ -3,9 +3,13 @@ document.write("<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/
     window.onload=function(){
         seecontent();
     }
+    function p(s){
+        return s < 10 ? '0' + s : s
+    }
     function savecontent(){
         var shuoshuo=  document.getElementById("neirong").value;
         var key = document.getElementById("key").value;
+        alert(shuoshuo);
         hash = hex_md5(key);
         for(var i=0;i<100;i++){
             hash=hex_md5(hash);
@@ -37,9 +41,10 @@ document.write("<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/
             var uncle=atom.attributes.content;
             var fake=atom.createdAt;
             var d = new Date(fake);
-            var drew=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+            const resDate = d.getFullYear() + '-' + this.p((d.getMonth() + 1)) + '-' + this.p(d.getDate())
+            const resTime = this.p(d.getHours()) + ':' + this.p(d.getMinutes()) + ':' + this.p(d.getSeconds())
             var li=document.createElement('li');
-            var cc="<span class=\"shuoshuo_author_img\"><img src=\""+img+"\"class=\"avatar avatar-48\" width=\"48\" height=\"48\"></span><a class=\"cbp_tmlabel\" ><p></p><p>"+uncle+"</p><p></p><p class=\"shuoshuo_time\"><i class=\"fa fa-clock-o\"></i>"+drew+"</p></a>"
+            var cc="<span class=\"shuoshuo_author_img\"><img src=\""+img+"\"class=\"avatar avatar-48\" width=\"48\" height=\"48\"></span><a class=\"cbp_tmlabel\" ><p></p><p>"+uncle+"</p><p></p><p class=\"shuoshuo_time\"><i class=\"fa fa-clock-o\"></i>"+ resDate+" "+resTime+"</p></a>"
                 li.innerHTML=cc;
                 var ul=document.getElementById("maina");
                 ul.appendChild(li);
