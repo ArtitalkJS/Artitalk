@@ -23,8 +23,7 @@ var appKEY="";
 var passw=""; 
 var per=""; 
 </script>
-<script type="text/javascript" src="/js/more.js"></script>
-<script type="text/javascript" src="/js/drewsh.js"></script>
+<script type="text/javascript" src="/js/shuoshuov1.0.js"></script>
 <body>
   <div id="primary" class="content-area" style="">
     <main id="main" class="site-main" role="main">
@@ -60,14 +59,19 @@ console.log(hash);
 ```
 * per: 每一部分想展示的说说数以及每次点击查看更多的时候显示的说说数
 
-6. 此时就可以了，你可以根据自己的需要调整css
+6. 在博客对应的head模板文件中添加css
+```html
+  <link rel="stylesheet" href="/css/shuoshuov1.0.css" media="all">
+```
+7. 以上js和css的位置请把控好，保证可以加载到，此时就可以了，你可以根据自己的需要调整css
 
 
 ## 🙃与valine可能会产生冲突
 在head中调用av-min.js即可。若还是不行，欢迎私聊或者题出issues。
 
 ## 😊一些不完美的地方
-毕竟是静态的页面，在判断是否为站长的时候还是不可能做到绝对安全的。
+* 毕竟是静态的页面，在判断是否为站长的时候还是不可能做到绝对安全的。
+* 因为说说模板中主要用的是html中的`li`和`ui`标签，所以说说内容暂时不支持这两种标签。
 
 ## 🚀更新
 * 2020.4.11 9:01 更新优化时间显示
