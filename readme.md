@@ -7,7 +7,8 @@ Demo: [Hexo-shuoshuo](https://cndrew.cn/shuoshuo/)
 
 
 ## 😎功能
-在Hexo中显示一个说说页面，并且支持站长实时发布，可移步leancloud后台进行修改。
+* 在Hexo中显示一个说说页面，并且支持站长实时发布，可移步leancloud后台进行修改。
+* 可直接使用html语法插入歌曲或者图片视频等。
 
 ## 🐷使用方式
 1. 注册leancloud（这里我们要求使用国际版的leancloud，因为不需要绑定备案域名），在leancloud创建应用并添加名为shuoshuo的class。然后找到其中的appId以及appKey，后面会用。
@@ -56,3 +57,6 @@ console.log(hash)
 
 ## 😊一些不完美的地方
 毕竟是静态的页面，在判断是否为站长的时候还是不可能做到绝对安全的。
+
+## 🚀更新
+* 2020.4.11 9:01 更新时间显示
