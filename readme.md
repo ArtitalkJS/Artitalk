@@ -15,21 +15,40 @@ Demo: [Hexo-shuoshuo](https://cndrew.cn/shuoshuo/)
 2. 首先下载或clone本仓库到本地
 3. 在hexo文件夹的source文件下新建一个shuoshuo的文件夹，并在其中创建一个index.md
 4. 编辑index.md的内容为
+* img: 头像url
+* appID: leancloud的应用appId
+* appKEY: leancloud的应用appKey
+* passw: 这里填写密码（为了不轻易爆露密码，我们这里使用的是md5加密，加密101次，当然如果有些人非要闲的暴力去破解密码也没办法，不过应该不会有这么无聊的人）去这里获取：http://world.codeforces.site/hexo-shuoshuo/ 专用的密码，在输入框输入你想用的密码，点击查看即可。
+
+加密源码
+```javascript
+document.write("<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/gh/drew233/css/md5.js\"></script>");
+var key="";#(你的原密码)
+hash = hex_md5(key);
+for(var i=0;i<100;i++){
+    hash=hex_md5(hash);
+}
+console.log(hash);
+```
+* per: 每一部分想展示的说说数以及每次点击查看更多的时候显示的说说数
 ```
 <script>
-var img=""; #这里填写头像url
-var appID=""; #这里填写leancloud的appId
-var appKEY=""; #这里填写leancloud的appKey
-var passw=""; #这里填写密码（为了不轻易爆露密码，我们这里使用的是md5加密，加密101次，当然如果有些人非要闲的暴力去破解密码也没办法，不过应该不会有这么无聊的人）
+var img=""; 
+var appID="";
+var appKEY=""; 
+var passw=""; 
+var per=""; 
 </script>
-<script type="text/javascript" src="/js/nshuo.js"></script>
+<script type="text/javascript" src="/js/more.js"></script>
+<script type="text/javascript" src="/js/drewsh.js"></script>
 <body>
   <div id="primary" class="content-area" style="">
     <main id="main" class="site-main" role="main">
         <div id="shuoshuo_content">
-            <ul class="cbp_tmtimeline" id="maina">
-            </ul>
+            <div id="ccontent">
         </div>
+<div id="sa"><br></div>
+<div id="saa"><br></div>
 <textarea id="neirong" placeholder="本页面仅支持站长发表说说，由于特殊原因关闭本页面评论功能" style="width:100%;height:150px;background-image: url(https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp);background-size: contain;background-repeat: no-repeat;background-position: right;"></textarea>
 <button onclick="savecontent()" style="float :right;">biu~</button>
 <button onclick="preview()" style="float :right;">预览</button>
@@ -39,19 +58,7 @@ var passw=""; #这里填写密码（为了不轻易爆露密码，我们这里�
 </div>
 </body>
 ```
-5. 如果不知道如何得到加密的密码
-去这里获取：http://world.codeforces.site/hexo-shuoshuo/
-输入你想用的密码，点击查看即可。
-或者自己就跑一遍这个js
-```
-document.write("<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/gh/drew233/css/md5.js\"></script>");
-var key="";#(你的原密码)
-hash = hex_md5(key);
-for(var i=0;i<100;i++){
-    hash=hex_md5(hash);
-}
-console.log(hash)
-```
+
 6. 此时就可以了，你可以根据自己的需要调整css
 
 
@@ -65,3 +72,4 @@ console.log(hash)
 * 2020.4.11 9:01 更新优化时间显示
 * 2020.4.11 9:10 修改密码输入框的type为password，可自选浏览器记住密码。方便以后使用。
 * 2020.4.11 9:58  添加简略的预览，晚些进行样式的美化。
+* 2020.4.11 15:56  添加点击显示更多功能，防止说说太多之后页面过长。
