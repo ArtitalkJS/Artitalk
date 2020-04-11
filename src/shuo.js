@@ -6,6 +6,10 @@ document.write("<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/
     function p(s){
         return s < 10 ? '0' + s : s
     }
+    function preview(){
+        var pre=  document.getElementById("neirong").value;
+        document.getElementById("preview").innerHTML=pre;
+    }
     function savecontent(){
         var shuoshuo=  document.getElementById("neirong").value;
         var key = document.getElementById("key").value;
