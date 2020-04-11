@@ -15,22 +15,6 @@ Demo: [Hexo-shuoshuo](https://cndrew.cn/shuoshuo/)
 2. 首先下载或clone本仓库到本地
 3. 在hexo文件夹的source文件下新建一个shuoshuo的文件夹，并在其中创建一个index.md
 4. 编辑index.md的内容为
-* img: 头像url
-* appID: leancloud的应用appId
-* appKEY: leancloud的应用appKey
-* passw: 这里填写密码（为了不轻易爆露密码，我们这里使用的是md5加密，加密101次，当然如果有些人非要闲的暴力去破解密码也没办法，不过应该不会有这么无聊的人）去这里获取：http://world.codeforces.site/hexo-shuoshuo/ 专用的密码，在输入框输入你想用的密码，点击查看即可。
-
-加密源码
-```javascript
-document.write("<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/gh/drew233/css/md5.js\"></script>");
-var key="";#(你的原密码)
-hash = hex_md5(key);
-for(var i=0;i<100;i++){
-    hash=hex_md5(hash);
-}
-console.log(hash);
-```
-* per: 每一部分想展示的说说数以及每次点击查看更多的时候显示的说说数
 ```
 <script>
 var img=""; 
@@ -58,6 +42,23 @@ var per="";
 </div>
 </body>
 ```
+### 变量含义及作用
+* img: 头像url
+* appID: leancloud的应用appId
+* appKEY: leancloud的应用appKey
+* passw: 这里填写密码（为了不轻易爆露密码，我们这里使用的是md5加密，加密101次，当然如果有些人非要闲的暴力去破解密码也没办法，不过应该不会有这么无聊的人）去这里获取：http://world.codeforces.site/hexo-shuoshuo/ 专用的密码，在输入框输入你想用的密码，点击查看即可。
+
+加密源码
+```javascript
+document.write("<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/gh/drew233/css/md5.js\"></script>");
+var key="";#(你的原密码)
+hash = hex_md5(key);
+for(var i=0;i<100;i++){
+    hash=hex_md5(hash);
+}
+console.log(hash);
+```
+* per: 每一部分想展示的说说数以及每次点击查看更多的时候显示的说说数
 
 6. 此时就可以了，你可以根据自己的需要调整css
 
