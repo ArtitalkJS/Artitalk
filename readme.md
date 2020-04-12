@@ -1,6 +1,8 @@
 # Hexo-shuoshuo
 基于leancloud提供的存储功能实现的Hexo动态说说界面。
 
+![](https://img.shields.io/github/stars/Drew233/hexo-shuoshuo)
+
 详细教程参考：[为你的hexo博客添加动态的（可直接发布说说的）说说页面](https://cndrew.cn/2020/04/10/hexo-shuoshuo/)
 
 Demo: [Hexo-shuoshuo](https://cndrew.cn/shuoshuo/)
