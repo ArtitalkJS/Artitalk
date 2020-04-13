@@ -93,3 +93,14 @@ var string="<ul class=\"cbp_tmtimeline\" id=\"maina\" pagesize="+per+">";
             $.showMore(".cbp_tmtimeline");
         });
     }
+
+
+ document.oncontextmenu = new Function("return false;"); 
+ document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+    var e = event || window.event || arguments.callee.caller.arguments[0];
+    if (e && e.keyCode == 123) {
+            alert("为了防止某些无聊的人在控制台提交说说，本页面关闭F12功能及右键菜单🤝");
+            e.returnValue = false;
+            return (false);
+    }
+}
