@@ -26,7 +26,7 @@ var appKEY="";
 var passw=""; 
 var per=""; 
 </script>
-<script type="text/javascript" src="/js/shuoshuov1.0.js"></script>
+<script type="text/javascript" src="/js/shuoshuov1.1.js"></script>
 <body>
   <div id="primary" class="content-area" style="">
     <main id="main" class="site-main" role="main">
