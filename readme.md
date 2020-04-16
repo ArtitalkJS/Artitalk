@@ -10,6 +10,9 @@
 Demo: [Hexo-shuoshuo](https://cndrew.cn/shuoshuo/)
 
 
+## 🔒在前面说的话
+因为本js是设定了前端验证，故不能保证绝对安全，但是可以再leancloud中将写入权限关闭，每次发表说说的时候去leancloud中直接添加。
+
 ## 😎功能
 * 在Hexo中显示一个说说页面，并且支持站长实时发布，可移步leancloud后台进行修改。
 * 可直接使用html语法插入歌曲或者图片视频等。
@@ -28,7 +31,7 @@ var passw="";
 var per=""; 
 var relinks="";
 </script>
-<script type="text/javascript" src="/js/shuoshuov1.1.js"></script>
+<script type="text/javascript" src="/js/shuoshuov1.2.1.js"></script>
 <body>
   <div id="primary" class="content-area" style="">
     <main id="main" class="site-main" role="main">
