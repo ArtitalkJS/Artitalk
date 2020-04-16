@@ -1,0 +1,130 @@
+document.write("<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/gh/drew233/css/md5.js\"></script>"); 
+var string="<ul class=\"cbp_tmtimeline\" id=\"maina\" pagesize="+per+">";
+
+
+(function () {
+	'use strict';
+
+	const devtools = {
+		isOpen: false,
+		orientation: undefined
+	};
+
+	const threshold = 160;
+
+	const emitEvent = (isOpen, orientation) => {
+		window.dispatchEvent(new CustomEvent('devtoolschange', {
+			detail: {
+				isOpen,
+				orientation
+			}
+		}));
+	};
+
+	setInterval(() => {
+		const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+		const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+		const orientation = widthThreshold ? 'vertical' : 'horizontal';
+
+		if (
+			!(heightThreshold && widthThreshold) &&
+			((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)
+		) {
+			if (!devtools.isOpen || devtools.orientation !== orientation) {
+				emitEvent(true, orientation);
+			}
+
+			devtools.isOpen = true;
+			devtools.orientation = orientation;
+		} else {
+			if (devtools.isOpen) {
+				emitEvent(false, undefined);
+			}
+
+			devtools.isOpen = false;
+			devtools.orientation = undefined;
+		}
+	}, 500);
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = devtools;
+	} else {
+		window.devtools = devtools;
+	}
+})();
+
+    window.onload=function(){
+        seecontent();
+    }
+    function ok() {
+        var cbp_tmtimeline = function ($children, n) {
+            //显示某jquery元素下的前n个隐藏的子元素
+            var $hiddenChildren = $children.filter(":hidden");
+            var cnt = $hiddenChildren.length;
+            for (var i = 0; i < n && i < cnt ; i++) {
+                $hiddenChildren.eq(i).show();
+            }
+            return cnt - n;//返回还剩余的隐藏子元素的数量
+        }
+     
+        jQuery.showMore = function (selector) {
+            if (selector == undefined) { selector = ".cbp_tmtimeline" }
+            //对页中现有的class=showMorehandle的元素，在之后添加显示更多条，并绑定点击行为
+            $(selector).each(function () {
+                var pagesize = $(this).attr("pagesize") || 10;
+                var $children = $(this).children();
+                if ($children.length > pagesize) {
+                    for (var i = pagesize; i < $children.length; i++) {
+                        $children.eq(i).hide();
+                    }
+                    $("<div class=\"vpage txt-center\" style=\"display: block; text-align: center;\"><button type=\"button\" class=\"button-success pure-button\">加载更多...</button></div>").insertAfter($(this)).click(function () {
+                        if (cbp_tmtimeline($children, pagesize) <= 0) {
+                            //如果目标元素已经没有隐藏的子元素了，就隐藏“点击更多的按钮条”
+                            $(this).hide();
+                            document.getElementById("sa").innerHTML="<center>已经到底啦~</center>"
+                        };
+                    });
+                }
+            });
+        }
+    }
+    function p(s){
+        return s < 10 ? '0' + s : s
+    }
+    function seecontent(){
+        AV.init({
+            appId: appID,
+            appKey: appKEY,
+        });
+        var query = new AV.Query('shuoshuo');
+        query.descending('createdAt');
+        query.find().then(function (remarks) {
+            remarks.forEach(function(atom){
+            var uncle=atom.attributes.content;
+            var fake=atom.createdAt;
+            var d = new Date(fake);
+            const resDate = d.getFullYear() + '-' + this.p((d.getMonth() + 1)) + '-' + this.p(d.getDate())
+            const resTime = this.p(d.getHours()) + ':' + this.p(d.getMinutes()) + ':' + this.p(d.getSeconds())
+            var li=document.createElement('li');
+            var cc="<li><span class=\"shuoshuo_author_img\"><img src=\""+img+"\"class=\"avatar avatar-48\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\" ><p></p><p>"+uncle+"</p><p></p><p class=\"shuoshuo_time\"><i class=\"fa fa-clock-o\"></i>"+" "+ resDate+" "+resTime+"</p></span></li>"
+            // console.log(cc);    
+            string+=cc;
+            // li.innerHTML=cc;
+            //     var ul=document.getElementById("maina");
+            //     ul.appendChild(li);
+            })
+            string+='</ul>';
+            document.getElementById("ccontent").innerHTML=string;
+            ok();
+            $.showMore(".cbp_tmtimeline");
+        });
+    }
+
+    document.oncontextmenu = new Function("return false;"); 
+	window.addEventListener('devtoolschange', event => {
+        if(event.detail.isOpen&&relinks!=""){
+            window.location.href=relinks;
+        }
+	});
+
+    
