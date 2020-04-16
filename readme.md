@@ -10,9 +10,6 @@
 Demo: [Hexo-shuoshuo](https://cndrew.cn/shuoshuo/)
 
 
-## 🔒在前面说的话
-因为本js是设定了前端验证，故不能保证绝对安全，但是可以再leancloud中将写入权限关闭，每次发表说说的时候去leancloud中直接添加。
-
 ## 😎功能
 * 在Hexo中显示一个说说页面，并且支持站长实时发布，可移步leancloud后台进行修改。
 * 可直接使用html语法插入歌曲或者图片视频等。
@@ -74,6 +71,36 @@ console.log(hash);
 ```
 7. 以上js和css的位置请把控好，保证可以加载到，此时就可以了，你可以根据自己的需要调整css
 
+## 🔒关于安全性
+（本方法暂未测试）
+因为本js是设定了前端验证，故不能保证绝对安全，但是可以再leancloud中将写入权限关闭，每次发表说说的时候去leancloud中直接添加。
+这样就不需要弄密码，直接在leancloud后台的class中新建即可。
+可以使用`shuoshuov1.2.1-noinput.js`
+并在`index.md`中的内容修改为
+```
+<script>
+var img=""; 
+var appID="";
+var appKEY=""; 
+var passw=""; 
+var per=""; 
+var relinks="";
+</script>
+<script type="text/javascript" src="/js/shuoshuov1.2.1.js"></script>
+<body>
+  <div id="primary" class="content-area" style="">
+    <main id="main" class="site-main" role="main">
+        <div id="shuoshuo_content">
+            <div id="ccontent">
+        </div>
+<div id="sa"><br></div>
+<div id="saa"><br></div>
+<br>
+<div id="preview"></div>
+</div>
+</body>
+```
+即可。
 
 ## 🙃与valine可能会产生冲突
 在head中调用av-min.js即可。若还是不行，欢迎私聊或者题出issues。
