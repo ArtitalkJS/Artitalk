@@ -9,7 +9,9 @@
 
 详细教程参考：[为你的hexo博客添加动态的（可直接发布说说的）说说页面](https://cndrew.cn/2020/04/10/hexo-shuoshuo/)
 
-Demo: [Hexo-shuoshuo](https://cndrew.cn/shuoshuo/)
+Demo: [Hexo-shuoshuo](http://world.codeforces.site/hexo-shuoshuo/)
+密码：123456
+欢迎尝试
 
 
 ## 😎功能
