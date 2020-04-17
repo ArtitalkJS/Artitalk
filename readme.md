@@ -20,10 +20,10 @@ Demo: [Hexo-shuoshuo](https://cndrew.cn/shuoshuo/)
 ## 🐷使用方式
 1. 注册leancloud（这里我们要求使用国际版的leancloud，因为不需要绑定备案域名）。
 >  * 注册完登录之后，在leancloud创建应用，并在`结构化数据`中创建`class`名为`shuoshuo`
-  * 在你新建的应用中找到`结构化数据`下的`用户`。
-  * 点击`添加用户`，输入想用的用户名及密码。  
-  * 回到`结构化数据`中，点击`class`下的`shuoshuo`。找到权限，在`Class 访问权限`中将`add_fields`以及`create`权限设置为指定用户，输入你刚才输入的用户名会自动匹配。为了安全起见，将`delete`和`update`也设置为跟它们一样的权限。
-  * 在最左边的菜单栏中找到设置->应用keys，记下来`AppID`和`AppKey`，一会会用。
+>  * 在你新建的应用中找到`结构化数据`下的`用户`。
+>  * 点击`添加用户`，输入想用的用户名及密码。  
+>  * 回到`结构化数据`中，点击`class`下的`shuoshuo`。找到权限，在`Class 访问权限`中将`add_fields`以及`create`权限设置为指定用户，输入你刚才输入的用户名会自动匹配。为了安全起见，将`delete`和`update`也设置为跟它们一样的权限。
+>  * 在最左边的菜单栏中找到设置->应用keys，记下来`AppID`和`AppKey`，一会会用。
 
 2. 首先下载或clone本仓库到本地
 3. 在hexo文件夹的source文件下新建一个shuoshuo的文件夹，并在其中创建一个index.md
