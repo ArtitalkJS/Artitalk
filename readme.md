@@ -19,11 +19,12 @@ Demo: [Hexo-shuoshuo](https://cndrew.cn/shuoshuo/)
 
 ## 🐷使用方式
 1. 注册leancloud（这里我们要求使用国际版的leancloud，因为不需要绑定备案域名）。
-* 注册完登录之后，在leancloud创建应用，并在`结构化数据`中创建`class`名为`shuoshuo`
-* 在你新建的应用中找到`结构化数据`下的`用户`。
-* 点击`添加用户`，输入想用的用户名及密码。
-* 回到`结构化数据`中，点击`class`下的`shuoshuo`。找到权限，在`Class 访问权限`中将`add_fields`以及`create`权限设置为指定用户，输入你刚才输入的用户名会自动匹配。为了安全起见，将`delete`和`update`也设置为跟它们一样的权限。
-* 在最左边的菜单栏中找到设置->应用keys，记下来`AppID`和`AppKey`，一会会用。
+> 注册完登录之后，在leancloud创建应用，并在`结构化数据`中创建`class`名为`shuoshuo`
+  在你新建的应用中找到`结构化数据`下的`用户`。
+  点击`添加用户`，输入想用的用户名及密码。
+  回到`结构化数据`中，点击`class`下的`shuoshuo`。找到权限，在`Class 访问权限`中将`add_fields`以及`create`权限设置为指定用户，输入你刚才输入的用户名会自动匹配。为了安全起见，将`delete`和`update`也设置为跟它们一样的权限。
+  在最左边的菜单栏中找到设置->应用keys，记下来`AppID`和`AppKey`，一会会用。
+
 2. 首先下载或clone本仓库到本地
 3. 在hexo文件夹的source文件下新建一个shuoshuo的文件夹，并在其中创建一个index.md
 4. 编辑index.md的内容为
@@ -35,7 +36,7 @@ var appKEY="";
 var per="";
 var username="";
 </script>
-<script type="text/javascript" src="/js/shuoshuov1.2.1.js"></script>
+<script type="text/javascript" src="/js/shuoshuov2.0.js"></script>
 <body>
   <div id="primary" class="content-area" style="">
     <main id="main" class="site-main" role="main">
@@ -54,13 +55,13 @@ var username="";
 </body>
 ```
 ### 变量含义及作用
-* img: 头像url
-* appID: leancloud的应用appId
-* appKEY: leancloud的应用appKey
-* per: 每一部分想展示的说说数以及每次点击查看更多的时候显示的说说数
-* username: 你在leancloud中添加的作为可发布说说的用户的用户名
+* `img`: 头像url链接
+* `appID`: leancloud的应用appId
+* `appKEY`: leancloud的应用appKey
+* `per`: 每一部分想展示的说说数以及每次点击查看更多的时候显示的说说数
+* `username`: 你在leancloud中添加的作为可发布说说的用户的用户名
 
-每个参数均为必须
+每个参数均必须填写(若未自己修改js)
 
 6. 在博客对应的head模板文件中添加css
 ```html
