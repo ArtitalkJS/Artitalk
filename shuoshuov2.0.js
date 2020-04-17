@@ -1,57 +1,4 @@
-document.write("<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/gh/drew233/css/md5.js\"></script>"); 
 var string="<ul class=\"cbp_tmtimeline\" id=\"maina\" pagesize="+per+">";
-
-
-(function () {
-	'use strict';
-
-	const devtools = {
-		isOpen: false,
-		orientation: undefined
-	};
-
-	const threshold = 160;
-
-	const emitEvent = (isOpen, orientation) => {
-		window.dispatchEvent(new CustomEvent('devtoolschange', {
-			detail: {
-				isOpen,
-				orientation
-			}
-		}));
-	};
-
-	setInterval(() => {
-		const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-		const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-		const orientation = widthThreshold ? 'vertical' : 'horizontal';
-
-		if (
-			!(heightThreshold && widthThreshold) &&
-			((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)
-		) {
-			if (!devtools.isOpen || devtools.orientation !== orientation) {
-				emitEvent(true, orientation);
-			}
-
-			devtools.isOpen = true;
-			devtools.orientation = orientation;
-		} else {
-			if (devtools.isOpen) {
-				emitEvent(false, undefined);
-			}
-
-			devtools.isOpen = false;
-			devtools.orientation = undefined;
-		}
-	}, 500);
-
-	if (typeof module !== 'undefined' && module.exports) {
-		module.exports = devtools;
-	} else {
-		window.devtools = devtools;
-	}
-})();
 
     window.onload=function(){
         seecontent();
@@ -97,15 +44,23 @@ var string="<ul class=\"cbp_tmtimeline\" id=\"maina\" pagesize="+per+">";
     }
     function savecontent(){
         var shuoshuo=  document.getElementById("neirong").value;
-        var key = document.getElementById("key").value;
-        hash = hex_md5(key);
-        for(var i=0;i<100;i++){
-            hash=hex_md5(hash);
-        }
-        if(hash!=passw){
-            alert("本页面仅允许站长发布说说");
+        var password = document.getElementById("key").value;
+        if(password==""){
+            alert("请输入密码");
             return ;
         }
+        AV.User.logIn(username,password).then(function (loginedUser) {
+          }, function (error) {
+            console.dir(error);
+            if(error.code===211){
+              alert('本页面只允许站长发布说说');
+              return ;
+            }else if(error.code===210){
+              alert('本页面只允许站长发布说说');
+              return ;
+            }
+          });
+          
         if(shuoshuo==""){  
             alert("内容不能为空");
             return ;
@@ -114,30 +69,30 @@ var string="<ul class=\"cbp_tmtimeline\" id=\"maina\" pagesize="+per+">";
         var testObject = new TestObject();
         testObject.set('content', shuoshuo);
         testObject.save().then(function (testObject) {
+            location.reload();
         })
-        location.reload();
     }
     function seecontent(){
         AV.init({
             appId: appID,
             appKey: appKEY,
         });
+        var currentUser = AV.User.current();
+        if (currentUser) {
+             AV.User.logOut();
+        }
         var query = new AV.Query('shuoshuo');
         query.descending('createdAt');
         query.find().then(function (remarks) {
             remarks.forEach(function(atom){
-            var uncle=atom.attributes.content;
-            var fake=atom.createdAt;
-            var d = new Date(fake);
-            const resDate = d.getFullYear() + '-' + this.p((d.getMonth() + 1)) + '-' + this.p(d.getDate())
-            const resTime = this.p(d.getHours()) + ':' + this.p(d.getMinutes()) + ':' + this.p(d.getSeconds())
-            var li=document.createElement('li');
-            var cc="<li><span class=\"shuoshuo_author_img\"><img src=\""+img+"\"class=\"avatar avatar-48\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\" ><p></p><p>"+uncle+"</p><p></p><p class=\"shuoshuo_time\"><i class=\"fa fa-clock-o\"></i>"+" "+ resDate+" "+resTime+"</p></span></li>"
-            // console.log(cc);    
-            string+=cc;
-            // li.innerHTML=cc;
-            //     var ul=document.getElementById("maina");
-            //     ul.appendChild(li);
+                var uncle=atom.attributes.content;
+                var fake=atom.createdAt;
+                var d = new Date(fake);
+                const resDate = d.getFullYear() + '-' + this.p((d.getMonth() + 1)) + '-' + this.p(d.getDate())
+                const resTime = this.p(d.getHours()) + ':' + this.p(d.getMinutes()) + ':' + this.p(d.getSeconds())
+                var li=document.createElement('li');
+                var cc="<li><span class=\"shuoshuo_author_img\"><img src=\""+img+"\"class=\"avatar avatar-48\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\" ><p></p><p>"+uncle+"</p><p></p><p class=\"shuoshuo_time\"><i class=\"fa fa-clock-o\"></i>"+" "+ resDate+" "+resTime+"</p></span></li>"
+                string+=cc;
             })
             string+='</ul>';
             document.getElementById("ccontent").innerHTML=string;
@@ -145,12 +100,3 @@ var string="<ul class=\"cbp_tmtimeline\" id=\"maina\" pagesize="+per+">";
             $.showMore(".cbp_tmtimeline");
         });
     }
-
-    document.oncontextmenu = new Function("return false;"); 
-	window.addEventListener('devtoolschange', event => {
-        if(event.detail.isOpen&&relinks!=""){
-            window.location.href=relinks;
-        }
-	});
-
-    
