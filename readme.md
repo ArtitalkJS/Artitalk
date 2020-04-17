@@ -11,7 +11,6 @@
 
 Demo: [Hexo-shuoshuo](http://world.codeforces.site/hexo-shuoshuo/)
 密码：123456
-欢迎尝试
 
 
 ## 😎功能
