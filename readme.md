@@ -28,10 +28,16 @@ Demo: [Hexo-shuoshuo](http://world.codeforces.site/hexo-shuoshuo/)
 >  * 回到`结构化数据`中，点击`class`下的`shuoshuo`。找到权限，在`Class 访问权限`中将`add_fields`以及`create`权限设置为指定用户，输入你刚才输入的用户名会自动匹配。为了安全起见，将`delete`和`update`也设置为跟它们一样的权限。
 >  * 在最左边的菜单栏中找到设置->应用keys，记下来`AppID`和`AppKey`，一会会用。
 >  * 最后将`_User`中的权限全部调为指定用户，或者数据创建者，为了保证不被篡改用户数据已达到强制发布说说。
-
-2. 首先下载或clone本仓库到本地
-3. 在hexo文件夹的source文件下新建一个shuoshuo的文件夹，并在其中创建一个index.md
-4. 编辑index.md的内容为
+2. 调用jquery和av-min.js
+```
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.5.3/dist/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/drew233/cdn/js/jquery-3.3.1.min.js"></script>
+```
+jquery可以用自己的cdn，只要调用了就好
+如果已经调用过，不需要重复调用
+3. 首先下载或clone本仓库到本地
+4. 在hexo文件夹的source文件下新建一个shuoshuo的文件夹，并在其中创建一个index.md
+5. 编辑index.md的内容为
 ```
 <script>
 var img="";
