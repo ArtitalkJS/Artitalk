@@ -48,6 +48,7 @@ var appKEY="";
 var per="";
 var username="";
 </script>
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.5.3/dist/av-min.js"></script>
 <script type="text/javascript" src="/js/shuoshuov2.0.js"></script>
 <body>
   <div id="primary" class="content-area" style="">
@@ -83,8 +84,6 @@ var username="";
 8. 在密码框中输入你在第一步设定的密码即可成功发布说说。但是现在有一个莫名其妙的bug，第一次提交会失败，重新发布一次即可。
 
 ## 🙃与valine可能会产生冲突
-在head中调用av-min.js即可。若还是不行，欢迎私聊或者题出issues。
-
 因为冲突可能导致不能在一个页面使用说说和valine，如果想同时使用，可以使用同一个leancloud的账户的同一个应用。设置不同的class即可。并且调用shuoshuojs的时候将av.init那一个语句删去（未实践，理论上可行。
 
 ## 😊一些不完美的地方
@@ -113,4 +112,4 @@ kramed:
 一：hexo中自带的标签，标定不渲染的部分，将`md`文件中的js部分标中选择不渲染
 二: 下载js后直接把赋值放在js中
 注意，这两种办法都是可以直接解决上面两种bug的（引号和图片链接的渲染）
-* [x] 注意`av-min.js`全局下只能引用一次（可以改但是我不会）。最好的办法就是在`head`中引用，把其他部分引用的全删掉。实测不会影响`valine`地使用。如果出现问题无法解决，欢迎联系我。
+
