@@ -37,6 +37,12 @@ Demo: [Hexo-shuoshuo](http://world.codeforces.site/hexo-shuoshuo/)
 jquery可以用自己的cdn，只要调用了就好
 如果已经调用过，不需要重复调用
 
+在head中调用font-awesome的css
+```
+<link href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+```
+如果已经调用过，不需要重复调用
+
 3. 首先下载或clone本仓库到本地
 4. 在hexo文件夹的source文件下新建一个shuoshuo的文件夹，并在其中创建一个index.md
 5. 编辑index.md的内容为
