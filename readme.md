@@ -55,8 +55,8 @@ var per="";
 var username="";
 </script>
 <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.5.3/dist/av-min.js"></script>
-<script type="text/javascript" src="/js/os.js"></script>
-<script type="text/javascript" src="/js/shuoshuov2.1.1.js"></script>
+<script type="text/javascript" src="/src/os.js"></script>
+<script type="text/javascript" src="/src/shuoshuov2.1.1.js"></script>
 <body>
 <div id="lazy">
     <div class="preloader" style="opacity: 1; ">
@@ -126,7 +126,7 @@ var username="";
 
 6. 在博客对应的head模板文件中添加css
 ```html
-  <link rel="stylesheet" href="/css/shuoshuov1.0.css" media="all">
+  <link rel="stylesheet" href="/src/shuoshuov1.1.css" media="all">
 ```
 7. 以上js和css的位置请把控好，保证可以加载到，此时就可以了，你可以根据自己的需要调整css
 8. 在密码框中输入你在第一步设定的密码即可成功发布说说。但是现在有一个莫名其妙的bug，第一次提交会失败，重新发布一次即可。
@@ -161,4 +161,4 @@ kramed:
 一：hexo中自带的标签，标定不渲染的部分，将`md`文件中的js部分标中选择不渲染
 二: 下载js后直接把赋值放在js中
 注意，这两种办法都是可以直接解决上面两种bug的（引号和图片链接的渲染）
-* [] 获取发布说说的设备的api似乎不是很给力。换一个应该就可以了。
+* [x] 获取发布说说的设备的api似乎不是很给力。换一个应该就可以了。引用os.js判断发布系统，目前暂无发现bug。
