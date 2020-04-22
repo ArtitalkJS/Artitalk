@@ -10,7 +10,7 @@
         );
     });
     $(document).ready(function() {
-        $.getJSON("https://api.uomg.com/api/visitor.info?skey=774740085",
+        $.getJSON("https://api.qqsuu.cn/api/visitor.php",
             function(json) {
                 oss=json.system;
             }
