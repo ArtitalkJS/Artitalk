@@ -5,7 +5,7 @@
 
 ![](https://img.shields.io/github/stars/Drew233/hexo-shuoshuo)
 ![](https://img.shields.io/github/downloads/Drew233/hexo-shuoshuo/total)
-![](https://img.shields.io/badge/version-v2.0-yellowgreen)
+![](https://img.shields.io/badge/version-v2.1-yellowgreen)
 ![](https://img.shields.io/badge/support-leancloud-yellowblue)
 
 详细教程参考：[为你的hexo博客添加动态的（可直接发布说说的）说说页面](https://cndrew.cn/2020/04/10/hexo-shuoshuo/)
