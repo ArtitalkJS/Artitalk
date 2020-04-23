@@ -54,6 +54,7 @@ var appKEY="";
 var per="";
 var username="";
 </script>
+<link rel="stylesheet" href="/src/shuoshuov1.1.css" media="all">
 <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.5.3/dist/av-min.js"></script>
 <script type="text/javascript" src="/src/os.js"></script>
 <script type="text/javascript" src="/src/shuoshuov2.1.1.js"></script>
@@ -124,12 +125,8 @@ var username="";
 
 每个参数均必须填写(若未自己修改js)
 
-6. 在博客对应的head模板文件中添加css
-```html
-  <link rel="stylesheet" href="/src/shuoshuov1.1.css" media="all">
-```
-7. 以上js和css的位置请把控好，保证可以加载到，此时就可以了，你可以根据自己的需要调整css
-8. 在密码框中输入你在第一步设定的密码即可成功发布说说。但是现在有一个莫名其妙的bug，第一次提交会失败，重新发布一次即可。
+6. 以上js和css的位置请把控好，保证可以加载到，此时就可以了，你可以根据自己的需要调整css
+7. 在密码框中输入你在第一步设定的密码即可成功发布说说。但是现在有一个莫名其妙的bug，第一次提交会失败，重新发布一次即可。
 
 ## 🙃与valine可能会产生冲突
 因为冲突可能导致不能在一个页面使用说说和valine，如果想同时使用，可以使用同一个leancloud的账户的同一个应用。设置不同的class即可。并且调用shuoshuojs的时候将av.init那一个语句删去（未实践，理论上可行。
