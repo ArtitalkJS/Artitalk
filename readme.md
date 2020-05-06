@@ -54,22 +54,21 @@
   <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
   ...
 </head>
-  <body>
-      <script>
-      var img="";
-      var appID="";
-      var appKEY="";
-      var per="";
-      var username="";
-      var placeholder1="";
-      var placeholder2="";
-      var lazy=1;
-      </script>
-      <div id="lazy"></div>
-      <div id="artitalk" class="content-area"></div>
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/drew233/artitalk/source/v1.0.0/artitalk.js"></script>
-  </body>
-</html>
+<body>
+    <script>
+    var img="";
+    var appID="";
+    var appKEY="";
+    var per="";
+    var username="";
+    var placeholder1="";
+    var placeholder2="";
+    var lazy=1;
+    </script>
+    <div id="lazy"></div>
+    <div id="artitalk"></div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/drew233/artitalk/source/v1.0.0/artitalk.js"></script>
+</body>
 
 ```
 
