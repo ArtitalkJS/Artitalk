@@ -54,22 +54,21 @@
   <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
   ...
 </head>
-  <body>
-      <script>
-      var img="";
-      var appID="";
-      var appKEY="";
-      var per="";
-      var username="";
-      var placeholder1="";
-      var placeholder2="";
-      var lazy=1;
-      </script>
-      <div id="lazy"></div>
-      <div id="artitalk" class="content-area"></div>
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/drew233/artitalk/source/v1.0.0/artitalk.js"></script>
-  </body>
-</html>
+<body>
+    <script>
+    var img="";
+    var appID="";
+    var appKEY="";
+    var per="";
+    var username="";
+    var placeholder1="";
+    var placeholder2="";
+    var lazy=1;
+    </script>
+    <div id="lazy"></div>
+    <div id="artitalk"></div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/drew233/artitalk/source/v1.0.0/artitalk.js"></script>
+</body>
 
 ```
 
@@ -77,8 +76,8 @@
 
 <center>
 
-| 变量名       | 作用          | 必要性  | 默认值 |
-| ------------- |:-------------:| -----:| -----:|
+| 变量名       | 作用          | 必要性  | 默认值 | 
+| ------------- |:-------------:| -----:| -----:| 
 | img      | 说说旁边显示的头像 | True | 无 | 
 | appID      | Leancloud中的应用ID     | True | 无 | 
 | appKEY | Leancloud中的应用KEY    | True | 无 | 
@@ -87,6 +86,7 @@
 | placeholder1 | 在编辑说说的输入框中的占位符     | False | ""（空） | 
 | placeholder2 | 输入密码的输入框的占位符     | False | "请输入密码" | 
 | lazy | 是否开启加载动画（1：开启  0：关闭）     | False | 1 | 
+| bgimg | 说说输入框背景图片（需为图片格式）     | False | ""（空） | 
 
 </center>
 
@@ -123,7 +123,7 @@ kramed:
 - [] 说说的评论及点赞功能。
 
 ## 使用cdn
-可选版本号：v1.0.0
+可选版本号：`1.0.1`
 ### jsdelivr
 ```
 https://cdn.jsdelivr.net/gh/drew233/artitalk/source/版本号/artitalk.js
