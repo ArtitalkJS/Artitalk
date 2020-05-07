@@ -1,6 +1,9 @@
+---
+title: 使用文档
+sidebar: auto
+---
 ## 👀 前言
-
-Github：[Artitalk.js](https://github.com/Drew233/Artitalk)
+文档：[Artitalk.js](https://artitalk.js.org/)
 
 详细教程参考：[为你的hexo博客添加动态的（可直接发布说说的）说说页面](https://cndrew.cn/2020/04/10/hexo-shuoshuo/)
 
@@ -10,15 +13,14 @@ Github：[Artitalk.js](https://github.com/Drew233/Artitalk)
 
 
 ### 🎆 开发者
-[Uncle_drew](https://cndrew.cn/)
-
-[cungudafa](https://cungudafa.top/)
+* [Uncle_drew](https://cndrew.cn/)
+* [cungudafa](https://cungudafa.top/)
+* [todest](https://todest.cn/)
 
 如果你对本项目感兴趣并且有心一起完善功能的，欢迎~
 
 ### 👍 特别鸣谢
 * 张渔：logo制作
-* 亦往沧劫：技术支持
 * leancloud：提供存储服务
 * VuePress：文档框架
 * Github: 代码存储
@@ -70,15 +72,17 @@ Github：[Artitalk.js](https://github.com/Drew233/Artitalk)
     var placeholder1="";
     var placeholder2="";
     var lazy=1;
+    var bgimg="";
     </script>
     <div id="lazy"></div>
     <div id="artitalk"></div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/drew233/artitalk/source/v1.0.0/artitalk.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/drew233/artitalk/source/v1.0.1/artitalk.js"></script>
 </body>
-
 ```
 
 ### 🎅 配置项的说明
+
+必要性为False的配置项可以不在html片段定义
 
 <center>
 
@@ -91,13 +95,16 @@ Github：[Artitalk.js](https://github.com/Drew233/Artitalk)
 | username | Leancloud中设置的用户名     | True | 无 | 
 | placeholder1 | 在编辑说说的输入框中的占位符     | False | ""（空） | 
 | placeholder2 | 输入密码的输入框的占位符     | False | "请输入密码" | 
+| placeholder3 | 输入头像url的输入框的占位符     | False | ""（默认头像） | 
 | lazy | 是否开启加载动画（1：开启  0：关闭）     | False | 1 | 
 | bgimg | 说说输入框背景图片（需为图片格式）     | False | ""（空） | 
+
+在头像url中输入图片链接会在本次发布的说说中覆盖默认头像
 
 </center>
 
 ### 🔨 测试
-如果上面的配置没有问题，打开你的页面，在身份验证的输入框中填入Leancloud设置的用户密码。点两次`biu`,即可成功发布说说。
+如果上面的配置没有问题，打开你的页面，在身份验证的输入框中填入Leancloud设置的用户密码。点两次`biu`,即可成功发布说说。（这里有一个bug，有的小伙伴点击一次就行了。根据自己情况灵活应对一下吧
 
 ### 🔨 说说内容的修改与删除
 在leancloud中找到自己添加的名为`shuoshuo`的class，在里面的`content`中编辑即可。
@@ -124,13 +131,18 @@ kramed:
 如果以上两项都正确，还是不行，请[联系](/contact)我。
 
 ## 🚩 未来想要实现的功能
-- [] 重构js，因为我是个小白，所以代码看起来可能很“恶心”，而且使用起来说实话还是有点麻烦的。待我了解够js就重写一下。
 - [] 支持cv上传图片，添加表情等功能。
 - [] 说说的评论及点赞功能。
 
 ## 使用cdn
-可选版本号：`1.0.1`
+
+### 推荐使用 unpkg
+```
+//默认获取最新
+<script type="text/javascript" src="https://unpkg.com/artitalk"></script>
+```
 ### jsdelivr
 ```
+//推荐指定版本号为最新版本，目前最新为1.1.4
 https://cdn.jsdelivr.net/gh/drew233/artitalk/source/版本号/artitalk.js
 ```
