@@ -1,7 +1,3 @@
----
-title: 使用文档
-sidebar: auto
----
 ## 👀 前言
 文档：[Artitalk.js](https://artitalk.js.org/)
 
