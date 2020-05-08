@@ -7,6 +7,11 @@ Github：[Artitalk.js](https://github.com/Drew233/Artitalk)
 
 视频教程：[Hexo-shuoshuo bilibili](https://www.bilibili.com/video/BV16A411b7UF)
 
+![](https://img.shields.io/github/stars/Drew233/Artitalk)
+![](https://img.shields.io/github/downloads/Drew233/Artitalk/total)
+![](https://img.shields.io/badge/version-v1.1.7-yellowgreen)
+![](https://img.shields.io/badge/support-leancloud-yellowblue)
+
 因为项目初期版本更新较为频繁，所以教程仅作参考，请仔细阅读使用文档，以此为准。
 
 ### 特性
@@ -15,18 +20,9 @@ Github：[Artitalk.js](https://github.com/Drew233/Artitalk)
 * 支持剪切板图片直接上传
 * 方便引用
 
-### 🎆 开发者
-* [Uncle_drew](https://cndrew.cn/)
-* [cungudafa](https://cungudafa.top/)
-* [todest](https://todest.cn/)
 
 如果你对本项目感兴趣并且有心一起完善功能的，欢迎~
 
-### 👍 特别鸣谢
-* 张渔：logo制作
-* leancloud：提供存储服务
-* VuePress：文档框架
-* Github: 代码存储
 
 ### 👭 可爱的小伙伴写出可爱的介绍教程
 #### 🐷 显然比我写的清晰的多
@@ -145,3 +141,16 @@ kramed:
 //推荐指定版本号为最新版本，目前最新为1.1.6 推荐使用最新以防止出现已知bug
 https://cdn.jsdelivr.net/gh/drew233/artitalk/source/版本号/artitalk.js
 ```
+
+
+
+## 🎆 开发者
+* [Uncle_drew](https://cndrew.cn/)
+* [cungudafa](https://cungudafa.top/)
+* [todest](https://todest.cn/)
+
+## 👍 特别鸣谢
+* 张渔：logo制作
+* leancloud：提供存储服务
+* VuePress：文档框架
+* Github: 代码存储
