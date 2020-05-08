@@ -1,12 +1,19 @@
 ## 👀 前言
 文档：[Artitalk.js](https://artitalk.js.org/)
 
+Github：[Artitalk.js](https://github.com/Drew233/Artitalk)
+
 详细教程参考：[为你的hexo博客添加动态的（可直接发布说说的）说说页面](https://cndrew.cn/2020/04/10/hexo-shuoshuo/)
 
 视频教程：[Hexo-shuoshuo bilibili](https://www.bilibili.com/video/BV16A411b7UF)
 
 因为项目初期版本更新较为频繁，所以教程仅作参考，请仔细阅读使用文档，以此为准。
 
+### 特性
+* 实时发布
+* 支持markdown语法
+* 支持剪切板图片直接上传
+* 方便引用
 
 ### 🎆 开发者
 * [Uncle_drew](https://cndrew.cn/)
@@ -65,20 +72,16 @@
     var appKEY="";
     var per="";
     var username="";
-    var placeholder1="";
-    var placeholder2="";
-    var lazy=1;
-    var bgimg="";
     </script>
     <div id="lazy"></div>
     <div id="artitalk"></div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/drew233/artitalk/source/v1.0.1/artitalk.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/artitalk"></script>
 </body>
 ```
 
 ### 🎅 配置项的说明
 
-必要性为False的配置项可以不在html片段定义
+必要性为False的配置项可以不添加
 
 <center>
 
@@ -92,7 +95,7 @@
 | placeholder1 | 在编辑说说的输入框中的占位符     | False | ""（空） | 
 | placeholder2 | 输入密码的输入框的占位符     | False | "请输入密码" | 
 | placeholder3 | 输入头像url的输入框的占位符     | False | ""（默认头像） | 
-| lazy | 是否开启加载动画（1：开启  0：关闭）     | False | 1 | 
+| lazy | 是否开启加载动画（1：开启  0：关闭）     | False | 1（默认开启） | 
 | bgimg | 说说输入框背景图片（需为图片格式）     | False | ""（空） | 
 
 在头像url中输入图片链接会在本次发布的说说中覆盖默认头像
@@ -127,7 +130,7 @@ kramed:
 如果以上两项都正确，还是不行，请[联系](/contact)我。
 
 ## 🚩 未来想要实现的功能
-- [] 支持cv上传图片，添加表情等功能。
+- [] 添加表情。
 - [] 说说的评论及点赞功能。
 
 ## 使用cdn
@@ -139,6 +142,6 @@ kramed:
 ```
 ### jsdelivr
 ```
-//推荐指定版本号为最新版本，目前最新为1.1.4
+//推荐指定版本号为最新版本，目前最新为1.1.6 推荐使用最新以防止出现已知bug
 https://cdn.jsdelivr.net/gh/drew233/artitalk/source/版本号/artitalk.js
 ```
