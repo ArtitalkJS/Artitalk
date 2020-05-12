@@ -1,5 +1,3 @@
-![](https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-img/d7/96/d796cb71ec89bcd8b010c45c35034d3fe4772e21.png)
-
 ## 👀 前言
 文档：[Artitalk.js](https://artitalk.js.org/)
 
