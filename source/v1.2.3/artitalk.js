@@ -1,5 +1,5 @@
 
-var version="v1.2.2";
+var version="v1.2.3";
 (function() {
   'use strict';
 
