@@ -15853,6 +15853,7 @@ function pic_drag() {
         else {
             console.log("此" + dropFile.name + "不是图片文件！");
         }
+        neirong.style.opacity = 1;
     }
 
     var dropZone = document.getElementById("shuoshuo_edit");
@@ -15918,8 +15919,6 @@ function pic_drag() {
                 if (item.kind === "file" && item.webkitGetAsEntry().isFile) {
                     var file = item.getAsFile();
                     dropFiles.push(file);
-                    // console.log(file);
-                    // getDropFileCallBack(file);
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         getDropFileCallBack(file);
