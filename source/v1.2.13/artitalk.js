@@ -9773,7 +9773,7 @@ function() {
 
 
 
-var version="v1.2.11";
+var version="v1.2.13";
 
 
 (function() {
@@ -10210,7 +10210,7 @@ var version="v1.2.11";
         type: 'boolean'
       },
       strikethrough: {
-        defaultValue: false,
+        defaultValue: true,
         describe: 'Turn on/off strikethrough support',
         type: 'boolean'
       },
@@ -15394,7 +15394,7 @@ if ( typeof(color2) == "undefined" ) {
 if ( typeof(color3) == "undefined" ) {
   color3="white";
 }
-var css=".shuoshuo_row{width: 100%;display: flex;}.child{flex: 1;}#shuoshuo_content {padding: 10px;/* min-height: 500px; */}/* shuo */body.theme-dark .cbp_tmtimeline::before {background: RGBA(255, 255, 255, 0.06);}ul.cbp_tmtimeline {padding: 0;}.cbp_tmtimeline {margin: 30px 0 0 0;padding: 0;list-style: none;display: inline;position: relative;}/* The line */.cbp_tmtimeline:before {content: \"\";position: absolute;top: 0;bottom: 0;width: 4px;background: RGBA(0, 0, 0, 0.02);left: 80px;margin-left: 10px;}/* The date/time */.cbp_tmtimeline>li .cbp_tmtime {display: block;/* width: 29%; *//* padding-right: 110px; */max-width: 70px;position: absolute;}.cbp_tmtimeline>li .cbp_tmtime span {display: block;text-align: right;}.cbp_tmtimeline>li .cbp_tmtime span:first-child {font-size: 0.9em;color: #bdd0db;}.cbp_tmtimeline>li .cbp_tmtime span:last-child {font-size: 1.2em;color: #9BCD9B;}.cbp_tmtimeline>li:nth-child(odd) .cbp_tmtime span:last-child {color: RGBA(255, 125, 73, 0.75);}div.cbp_tmlabel>p {margin-bottom: 0;}/* Right content */div class.cdp_tmlabel>li .cbp_tmlabel {margin-bottom: 0;}.cbp_tmtimeline>li .cbp_tmlabel {margin: 0 0 45px 65px;background: "+color2+";color:"+color3 +" ;padding: .8em 1.2em .4em 1.2em;/* font-size: 1.2em; */font-weight: 300;line-height: 1.4;position: relative;border-radius: 5px;transition: all 0.3s ease 0s;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);cursor: pointer;display: block;}.cbp_tmlabel:hover {/* transform:scale(1.05); */transform: translateY(-3px);z-index: 1;box-shadow: 0 15px 32px rgba(0, 0, 0, 0.15) !important}.cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {background: "+color1+";}/* The triangle */.cbp_tmtimeline>li .cbp_tmlabel:after {right: 100%;border: solid transparent;z-index: -1;content: \" \";height: 0;width: 0;position: absolute;pointer-events: none;border-right-color: "+color2+";border-width: 10px;top: 4px;}.cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {border-right-color:"+color1+";}p.shuoshuo_time {margin-top: 10px;border-top: 1px dashed #fff;padding-top: 5px;font-size: 12px;}/* Media */@media screen and (max-width: 65.375em) {.cbp_tmtimeline>li .cbp_tmtime span:last-child {font-size: 1.2em;}}.shuoshuo_author_img img {border: 1px solid #ddd;padding: 2px;float: left;border-radius: 64px;transition: all 1.0s;}/* end */.avatar {border-radius: 100% !important;-moz-border-radius: 100% !important;box-shadow: inset 0 -1px 0 3333sf;-webkit-box-shadow: inset 0 -1px 0 3333sf;-webkit-transition: 0.4s;-webkit-transition: -webkit-transform 0.4s ease-out;transition: transform 0.4s ease-out;-moz-transition: -moz-transform 0.4s ease-out;}.avatar:hover {-webkit-transform: rotateZ(360deg);-moz-transform: rotateZ(360deg);-o-transform: rotateZ(360deg);-ms-transform: rotateZ(360deg);transform: rotateZ(360deg);}/* content */.shuoshuo_text {width: 100%;height: 130px;padding: 8px 16px;background-repeat: no-repeat;background-position: right;outline-style: none;border: 1px solid #ccc;border-radius: 6px;resize: none;background-color: transparent;color: #999;}/* password */.shuoshuo_inputs {outline-style: none;border: 1px solid #ccc;border-radius: 6px;padding: 8px 16px;width: 100%;font-size: 12px;background-color: transparent;color: #999;}.button {background-color: "+color1+";/* Green */border: none;margin-left: 5px;color:"+color3+";padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 12px;border-radius: 12px;/* circle */outline: none;cursor: pointer;}.button:hover {background-color: "+color2+";box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.24), 0 8px 16px 0 rgba(0, 0, 0, 0.19);}/* butterfly theme adapter */#article-container ul p {margin: 0 0 1rem;}/* version */.power {text-align: right;color: #999;font-size: .75em;padding: .5em 0;}.power a {font-size: .75em;position: relative;cursor: pointer;color: #1abc9c;text-decoration: none;display: inline-block;}/* row */.shuoshuo_submit {margin: 0 0 1rem;}.shuoshuo_row .col.col-80 {width: 80%;float: left;}.shuoshuo_row .col.col-20 {width: 20%;float: right;text-align: right;}#preview {width: 100%;float: left;margin: .5rem 0 0;padding: 7px;box-shadow: 0 0 1px #f0f0f0;}/* lazyload */#lazy {background: #ffffff;bottom: 0;left: 0;position: fixed;right: 0;top: 0;z-index: 9999;}@import \"compass/css3\";.preloader {position: absolute;margin-left: -55px;margin-top: -100px;height: 110px;width: 110px;left: 50%;top: 50%;}path {stroke: #9ea1a4;stroke-width: 0.25;}#cloud {position: relative;z-index: 2;}#cloud path {fill: #efefef;}#sun {margin-left: -10px;margin-top: 6px;opacity: 0;width: 60px;height: 60px;position: absolute;left: 45px;top: 15px;z-index: 1;animation-name: rotate;animation-duration: 16000ms;animation-iteration-count: infinite;animation-timing-function: linear;}#sun path {stroke-width: 0.18;fill: #9ea1a4;}@keyframes rotate {0% {transform: rotateZ(0deg);}100% {transform: rotateZ(360deg);}}/* Rain */.rain {position: absolute;width: 70px;height: 70px;margin-top: -32px;margin-left: 19px;}.drop {opacity: 1;background: #9ea1a4;display: block;float: left;width: 3px;height: 10px;margin-left: 4px;border-radius: 0px 0px 6px 6px;animation-name: drop;animation-duration: 350ms;animation-iteration-count: infinite;}.drop:nth-child(1) {animation-delay: -130ms;}.drop:nth-child(2) {animation-delay: -240ms;}.drop:nth-child(3) {animation-delay: -390ms;}.drop:nth-child(4) {animation-delay: -525ms;}.drop:nth-child(5) {animation-delay: -640ms;}.drop:nth-child(6) {animation-delay: -790ms;}.drop:nth-child(7) {animation-delay: -900ms;}.drop:nth-child(8) {animation-delay: -1050ms;}.drop:nth-child(9) {animation-delay: -1130ms;}.drop:nth-child(10) {animation-delay: -1300ms;}@keyframes drop {50% {height: 45px;opacity: 0;}51% {opacity: 0;}100% {height: 1px;opacity: 0;}}.text {font-family: Helvetica, \"Helvetica Neue\", sans-serif;letter-spacing: 1px;text-align: center;margin-left: -43px;font-weight: bold;margin-top: 20px;font-size: 11px;color: #a0a0a0;width: 200px;} .shuoshuoimg{cursor: pointer;transition: all 1s;}.shuoshuoimg:hover{transform: scale(3.5);} .hide{display: none;}.c1{position: fixed;top:0;bottom: 0;left:0;right: 0;background: rgba(0,0,0,.5);z-index: 2;}.c2{background-color: white;position: fixed;width: 400px;height: auto;top:50%;left: 50%;z-index: 3;margin-top: -150px;margin-left: -200px;box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);opacity: 0.85;border: 0;border-radius: 10px;}.shuoshuo_input_log {outline-style: none;border: 1px solid #ccc;border-radius: 6px;padding: 8px 16px;font-size: 12px;background-color: transparent;color: #999;}.delete_right {cursor: pointer;width: 12px;height: 12px;position: absolute;right: 12px;}svg{display: inline}";
+var css=".shuoshuo_row{width: 100%;display: flex;}.child{flex: 1;}#shuoshuo_content {padding: 10px;/* min-height: 500px; */}/* shuo */body.theme-dark .cbp_tmtimeline::before {background: RGBA(255, 255, 255, 0.06);}ul.cbp_tmtimeline {padding: 0;}.cbp_tmtimeline {margin: 30px 0 0 0;padding: 0;list-style: none;display: inline;position: relative;}/* The line */.cbp_tmtimeline:before {content: \"\";position: absolute;top: 0;bottom: 0;width: 4px;background: RGBA(0, 0, 0, 0.02);left: 80px;margin-left: 10px;}/* The date/time */.cbp_tmtimeline>li .cbp_tmtime {display: block;/* width: 29%; *//* padding-right: 110px; */max-width: 70px;position: absolute;}.cbp_tmtimeline>li .cbp_tmtime span {display: block;text-align: right;}.cbp_tmtimeline>li .cbp_tmtime span:first-child {font-size: 0.9em;color: #bdd0db;}.cbp_tmtimeline>li .cbp_tmtime span:last-child {font-size: 1.2em;color: #9BCD9B;}.cbp_tmtimeline>li:nth-child(odd) .cbp_tmtime span:last-child {color: RGBA(255, 125, 73, 0.75);}div.cbp_tmlabel>p {margin-bottom: 0;}/* Right content */div class.cdp_tmlabel>li .cbp_tmlabel {margin-bottom: 0;}.cbp_tmtimeline>li .cbp_tmlabel {margin: 0 0 45px 65px;background: "+color2+";color:"+color3 +" ;padding: .8em 1.2em .4em 1.2em;/* font-size: 1.2em; */font-weight: 300;line-height: 1.4;position: relative;border-radius: 5px;transition: all 0.3s ease 0s;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);cursor: pointer;display: block;}.cbp_tmlabel:hover {/* transform:scale(1.05); */transform: translateY(-3px);z-index: 1;box-shadow: 0 15px 32px rgba(0, 0, 0, 0.15) !important}.cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {background: "+color1+";}/* The triangle */.cbp_tmtimeline>li .cbp_tmlabel:after {right: 100%;border: solid transparent;z-index: -1;content: \" \";height: 0;width: 0;position: absolute;pointer-events: none;border-right-color: "+color2+";border-width: 10px;top: 4px;}.cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {border-right-color:"+color1+";}p.shuoshuo_time {margin-top: 10px;border-top: 1px dashed #fff;padding-top: 5px;font-size: 12px;}/* Media */@media screen and (max-width: 65.375em) {.cbp_tmtimeline>li .cbp_tmtime span:last-child {font-size: 1.2em;}}.shuoshuo_author_img img {border: 1px solid #ddd;padding: 2px;float: left;border-radius: 64px;transition: all 1.0s;}/* end */.avatar {border-radius: 100% !important;-moz-border-radius: 100% !important;box-shadow: inset 0 -1px 0 3333sf;-webkit-box-shadow: inset 0 -1px 0 3333sf;-webkit-transition: 0.4s;-webkit-transition: -webkit-transform 0.4s ease-out;transition: transform 0.4s ease-out;-moz-transition: -moz-transform 0.4s ease-out;}.avatar:hover {-webkit-transform: rotateZ(360deg);-moz-transform: rotateZ(360deg);-o-transform: rotateZ(360deg);-ms-transform: rotateZ(360deg);transform: rotateZ(360deg);}/* content */.shuoshuo_text {width: 100%;height: 130px;padding: 8px 16px;background-repeat: no-repeat;background-position: right;outline-style: none;border: 1px solid #ccc;border-radius: 6px;resize: none;background-color: transparent;color: #999;}/* password */.shuoshuo_inputs {outline-style: none;border: 1px solid #ccc;border-radius: 6px;padding: 8px 16px;width: 100%;font-size: 12px;background-color: transparent;color: #999;}.button {background-color: "+color1+";/* Green */border: none;margin-left: 5px;color:"+color3+";padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 12px;border-radius: 12px;/* circle */outline: none;cursor: pointer;}.button:hover {background-color: "+color2+";box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.24), 0 8px 16px 0 rgba(0, 0, 0, 0.19);}/* butterfly theme adapter */#article-container ul p {margin: 0 0 1rem;}/* version */.power {text-align: right;color: #999;font-size: .75em;padding: .5em 0;}.power a {font-size: .75em;position: relative;cursor: pointer;color: #1abc9c;text-decoration: none;display: inline-block;}/* row */.shuoshuo_submit {margin: 0 0 1rem;}.shuoshuo_row .col.col-80 {width: 80%;float: left;}.shuoshuo_row .col.col-20 {width: 20%;float: right;text-align: right;}#preview {width: 100%;float: left;margin: .5rem 0 0;padding: 7px;box-shadow: 0 0 1px #f0f0f0;}/* lazyload */#lazy {background: #ffffff;bottom: 0;left: 0;position: fixed;right: 0;top: 0;z-index: 9999;}@import \"compass/css3\";.preloader {position: absolute;margin-left: -55px;margin-top: -100px;height: 110px;width: 110px;left: 50%;top: 50%;}path {stroke: #9ea1a4;stroke-width: 0.25;}#cloud {position: relative;z-index: 2;}#cloud path {fill: #efefef;}#sun {margin-left: -10px;margin-top: 6px;opacity: 0;width: 60px;height: 60px;position: absolute;left: 45px;top: 15px;z-index: 1;animation-name: rotate;animation-duration: 16000ms;animation-iteration-count: infinite;animation-timing-function: linear;}#sun path {stroke-width: 0.18;fill: #9ea1a4;}@keyframes rotate {0% {transform: rotateZ(0deg);}100% {transform: rotateZ(360deg);}}/* Rain */.rain {position: absolute;width: 70px;height: 70px;margin-top: -32px;margin-left: 19px;}.drop {opacity: 1;background: #9ea1a4;display: block;float: left;width: 3px;height: 10px;margin-left: 4px;border-radius: 0px 0px 6px 6px;animation-name: drop;animation-duration: 350ms;animation-iteration-count: infinite;}.drop:nth-child(1) {animation-delay: -130ms;}.drop:nth-child(2) {animation-delay: -240ms;}.drop:nth-child(3) {animation-delay: -390ms;}.drop:nth-child(4) {animation-delay: -525ms;}.drop:nth-child(5) {animation-delay: -640ms;}.drop:nth-child(6) {animation-delay: -790ms;}.drop:nth-child(7) {animation-delay: -900ms;}.drop:nth-child(8) {animation-delay: -1050ms;}.drop:nth-child(9) {animation-delay: -1130ms;}.drop:nth-child(10) {animation-delay: -1300ms;}@keyframes drop {50% {height: 45px;opacity: 0;}51% {opacity: 0;}100% {height: 1px;opacity: 0;}}.text {font-family: Helvetica, \"Helvetica Neue\", sans-serif;letter-spacing: 1px;text-align: center;margin-left: -43px;font-weight: bold;margin-top: 20px;font-size: 11px;color: #a0a0a0;width: 200px;} .shuoshuoimg{cursor: pointer;transition: all 1s;}.shuoshuoimg:hover{transform: scale(3.5);} .hide{display: none;}.c1{position: fixed;top:0;bottom: 0;left:0;right: 0;background: rgba(0,0,0,.5);z-index: 2;}.c2{background-color: white;position: fixed;width: 400px;height: auto;top:50%;left: 50%;z-index: 3;margin-top: -150px;margin-left: -200px;box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);opacity: 0.85;border: 0;border-radius: 10px;}.shuoshuo_input_log {outline-style: none;border: 1px solid #ccc;border-radius: 6px;padding: 8px 16px;font-size: 12px;background-color: transparent;color: #999;}.delete_right {cursor: pointer;width: 12px;height: 12px;position: absolute;right: 12px;}svg{display: inline}.cbp_tmlabel>p,h1,h2,h3,h4,h5,h6,em {word-wrap: break-word;word-break: break-all;}";
 var style = document.createElement("style");
 style.type = "text/css";
 style.innerHTML=css;
@@ -15441,6 +15441,7 @@ if ( typeof(slanguage) == "undefined" ) {
     text18="头像url";
     text19="确定删除本条说说吗？";
     text20="删除成功";
+    text21="请拖拽图片到此处";
     textup="上传ing";
   }else if(slanguage=="en"){
     text0="Published by";
@@ -15464,6 +15465,7 @@ if ( typeof(slanguage) == "undefined" ) {
     text18="Avatar url";
     text19="Are you sure you want to delete this article?";
     text20="Successfully deleted";
+    text21="Please drag and drop pictures here";
     textup="Uploading";
   }else if(slanguage=="es"){
     text0="Publicado por";
@@ -15487,6 +15489,7 @@ if ( typeof(slanguage) == "undefined" ) {
     text18="URL del avatar";
     text19="¿Estás seguro de que deseas eliminar este artículo?";
     text20="Eliminado con éxito";
+    text21="Arrastra y suelta fotos aquí";
     textup="Cargando";
   }
 
@@ -15545,7 +15548,7 @@ function imgChange(img) {
   reader.onload = function (ev) {
       var imgFile =ev.target.result;
       base64url=imgFile.replace(/(.*)?,/,'');
-      console.log(imgFile);
+      // console.log(imgFile);
       uploadimg(base64url);
   }
   reader.readAsDataURL(img.files[0]);
@@ -15623,7 +15626,7 @@ if(lazy==0){
     var img3;
       var currentUser = AV.User.current();
       if(currentUser){
-        console.log(currentUser.attributes.img);
+        // console.log(currentUser.attributes.img);
         img3=currentUser.attributes.img;
       }else{
         document.getElementById("logw").innerHTML="<center><pre><code>"+text15+"</code></pre></center>";
@@ -15681,11 +15684,11 @@ if(lazy==0){
       query.limit(per);
       query.skip(per*spage);// 
       query.find().then(function (remarks) {
-          console.log(spage+"??\n");
+          // console.log(spage+"??\n");
           remarks.forEach(function(atom){
              shuoshuo_per= shuoshuo_per+1;
-          console.log(atom);
-          console.log(spage+"??\n");
+          // console.log(atom);
+          // console.log(spage+"??\n");
               var did=atom.id;
               var uncle=atom.attributes.content;
               // console.log(uncle);
@@ -15839,128 +15842,128 @@ if(lazy==0){
 // 拖拽上传图片
 function pic_drag() {
 
-    function getDropFileCallBack(dropFile) {
-        // console.log("all ok")
-        if (dropFile.type.match(/image*/)) {
-            console.log("YES");
-            var reader = new FileReader();
-            reader.readAsDataURL(dropFile);
-            reader.onload = function () {
-                base64url = reader.result.replace(/(.*)?,/, '');
-                uploadimg(base64url);
-            };
-        }
-        else {
-            console.log("此" + dropFile.name + "不是图片文件！");
-        }
-    }
+  function getDropFileCallBack(dropFile) {
+      // console.log("all ok")
+      if (dropFile.type.match(/image*/)) {
+          console.log("YES");
+          var reader = new FileReader();
+          reader.readAsDataURL(dropFile);
+          reader.onload = function () {
+              base64url = reader.result.replace(/(.*)?,/, '');
+              uploadimg(base64url);
+          };
+      }
+      else {
+          console.log("此" + dropFile.name + "不是图片文件！");
+      }
+  }
 
-    var dropZone = document.getElementById("shuoshuo_edit");
-    area = document.getElementById("drag_area");
-    neirong = document.getElementById("neirong");
+  var dropZone = document.getElementById("shuoshuo_edit");
+  area = document.getElementById("drag_area");
+  neirong = document.getElementById("neirong");
 
-    function edit_area_back() {
-        if (area.style.visibility == "visible") area.style.visibility = "hidden";
-        neirong.style.opacity = 1;
-    }
-    document.addEventListener("dragenter", function (e) {
-        e.dataTransfer.dropEffect = 'copy'; // 兼容某些三方应用，如圈点
-        e.preventDefault();
-        e.stopPropagation();
-        
-        if (area.style.visibility == "hidden") area.style.visibility = "visible";
-        else {
-            width = dropZone.clientWidth;
-            height = dropZone.clientHeight;
-            neirong.style.position = "relative";
-            neirong.style.zIndex = "10";
-            area.style.fontSize = "24px";
-            area.style.background = "rgba(255,255,255,.7)";
-            area.innerText = "请拖拽图片到此处";
-            dropZone.style.position = "relative";
-            area.style.cssText += "text-align: center;position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);";
-            area.style.width = width;
-            area.style.lineHeight = height + "px";
-            area.style.borderRadius = "6px";
-            area.style.visibility = "visible";
-            neirong.style.opacity = 0.3;
-        }
-    }, false);
+  function edit_area_back() {
+      if (area.style.visibility == "visible") area.style.visibility = "hidden";
+      neirong.style.opacity = 1;
+  }
+  document.addEventListener("dragenter", function (e) {
+      e.dataTransfer.dropEffect = 'copy'; // 兼容某些三方应用，如圈点
+      e.preventDefault();
+      e.stopPropagation();
+      
+      if (area.style.visibility == "hidden") area.style.visibility = "visible";
+      else {
+          width = dropZone.clientWidth;
+          height = dropZone.clientHeight;
+          neirong.style.position = "relative";
+          neirong.style.zIndex = "10";
+          area.style.fontSize = "24px";
+          area.style.background = "rgba(255,255,255,.7)";
+          area.innerText = "请拖拽图片到此处";
+          dropZone.style.position = "relative";
+          area.style.cssText += "text-align: center;position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);";
+          area.style.width = width;
+          area.style.lineHeight = height + "px";
+          area.style.borderRadius = "6px";
+          area.style.visibility = "visible";
+          neirong.style.opacity = 0.3;
+      }
+  }, false);
 
-    document.addEventListener("mouseover", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        edit_area_back();
-    }, false);
+  document.addEventListener("mouseover", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      edit_area_back();
+  }, false);
 
-    dropZone.addEventListener("drop", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
+  dropZone.addEventListener("drop", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
 
-        var df = e.dataTransfer;
-        var dropFiles = []; // 拖拽的文件，会放到这里
-        var dealFileCnt = 0; // 读取文件是个异步的过程，需要记录处理了多少个文件了
-        var allFileLen = df.files.length; // 所有的文件的数量，给非Chrome浏览器使用的变量
+      var df = e.dataTransfer;
+      var dropFiles = []; // 拖拽的文件，会放到这里
+      var dealFileCnt = 0; // 读取文件是个异步的过程，需要记录处理了多少个文件了
+      var allFileLen = df.files.length; // 所有的文件的数量，给非Chrome浏览器使用的变量
 
-        edit_area_back();
-        // 检测是否已经把所有的文件都遍历过了
-        function checkDropFinish() {
-            if (dealFileCnt === allFileLen - 1) {
-                for (var i = 0; i < allFileLen; i++) {
-                    getDropFileCallBack(dropFiles[i]);
-                }
-            }
-            dealFileCnt++;
-        }
+      edit_area_back();
+      // 检测是否已经把所有的文件都遍历过了
+      function checkDropFinish() {
+          if (dealFileCnt === allFileLen - 1) {
+              for (var i = 0; i < allFileLen; i++) {
+                  getDropFileCallBack(dropFiles[i]);
+              }
+          }
+          dealFileCnt++;
+      }
 
-        if (df.items !== undefined) {
-            // Chrome拖拽文件逻辑
-            for (var i = 0; i < df.items.length; i++) {
-                var item = df.items[i];
-                if (item.kind === "file" && item.webkitGetAsEntry().isFile) {
-                    var file = item.getAsFile();
-                    dropFiles.push(file);
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        getDropFileCallBack(file);
-                    }
-                    reader.readAsDataURL(file);
-                }
-                else if (item.type.match(/plain*/))
-                    item.getAsString(function (str) {
-                        console.log(str); neirong.value += str;
-                    });
-            }
-        } else {
-            // 非Chrome拖拽文件逻辑
-            for (var i = 0; i < allFileLen; i++) {
-                var dropFile = df.files[i];
-                if (dropFile.type) {
-                    dropFiles.push(dropFile);
-                    checkDropFinish();
-                } else {
-                    try {
-                        var fileReader = new FileReader();
-                        fileReader.readAsDataURL(dropFile.slice(0, 3));
+      if (df.items !== undefined) {
+          // Chrome拖拽文件逻辑
+          for (var i = 0; i < df.items.length; i++) {
+              var item = df.items[i];
+              if (item.kind === "file" && item.webkitGetAsEntry().isFile) {
+                  var file = item.getAsFile();
+                  dropFiles.push(file);
+                  var reader = new FileReader();
+                  reader.onload = function (e) {
+                      getDropFileCallBack(file);
+                  }
+                  reader.readAsDataURL(file);
+              }
+              else if (item.type.match(/plain*/))
+                  item.getAsString(function (str) {
+                      console.log(str); neirong.value += str;
+                  });
+          }
+      } else {
+          // 非Chrome拖拽文件逻辑
+          for (var i = 0; i < allFileLen; i++) {
+              var dropFile = df.files[i];
+              if (dropFile.type) {
+                  dropFiles.push(dropFile);
+                  checkDropFinish();
+              } else {
+                  try {
+                      var fileReader = new FileReader();
+                      fileReader.readAsDataURL(dropFile.slice(0, 3));
 
-                        fileReader.addEventListener('load', function (e) {
-                            console.log(e, 'load');
-                            dropFiles.push(dropFile);
-                            checkDropFinish();
-                        }, false);
+                      fileReader.addEventListener('load', function (e) {
+                          console.log(e, 'load');
+                          dropFiles.push(dropFile);
+                          checkDropFinish();
+                      }, false);
 
-                        fileReader.addEventListener('error', function (e) {
-                            console.log(e, 'error，不可以上传文件夹');
-                            checkDropFinish();
-                        }, false);
+                      fileReader.addEventListener('error', function (e) {
+                          console.log(e, 'error，不可以上传文件夹');
+                          checkDropFinish();
+                      }, false);
 
-                    } catch (e) {
-                        console.log(e, 'catch error，不可以上传文件夹');
-                        checkDropFinish();
-                    }
-                }
-            }
-        }
-    }, false);
+                  } catch (e) {
+                      console.log(e, 'catch error，不可以上传文件夹');
+                      checkDropFinish();
+                  }
+              }
+          }
+      }
+  }, false);
 }
 // 拖拽end
