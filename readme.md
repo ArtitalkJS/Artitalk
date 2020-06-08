@@ -1,6 +1,6 @@
-# 详细使用教程请移步文档：https://artitalk.js.org/
-
 ## 👀 前言
+
+### 详细使用教程请移步文档：https://artitalk.js.org/
 
 视频教程：[Hexo-shuoshuo bilibili](https://www.bilibili.com/video/BV16A411b7UF)
 
@@ -31,7 +31,8 @@
 ## 🎆 开发者
 * [Uncle_drew](https://cndrew.cn/)
 * [cungudafa](https://cungudafa.top/)
-* [todest](https://todest.cn/)
+* [todest](https://blog.todest.cn/)
+* [jinqimu](https://jinqimu.xyz/)
 
 ## 👍 特别鸣谢
 * 张渔：logo制作
