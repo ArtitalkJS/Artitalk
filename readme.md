@@ -1,9 +1,6 @@
+# 详细使用教程请移步文档：https://artitalk.js.org/
+
 ## 👀 前言
-文档：[Artitalk.js](https://artitalk.js.org/)
-
-Github：[Artitalk.js](https://github.com/Drew233/Artitalk)
-
-详细教程请参考文档
 
 视频教程：[Hexo-shuoshuo bilibili](https://www.bilibili.com/video/BV16A411b7UF)
 
