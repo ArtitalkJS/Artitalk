@@ -9,9 +9,6 @@
 ![](https://img.shields.io/npm/v/artitalk.svg)
 ![](https://img.shields.io/badge/language-JavaScript-red)
 
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/Drew233/Artitalk.svg)](https://starchart.cc/Drew233/Artitalk)
       
 
 因为项目初期版本更新较为频繁，所以教程仅作参考，请仔细阅读使用文档，以此为准。
