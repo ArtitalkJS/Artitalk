@@ -9,24 +9,15 @@
 ![](https://img.shields.io/npm/v/artitalk.svg)
 ![](https://img.shields.io/badge/language-JavaScript-red)
 
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/Drew233/Artitalk.svg)](https://starchart.cc/Drew233/Artitalk)
       
 
 因为项目初期版本更新较为频繁，所以教程仅作参考，请仔细阅读使用文档，以此为准。
 
 ### 特性
-* 实时发布
-* 支持markdown语法
-* 支持剪切板图片直接上传
-* 方便引用
-
-## 参与开发
-* fork本项目
-* 在source文件夹中新建一个版本文件夹，原则上为当前最新版本加0.01
-* 将你的修改版本放在新的版本文件夹中后，pr 
-
+* 实时发布,点击删除
+* 支持markdown/html语法
+* 支持剪切板图片直接上传，支持点击上传图片，音频，视频
+ 方便引用
 
 ## 🎆 开发者
 * [Uncle_drew](https://cndrew.cn/)
