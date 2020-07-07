@@ -12,6 +12,14 @@
 		<link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/drew233/cdn/atico.png">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/drew233/cdn/demo_main.css" />
 		<script data_ad_client="ca-pub-9420537843748923" async="true" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<style>
+			button#gen_token_pt {
+				height: 30px;
+			}
+			div#final_token_pt {
+				margin: 1em;
+			}
+		</style>
 	</head>
 	<body class="landing is-preload">
 		<div id="page-wrapper">
@@ -51,8 +59,19 @@
 				</script>
 				<div id="artitalk_main"></div>
 				<script type="text/javascript" src="https://unpkg.com/artitalk"></script>
-				
+				<script>
+					function token_pt(){
+						var token=document.getElementById('origin_token').value;
+						// console.log(token);
+						var token_pt_final=btoa(token);
+						// console.log(token_pt_final);
+						document.getElementById('final_token_pt').innerHTML="你的token_pt为"+token_pt_final;
+					}
+				</script>
 				<header class="major">
+					<center><input id="origin_token" placeholder="Your token"></input>&nbsp&nbsp&nbsp<button id="gen_token_pt" onclick="token_pt()">生成token_pt</button>
+					<div id="final_token_pt"></div></center>
+					
 					Demo页用户名：Test
 					<br />
 					Demo页密码：123456<br>
