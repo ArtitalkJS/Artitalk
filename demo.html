@@ -59,19 +59,7 @@
 				</script>
 				<div id="artitalk_main"></div>
 				<script type="text/javascript" src="https://unpkg.com/artitalk"></script>
-				<script>
-					function token_pt(){
-						var token=document.getElementById('origin_token').value;
-						// console.log(token);
-						var token_pt_final=btoa(token);
-						// console.log(token_pt_final);
-						document.getElementById('final_token_pt').innerHTML="你的token_pt为"+token_pt_final;
-					}
-				</script>
 				<header class="major">
-					<center><input id="origin_token" placeholder="Your token"></input>&nbsp&nbsp&nbsp<button id="gen_token_pt" onclick="token_pt()">生成token_pt</button>
-					<div id="final_token_pt"></div></center>
-					
 					Demo页用户名：Test
 					<br />
 					Demo页密码：123456<br>
