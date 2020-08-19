@@ -29,7 +29,6 @@ src
 │    ├─ browser.js              # 返回用户操作系统
 │    ├─ sha1.js                 # sha1编码，用来资源上传时的重命名
 │    └─ showdown.min.js         # markdown转换
-└─ readme.md
 ```
 
 
