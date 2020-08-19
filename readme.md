@@ -1,17 +1,17 @@
-## 👀 前言
-
-### 详细使用教程请移步文档：https://artitalk.js.org/
+# Artitalk.js
 
 ![](https://img.shields.io/github/stars/Drew233/Artitalk)
 ![](https://img.shields.io/npm/dm/artitalk.svg)
 ![](https://img.shields.io/npm/v/artitalk.svg)
 ![](https://img.shields.io/badge/language-JavaScript-red)
 
-### 特性
+### 详细使用教程请移步文档：https://artitalk.js.org/
+
+## 👀 特性
+
 * 实时发布，点击删除
 * 支持markdown/html语法
-* 支持剪切板图片直接上传，支持点击上传图片、音频、视频
- 方便引用
+* 支持剪切板图片直接上传，支持点击上传图片、音频、视频，方便引用
 
 ### 目录树
 
