@@ -17,18 +17,18 @@
 
 ```
 src
+├─ artitalk.js
 ├─ css
 │    └─ main.css                # artitalk的css
 ├─ html
 │    ├─ lazy.html               # 加载动画的html片段
 │    └─ main.html               # artitalk的主要html片段
-├─ artitalk.js                  
 ├─ main.js                      # artitalk的主要js部分
-├─ plugins                      # 第三方js
-│    ├─ av-min.js               # leancloud提供的SDK
-│    ├─ browser.js              # 返回用户操作系统
-│    ├─ sha1.js                 # sha1编码，用来资源上传时的重命名
-│    └─ showdown.min.js         # markdown转换
+└─ plugins                      # 第三方js
+       ├─ av-min.js             # leancloud提供的SDK
+       ├─ browser.js            # 返回用户操作系统
+       ├─ sha1.js               # sha1编码，用来资源上传时的重命名
+       └─ showdown.min.js       # markdown转换
 ```
 
 
