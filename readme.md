@@ -34,8 +34,8 @@ src
 
 
 ### 资源说明
-av-min.js: 由leancloud提供：https://cdn.jsdelivr.net/npm/leancloud-storage@4.5.3/dist/av-min.js
-lazy.html: 加载动画源自codepen：https://codepen.io/tholman/pen/yenku
-showdown.min.js：https://github.com/showdownjs/showdown
-sha1.js：https://github.com/emn178/js-sha1/blob/master/src/sha1.js
-browser.js：https://github.com/natee/js-detect-browser-os/blob/master/src/browser.js
+1. av-min.js: 由leancloud提供：https://cdn.jsdelivr.net/npm/leancloud-storage@4.5.3/dist/av-min.js
+2. lazy.html: 加载动画源自codepen：https://codepen.io/tholman/pen/yenku
+3. showdown.min.js：https://github.com/showdownjs/showdown
+4. sha1.js：https://github.com/emn178/js-sha1/blob/master/src/sha1.js
+5. browser.js：https://github.com/natee/js-detect-browser-os/blob/master/src/browser.js
