@@ -1,4 +1,4 @@
-var version = "v2.4.0";
+var version = "v2.4.1";
 if (document.getElementById("lazy")||!document.getElementById("artitalk_main")) {
     var r = confirm("旧版本需要进行一些改动，未进行改动无法正常加载页面属于正常现象。点击确定前往查看改动");
     if (r == true) {
@@ -420,16 +420,16 @@ function shuoshuo_emoji_QQ() {
     document.getElementById('switch_2').classList.remove('zuiliangdezai');
     document.getElementById('switch_3').classList.add('zuiliangdezai');
     document.getElementById('switch_4').classList.remove('zuiliangdezai');
-    if (!$("#shuoshuo_emoji_QQ").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_QQ').className.indexOf('hide')===-1) {
         return;
     }
-    if (!$("#shuoshuo_emoji_BiliBili").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_BiliBili').className.indexOf('hide')===-1) {
         document.getElementById('shuoshuo_emoji_BiliBili').classList.add('hide');
     }
-    if (!$("#shuoshuo_emoji_custom").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_custom').className.indexOf('hide')===-1) {
         document.getElementById('shuoshuo_emoji_custom').classList.add('hide');
     }
-    if (!$("#shuoshuo_emoji_Tieba").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_Tieba').className.indexOf('hide')===-1) {
         document.getElementById('shuoshuo_emoji_Tieba').classList.add('hide');
     }
     document.getElementById('shuoshuo_emoji_QQ').classList.remove('hide');
@@ -440,16 +440,16 @@ function shuoshuo_emoji_BiliBili() {
     document.getElementById('switch_2').classList.add('zuiliangdezai');
     document.getElementById('switch_3').classList.remove('zuiliangdezai');
     document.getElementById('switch_4').classList.remove('zuiliangdezai');
-    if (!$("#shuoshuo_emoji_BiliBili").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_BiliBili').className.indexOf('hide')===-1) {
         return;
     }
-    if (!$("#shuoshuo_emoji_QQ").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_QQ').className.indexOf('hide')===-1) {
         document.getElementById('shuoshuo_emoji_QQ').classList.add('hide');
     }
-    if (!$("#shuoshuo_emoji_custom").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_custom').className.indexOf('hide')===-1) {
         document.getElementById('shuoshuo_emoji_custom').classList.add('hide');
     }
-    if (!$("#shuoshuo_emoji_Tieba").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_Tieba').className.indexOf('hide')===-1) {
         document.getElementById('shuoshuo_emoji_Tieba').classList.add('hide');
     }
     document.getElementById('shuoshuo_emoji_BiliBili').classList.remove('hide');
@@ -460,16 +460,16 @@ function shuoshuo_emoji_Custom() {
     document.getElementById('switch_2').classList.remove('zuiliangdezai');
     document.getElementById('switch_3').classList.remove('zuiliangdezai');
     document.getElementById('switch_4').classList.add('zuiliangdezai');
-    if (!$("#shuoshuo_emoji_custom").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_custom').className.indexOf('hide')===-1) {
         return;
     }
-    if (!$("#shuoshuo_emoji_QQ").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_QQ').className.indexOf('hide')===-1) {
         document.getElementById('shuoshuo_emoji_QQ').classList.add('hide');
     }
-    if (!$("#shuoshuo_emoji_BiliBili").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_BiliBili').className.indexOf('hide')===-1) {
         document.getElementById('shuoshuo_emoji_BiliBili').classList.add('hide');
     }
-    if (!$("#shuoshuo_emoji_Tieba").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_Tieba').className.indexOf('hide')===-1) {
         document.getElementById('shuoshuo_emoji_Tieba').classList.add('hide');
     }
     document.getElementById('shuoshuo_emoji_custom').classList.remove('hide');
@@ -480,16 +480,16 @@ function shuoshuo_emoji_Tieba() {
     document.getElementById('switch_2').classList.remove('zuiliangdezai');
     document.getElementById('switch_3').classList.remove('zuiliangdezai');
     document.getElementById('switch_4').classList.remove('zuiliangdezai');
-    if (!$("#shuoshuo_emoji_Tieba").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_Tieba').className.indexOf('hide')===-1) {
         return;
     }
-    if (!$("#shuoshuo_emoji_QQ").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_QQ').className.indexOf('hide')===-1) {
         document.getElementById('shuoshuo_emoji_QQ').classList.add('hide');
     }
-    if (!$("#shuoshuo_emoji_BiliBili").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_BiliBili').className.indexOf('hide')===-1) {
         document.getElementById('shuoshuo_emoji_BiliBili').classList.add('hide');
     }
-    if (!$("#shuoshuo_emoji_custom").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emoji_custom').className.indexOf('hide')===-1) {
         document.getElementById('shuoshuo_emoji_custom').classList.add('hide');
     }
     document.getElementById('shuoshuo_emoji_Tieba').classList.remove('hide');
@@ -503,25 +503,14 @@ operare_artitalk.id = "operare_artitalk";
 document.body.append(operare_artitalk);
 document.getElementById("operare_artitalk").innerHTML = operare_artitalk_content;
 if (lazy == 0) {
-    $("#lazy").remove();
-    sting += "<div id=\"loading_txt\" style=\"display: none\">";
+    lazys="";
+    sting = lazys + sting;
 } else {
     sting = lazys + sting;
 }
 document.getElementById("artitalk_main").innerHTML = sting;
 
-var pos = "";
 var oss = "";
-$.ajaxSettings.async = false;
-$(document).ready(function () {
-    $.getJSON("https://api.ip.sb/geoip?callback=?",
-        function (json) {
-            pos += (json.city) + " " + (json.region) + " " + (json.country);
-        }
-    );
-});
-// console.log(boInfo);
-
 oss = boInfo.os;
 if (document.all) {
     window.attachEvent('onload', seecontent(0,0)) //IE中
@@ -530,7 +519,7 @@ if (document.all) {
 };
 
 function preview_ohuo() {
-    if ($("#preview").hasClass('preview_now')) {
+    if (document.getElementById("preview").className.indexOf('preview_now') !== -1) {
         document.getElementById('preview').classList.remove('preview_now');
     } else {
         document.getElementById('preview').classList.add('preview_now');
@@ -576,8 +565,10 @@ var shuopage = 0;
 
 function shuoshuo_readmore() {
     //   alert(shuopage);
-    $('#readmore').fadeOut();
-    $('#lazy').fadeIn();
+    el_fadeout("readmore");
+    el_fadein("lazy");
+    // $('#readmore').fadeOut();
+    // $('#lazy').fadeIn();
     shuopage = shuopage + 1;
     seecontent(shuopage,0);
 }
@@ -645,7 +636,8 @@ function savecontent() {
     testObject.set('os', oss);
     testObject.set('imgurl', img3);
     testObject.set('star_init', "1");
-    $('#lazy').fadeIn();
+    // $('#lazy').fadeIn();
+    el_fadein("lazy");
     testObject.save().then(function (res) {
         let star = AV.Object.extend('star');
         var at_star = new star();
@@ -716,7 +708,8 @@ function seecontent(spage,flag) {
     }
     var currentUser = AV.User.current();
     if (currentUser) {
-        $('#key').fadeOut();
+        // $('#key').fadeOut();
+        // el_fadeout("key");
     }
     var query = new AV.Query('shuoshuo');
     var shuoshuo_per = 0;
@@ -820,9 +813,11 @@ function seecontent(spage,flag) {
         }
         document.getElementById("ccontent").innerHTML = string;
 
-        $('#lazy').fadeOut();
+        // $('#lazy').fadeOut();
+        el_fadeout("lazy");
         if (shuoshuo_per == per) {
-            $('#readmore').fadeIn();
+            // $('#readmore').fadeIn();
+            el_fadein("readmore");
         }
     });
 }
@@ -852,8 +847,11 @@ function uploadimg(file) {
     var mamato = "Bearer " + get_token();
     // console.log(mamato);
     document.getElementById("neirong").value += imgurl;
-    document.getElementById("loading_txt").innerHTML = text25;
-    $('#lazy').fadeIn();
+    if(lazy!=0){
+        document.getElementById("loading_txt").innerHTML = text25;
+    }
+    // $('#lazy').fadeIn();
+    el_fadein("lazy");
     var nameofimg = sha1(file) + ".png";
     var dir1 = nameofimg.slice(0, 2);
     var dir2 = nameofimg.slice(2, 4);
@@ -870,7 +868,8 @@ function uploadimg(file) {
         "data": "{\r\n  \"message\": \"" + window.location.host + "\",\r\n  \"content\": \"" + file + "\"\r\n}",
         "error": function (msg) {
             if (msg.statusText == "Unprocessable Entity") {
-                $('#lazy').fadeOut();
+                // $('#lazy').fadeOut();
+                el_fadeout("lazy");
                 document.getElementById("loading_txt").innerHTML = loadingTxT;
                 var x = document.getElementById("neirong").value;
                 imgurl = "![](" + picurl + ")";
@@ -878,7 +877,8 @@ function uploadimg(file) {
                 imgurl = "![](" + upload + ")";
                 preview();
             } else {
-                $('#lazy').fadeOut();
+                // $('#lazy').fadeOut();
+                el_fadeout("lazy");
                 document.getElementById("loading_txt").innerHTML = loadingTxT;
                 var x = document.getElementById("neirong").value;
                 document.getElementById("neirong").value = x.replace("![](" + upload + ")", text14);
@@ -886,7 +886,8 @@ function uploadimg(file) {
         }
     };
     $.ajax(settings).done(function (response) {
-        $('#lazy').fadeOut();
+        // $('#lazy').fadeOut();
+        el_fadeout("lazy");
         document.getElementById("loading_txt").innerHTML = loadingTxT;
         var x = document.getElementById("neirong").value;
         imgurl = "![](" + picurl + ")";
@@ -921,14 +922,16 @@ function imgChange(img) {
         // console.log(imgFile);
         var imgsize = (img.files[0].size / 1024).toFixed(0);
         if (!checkImgType(img.files[0])) {
-            $('#lazy').fadeOut();
+            // $('#lazy').fadeOut();
+            el_fadeout("lazy");
             document.getElementById("loading_txt").innerHTML = loadingTxT;
             document.getElementById('preview').classList.remove('preview_now');
             document.getElementById("preview").innerHTML = "<center><pre><code>" + text33 + "</code></pre></center>";
             return;
         }
         if (imgsize > img_limit) {
-            $('#lazy').fadeOut();
+            // $('#lazy').fadeOut();
+            el_fadeout("lazy");
             document.getElementById("loading_txt").innerHTML = loadingTxT;
             document.getElementById('preview').classList.remove('preview_now');
             document.getElementById("preview").innerHTML = "<center><pre><code>" + text30 + "</code></pre></center>";
@@ -970,7 +973,7 @@ function shuoshuo_emoji_lovefancybox() {
     document.getElementById('switch_2').classList.remove('zuiliangdezai');
     document.getElementById('switch_3').classList.remove('zuiliangdezai');
     document.getElementById('switch_4').classList.remove('zuiliangdezai');
-    if ($("#shuoshuo_emojiswitch").hasClass('hide')) {
+    if (document.getElementById('shuoshuo_emojiswitch').className.indexOf('hide')!==-1) {
         document.getElementById('shuoshuo_emoji_Tieba').classList.remove('hide');
         document.getElementById("shuoshuo_emoji_BiliBili").innerHTML = artitalk_emoji_bb;
         document.getElementById("shuoshuo_emoji_Tieba").innerHTML = artitalk_emoji_tb;
@@ -991,7 +994,8 @@ function shuoshuo_emoji_lovefancybox() {
 function artitalk() {
     var currentUser = AV.User.current();
     if (currentUser) {
-        $(".shuoshuo_active").fadeIn();
+        // $(".shuoshuo_active").fadeIn();
+        el_fadein("shuoshuo_input");
         pic_drag()
     } else {
         document.getElementById("logw").innerHTML = "<center><pre><code>" + text15 + "</code></pre></center>";
@@ -1017,7 +1021,8 @@ function Login() {
         // document.getElementById("preview").value="";
         document.getElementById("ccontent").innerHTML="";
         document.getElementById("neirong").value="";
-        $('#lazy').fadeIn();
+        // $('#lazy').fadeIn();
+        el_fadein("lazy");
         seecontent(0,1);
         // location.reload();
         Hide();
@@ -1043,7 +1048,8 @@ function swtichuser() {
     if (currentUser) {
         document.getElementById('userinfo').classList.remove('hide');
         document.getElementById("status").innerHTML = text4 + ":\t" + currentUser.attributes.username;
-        $("#tui").show();
+        // $("#tui").show();
+        el_fadein("tui");
     } else {
         document.getElementById('shuoshuo-modal').classList.remove('hide');
         Show();
@@ -1054,7 +1060,8 @@ function hide3() {
     
     document.getElementById('shade').classList.add('hide');
     document.getElementById('shanchu').classList.add('hide');
-    $('#lazy').fadeIn();
+    // $('#lazy').fadeIn();
+    el_fadein("lazy");
     document.getElementById("ccontent").innerHTML="";
     seecontent(0,1);
 }
@@ -1220,6 +1227,13 @@ function pic_drag() {
 
 //上传ui
 function upload_in() {
+    if(!window.jQuery){
+        console.log("?????");
+        var s=document.createElement('script');
+        s.src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js";
+        (document.head || document.body).appendChild(s);
+    }
+    
     document.getElementById('shade').classList.remove('hide');
     document.getElementById('upload_parttwo').classList.remove('hide');
 }
@@ -1246,7 +1260,8 @@ function audioChange(audio) {
     reader_audio.onload = function (ev) {
 
         if (!checkaudioType(audio.files[0])) {
-            $('#lazy').fadeOut();
+            // $('#lazy').fadeOut();
+            el_fadeout("lazy");
             document.getElementById("loading_txt").innerHTML = loadingTxT;
             document.getElementById('preview').classList.remove('preview_now');
             document.getElementById("preview").innerHTML = "<center><pre><code>" + text34 + "</code></pre></center>";
@@ -1258,7 +1273,8 @@ function audioChange(audio) {
         // console.log(audio.files[0].name);
         var audiosize = (audio.files[0].size / 1024).toFixed(0);
         if (audiosize > audio_limit) {
-            $('#lazy').fadeOut();
+            // $('#lazy').fadeOut();
+            el_fadeout("lazy");
             document.getElementById("loading_txt").innerHTML = loadingTxT;
             document.getElementById('preview').classList.remove('preview_now');
             document.getElementById("preview").innerHTML = "<center><pre><code>" + text31 + "</code></pre></center>";
@@ -1275,8 +1291,11 @@ if(typeof(repo_pt_mp3)=="undefined"){
 
 function uploadaudio(file, audioname) {
     var mamato = "Bearer " + get_token();
-    document.getElementById("loading_txt").innerHTML = text25;
-    $('#lazy').fadeIn();
+    if(lazy!=0){
+        document.getElementById("loading_txt").innerHTML = text25;
+    }
+    // $('#lazy').fadeIn();
+    el_fadein("lazy");
     var nameofimg = sha1(file) + ".mp3";
     var dir1 = nameofimg.slice(0, 2);
     var dir2 = nameofimg.slice(2, 4);
@@ -1293,12 +1312,14 @@ function uploadaudio(file, audioname) {
         "data": "{\r\n  \"message\": \"" + window.location.host + "\",\r\n  \"content\": \"" + file + "\"\r\n}",
         "error": function (msg) {
             if (msg.statusText == "Unprocessable Entity") {
-                $('#lazy').fadeOut();
+                // $('#lazy').fadeOut();
+                el_fadeout("lazy");
                 document.getElementById("loading_txt").innerHTML = loadingTxT;
                 var audiohtml = "<audio controls><source src='" + audiourl + "'></audio>";
                 insert_atemoji(audiohtml);
             } else {
-                $('#lazy').fadeOut();
+                // $('#lazy').fadeOut();
+                el_fadeout("lazy");
                 document.getElementById("loading_txt").innerHTML = loadingTxT;
                 document.getElementById('preview').classList.remove('preview_now');
                 document.getElementById("preview").innerHTML = "<center><pre><code>" + text14 + "</code></pre></center>";
@@ -1306,7 +1327,8 @@ function uploadaudio(file, audioname) {
         }
     };
     $.ajax(settings).done(function (response) {
-        $('#lazy').fadeOut();
+        // $('#lazy').fadeOut();
+        el_fadeout("lazy");
         document.getElementById("loading_txt").innerHTML = loadingTxT;
         var audiohtml = "<audio controls><source src='" + audiourl + "'></audio>";
         insert_atemoji(audiohtml);
@@ -1329,7 +1351,8 @@ function videoChange(video) {
     reader_video.onload = function (ev) {
 
         if (!checkvideoType(video.files[0])) {
-            $('#lazy').fadeOut();
+            // $('#lazy').fadeOut();
+            el_fadeout("lazy");
             document.getElementById("loading_txt").innerHTML = loadingTxT;
             document.getElementById('preview').classList.remove('preview_now');
             document.getElementById("preview").innerHTML = "<center><pre><code>" + text35 + "</code></pre></center>";
@@ -1341,7 +1364,8 @@ function videoChange(video) {
         // console.log(video.files[0].name);
         var videosize = (video.files[0].size / 1024).toFixed(0);
         if (videosize > video_limit) {
-            $('#lazy').fadeOut();
+            // $('#lazy').fadeOut();
+            el_fadeout("lazy");
             document.getElementById("loading_txt").innerHTML = loadingTxT;
             document.getElementById('preview').classList.remove('preview_now');
             document.getElementById("preview").innerHTML = "<center><pre><code>" + text32 + "</code></pre></center>";
@@ -1357,8 +1381,11 @@ if(typeof(repo_pt_mp4)=="undefined"){
 }
 function uploadvideo(file) {
     var mamato = "Bearer " + get_token();
-    document.getElementById("loading_txt").innerHTML = text25;
-    $('#lazy').fadeIn();
+    if(lazy!=0){
+        document.getElementById("loading_txt").innerHTML = text25;
+    }
+    // $('#lazy').fadeIn();
+    el_fadein("lazy");
     var nameofimg = sha1(file) + ".mp4";
     var dir1 = nameofimg.slice(0, 2);
     var dir2 = nameofimg.slice(2, 4);
@@ -1375,12 +1402,14 @@ function uploadvideo(file) {
         "data": "{\r\n  \"message\": \"" + window.location.host + "\",\r\n  \"content\": \"" + file + "\"\r\n}",
         "error": function (msg) {
             if (msg.statusText == "Unprocessable Entity") {
-                $('#lazy').fadeOut();
+                // $('#lazy').fadeOut();
+                el_fadeout("lazy");
                 document.getElementById("loading_txt").innerHTML = loadingTxT;
                 var videohtml = "<video controls width=\"100%\" height=\"auto\"><source src=\"" + videourl + "\"></video>";
                 insert_atemoji(videohtml);
             } else {
-                $('#lazy').fadeOut();
+                // $('#lazy').fadeOut();
+                el_fadeout("lazy");
                 document.getElementById("loading_txt").innerHTML = loadingTxT;
                 document.getElementById('preview').classList.remove('preview_now');
                 document.getElementById("preview").innerHTML = "<center><pre><code>" + text14 + "</code></pre></center>";
@@ -1388,7 +1417,8 @@ function uploadvideo(file) {
         }
     };
     $.ajax(settings).done(function (response) {
-        $('#lazy').fadeOut();
+        // $('#lazy').fadeOut();
+        el_fadeout("lazy");
         document.getElementById("loading_txt").innerHTML = loadingTxT;
         var videohtml = "<video controls width=\"100%\" max-height=\"200px\" height=\"auto\"><source src=\"" + videourl + "\"></video>";
         insert_atemoji(videohtml);

@@ -27,6 +27,7 @@ src
 └─ plugins                      # 第三方js
        ├─ av-min.js             # leancloud提供的SDK
        ├─ browser.js            # 返回用户操作系统
+       ├─ fadein&out.js         # js实现jQuery的fadein和fadeout的效果
        ├─ sha1.js               # sha1编码，用来资源上传时的重命名
        └─ showdown.min.js       # markdown转换
 ```
@@ -38,3 +39,4 @@ src
 3. showdown.min.js：https://github.com/showdownjs/showdown
 4. sha1.js：https://github.com/emn178/js-sha1/blob/master/src/sha1.js
 5. browser.js：https://github.com/natee/js-detect-browser-os/blob/master/src/browser.js
+6. fadein&out.js：https://gist.github.com/chrisbuttery/cf34533cbb30c95ff155
