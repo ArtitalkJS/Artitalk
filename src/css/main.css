@@ -54,8 +54,8 @@
 #artitalk_main .cbp_tmtimeline>li .cbp_tmlabel {
   margin: 0 0 45px 65px;
   z-index: 1;
-  background: ' + color2 + ';
-  color: ' + color3 + ';
+  background: #9BCD9B;
+  color: white;
   padding: 0.8em 1.2em 0.4em 1.2em;
 /* font-size: 1.2em; */
   font-weight: 300;
@@ -74,7 +74,7 @@
   box-shadow: 0 15px 32px rgba(0,0,0,0.15) !important;
 }
 #artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {
-  background: ' + color1 + ';
+  background: RGBA(255, 125, 73, 0.75);
 }
 #artitalk_main .cbp_tmtimeline>li .cbp_tmlabel:after {
   right: 100%;
@@ -85,12 +85,12 @@
   width: 0;
   position: absolute;
   pointer-events: none;
-  border-right-color: ' + color2 + ';
+  border-right-color: #9BCD9B;
   border-width: 10px;
   top: 4px;
 }
 #artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {
-  border-right-color: ' + color1 + ';
+  border-right-color: RGBA(255, 125, 73, 0.75);
 }
 #artitalk_main p.shuoshuo_time {
   margin-top: 10px;
@@ -150,12 +150,13 @@
   background-color: transparent;
   color: #999;
 }
+#operare_artitalk .at_button,
 #artitalk_main .at_button {
-  background-color: ' + color1 + ';
+  background-color: RGBA(255, 125, 73, 0.75);
 /* Green */
   border: none;
   margin-left: 5px;
-  color: ' + color3 + ';
+  color: white;
   padding: 8px 16px;
   text-align: center;
   text-decoration: none;
@@ -168,8 +169,9 @@
   outline: none;
   cursor: pointer;
 }
+#operare_artitalk .at_button:hover
 #artitalk_main .at_button:hover {
-  background-color: ' + color2 + ';
+  background-color: #9BCD9B;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.24), 0 8px 16px 0 rgba(0,0,0,0.19);
 }
 #artitalk_main #article-container ul p {
@@ -327,10 +329,11 @@
 #artitalk_main .shuoshuoimg:hover {
   transform: scale(3.5);
 }
-#artitalk_main .hide {
+#artitalk_main .hide,
+#operare_artitalk .hide {
   display: none;
 }
-#artitalk_main .c1 {
+#operare_artitalk .c1 {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -339,7 +342,7 @@
   background: rgba(0,0,0,0.5);
   z-index: 2;
 }
-#artitalk_main .c2 {
+#operare_artitalk .c2 {
   background-color: #fff;
   position: fixed;
   width: 400px;
@@ -354,7 +357,7 @@
   border: 0;
   border-radius: 10px;
 }
-#artitalk_main .shuoshuo_input_log {
+#operare_artitalk .shuoshuo_input_log {
   outline-style: none;
   margin-top: 10px;
   border: 1px solid #ccc;
