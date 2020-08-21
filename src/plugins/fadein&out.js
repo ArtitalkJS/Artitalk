@@ -14,7 +14,7 @@ el.style.opacity = 1;
 
 function fadeIn(el, display){
 el.style.opacity = 0;
-el.style.display = display || "block";
+el.style.display = display || "";
 
 (function fade() {
     var val = parseFloat(el.style.opacity);
