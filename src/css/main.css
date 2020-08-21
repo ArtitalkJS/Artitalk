@@ -14,7 +14,7 @@ div#artitalk_main {
 	/* min-height: 500px;*/
 	
 }
-#artitalk_main body.theme-dark .cbp_tmtimeline: : before {
+#artitalk_main body.theme-dark .cbp_tmtimeline::before {
 	background: RGBA(255, 255, 255, 0.06);
 }
 #artitalk_main ul.cbp_tmtimeline {
@@ -38,15 +38,15 @@ div#artitalk_main {
 	display: block;
 	text-align: right;
 }
-#artitalk_main .cbp_tmtimeline>li .cbp_tmtime span: first-child {
+#artitalk_main .cbp_tmtimeline>li .cbp_tmtime span:first-child {
 	font-size: 0.9em;
 	color: #bdd0db;
 }
-#artitalk_main .cbp_tmtimeline>li .cbp_tmtime span: last-child {
+#artitalk_main .cbp_tmtimeline>li .cbp_tmtime span:last-child {
 	font-size: 1.2em;
 	color: #9bcd9b;
 }
-#artitalk_main .cbp_tmtimeline>li: nth-child(odd) .cbp_tmtime span: last-child {
+#artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmtime span:last-child {
 	color: RGBA(255, 125, 73, 0.75);
 }
 #artitalk_main div.cbp_tmlabel>p {
@@ -71,16 +71,16 @@ div#artitalk_main {
 	cursor: pointer;
 	display: block;
 }
-#artitalk_main .cbp_tmlabel: hover {
+#artitalk_main .cbp_tmlabel:hover {
 	/* transform: scale(1.05);*/
 	transform: translateY(-3px);
 	z-index: 1;
 	box-shadow: 0 15px 32px rgba(0,0,0,0.15) !important;
 }
-#artitalk_main .cbp_tmtimeline>li: nth-child(odd) .cbp_tmlabel {
+#artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {
 	background: " + color1 + ";
 }
-#artitalk_main .cbp_tmtimeline>li .cbp_tmlabel: after {
+#artitalk_main .cbp_tmtimeline>li .cbp_tmlabel::after {
 	right: 100%;
 	border: solid transparent;
 	z-index: -1;
@@ -93,7 +93,7 @@ div#artitalk_main {
 	border-width: 10px;
 	top: 4px;
 }
-#artitalk_main .cbp_tmtimeline>li: nth-child(odd) .cbp_tmlabel: after {
+#artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel::after {
 	border-right-color: " + color1 + ";
 }
 #artitalk_main p.shuoshuo_time {
@@ -103,7 +103,7 @@ div#artitalk_main {
 	font-size: 12px;
 }
 @media screen and (max-width: 65.375em) {
-	#artitalk_main .cbp_tmtimeline>li .cbp_tmtime span: last-child {
+	#artitalk_main .cbp_tmtimeline>li .cbp_tmtime span:last-child {
 	font-size: 1.2em;
 }
 }
@@ -124,7 +124,7 @@ div#artitalk_main {
 	transition: transform 0.4s ease-out;
 	-moz-transition: -moz-transform 0.4s ease-out;
 }
-#artitalk_main .artitalk_avatar: hover {
+#artitalk_main .artitalk_avatar:hover {
 	-webkit-transform: rotateZ(360deg);
 	-moz-transform: rotateZ(360deg);
 	-o-transform: rotateZ(360deg);
@@ -173,8 +173,8 @@ div#artitalk_main {
 	outline: none;
 	cursor: pointer;
 }
-#operare_artitalk .at_button: hover,
-#artitalk_main .at_button: hover {
+#operare_artitalk .at_button:hover,
+#artitalk_main .at_button:hover {
 	background-color: " + color2 + ";
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.24), 0 8px 16px 0 rgba(0,0,0,0.19);
 }
@@ -284,34 +284,34 @@ div#artitalk_main {
 	animation-duration: 350ms;
 	animation-iteration-count: infinite;
 }
-#artitalk_main .drop: nth-child(1) {
+#artitalk_main .drop:nth-child(1) {
 	animation-delay: -130ms;
 }
-#artitalk_main .drop: nth-child(2) {
+#artitalk_main .drop:nth-child(2) {
 	animation-delay: -240ms;
 }
-#artitalk_main .drop: nth-child(3) {
+#artitalk_main .drop:nth-child(3) {
 	animation-delay: -390ms;
 }
-#artitalk_main .drop: nth-child(4) {
+#artitalk_main .drop:nth-child(4) {
 	animation-delay: -525ms;
 }
-#artitalk_main .drop: nth-child(5) {
+#artitalk_main .drop:nth-child(5) {
 	animation-delay: -640ms;
 }
-#artitalk_main .drop: nth-child(6) {
+#artitalk_main .drop:nth-child(6) {
 	animation-delay: -790ms;
 }
-#artitalk_main .drop: nth-child(7) {
+#artitalk_main .drop:nth-child(7) {
 	animation-delay: -900ms;
 }
-#artitalk_main .drop: nth-child(8) {
+#artitalk_main .drop:nth-child(8) {
 	animation-delay: -1050ms;
 }
-#artitalk_main .drop: nth-child(9) {
+#artitalk_main .drop:nth-child(9) {
 	animation-delay: -1130ms;
 }
-#artitalk_main .drop: nth-child(10) {
+#artitalk_main .drop:nth-child(10) {
 	animation-delay: -1300ms;
 }
 #artitalk_main .artitalk_loading_text {
@@ -330,7 +330,7 @@ div#artitalk_main {
 	transition: all 1s;
 	z-index: 2;
 }
-#artitalk_main .shuoshuoimg: hover {
+#artitalk_main .shuoshuoimg:hover {
 	transform: scale(3.5);
 }
 #artitalk_main .hide,
@@ -421,7 +421,7 @@ div#artitalk_main {
 #artitalk_main #preview>p>.atemoji {
 	display: inline;
 }
-#artitalk_main .shuoshuo_emoji>.atemoji: hover {
+#artitalk_main .shuoshuo_emoji>.atemoji:hover {
 	transform: scale(1.5);
 }
 #artitalk_main div#shuoshuo_emojiswitch {
@@ -439,7 +439,7 @@ div#artitalk_main {
 	text-align: center;
 	line-height: 40px;
 }
-#artitalk_main .shuoshuo_emoji_part: hover {
+#artitalk_main .shuoshuo_emoji_part:hover {
 	background-color: #ccc;
 	color: #fff;
 }
@@ -468,7 +468,7 @@ div#artitalk_main {
 #artitalk_main video {
 	z-index: 0;
 }
-#artitalk_main textarea#neirong: focus {
+#artitalk_main textarea#neirong:focus {
 	background-position-y: 150px;
 	transition: all 0.35s ease-in-out 0s;
 }
