@@ -942,8 +942,6 @@ if (lazy == 0) {
 }
 document.getElementById("artitalk_main").innerHTML = sting;
 
-var oss = "";
-oss = boInfo.os;
 if (document.all) {
     window.attachEvent('onload', seecontent(0,0)) //IE中
 } else {
@@ -1061,10 +1059,12 @@ function savecontent() {
         document.getElementById("preview").innerHTML = "<center><pre><code>" + text16 + "</code></pre></center>";
         return;
     }
+    
+    var oss = "";
+    oss = boInfo.os;
     var TestObject = AV.Object.extend('shuoshuo');
     var testObject = new TestObject();
     testObject.set('content', html);
-    testObject.set('postion', pos);
     testObject.set('os', oss);
     testObject.set('imgurl', img3);
     testObject.set('star_init', "1");
