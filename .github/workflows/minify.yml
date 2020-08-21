@@ -1,0 +1,33 @@
+name: minify
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+
+    - name: Setup
+      run: yarn install
+
+    - name: Minify
+      run: yarn gulp
+
+    - name: Commit
+      run: |
+        git config --global user.email artitalk-bot@email.com
+        git config --global user.name artitalk-bot
+        git add dist/css/main.min.js -f
+        git add dist/js/artitalk.js -f
+        git add dist/js/artitalk.min.js -f
+        git commit -m "Successful minify" -a
+
+    - name: Push
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.TOKEN }}

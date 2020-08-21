@@ -1,0 +1,30 @@
+const gulp = require('gulp')
+
+const uglify = require('gulp-uglify')
+const cleanCSS = require('gulp-clean-css')
+const concat = require('gulp-concat')
+const rename = require('gulp-rename')
+const babel = require('gulp-babel')
+
+gulp.task('minify-css', () => {
+  return gulp.src('src/css/*.css')
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('concat-js', () => {
+  return gulp.src(['src/plugins/*.js', 'src/main.js'])
+    .pipe(concat('artitalk.js'))
+    .pipe(gulp.dest('dist/js'))
+});
+
+gulp.task('minify-js', () => {
+  return gulp.src('dist/js/artitalk.js')
+    .pipe(babel({presets: ['env']}))
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('dist/js'))
+});
+
+gulp.task('default', gulp.series('minify-css', 'concat-js', 'minify-js'));
