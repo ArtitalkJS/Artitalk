@@ -15571,6 +15571,7 @@ function (t, e) {
   // fade out
 function fadeOut(el){
     el.style.opacity = 1;
+    el.style.display =  "none";
   
     (function fade() {
       if ((el.style.opacity -= .1) < 0) {
