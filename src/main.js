@@ -98,6 +98,7 @@ switch (slanguage) {
         var text35 = "视频格式错误，请不要上传其他类型的文件";
         var textup = "上传ing";
         var loadingTxT = "加载中";
+        break;
     case "en":
         var text0 = "Published by";
         var text00 = "";
@@ -126,7 +127,7 @@ switch (slanguage) {
         var text24 = "If you see this, congratulations, you have successfully configured and can be used normally. When you post one shuoshuo, I will disappear automatically. Quickly explore Artitalk.<br>Welcome to Artitalk’s QQ group: 1104585229<br>If you think this project is good, you can recommend it to your friends or go to GitHub to order a star.";
         var text25 = "uploading";
         var text26 = "image";
-       var text27 = "music";
+        var text27 = "music";
         var text28 = "video";
         var text29 = "Add";
         var text30 = "The uploaded image supports a maximum of 5M, please compress or change another one to continue uploading";
@@ -137,6 +138,7 @@ switch (slanguage) {
         var text35 = "Video format error, please do not upload other types of files";
         var textup = "Uploading";
         var loadingTxT = "Loading";
+        break;
     case "es":
         var text0 = "Publicado por";
         var text00 = "";
@@ -176,6 +178,7 @@ switch (slanguage) {
         var text35 = "Error de formato de video, no suba otros tipos de archivos";
         var textup = "Cargando";
         var loadingTxT = "Cargando";
+        break;
 }
 
 if (typeof (placeholder2) == "undefined") {
