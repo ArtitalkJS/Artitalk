@@ -58,7 +58,7 @@ if (typeof (slanguage) == "undefined") {
     var slanguage = "zh";
 }
 
-switch slanguage {
+switch (slanguage) {
     case "zh":
         var text0 = "由";
         var text00 = "发表";
