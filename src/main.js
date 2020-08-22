@@ -20,8 +20,8 @@ if (typeof (color2) == "undefined") {
 if (typeof (color3) == "undefined") {
     var color3 = "white";
 }
-var css="";
-if (!document.getElementById("add-Artitalk-Style")) {
+var css;
+if (!document.getElementById("add- -Style")) {
     if (typeof(cssurl) == "undefined"){
         css = "div#artitalk_main {    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);  }  #artitalk_main .shuoshuo_row {  width: 100%;  margin-top: 10px;  display: flex;  }  #artitalk_main .artitalk_child {  width: 100%;  }  #artitalk_main #shuoshuo_content {  padding: 10px;  /* min-height: 500px; */  }  #artitalk_main body.theme-dark .cbp_tmtimeline::before {  background: RGBA(255, 255, 255, 0.06);  }  #artitalk_main ul.cbp_tmtimeline {  padding: 0;  }  #artitalk_main .cbp_tmtimeline {  margin: 30px 0 0 0;  padding: 0;  list-style: none;  display: inline;  position: relative;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime {  display: block;  /* width: 29%; */  /* padding-right: 110px; */  max-width: 70px;  position: absolute;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime span {  display: block;  text-align: right;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime span:first-child {  font-size: 0.9em;  color: #bdd0db;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime span:last-child {  font-size: 1.2em;  color: #9bcd9b;  }  #artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmtime span:last-child {  color: RGBA(255, 125, 73, 0.75);  }  #artitalk_main div.cbp_tmlabel>p {  margin-bottom: 0;  }  #artitalk_main div class.cdp_tmlabel>li .cbp_tmlabel {  margin-bottom: 0;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmlabel {  margin: 0 0 45px 65px;  z-index: 1;  background: " + color2 + ";  color: " + color3 + " ;  padding: 0.8em 1.2em 0.4em 1.2em;  /* font-size: 1.2em; */  font-weight: 300;  line-height: 1.4;  position: relative;  border-radius: 5px;  transition: all 0.3s ease 0s;  box-shadow: 0 1px 2px rgba(0,0,0,0.15);  cursor: pointer;  display: block;  }  #artitalk_main .cbp_tmlabel:hover {  /* transform: scale(1.05); */  transform: translateY(-3px);  z-index: 1;  box-shadow: 0 15px 32px rgba(0,0,0,0.15) !important;  }  #artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {    background: " + color1 + ";  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmlabel:after {  right: 100%;  border: solid transparent;  z-index: -1;  content: \" \";  height: 0;  width: 0;  position: absolute;  pointer-events: none;  border-right-color: " + color2 + ";  border-width: 10px;  top: 4px;  }  #artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {    border-right-color: " + color1 + ";  }  #artitalk_main p.shuoshuo_time {  margin-top: 10px;  border-top: 1px dashed #fff;  padding-top: 5px;  font-size: 12px;  }  @media screen and (max-width: 65.375em) {  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime span:last-child {    font-size: 1.2em;  }  }  #artitalk_main .shuoshuo_author_img img {  border: 1px solid #ddd;  padding: 2px;  float: left;  border-radius: 64px;  transition: all 1s;  }  #artitalk_main .artitalk_avatar {  border-radius: 100% !important;  -moz-border-radius: 100% !important;  box-shadow: inset 0 -1px 0 3333sf;  -webkit-box-shadow: inset 0 -1px 0 3333sf;  -webkit-transition: 0.4s;  -webkit-transition: -webkit-transform 0.4s ease-out;  transition: transform 0.4s ease-out;  -moz-transition: -moz-transform 0.4s ease-out;  }  #artitalk_main .artitalk_avatar:hover {  -webkit-transform: rotateZ(360deg);  -moz-transform: rotateZ(360deg);  -o-transform: rotateZ(360deg);  -ms-transform: rotateZ(360deg);  transform: rotateZ(360deg);  }  #artitalk_main .shuoshuo_text {  width: 100%;  height: 130px;  padding: 8px 16px;  background-repeat: no-repeat;  background-position: right;  transition: all 0.35s ease-in-out 0s;  outline-style: none;  border: 1px solid #ccc;  border-radius: 6px;  resize: none;  background-color: transparent;  color: #999;  }  #artitalk_main .shuoshuo_inputs {  outline-style: none;  border: 1px solid #ccc;  padding: 8px 16px;  width: 40%;  font-size: 12px;  background-color: transparent;  color: #999;  }  #operare_artitalk .at_button,  #artitalk_main .at_button {    background-color: " + color1 + ";  /* Green */  border: none;  margin-left: 5px;  color: " + color3 + ";  padding: 8px 16px;  text-align: center;  text-decoration: none;  height: auto;  line-height: 20px;  display: inline-block;  font-size: 12px;  border-radius: 12px;  /* circle */  outline: none;  cursor: pointer;  }  #operare_artitalk .at_button:hover,  #artitalk_main .at_button:hover {      background-color: " + color2 + ";  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.24), 0 8px 16px 0 rgba(0,0,0,0.19);  }  #artitalk_main #article-container ul p {  margin: 0 0 1rem;  }  #artitalk_main .power {  text-align: right;  color: #999;  margin-top: 10px;  font-size: 0.75em;  padding: 0.5em 0;  }  #artitalk_main .power a {  font-size: 0.75em;  position: relative;  cursor: pointer;  color: #1abc9c;  text-decoration: none;  display: inline-block;  }  #artitalk_main .shuoshuo_row .col.col-80 {  width: 80%;  float: left;  }  #artitalk_main .shuoshuo_row .col.col-20 {  width: 20%;  float: right;  text-align: right;  }  #artitalk_main #preview {  width: 100%;  float: left;  margin: 0.5rem 0 0;  padding: 7px;  box-shadow: 0 0 1px #f0f0f0;  }  #artitalk_main #lazy {  background: #fff;  bottom: 0;  left: 0;  position: fixed;  right: 0;  top: 0;  z-index: 9999;  }  #artitalk_main .preloader {  position: absolute;  margin-left: -55px;  margin-top: -100px;  height: 110px;  width: 110px;  left: 50%;  top: 50%;  }  #artitalk_main .preloader>svg>g>path {  stroke: #9ea1a4;  stroke-width: 0.25;  }  #artitalk_main .preloader>svg>path {  stroke: #9ea1a4;  stroke-width: 0.25;  }  #artitalk_main #cloud {  position: relative;  z-index: 2;  }  #artitalk_main #cloud path {  fill: #efefef;  }  #artitalk_main #sun {  margin-left: -10px;  margin-top: 6px;  opacity: 0;  width: 60px;  height: 60px;  position: absolute;  left: 45px;  top: 15px;  z-index: 1;  animation-name: rotate;  animation-duration: 16000ms;  animation-iteration-count: infinite;  animation-timing-function: linear;  }  #artitalk_main #sun path {  stroke-width: 0.18;  fill: #9ea1a4;  }  #artitalk_main .rain {  position: absolute;  width: 70px;  height: 70px;  margin-top: -32px;  margin-left: 19px;  }  #artitalk_main .drop {  opacity: 1;  background: #9ea1a4;  display: block;  float: left;  width: 3px;  height: 10px;  margin-left: 4px;  border-radius: 0px 0px 6px 6px;  animation-name: drop;  animation-duration: 350ms;  animation-iteration-count: infinite;  }  #artitalk_main .drop:nth-child(1) {  animation-delay: -130ms;  }  #artitalk_main .drop:nth-child(2) {  animation-delay: -240ms;  }  #artitalk_main .drop:nth-child(3) {  animation-delay: -390ms;  }  #artitalk_main .drop:nth-child(4) {  animation-delay: -525ms;  }  #artitalk_main .drop:nth-child(5) {  animation-delay: -640ms;  }  #artitalk_main .drop:nth-child(6) {  animation-delay: -790ms;  }  #artitalk_main .drop:nth-child(7) {  animation-delay: -900ms;  }  #artitalk_main .drop:nth-child(8) {  animation-delay: -1050ms;  }  #artitalk_main .drop:nth-child(9) {  animation-delay: -1130ms;  }  #artitalk_main .drop:nth-child(10) {  animation-delay: -1300ms;  }  #artitalk_main .artitalk_loading_text {  font-family: Helvetica, \" Helvetica Neue \", sans-serif;  letter-spacing: 1px;  text-align: center;  margin-left: -43px;  font-weight: bold;  margin-top: 20px;  font-size: 11px;  color: #a0a0a0;  width: 200px;  }  #artitalk_main .shuoshuoimg {  cursor: pointer;  transition: all 1s;  z-index: 2;  }  #artitalk_main .shuoshuoimg:hover {  transform: scale(3.5);  }  #artitalk_main .hide,  #operare_artitalk .hide {  display: none;  }  #operare_artitalk .c1 {  position: fixed;  top: 0;  bottom: 0;  left: 0;  right: 0;  background: rgba(0,0,0,0.5);  z-index: 2;  }  #operare_artitalk .c2 {  background-color: #fff;  position: fixed;  width: 400px;  height: auto;  top: 50%;  left: 50%;  z-index: 3;  margin-top: -150px;  margin-left: -200px;  box-shadow: 0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07);  opacity: 0.85;  border: 0;  border-radius: 10px;  }  #operare_artitalk .shuoshuo_input_log {  outline-style: none;  margin-top: 10px;  border: 1px solid #ccc;  border-radius: 6px;  padding: 8px 16px;  font-size: 12px;  background-color: transparent;  color: #999;  }  #artitalk_main .delete_right {  cursor: pointer;  width: 12px;  height: 12px;  position: absolute;  right: 12px;  }  #artitalk_main svg {  display: inline;  }  #artitalk_main .cbp_tmlabel>p,  #artitalk_main h1,  #artitalk_main h2,  #artitalk_main h3,  #artitalk_main h4,  #artitalk_main h5,  #artitalk_main h6,  #artitalk_main em {  word-wrap: break-word;  word-break: break-all;  }  #artitalk_main .shuoshuo_emoji {  border: 1px solid #ccc;  border-radius: 6px 6px 0 0;  height: 120px;  overflow: auto;  margin-top: 10px;  border-bottom: none;  }  #artitalk_main .atemoji {  max-height: 28px;  width: 28px;  display: inline;  vertical-align: middle;  }  #artitalk_main .shuoshuo_emoji>.atemoji {  cursor: pointer;  margin: 0 0 0 10px;  display: inline;  }  #artitalk_main i>.atemoji {  cursor: pointer;  margin: 0 0 0 10px;  }  #artitalk_main .shuoshuo_emoji>a {  display: inline;  }  #artitalk_main #preview>p>.atemoji {  display: inline;  }  #artitalk_main .shuoshuo_emoji>.atemoji:hover {  transform: scale(1.5);  }  #artitalk_main div#shuoshuo_emojiswitch {  height: 40px;  width: auto;  border-radius: 0 0 6px 6px;  border-collapse: collapse;  border: 1px solid #ccc;  border-top: none;  }  #artitalk_main .shuoshuo_emoji_part {  width: 25%;  cursor: pointer;  align-content: center;  text-align: center;  line-height: 40px;  }  #artitalk_main .shuoshuo_emoji_part:hover {  background-color: #ccc;  color: #fff;  }  #artitalk_main .zuiliangdezai {  background-color: #ccc;  color: #fff;  }  #artitalk_main .pingjun {  display: flex;  }  #artitalk_main #article-container img {  margin: 0 0 0 0;  }  #artitalk_main .preview_now {  display: none;  }  #artitalk_main div#loading_txt {  font-size: 20px;  }  #artitalk_main audio {  display: block;  width: 100%;  outline: none;  opacity: 0.8;  }  #artitalk_main video {  z-index: 0;  }  #artitalk_main textarea#neirong:focus {  background-position-y: 150px;  transition: all 0.35s ease-in-out 0s;  }  #artitalk_main img.atemoji {  max-height: 28px;  width: 28px;  display: inline;  vertical-align: middle;  }  #artitalk_main span.cbp_tmlabel>p {  overflow: unset;  }  #artitalk_main ul#maina>li {  list-style: none;  }  #artitalk_main div#artitalk_main {  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);  }  #artitalk_main .c2>center>p {  margin-top: 10px;  margin-bottom: 10px;  }  @-moz-keyframes rotate {  0% {    transform: rotateZ(0deg);  }  100% {    transform: rotateZ(360deg);  }  }  @-webkit-keyframes rotate {  0% {    transform: rotateZ(0deg);  }  100% {    transform: rotateZ(360deg);  }  }  @-o-keyframes rotate {  0% {    transform: rotateZ(0deg);  }  100% {    transform: rotateZ(360deg);  }  }  @keyframes rotate {  0% {    transform: rotateZ(0deg);  }  100% {    transform: rotateZ(360deg);  }  }  @-moz-keyframes drop {  50% {    height: 45px;    opacity: 0;  }  51% {    opacity: 0;  }  100% {    height: 1px;    opacity: 0;  }  }  @-webkit-keyframes drop {  50% {    height: 45px;    opacity: 0;  }  51% {    opacity: 0;  }  100% {    height: 1px;    opacity: 0;  }  }  @-o-keyframes drop {  50% {    height: 45px;    opacity: 0;  }  51% {    opacity: 0;  }  100% {    height: 1px;    opacity: 0;  }  }  @keyframes drop {  50% {    height: 45px;    opacity: 0;  }  51% {    opacity: 0;  }  100% {    height: 1px;    opacity: 0;  }  }";
         var style = document.createElement("style");
@@ -58,123 +58,124 @@ if (typeof (slanguage) == "undefined") {
     var slanguage = "zh";
 }
 
-if (slanguage == "zh") {
-    var text0 = "由";
-    var text00 = "发表";
-    var text1 = "加载更多...";
-    var text2 = "预览";
-    var text3 = "发布";
-    var text4 = "已登录";
-    var text5 = "确定";
-    var text6 = "退出登录";
-    var text7 = "用户";
-    var text8 = "密码";
-    var text9 = "登录";
-    var text10 = "取消";
-    var text11 = "发布说说";
-    var text12 = "添加图片，视频，音乐";
-    var text14 = "(上传失败，若非网络原因，请联系Artitalk开发人员)";
-    var text15 = "请先登录";
-    var text16 = "内容不能为空";
-    var text17 = "登陆失败，请检查用户名及密码是否正确";
-    var text18 = "头像url";
-    var text19 = "确定删除本条说说吗？";
-    var text20 = "删除成功";
-    var text21 = "请拖拽图片到此处";
-    var text22 = "表情";
-    var text23 = "删除";
-    var text24 = "如果你看到这条说说，恭喜你已经配置成功并且可以正常使用了。当你发布一个说说之后，我将会自动消失。快去探索Artitalk吧<br>欢迎加入Artitalk的QQ交流群：1104585229<br>觉得本项目不错的话可以推荐给你的好友或者去GitHub点一个star，感谢支持";
-    var text25 = "上传中";
-    var text26 = "图片";
-    var text27 = "音乐";
-    var text28 = "视频";
-    var text29 = "添加";
-    var text30 = "上传的图片最大支持5M，请压缩后或换一个继续上传";
-    var text31 = "上传的音乐最大支持10M，请压缩后或换一个继续上传";
-    var text32 = "上传的视频最大支持30M，请压缩后或换一个继续上传";
-    var text33 = "图片格式错误，请不要上传其他类型的文件";
-    var text34 = "音频格式错误，请不要上传其他类型的文件";
-    var text35 = "视频格式错误，请不要上传其他类型的文件";
-    var textup = "上传ing";
-    var loadingTxT = "加载中";
-} else if (slanguage == "en") {
-    var text0 = "Published by";
-    var text00 = "";
-    var text1 = "load more...";
-    var text2 = "Preview";
-    var text3 = "Publish";
-    var text4 = "logged";
-    var text5 = "Ok";
-    var text6 = "Sign out";
-    var text7 = "Username";
-    var text8 = "Password";
-    var text9 = "Log in";
-    var text10 = "Cancel";
-    var text11 = "Post talk";
-    var text12 = "Add pictures, videos, music";
-    var text14 = "(Upload failed, if not for network reasons, please contact Artitalk developers)";
-    var text15 = "Please log in first";
-    var text16 = "Content can not be blank";
-    var text17 = "Login failed, please check if the username and password are correct";
-    var text18 = "Avatar url";
-    var text19 = "Are you sure you want to delete this article?";
-    var text20 = "Successfully deleted";
-    var text21 = "Please drag and drop pictures here";
-    var text22 = "emoji";
-    var text23 = "Delete";
-    var text24 = "If you see this, congratulations, you have successfully configured and can be used normally. When you post one shuoshuo, I will disappear automatically. Quickly explore Artitalk.<br>Welcome to Artitalk’s QQ group: 1104585229<br>If you think this project is good, you can recommend it to your friends or go to GitHub to order a star.";
-    var text25 = "uploading";
-    var text26 = "image";
-    var text27 = "music";
-    var text28 = "video";
-    var text29 = "Add";
-    var text30 = "The uploaded image supports a maximum of 5M, please compress or change another one to continue uploading";
-    var text31 = "The uploaded music supports a maximum of 10M, please compress or change another one to continue uploading";
-    var text32 = "The uploaded video supports a maximum of 30M, please compress or change another one to continue uploading";
-    var text33 = "Picture format error, please do not upload other types of files";
-    var text34 = "The audio format is wrong, please do not upload other types of files";
-    var text35 = "Video format error, please do not upload other types of files";
-    var textup = "Uploading";
-    var loadingTxT = "Loading";
-} else if (slanguage == "es") {
-    var text0 = "Publicado por";
-    var text00 = "";
-    var text1 = "Carga más...";
-    var text2 = "Avance";
-    var text3 = "Lanzamiento";
-    var text4 = "Registrado";
-    var text5 = "Determinar";
-    var text6 = "Desconectar";
-    var text7 = "Usuario";
-    var text8 = "Contraseña";
-    var text9 = "Iniciar sesión";
-    var text10 = "Cancelar";
-    var text11 = "Publicar charla";
-    var text12 = "Agrega fotos, videos, música";
-    var text14 = "(Carga fallida, si no es por razones de red, comuníquese con los desarrolladores de Artitalk)";
-    var text15 = "Por favor ingresa primero";
-    var text16 = "El contenido no puede estar en blanco";
-    var text17 = "Error de inicio de sesión, compruebe si el nombre de usuario y la contraseña son correctos";
-    var text18 = "URL del avatar";
-    var text19 = "¿Estás seguro de que deseas eliminar este artículo?";
-    var text20 = "Eliminado con éxito";
-    var text21 = "Arrastra y suelta fotos aquí";
-    var text22 = "expresión";
-    var text23 = "Eliminar";
-    var text24 = "Si ve este artículo, felicidades, se ha configurado correctamente y se puede usar normalmente. Cuando publiques un comentario, desapareceré automáticamente. Explore rápidamente Artitalk. <br> Bienvenido al grupo QQ de Artitalk: 1104585229 <br> Si cree que este proyecto es bueno, puede recomendarlo a sus amigos o ir a GitHub para pedir una estrella, gracias por su apoyo.";
-    var text25 = "cargando";
-    var text26 = "imagen";
-    var text27 = "música";
-    var text28 = "vídeo";
-    var text29 = "Añadir";
-    var text30 = "La imagen cargada admite un máximo de 5 M, comprima o cambie otra para continuar cargando";
-    var text31 = "La música cargada admite un máximo de 10 M, comprime o cambia otra para continuar cargando";
-    var text32 = "El video subido admite un máximo de 30 M, comprima o cambie otro para continuar subiendo";
-    var text33 = "Error de formato de imagen, no suba otros tipos de archivos";
-    var text34 = "El formato de audio es incorrecto, no suba otros tipos de archivos";
-    var text35 = "Error de formato de video, no suba otros tipos de archivos";
-    var textup = "Cargando";
-    var loadingTxT = "Cargando";
+switch slanguage {
+    case "zh":
+        var text0 = "由";
+        var text00 = "发表";
+        var text1 = "加载更多...";
+        var text2 = "预览";
+        var text3 = "发布";
+        var text4 = "已登录";
+        var text5 = "确定";
+        var text6 = "退出登录";
+        var text7 = "用户";
+        var text8 = "密码";
+        var text9 = "登录";
+        var text10 = "取消";
+        var text11 = "发布说说";
+        var text12 = "添加图片，视频，音乐";
+        var text14 = "(上传失败，若非网络原因，请联系Artitalk开发人员)";
+        var text15 = "请先登录";
+        var text16 = "内容不能为空";
+        var text17 = "登陆失败，请检查用户名及密码是否正确";
+        var text18 = "头像url";
+        var text19 = "确定删除本条说说吗？";
+        var text20 = "删除成功";
+        var text21 = "请拖拽图片到此处";
+        var text22 = "表情";
+        var text23 = "删除";
+        var text24 = "如果你看到这条说说，恭喜你已经配置成功并且可以正常使用了。当你发布一个说说之后，我将会自动消失。快去探索Artitalk吧<br>欢迎加入Artitalk的QQ交流群：1104585229<br>觉得本项目不错的话可以推荐给你的好友或者去GitHub点一个star，感谢支持";
+        var text25 = "上传中";
+        var text26 = "图片";
+        var text27 = "音乐";
+        var text28 = "视频";
+        var text29 = "添加";
+        var text30 = "上传的图片最大支持5M，请压缩后或换一个继续上传";
+        var text31 = "上传的音乐最大支持10M，请压缩后或换一个继续上传";
+        var text32 = "上传的视频最大支持30M，请压缩后或换一个继续上传";
+        var text33 = "图片格式错误，请不要上传其他类型的文件";
+        var text34 = "音频格式错误，请不要上传其他类型的文件";
+        var text35 = "视频格式错误，请不要上传其他类型的文件";
+        var textup = "上传ing";
+        var loadingTxT = "加载中";
+    case "en":
+        var text0 = "Published by";
+        var text00 = "";
+        var text1 = "load more...";
+        var text2 = "Preview";
+        var text3 = "Publish";
+        var text4 = "logged";
+        var text5 = "Ok";
+        var text6 = "Sign out";
+        var text7 = "Username";
+        var text8 = "Password";
+        var text9 = "Log in";
+        var text10 = "Cancel";
+        var text11 = "Post talk";
+        var text12 = "Add pictures, videos, music";
+        var text14 = "(Upload failed, if not for network reasons, please contact Artitalk developers)";
+        var text15 = "Please log in first";
+        var text16 = "Content can not be blank";
+        var text17 = "Login failed, please check if the username and password are correct";
+        var text18 = "Avatar url";
+        var text19 = "Are you sure you want to delete this article?";
+        var text20 = "Successfully deleted";
+        var text21 = "Please drag and drop pictures here";
+        var text22 = "emoji";
+        var text23 = "Delete";
+        var text24 = "If you see this, congratulations, you have successfully configured and can be used normally. When you post one shuoshuo, I will disappear automatically. Quickly explore Artitalk.<br>Welcome to Artitalk’s QQ group: 1104585229<br>If you think this project is good, you can recommend it to your friends or go to GitHub to order a star.";
+        var text25 = "uploading";
+        var text26 = "image";
+       var text27 = "music";
+        var text28 = "video";
+        var text29 = "Add";
+        var text30 = "The uploaded image supports a maximum of 5M, please compress or change another one to continue uploading";
+        var text31 = "The uploaded music supports a maximum of 10M, please compress or change another one to continue uploading";
+        var text32 = "The uploaded video supports a maximum of 30M, please compress or change another one to continue uploading";
+        var text33 = "Picture format error, please do not upload other types of files";
+        var text34 = "The audio format is wrong, please do not upload other types of files";
+        var text35 = "Video format error, please do not upload other types of files";
+        var textup = "Uploading";
+        var loadingTxT = "Loading";
+    case "es":
+        var text0 = "Publicado por";
+        var text00 = "";
+        var text1 = "Carga más...";
+        var text2 = "Avance";
+        var text3 = "Lanzamiento";
+        var text4 = "Registrado";
+        var text5 = "Determinar";
+        var text6 = "Desconectar";
+        var text7 = "Usuario";
+        var text8 = "Contraseña";
+        var text9 = "Iniciar sesión";
+        var text10 = "Cancelar";
+        var text11 = "Publicar charla";
+        var text12 = "Agrega fotos, videos, música";
+        var text14 = "(Carga fallida, si no es por razones de red, comuníquese con los desarrolladores de Artitalk)";
+        var text15 = "Por favor ingresa primero";
+        var text16 = "El contenido no puede estar en blanco";
+        var text17 = "Error de inicio de sesión, compruebe si el nombre de usuario y la contraseña son correctos";
+        var text18 = "URL del avatar";
+        var text19 = "¿Estás seguro de que deseas eliminar este artículo?";
+        var text20 = "Eliminado con éxito";
+        var text21 = "Arrastra y suelta fotos aquí";
+        var text22 = "expresión";
+        var text23 = "Eliminar";
+        var text24 = "Si ve este artículo, felicidades, se ha configurado correctamente y se puede usar normalmente. Cuando publiques un comentario, desapareceré automáticamente. Explore rápidamente Artitalk. <br> Bienvenido al grupo QQ de Artitalk: 1104585229 <br> Si cree que este proyecto es bueno, puede recomendarlo a sus amigos o ir a GitHub para pedir una estrella, gracias por su apoyo.";
+        var text25 = "cargando";
+        var text26 = "imagen";
+        var text27 = "música";
+        var text28 = "vídeo";
+        var text29 = "Añadir";
+        var text30 = "La imagen cargada admite un máximo de 5 M, comprima o cambie otra para continuar cargando";
+        var text31 = "La música cargada admite un máximo de 10 M, comprime o cambia otra para continuar cargando";
+        var text32 = "El video subido admite un máximo de 30 M, comprima o cambie otro para continuar subiendo";
+        var text33 = "Error de formato de imagen, no suba otros tipos de archivos";
+        var text34 = "El formato de audio es incorrecto, no suba otros tipos de archivos";
+        var text35 = "Error de formato de video, no suba otros tipos de archivos";
+        var textup = "Cargando";
+        var loadingTxT = "Cargando";
 }
 
 if (typeof (placeholder2) == "undefined") {
@@ -643,15 +644,15 @@ function savecontent() {
     
     var oss = "";
     oss = boInfo.os;
-    var TestObject = AV.Object.extend('shuoshuo');
-    var testObject = new TestObject();
-    testObject.set('content', html);
-    testObject.set('os', oss);
-    testObject.set('imgurl', img3);
-    testObject.set('star_init', "1");
+    var ShuoShuo = AV.Object.extend('shuoshuo');
+    var shuoshuo = new ShuoShuo();
+    shuoshuo.set('content', html);
+    shuoshuo.set('os', oss);
+    shuoshuo.set('imgurl', img3);
+    shuoshuo.set('star_init', "1");
     // $('#lazy').fadeIn();
     el_fadein("lazy");
-    testObject.save().then(function (res) {
+    shuoshuo.save().then(function (res) {
         let star = AV.Object.extend('star');
         var at_star = new star();
         var did=res.id;
@@ -694,8 +695,8 @@ var stared_svg="<svg t=\"1593770313039\" class=\"icon\" viewBox=\"0 0 1024 1024\
 
 function artitalk_pjax(){
     delete window.AV;
-    var s=document.createElement('script');
-    s.src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js";
+    var s = document.createElement('script');
+    s.src = "https://cdn.jsdelivr.net/npm/leancloud-storage@3.0.4/dist/av-min.js";
     (document.head || document.body).appendChild(s);
 }
 
