@@ -112,6 +112,7 @@ t.exports=function(t){return null!=t&&(n(t)||r(t)||!!t._isBuffer)}},function(t,e
 
 function fadeOut(el){
 el.style.opacity = 1;
+el.style.display =  "none";
 
 (function fade() {
     if ((el.style.opacity -= .1) < 0) {
