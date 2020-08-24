@@ -38,132 +38,138 @@
     var placeholder1 = window.artitalkConfig.placeholder1 || "",
         per = window.artitalkConfig.pageSite || 5,
         bgimg = window.artitalkConfig.bgImg || "",
+        slang = window.artitalkConfig.lang || "zh",
         lazy = window.artitalkConfig.motion != "undefine" ? window.artitalkConfig.motion : 1;
 
-    if (typeof (window.artitalkConfig.lang) == "undefined") {
-        window.artitalkConfig.lang = "zh";
+    let langbase = {};
+
+    switch (slang) {
+        case "zh": 
+            langbase = {
+                text0: "由",
+                text00: "发表",
+                text1: "加载更多...",
+                text2: "预览",
+                text3: "发布",
+                text4: "已登录",
+                text5: "确定",
+                text6: "退出登录",
+                text7: "用户",
+                text8: "密码",
+                text9: "登录",
+                text10: "取消",
+                text11: "发布说说",
+                text12: "添加图片，视频，音乐",
+                text14: "(上传失败，若非网络原因，请联系Artitalk开发人员)",
+                text15: "请先登录",
+                text16: "内容不能为空",
+                text17: "登陆失败，请检查用户名及密码是否正确",
+                text18: "头像url",
+                text19: "确定删除本条说说吗？",
+                text20: "删除成功",
+                text21: "请拖拽图片到此处",
+                text22: "表情",
+                text23: "删除",
+                text24: "如果你看到这条说说，恭喜你已经配置成功并且可以正常使用了。当你发布一个说说之后，我将会自动消失。快去探索Artitalk吧<br>欢迎加入Artitalk的QQ交流群：1104585229<br>觉得本项目不错的话可以推荐给你的好友或者去GitHub点一个star，感谢支持",
+                text25: "上传中",
+                text26: "图片",
+                text27: "音乐",
+                text28: "视频",
+                text29: "添加",
+                text30: "上传的图片最大支持5M，请压缩后或换一个继续上传",
+                text31: "上传的音乐最大支持10M，请压缩后或换一个继续上传",
+                text32: "上传的视频最大支持30M，请压缩后或换一个继续上传",
+                text33: "图片格式错误，请不要上传其他类型的文件",
+                text34: "音频格式错误，请不要上传其他类型的文件",
+                text35: "视频格式错误，请不要上传其他类型的文件",
+                textup: "上传ing",
+                loadingTxT: "加载中"
+            }
+        case "en": 
+            langbase = {
+                text0: "Published by",
+                text00: "",
+                text1: "load more...",
+                text2: "Preview",
+                text3: "Publish",
+                text4: "logged",
+                text5: "Ok",
+                text6: "Sign out",
+                text7: "Username",
+                text8: "Password",
+                text9: "Log in",
+                text10: "Cancel",
+                text11: "Post talk",
+                text12: "Add pictures, videos, music",
+                text14: "(Upload failed, if not for network reasons, please contact Artitalk developers)",
+                text15: "Please log in first",
+                text16: "Content can not be blank",
+                text17: "Login failed, please check if the username and password are correct",
+                text18: "Avatar url",
+                text19: "Are you sure you want to delete this article?",
+                text20: "Successfully deleted",
+                text21: "Please drag and drop pictures here",
+                text22: "emoji",
+                text23: "Delete",
+                text24: "If you see this, congratulations, you have successfully configured and can be used normally. When you post one shuoshuo, I will disappear automatically. Quickly explore Artitalk.<br>Welcome to Artitalk’s QQ group: 1104585229<br>If you think this project is good, you can recommend it to your friends or go to GitHub to order a star.",
+                text25: "uploading",
+                text26: "image",
+                text27: "music",
+                text28: "video",
+                text29: "Add",
+                text30: "The uploaded image supports a maximum of 5M, please compress or change another one to continue uploading",
+                text31: "The uploaded music supports a maximum of 10M, please compress or change another one to continue uploading",
+                text32: "The uploaded video supports a maximum of 30M, please compress or change another one to continue uploading",
+                text33: "Picture format error, please do not upload other types of files",
+                text34: "The audio format is wrong, please do not upload other types of files",
+                text35: "Video format error, please do not upload other types of files",
+                textup: "Uploading",
+                loadingTxT: "Loading"
+            }
+        case "es": 
+            langbase = {
+                text0: "Publicado por",
+                text00: "",
+                text1: "Carga más...",
+                text2: "Avance",
+                text3: "Lanzamiento",
+                text4: "Registrado",
+                text5: "Determinar",
+                text6: "Desconectar",
+                text7: "Usuario",
+                text8: "Contraseña",
+                text9: "Iniciar sesión",
+                text10: "Cancelar",
+                text11: "Publicar charla",
+                text12: "Agrega fotos, videos, música",
+                text14: "(Carga fallida, si no es por razones de red, comuníquese con los desarrolladores de Artitalk)",
+                text15: "Por favor ingresa primero",
+                text16: "El contenido no puede estar en blanco",
+                text17: "Error de inicio de sesión, compruebe si el nombre de usuario y la contraseña son correctos",
+                text18: "URL del avatar",
+                text19: "¿Estás seguro de que deseas eliminar este artículo?",
+                text20: "Eliminado con éxito",
+                text21: "Arrastra y suelta fotos aquí",
+                text22: "expresión",
+                text23: "Eliminar",
+                text24: "Si ve este artículo, felicidades, se ha configurado correctamente y se puede usar normalmente. Cuando publiques un comentario, desapareceré automáticamente. Explore rápidamente Artitalk. <br> Bienvenido al grupo QQ de Artitalk: 1104585229 <br> Si cree que este proyecto es bueno, puede recomendarlo a sus amigos o ir a GitHub para pedir una estrella, gracias por su apoyo.",
+                text25: "cargando",
+                text26: "imagen",
+                text27: "música",
+                text28: "vídeo",
+                text29: "Añadir",
+                text30: "La imagen cargada admite un máximo de 5 M, comprima o cambie otra para continuar cargando",
+                text31: "La música cargada admite un máximo de 10 M, comprime o cambia otra para continuar cargando",
+                text32: "El video subido admite un máximo de 30 M, comprima o cambie otro para continuar subiendo",
+                text33: "Error de formato de imagen, no suba otros tipos de archivos",
+                text34: "El formato de audio es incorrecto, no suba otros tipos de archivos",
+                text35: "Error de formato de video, no suba otros tipos de archivos",
+                textup: "Cargando",
+                loadingTxT: "Cargando"
+            }
     }
 
-    if (window.artitalkConfig.lang == "zh") {
-        var text0 = "由";
-        var text00 = "发表";
-        var text1 = "加载更多...";
-        var text2 = "预览";
-        var text3 = "发布";
-        var text4 = "已登录";
-        var text5 = "确定";
-        var text6 = "退出登录";
-        var text7 = "用户";
-        var text8 = "密码";
-        var text9 = "登录";
-        var text10 = "取消";
-        var text11 = "发布说说";
-        var text12 = "添加图片，视频，音乐";
-        var text14 = "(上传失败，若非网络原因，请联系Artitalk开发人员)";
-        var text15 = "请先登录";
-        var text16 = "内容不能为空";
-        var text17 = "登陆失败，请检查用户名及密码是否正确";
-        var text18 = "头像url";
-        var text19 = "确定删除本条说说吗？";
-        var text20 = "删除成功";
-        var text21 = "请拖拽图片到此处";
-        var text22 = "表情";
-        var text23 = "删除";
-        var text24 = "如果你看到这条说说，恭喜你已经配置成功并且可以正常使用了。当你发布一个说说之后，我将会自动消失。快去探索Artitalk吧<br>欢迎加入Artitalk的QQ交流群：1104585229<br>觉得本项目不错的话可以推荐给你的好友或者去GitHub点一个star，感谢支持";
-        var text25 = "上传中";
-        var text26 = "图片";
-        var text27 = "音乐";
-        var text28 = "视频";
-        var text29 = "添加";
-        var text30 = "上传的图片最大支持5M，请压缩后或换一个继续上传";
-        var text31 = "上传的音乐最大支持10M，请压缩后或换一个继续上传";
-        var text32 = "上传的视频最大支持30M，请压缩后或换一个继续上传";
-        var text33 = "图片格式错误，请不要上传其他类型的文件";
-        var text34 = "音频格式错误，请不要上传其他类型的文件";
-        var text35 = "视频格式错误，请不要上传其他类型的文件";
-        var textup = "上传ing";
-        var loadingTxT = "加载中";
-    } else if (window.artitalkConfig.lang == "en") {
-        var text0 = "Published by";
-        var text00 = "";
-        var text1 = "load more...";
-        var text2 = "Preview";
-        var text3 = "Publish";
-        var text4 = "logged";
-        var text5 = "Ok";
-        var text6 = "Sign out";
-        var text7 = "Username";
-        var text8 = "Password";
-        var text9 = "Log in";
-        var text10 = "Cancel";
-        var text11 = "Post talk";
-        var text12 = "Add pictures, videos, music";
-        var text14 = "(Upload failed, if not for network reasons, please contact Artitalk developers)";
-        var text15 = "Please log in first";
-        var text16 = "Content can not be blank";
-        var text17 = "Login failed, please check if the username and password are correct";
-        var text18 = "Avatar url";
-        var text19 = "Are you sure you want to delete this article?";
-        var text20 = "Successfully deleted";
-        var text21 = "Please drag and drop pictures here";
-        var text22 = "emoji";
-        var text23 = "Delete";
-        var text24 = "If you see this, congratulations, you have successfully configured and can be used normally. When you post one shuoshuo, I will disappear automatically. Quickly explore Artitalk.<br>Welcome to Artitalk’s QQ group: 1104585229<br>If you think this project is good, you can recommend it to your friends or go to GitHub to order a star.";
-        var text25 = "uploading";
-        var text26 = "image";
-        var text27 = "music";
-        var text28 = "video";
-        var text29 = "Add";
-        var text30 = "The uploaded image supports a maximum of 5M, please compress or change another one to continue uploading";
-        var text31 = "The uploaded music supports a maximum of 10M, please compress or change another one to continue uploading";
-        var text32 = "The uploaded video supports a maximum of 30M, please compress or change another one to continue uploading";
-        var text33 = "Picture format error, please do not upload other types of files";
-        var text34 = "The audio format is wrong, please do not upload other types of files";
-        var text35 = "Video format error, please do not upload other types of files";
-        var textup = "Uploading";
-        var loadingTxT = "Loading";
-    } else if (window.artitalkConfig.lang == "es") {
-        var text0 = "Publicado por";
-        var text00 = "";
-        var text1 = "Carga más...";
-        var text2 = "Avance";
-        var text3 = "Lanzamiento";
-        var text4 = "Registrado";
-        var text5 = "Determinar";
-        var text6 = "Desconectar";
-        var text7 = "Usuario";
-        var text8 = "Contraseña";
-        var text9 = "Iniciar sesión";
-        var text10 = "Cancelar";
-        var text11 = "Publicar charla";
-        var text12 = "Agrega fotos, videos, música";
-        var text14 = "(Carga fallida, si no es por razones de red, comuníquese con los desarrolladores de Artitalk)";
-        var text15 = "Por favor ingresa primero";
-        var text16 = "El contenido no puede estar en blanco";
-        var text17 = "Error de inicio de sesión, compruebe si el nombre de usuario y la contraseña son correctos";
-        var text18 = "URL del avatar";
-        var text19 = "¿Estás seguro de que deseas eliminar este artículo?";
-        var text20 = "Eliminado con éxito";
-        var text21 = "Arrastra y suelta fotos aquí";
-        var text22 = "expresión";
-        var text23 = "Eliminar";
-        var text24 = "Si ve este artículo, felicidades, se ha configurado correctamente y se puede usar normalmente. Cuando publiques un comentario, desapareceré automáticamente. Explore rápidamente Artitalk. <br> Bienvenido al grupo QQ de Artitalk: 1104585229 <br> Si cree que este proyecto es bueno, puede recomendarlo a sus amigos o ir a GitHub para pedir una estrella, gracias por su apoyo.";
-        var text25 = "cargando";
-        var text26 = "imagen";
-        var text27 = "música";
-        var text28 = "vídeo";
-        var text29 = "Añadir";
-        var text30 = "La imagen cargada admite un máximo de 5 M, comprima o cambie otra para continuar cargando";
-        var text31 = "La música cargada admite un máximo de 10 M, comprime o cambia otra para continuar cargando";
-        var text32 = "El video subido admite un máximo de 30 M, comprima o cambie otro para continuar subiendo";
-        var text33 = "Error de formato de imagen, no suba otros tipos de archivos";
-        var text34 = "El formato de audio es incorrecto, no suba otros tipos de archivos";
-        var text35 = "Error de formato de video, no suba otros tipos de archivos";
-        var textup = "Cargando";
-        var loadingTxT = "Cargando";
-    }
-
-    var placeholder2 = window.artitalkConfig.placeholder2 || text18;
+    var placeholder2 = window.artitalkConfig.placeholder2 || langbase.text18;
 
     var artitalk_emoji = "",
         artitalk_emoji_bb = "",
@@ -489,9 +495,9 @@
         document.getElementById('shuoshuo_emoji_Tieba').classList.remove('hide');
     }
     //表情end
-    var sting = "<div id='artitalk_part1'><div id=\"main\" class=\"site-main\" role=\"main\"><div id=\"shuoshuo_content\"><div id=\"ccontent\"></div><center><button id=\"readmore\" class=\"at_button\" onclick=\"shuoshuo_readmore()\" style=\"margin-bottom: 15px;display: none\">" + text1 + "</button></center></div><div id=\"shuoshuo_input\" class=\"shuoshuo_active\" style=\"display: none;\"><div id=\"shuoshuo_edit\"><textarea class=\"shuoshuo_text\" oninput=\"preview()\" id=\"neirong\" placeholder=\"" + placeholder1 + "\"style=\"background-image: url(" + bgimg + ");z-index: 0\"></textarea><span id=\"drag_area\" class=\"z-index: -1;\"></span></div><div id=\"shuoshuo_parttwo\" class=\"shuoshuo_parttwo\"><div id=\"shuoshuo_emoji_Tieba\" class=\"shuoshuo_emoji hide\"></div><div id=\"shuoshuo_emoji_BiliBili\" class=\"shuoshuo_emoji hide\"></div><div id=\"shuoshuo_emoji_QQ\" class=\"shuoshuo_emoji hide\"></div><div id=\"shuoshuo_emoji_custom\" class=\"shuoshuo_emoji hide\"></div><div id=\"shuoshuo_emojiswitch\" class=\"shuoshuo_emojiswitch hide\"><div id=\"switch_1\" class=\"shuoshuo_emoji_part zuiliangdezai\" onclick=\"shuoshuo_emoji_Tieba()\">Tieba</div><div id=\"switch_2\" class=\"shuoshuo_emoji_part\" onclick=\"shuoshuo_emoji_BiliBili()\">BiliBili</div><div id=\"switch_3\" class=\"shuoshuo_emoji_part\" onclick=\"shuoshuo_emoji_QQ()\">QQ</div><div id=\"switch_4\" class=\"shuoshuo_emoji_part\" onclick=\"shuoshuo_emoji_Custom()\">Custom</div></div><div id=\"preview\" class=\"preview_now\"></div></div><div class=\"shuoshuo_submit\"><div class=\"shuoshuo_row\"><input class=\"artitalk_child shuoshuo_inputs\" id=\"touxiang\" value=\"\" placeholder=\"" + text18 + "\"><div class=\"artitalk_child\"><button class=\"at_button\" onclick=\"savecontent()\" style=\"float: right;\">" + text3 + "</button><button class=\"at_button\" onclick=\"preview_ohuo();\" style=\"float: right;\">" + text2 + "</button><button class=\"at_button\" onclick=\"upload_in()\" style=\"float: right;\">" + text29 + "</button><button class=\"at_button\" onclick=\"shuoshuo_emoji_lovefancybox()\" style=\"float: right;\">" + text22 + "</button></div></div></div></div></div><div class=\"power\"><div style=\"font-size: 25px;display: inline; cursor: pointer\" onclick=\"artitalk(); \"title=\"" + text11 + "\"><svg t=\"1591347684072\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"9731\" width=\"30\" height=\"30\"  style=\"display: inline\"><path d=\"M512 0C229.23 0 0 229.23 0 512s229.23 512 512 512 512-229.23 512-512S794.77 0 512 0z m0 953.62C268.49 953.62 70.38 755.51 70.38 512S268.49 70.38 512 70.38 953.62 268.49 953.62 512 755.51 953.62 512 953.62z\" p-id=\"9732\" fill=\"#707070\"></path><path d=\"M771.1 726.4H514.8c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23h256.3c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM771.1 654.55H587.92c-15.56 0-28.23 12.66-28.23 28.23S572.35 711 587.92 711H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.22-28.23-28.22zM771.1 582.69H654.22c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM809.25 361.96c0-14.79-5.74-28.68-16.17-39.1L657.66 187.45c-10.43-10.43-24.32-16.17-39.1-16.17s-28.67 5.74-39.1 16.17L207.23 559.67c-5.06 5.06-7.88 12.06-7.72 19.21l3.61 172.49a26.32 26.32 0 0 0 25.8 25.83l172.6 3.81c0.22 0.01 0.44 0.01 0.67 0.01 6.95 0 13.76-2.82 18.66-7.73l372.22-372.22c10.43-10.43 16.18-24.32 16.18-39.11z m-53.5 1.79L391.5 727.99l-136.14-3-2.85-135.96 364.25-364.26c0.99-0.98 2.59-0.98 3.58-0.01l135.4 135.41c0.99 0.99 0.99 2.59 0.01 3.58z\" p-id=\"9733\" fill=\"#707070\"></path></svg></div><div style=\"font-size: 25px;display: inline; cursor: pointer\" onclick=\"swtichuser()\" title=\"" + text9 + "\"><svg t=\"1591347848063\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"12288\" width=\"30\" height=\"30\"  style=\"display: inline\"><path d=\"M515.541449 7.082899c-280.359429 0-508.458551 228.120391-508.458551 508.458551s228.120391 508.458551 508.458551 508.458551 508.458551-228.120391 508.458551-508.458551S795.900879 7.082899 515.541449 7.082899zM515.541449 981.864196c-257.132626 0-466.301477-209.190121-466.301477-466.322747 0-257.132626 209.168851-466.322747 466.301477-466.322747s466.301477 209.190121 466.301477 466.322747S772.674075 981.864196 515.541449 981.864196zM614.574414 524.177056 614.574414 524.177056c47.751075-31.96876 79.230625-86.398604 79.230625-148.187857 0-98.437405-79.804915-178.24232-178.24232-178.24232-98.437405 0-178.24232 79.804915-178.24232 178.24232 0 61.810523 31.479551 116.219097 79.251895 148.187857-100.266622 39.519598-171.244501 137.170014-171.244501 251.453545 0 0.23397 0 0.446669 0.02127 0.659369 0 0.04254-0.02127 0.10635-0.02127 0.14889 0 15.612155 12.65563 28.246516 28.267786 28.246516 15.590885 0 21.886796-12.63436 21.886796-28.246516 0-0.340319-0.08508-0.659369-0.10635-1.020958 0.10635-118.005774 102.159649-219.995264 220.207964-219.995264 118.112124 0 220.207964 102.095839 220.207964 220.207964 0 0.14889-1.467628 29.054774 21.971875 29.054774 15.505806 0 28.076356-12.57055 28.076356-28.055086 0-0.06381-0.02127-0.12762-0.02127-0.2127 0-0.25524 0.02127-0.510479 0.02127-0.786989C785.797645 661.34707 714.798496 563.696654 614.574414 524.177056zM515.541449 510.734437c-74.402343 0-134.723968-60.321625-134.723968-134.723968 0-74.423613 60.321625-134.723968 134.723968-134.723968 74.423613 0 134.723968 60.321625 134.723968 134.723968S589.943792 510.734437 515.541449 510.734437z\" p-id=\"12289\" fill=\"#707070\"></path></svg></div><br>Powered By <a href=\"https://artitalk.js.org\" target=\"_blank\">Artitalk</a><br>" + version + "</div></div>";
-    var lazys = "<div id='lazy'><div class=\"preloader\" style=\"opacity: 1; \"><svg version=\"1.1\" id=\"sun\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\"y=\"0px\" width=\"10px\" height=\"10px\" viewBox=\"0 0 10 10\" enable-background=\"new 0 0 10 10\" xml:space=\"preserve\"style=\"opacity: 1; margin-left: 0px; margin-top: 0px;\"><g><path fill=\"none\"d=\"M6.942,3.876c-0.4-0.692-1.146-1.123-1.946-1.123c-0.392,0-0.779,0.104-1.121,0.301c-1.072,0.619-1.44,1.994-0.821,3.067C3.454,6.815,4.2,7.245,5,7.245c0.392,0,0.779-0.104,1.121-0.301C6.64,6.644,7.013,6.159,7.167,5.581C7.321,5,7.243,4.396,6.942,3.876z M6.88,5.505C6.745,6.007,6.423,6.427,5.973,6.688C5.676,6.858,5.34,6.948,5,6.948c-0.695,0-1.343-0.373-1.69-0.975C2.774,5.043,3.093,3.849,4.024,3.312C4.32,3.14,4.656,3.05,4.996,3.05c0.695,0,1.342,0.374,1.69,0.975C6.946,4.476,7.015,5,6.88,5.505z\"></path><path fill=\"none\"d=\"M8.759,2.828C8.718,2.757,8.626,2.732,8.556,2.774L7.345,3.473c-0.07,0.041-0.094,0.132-0.053,0.202C7.319,3.723,7.368,3.75,7.419,3.75c0.025,0,0.053-0.007,0.074-0.02l1.211-0.699C8.774,2.989,8.8,2.899,8.759,2.828z\"></path><path fill=\"none\"d=\"M1.238,7.171c0.027,0.047,0.077,0.074,0.128,0.074c0.025,0,0.051-0.008,0.074-0.02l1.211-0.699c0.071-0.041,0.095-0.133,0.054-0.203S2.574,6.228,2.503,6.269l-1.21,0.699C1.221,7.009,1.197,7.101,1.238,7.171z\"></path><path fill=\"none\"d=\"M6.396,2.726c0.052,0,0.102-0.026,0.13-0.075l0.349-0.605C6.915,1.976,6.89,1.885,6.819,1.844c-0.07-0.042-0.162-0.017-0.202,0.054L6.269,2.503C6.228,2.574,6.251,2.666,6.322,2.706C6.346,2.719,6.371,2.726,6.396,2.726z\"></path><path fill=\"none\"d=\"M3.472,7.347L3.123,7.952c-0.041,0.07-0.017,0.162,0.054,0.203C3.2,8.169,3.226,8.175,3.25,8.175c0.052,0,0.102-0.027,0.129-0.074l0.349-0.605c0.041-0.07,0.017-0.16-0.054-0.203C3.603,7.251,3.513,7.276,3.472,7.347z\"></path><path fill=\"none\"d=\"M3.601,2.726c0.025,0,0.051-0.007,0.074-0.02C3.746,2.666,3.77,2.574,3.729,2.503l-0.35-0.604C3.338,1.828,3.248,1.804,3.177,1.844C3.106,1.886,3.082,1.976,3.123,2.047l0.35,0.604C3.5,2.7,3.549,2.726,3.601,2.726z\"></path><path fill=\"none\"d=\"M6.321,7.292c-0.07,0.043-0.094,0.133-0.054,0.203l0.351,0.605c0.026,0.047,0.076,0.074,0.127,0.074c0.025,0,0.051-0.006,0.074-0.02c0.072-0.041,0.096-0.133,0.055-0.203l-0.35-0.605C6.483,7.276,6.393,7.253,6.321,7.292z\"></path><path fill=\"none\"d=\"M2.202,5.146c0.082,0,0.149-0.065,0.149-0.147S2.284,4.851,2.202,4.851H1.503c-0.082,0-0.148,0.066-0.148,0.148s0.066,0.147,0.148,0.147H2.202z\"></path><path fill=\"none\"d=\"M8.493,4.851H7.794c-0.082,0-0.148,0.066-0.148,0.148s0.066,0.147,0.148,0.147l0,0h0.699c0.082,0,0.148-0.065,0.148-0.147S8.575,4.851,8.493,4.851L8.493,4.851z\"></path><path fill=\"none\"d=\"M5.146,2.203V0.805c0-0.082-0.066-0.148-0.148-0.148c-0.082,0-0.148,0.066-0.148,0.148v1.398c0,0.082,0.066,0.149,0.148,0.149C5.08,2.352,5.146,2.285,5.146,2.203z\"></path><path fill=\"none\"d=\"M4.85,7.796v1.396c0,0.082,0.066,0.15,0.148,0.15c0.082,0,0.148-0.068,0.148-0.15V7.796c0-0.082-0.066-0.148-0.148-0.148C4.917,7.647,4.85,7.714,4.85,7.796z\"></path><path fill=\"none\"d=\"M2.651,3.473L1.44,2.774C1.369,2.732,1.279,2.757,1.238,2.828C1.197,2.899,1.221,2.989,1.292,3.031l1.21,0.699c0.023,0.013,0.049,0.02,0.074,0.02c0.051,0,0.101-0.026,0.129-0.075C2.747,3.604,2.722,3.514,2.651,3.473z\"></path><path fill=\"none\"d=\"M8.704,6.968L7.493,6.269c-0.07-0.041-0.162-0.016-0.201,0.055c-0.041,0.07-0.018,0.162,0.053,0.203l1.211,0.699c0.023,0.012,0.049,0.02,0.074,0.02c0.051,0,0.102-0.027,0.129-0.074C8.8,7.101,8.776,7.009,8.704,6.968z\"</path></g></svg><svg version=\"1.1\" id=\"cloud\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"x=\"0px\" y=\"0px\" width=\"110px\" height=\"110px\" viewBox=\"0 0 10 10\" enable-background=\"new 0 0 10 10\"xml:space=\"preserve\"><path fill=\"none\"d=\"M8.528,5.624H8.247c-0.085,0-0.156-0.068-0.156-0.154c0-0.694-0.563-1.257-1.257-1.257c-0.098,0-0.197,0.013-0.3,0.038C6.493,4.259,6.45,4.252,6.415,4.229C6.38,4.208,6.356,4.172,6.348,4.131C6.117,3.032,5.135,2.235,4.01,2.235c-1.252,0-2.297,0.979-2.379,2.23c-0.004,0.056-0.039,0.108-0.093,0.13C1.076,4.793,0.776,5.249,0.776,5.752c0,0.693,0.564,1.257,1.257,1.257h6.495c0.383,0,0.695-0.31,0.695-0.692S8.911,5.624,8.528,5.624z\"></path></svg><div class=\"rain\"><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span></div><div class=\"artitalk_loading_text\" id=\"loading_txt\">" + loadingTxT + "</div></div></div>";
-    var operare_artitalk_content = "<input type=\"file\" id=\"myimg\" onchange=\"imgChange(this)\" style=\"display: none\" accept=\"image/*\"/><input type=\"file\" id=\"myaudio\" onchange=\"audioChange(this)\" style=\"display: none\" accept=\"audio/*\"><input type=\"file\" id=\"myvideo\" onchange=\"videoChange(this)\" style=\"display: none\" accept=\"video/*\"><div id=\"shade\" class=\"c1 hide\"></div><div id=\"shuoshuo-modal\" class=\"c2 hide\"><center><p>" + text7 + "：<input type=\"text\" class=\"shuoshuo_input_log\" id=\"username\"/></p><p>" + text8 + "：<input type=\"password\" class=\"shuoshuo_input_log\"  id=\"pwd\"/></p><p><input type=\"button\" value=\"" + text9 + "\" class=\"at_button\" onclick=\"Login();\">&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"button\" value=\"" + text10 + "\"  class=\"at_button\" onclick=\"Hide();\"></p></center><center><div id=\"logw\"></div></center></div><div id=\"userinfo\" class=\"c2 hide\"><center><p><div id=\"status\"></div></p><p><input type=\"button\" class=\"at_button\" value=\"" + text5 + "\" onclick=\"hideuser();\">&nbsp;&nbsp;&nbsp;&nbsp;<input id=\"tui\" type=\"button\" value=\"" + text6 + "\" class=\"at_button\" style=\"display: none;\" onclick=\"Louout();\"></p></center></div><div id=\"shanchu\" class=\"c2 hide\"><center><p>" + text20 + "</p><p><input type=\"button\" class=\"at_button\" value=\"" + text5 + "\" onclick=\"hide3();\"></p><center></div><div id=\"shanchur\" class=\"c2 hide\"><center><p>" + text19 + "</p><p><div id=\"delete1\"></div></p><center></div><div id=\"upload_parttwo\" class=\"c2 hide\"><center><p></p><div id=\"status\">" + text29 + "</div><p><input type=\"button\" class=\"at_button\" value=\"" + text26 + "\" onclick=\"myimg.click();\"><input type=\"button\" class=\"at_button\" value=\"" + text27 + "\" onclick=\"myaudio.click();\"><input type=\"button\" class=\"at_button\" value=\"" + text28 + "\" onclick=\"myvideo.click();\"><input type=\"button\" class=\"at_button\" value=\"" + text10 + "\" onclick=\"upload_out();\"></p></center></div>";
+    var sting = "<div id='artitalk_part1'><div id=\"main\" class=\"site-main\" role=\"main\"><div id=\"shuoshuo_content\"><div id=\"ccontent\"></div><center><button id=\"readmore\" class=\"at_button\" onclick=\"shuoshuo_readmore()\" style=\"margin-bottom: 15px;display: none\">" + langbase.text1 + "</button></center></div><div id=\"shuoshuo_input\" class=\"shuoshuo_active\" style=\"display: none;\"><div id=\"shuoshuo_edit\"><textarea class=\"shuoshuo_text\" oninput=\"preview()\" id=\"neirong\" placeholder=\"" + placeholder1 + "\"style=\"background-image: url(" + bgimg + ");z-index: 0\"></textarea><span id=\"drag_area\" class=\"z-index: -1;\"></span></div><div id=\"shuoshuo_parttwo\" class=\"shuoshuo_parttwo\"><div id=\"shuoshuo_emoji_Tieba\" class=\"shuoshuo_emoji hide\"></div><div id=\"shuoshuo_emoji_BiliBili\" class=\"shuoshuo_emoji hide\"></div><div id=\"shuoshuo_emoji_QQ\" class=\"shuoshuo_emoji hide\"></div><div id=\"shuoshuo_emoji_custom\" class=\"shuoshuo_emoji hide\"></div><div id=\"shuoshuo_emojiswitch\" class=\"shuoshuo_emojiswitch hide\"><div id=\"switch_1\" class=\"shuoshuo_emoji_part zuiliangdezai\" onclick=\"shuoshuo_emoji_Tieba()\">Tieba</div><div id=\"switch_2\" class=\"shuoshuo_emoji_part\" onclick=\"shuoshuo_emoji_BiliBili()\">BiliBili</div><div id=\"switch_3\" class=\"shuoshuo_emoji_part\" onclick=\"shuoshuo_emoji_QQ()\">QQ</div><div id=\"switch_4\" class=\"shuoshuo_emoji_part\" onclick=\"shuoshuo_emoji_Custom()\">Custom</div></div><div id=\"preview\" class=\"preview_now\"></div></div><div class=\"shuoshuo_submit\"><div class=\"shuoshuo_row\"><input class=\"artitalk_child shuoshuo_inputs\" id=\"touxiang\" value=\"\" placeholder=\"" + langbase.text18 + "\"><div class=\"artitalk_child\"><button class=\"at_button\" onclick=\"savecontent()\" style=\"float: right;\">" + langbase.text3 + "</button><button class=\"at_button\" onclick=\"preview_ohuo();\" style=\"float: right;\">" + langbase.text2 + "</button><button class=\"at_button\" onclick=\"upload_in()\" style=\"float: right;\">" + langbase.text29 + "</button><button class=\"at_button\" onclick=\"shuoshuo_emoji_lovefancybox()\" style=\"float: right;\">" + langbase.text22 + "</button></div></div></div></div></div><div class=\"power\"><div style=\"font-size: 25px;display: inline; cursor: pointer\" onclick=\"artitalk(); \"title=\"" + langbase.text11 + "\"><svg t=\"1591347684072\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"9731\" width=\"30\" height=\"30\"  style=\"display: inline\"><path d=\"M512 0C229.23 0 0 229.23 0 512s229.23 512 512 512 512-229.23 512-512S794.77 0 512 0z m0 953.62C268.49 953.62 70.38 755.51 70.38 512S268.49 70.38 512 70.38 953.62 268.49 953.62 512 755.51 953.62 512 953.62z\" p-id=\"9732\" fill=\"#707070\"></path><path d=\"M771.1 726.4H514.8c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23h256.3c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM771.1 654.55H587.92c-15.56 0-28.23 12.66-28.23 28.23S572.35 711 587.92 711H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.22-28.23-28.22zM771.1 582.69H654.22c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM809.25 361.96c0-14.79-5.74-28.68-16.17-39.1L657.66 187.45c-10.43-10.43-24.32-16.17-39.1-16.17s-28.67 5.74-39.1 16.17L207.23 559.67c-5.06 5.06-7.88 12.06-7.72 19.21l3.61 172.49a26.32 26.32 0 0 0 25.8 25.83l172.6 3.81c0.22 0.01 0.44 0.01 0.67 0.01 6.95 0 13.76-2.82 18.66-7.73l372.22-372.22c10.43-10.43 16.18-24.32 16.18-39.11z m-53.5 1.79L391.5 727.99l-136.14-3-2.85-135.96 364.25-364.26c0.99-0.98 2.59-0.98 3.58-0.01l135.4 135.41c0.99 0.99 0.99 2.59 0.01 3.58z\" p-id=\"9733\" fill=\"#707070\"></path></svg></div><div style=\"font-size: 25px;display: inline; cursor: pointer\" onclick=\"swtichuser()\" title=\"" + langbase.text9 + "\"><svg t=\"1591347848063\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"12288\" width=\"30\" height=\"30\"  style=\"display: inline\"><path d=\"M515.541449 7.082899c-280.359429 0-508.458551 228.120391-508.458551 508.458551s228.120391 508.458551 508.458551 508.458551 508.458551-228.120391 508.458551-508.458551S795.900879 7.082899 515.541449 7.082899zM515.541449 981.864196c-257.132626 0-466.301477-209.190121-466.301477-466.322747 0-257.132626 209.168851-466.322747 466.301477-466.322747s466.301477 209.190121 466.301477 466.322747S772.674075 981.864196 515.541449 981.864196zM614.574414 524.177056 614.574414 524.177056c47.751075-31.96876 79.230625-86.398604 79.230625-148.187857 0-98.437405-79.804915-178.24232-178.24232-178.24232-98.437405 0-178.24232 79.804915-178.24232 178.24232 0 61.810523 31.479551 116.219097 79.251895 148.187857-100.266622 39.519598-171.244501 137.170014-171.244501 251.453545 0 0.23397 0 0.446669 0.02127 0.659369 0 0.04254-0.02127 0.10635-0.02127 0.14889 0 15.612155 12.65563 28.246516 28.267786 28.246516 15.590885 0 21.886796-12.63436 21.886796-28.246516 0-0.340319-0.08508-0.659369-0.10635-1.020958 0.10635-118.005774 102.159649-219.995264 220.207964-219.995264 118.112124 0 220.207964 102.095839 220.207964 220.207964 0 0.14889-1.467628 29.054774 21.971875 29.054774 15.505806 0 28.076356-12.57055 28.076356-28.055086 0-0.06381-0.02127-0.12762-0.02127-0.2127 0-0.25524 0.02127-0.510479 0.02127-0.786989C785.797645 661.34707 714.798496 563.696654 614.574414 524.177056zM515.541449 510.734437c-74.402343 0-134.723968-60.321625-134.723968-134.723968 0-74.423613 60.321625-134.723968 134.723968-134.723968 74.423613 0 134.723968 60.321625 134.723968 134.723968S589.943792 510.734437 515.541449 510.734437z\" p-id=\"12289\" fill=\"#707070\"></path></svg></div><br>Powered By <a href=\"https://artitalk.js.org\" target=\"_blank\">Artitalk</a><br>" + version + "</div></div>";
+    var lazys = "<div id='lazy'><div class=\"preloader\" style=\"opacity: 1; \"><svg version=\"1.1\" id=\"sun\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\"y=\"0px\" width=\"10px\" height=\"10px\" viewBox=\"0 0 10 10\" enable-background=\"new 0 0 10 10\" xml:space=\"preserve\"style=\"opacity: 1; margin-left: 0px; margin-top: 0px;\"><g><path fill=\"none\"d=\"M6.942,3.876c-0.4-0.692-1.146-1.123-1.946-1.123c-0.392,0-0.779,0.104-1.121,0.301c-1.072,0.619-1.44,1.994-0.821,3.067C3.454,6.815,4.2,7.245,5,7.245c0.392,0,0.779-0.104,1.121-0.301C6.64,6.644,7.013,6.159,7.167,5.581C7.321,5,7.243,4.396,6.942,3.876z M6.88,5.505C6.745,6.007,6.423,6.427,5.973,6.688C5.676,6.858,5.34,6.948,5,6.948c-0.695,0-1.343-0.373-1.69-0.975C2.774,5.043,3.093,3.849,4.024,3.312C4.32,3.14,4.656,3.05,4.996,3.05c0.695,0,1.342,0.374,1.69,0.975C6.946,4.476,7.015,5,6.88,5.505z\"></path><path fill=\"none\"d=\"M8.759,2.828C8.718,2.757,8.626,2.732,8.556,2.774L7.345,3.473c-0.07,0.041-0.094,0.132-0.053,0.202C7.319,3.723,7.368,3.75,7.419,3.75c0.025,0,0.053-0.007,0.074-0.02l1.211-0.699C8.774,2.989,8.8,2.899,8.759,2.828z\"></path><path fill=\"none\"d=\"M1.238,7.171c0.027,0.047,0.077,0.074,0.128,0.074c0.025,0,0.051-0.008,0.074-0.02l1.211-0.699c0.071-0.041,0.095-0.133,0.054-0.203S2.574,6.228,2.503,6.269l-1.21,0.699C1.221,7.009,1.197,7.101,1.238,7.171z\"></path><path fill=\"none\"d=\"M6.396,2.726c0.052,0,0.102-0.026,0.13-0.075l0.349-0.605C6.915,1.976,6.89,1.885,6.819,1.844c-0.07-0.042-0.162-0.017-0.202,0.054L6.269,2.503C6.228,2.574,6.251,2.666,6.322,2.706C6.346,2.719,6.371,2.726,6.396,2.726z\"></path><path fill=\"none\"d=\"M3.472,7.347L3.123,7.952c-0.041,0.07-0.017,0.162,0.054,0.203C3.2,8.169,3.226,8.175,3.25,8.175c0.052,0,0.102-0.027,0.129-0.074l0.349-0.605c0.041-0.07,0.017-0.16-0.054-0.203C3.603,7.251,3.513,7.276,3.472,7.347z\"></path><path fill=\"none\"d=\"M3.601,2.726c0.025,0,0.051-0.007,0.074-0.02C3.746,2.666,3.77,2.574,3.729,2.503l-0.35-0.604C3.338,1.828,3.248,1.804,3.177,1.844C3.106,1.886,3.082,1.976,3.123,2.047l0.35,0.604C3.5,2.7,3.549,2.726,3.601,2.726z\"></path><path fill=\"none\"d=\"M6.321,7.292c-0.07,0.043-0.094,0.133-0.054,0.203l0.351,0.605c0.026,0.047,0.076,0.074,0.127,0.074c0.025,0,0.051-0.006,0.074-0.02c0.072-0.041,0.096-0.133,0.055-0.203l-0.35-0.605C6.483,7.276,6.393,7.253,6.321,7.292z\"></path><path fill=\"none\"d=\"M2.202,5.146c0.082,0,0.149-0.065,0.149-0.147S2.284,4.851,2.202,4.851H1.503c-0.082,0-0.148,0.066-0.148,0.148s0.066,0.147,0.148,0.147H2.202z\"></path><path fill=\"none\"d=\"M8.493,4.851H7.794c-0.082,0-0.148,0.066-0.148,0.148s0.066,0.147,0.148,0.147l0,0h0.699c0.082,0,0.148-0.065,0.148-0.147S8.575,4.851,8.493,4.851L8.493,4.851z\"></path><path fill=\"none\"d=\"M5.146,2.203V0.805c0-0.082-0.066-0.148-0.148-0.148c-0.082,0-0.148,0.066-0.148,0.148v1.398c0,0.082,0.066,0.149,0.148,0.149C5.08,2.352,5.146,2.285,5.146,2.203z\"></path><path fill=\"none\"d=\"M4.85,7.796v1.396c0,0.082,0.066,0.15,0.148,0.15c0.082,0,0.148-0.068,0.148-0.15V7.796c0-0.082-0.066-0.148-0.148-0.148C4.917,7.647,4.85,7.714,4.85,7.796z\"></path><path fill=\"none\"d=\"M2.651,3.473L1.44,2.774C1.369,2.732,1.279,2.757,1.238,2.828C1.197,2.899,1.221,2.989,1.292,3.031l1.21,0.699c0.023,0.013,0.049,0.02,0.074,0.02c0.051,0,0.101-0.026,0.129-0.075C2.747,3.604,2.722,3.514,2.651,3.473z\"></path><path fill=\"none\"d=\"M8.704,6.968L7.493,6.269c-0.07-0.041-0.162-0.016-0.201,0.055c-0.041,0.07-0.018,0.162,0.053,0.203l1.211,0.699c0.023,0.012,0.049,0.02,0.074,0.02c0.051,0,0.102-0.027,0.129-0.074C8.8,7.101,8.776,7.009,8.704,6.968z\"</path></g></svg><svg version=\"1.1\" id=\"cloud\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"x=\"0px\" y=\"0px\" width=\"110px\" height=\"110px\" viewBox=\"0 0 10 10\" enable-background=\"new 0 0 10 10\"xml:space=\"preserve\"><path fill=\"none\"d=\"M8.528,5.624H8.247c-0.085,0-0.156-0.068-0.156-0.154c0-0.694-0.563-1.257-1.257-1.257c-0.098,0-0.197,0.013-0.3,0.038C6.493,4.259,6.45,4.252,6.415,4.229C6.38,4.208,6.356,4.172,6.348,4.131C6.117,3.032,5.135,2.235,4.01,2.235c-1.252,0-2.297,0.979-2.379,2.23c-0.004,0.056-0.039,0.108-0.093,0.13C1.076,4.793,0.776,5.249,0.776,5.752c0,0.693,0.564,1.257,1.257,1.257h6.495c0.383,0,0.695-0.31,0.695-0.692S8.911,5.624,8.528,5.624z\"></path></svg><div class=\"rain\"><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span></div><div class=\"artitalk_loading_text\" id=\"loading_txt\">" + langbase.loadingTxT + "</div></div></div>";
+    var operare_artitalk_content = "<input type=\"file\" id=\"myimg\" onchange=\"imgChange(this)\" style=\"display: none\" accept=\"image/*\"/><input type=\"file\" id=\"myaudio\" onchange=\"audioChange(this)\" style=\"display: none\" accept=\"audio/*\"><input type=\"file\" id=\"myvideo\" onchange=\"videoChange(this)\" style=\"display: none\" accept=\"video/*\"><div id=\"shade\" class=\"c1 hide\"></div><div id=\"shuoshuo-modal\" class=\"c2 hide\"><center><p>" + langbase.text7 + "：<input type=\"text\" class=\"shuoshuo_input_log\" id=\"username\"/></p><p>" + langbase.text8 + "：<input type=\"password\" class=\"shuoshuo_input_log\"  id=\"pwd\"/></p><p><input type=\"button\" value=\"" + langbase.text9 + "\" class=\"at_button\" onclick=\"Login();\">&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"button\" value=\"" + langbase.text10 + "\"  class=\"at_button\" onclick=\"Hide();\"></p></center><center><div id=\"logw\"></div></center></div><div id=\"userinfo\" class=\"c2 hide\"><center><p><div id=\"status\"></div></p><p><input type=\"button\" class=\"at_button\" value=\"" + langbase.text5 + "\" onclick=\"hideuser();\">&nbsp;&nbsp;&nbsp;&nbsp;<input id=\"tui\" type=\"button\" value=\"" + langbase.text6 + "\" class=\"at_button\" style=\"display: none;\" onclick=\"Louout();\"></p></center></div><div id=\"shanchu\" class=\"c2 hide\"><center><p>" + langbase.text20 + "</p><p><input type=\"button\" class=\"at_button\" value=\"" + langbase.text5 + "\" onclick=\"hide3();\"></p><center></div><div id=\"shanchur\" class=\"c2 hide\"><center><p>" + langbase.text19 + "</p><p><div id=\"delete1\"></div></p><center></div><div id=\"upload_parttwo\" class=\"c2 hide\"><center><p></p><div id=\"status\">" + langbase.text29 + "</div><p><input type=\"button\" class=\"at_button\" value=\"" + langbase.text26 + "\" onclick=\"myimg.click();\"><input type=\"button\" class=\"at_button\" value=\"" + langbase.text27 + "\" onclick=\"myaudio.click();\"><input type=\"button\" class=\"at_button\" value=\"" + langbase.text28 + "\" onclick=\"myvideo.click();\"><input type=\"button\" class=\"at_button\" value=\"" + langbase.text10 + "\" onclick=\"upload_out();\"></p></center></div>";
     var operare_artitalk = document.createElement("div");
     operare_artitalk.id = "operare_artitalk";
     document.body.append(operare_artitalk);
@@ -572,7 +578,7 @@
             // console.log(currentUser.attributes.img);
             img3 = currentUser.attributes.img;
         } else {
-            document.getElementById("logw").innerHTML = "<center><pre><code>" + text15 + "</code></pre></center>";
+            document.getElementById("logw").innerHTML = "<center><pre><code>" + langbase.text15 + "</code></pre></center>";
             artitalk();
             return;
         }
@@ -618,7 +624,7 @@
 
         if (shuoshuo == "") {
             document.getElementById('preview').classList.remove('preview_now');
-            document.getElementById("preview").innerHTML = "<center><pre><code>" + text16 + "</code></pre></center>";
+            document.getElementById("preview").innerHTML = "<center><pre><code>" + langbase.text16 + "</code></pre></center>";
             return;
         }
         
@@ -793,7 +799,7 @@
                 }
                 var star_svg = "<svg xmlns=\"http://www.w3.org/2000/svg\"  onclick='artitalk_star(\"" + did + "\")' viewBox=\"0 0 24 24\" cursor=\"pointer\" width=\"16\" height=\"16\"  fill='" + color3 + "'><path d=\"M14.6 8H21a2 2 0 0 1 2 2v2.104a2 2 0 0 1-.15.762l-3.095 7.515a1 1 0 0 1-.925.619H2a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1h3.482a1 1 0 0 0 .817-.423L11.752.85a.5.5 0 0 1 .632-.159l1.814.907a2.5 2.5 0 0 1 1.305 2.853L14.6 8zM7 10.588V19h11.16L21 12.104V10h-6.4a2 2 0 0 1-1.938-2.493l.903-3.548a.5.5 0 0 0-.261-.571l-.661-.33-4.71 6.672c-.25.354-.57.644-.933.858zM5 11H3v8h2v-8z\"/></svg>";
                 var li = document.createElement('li');
-                var cc = "<li><span class=\"shuoshuo_author_img\"><img src=\"" + touimg + "\"class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\" ><div " + yincang + " class=\"delete_right\" title=\"" + text23 + "\" onclick=\"shuoshuo_delete(\'" + did + "\')\"><svg t=\"1591347978744\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"14459\" width=\"20\" height=\"20\" style=\"display: inline\" ><path d=\"M512 883.2A371.2 371.2 0 1 0 140.8 512 371.2 371.2 0 0 0 512 883.2z m0 64a435.2 435.2 0 1 1 435.2-435.2 435.2 435.2 0 0 1-435.2 435.2z\" p-id=\"14460\" fill=\"" + color3 + "\"></path><path d=\"M557.056 512l122.368 122.368a31.744 31.744 0 1 1-45.056 45.056L512 557.056l-122.368 122.368a31.744 31.744 0 1 1-45.056-45.056L466.944 512 344.576 389.632a31.744 31.744 0 1 1 45.056-45.056L512 466.944l122.368-122.368a31.744 31.744 0 1 1 45.056 45.056z\" p-id=\"14461\" fill=\"" + color3 + "\"></path></svg></div>" + uncle + "<p class=\"shuoshuo_time\">" + "<span style=\"\"> " + " " + OS_svg + OS + "</span><span>&nbsp&nbsp" + Time_svg + resDate + " " + resTime + "" + "</span><span style='float: right'><span style='vertical-align:top;' id='artitalk_star_svg_" + did + "'>" + star_svg + "</span>&nbsp<span style='vertical-align:top;' id='" + did + "'>loading</span></span></p></span></li>"
+                var cc = "<li><span class=\"shuoshuo_author_img\"><img src=\"" + touimg + "\"class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\" ><div " + yincang + " class=\"delete_right\" title=\"" + langbase.text23 + "\" onclick=\"shuoshuo_delete(\'" + did + "\')\"><svg t=\"1591347978744\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"14459\" width=\"20\" height=\"20\" style=\"display: inline\" ><path d=\"M512 883.2A371.2 371.2 0 1 0 140.8 512 371.2 371.2 0 0 0 512 883.2z m0 64a435.2 435.2 0 1 1 435.2-435.2 435.2 435.2 0 0 1-435.2 435.2z\" p-id=\"14460\" fill=\"" + color3 + "\"></path><path d=\"M557.056 512l122.368 122.368a31.744 31.744 0 1 1-45.056 45.056L512 557.056l-122.368 122.368a31.744 31.744 0 1 1-45.056-45.056L466.944 512 344.576 389.632a31.744 31.744 0 1 1 45.056-45.056L512 466.944l122.368-122.368a31.744 31.744 0 1 1 45.056 45.056z\" p-id=\"14461\" fill=\"" + color3 + "\"></path></svg></div>" + uncle + "<p class=\"shuoshuo_time\">" + "<span style=\"\"> " + " " + OS_svg + OS + "</span><span>&nbsp&nbsp" + Time_svg + resDate + " " + resTime + "" + "</span><span style='float: right'><span style='vertical-align:top;' id='artitalk_star_svg_" + did + "'>" + star_svg + "</span>&nbsp<span style='vertical-align:top;' id='" + did + "'>loading</span></span></p></span></li>"
                 mid += cc;
             })
             string = document.getElementById("ccontent").innerHTML;
@@ -803,7 +809,7 @@
             string = string.replace(/(.*)<\/ul>/, '$1 ');
             string += mid + '</ul>';
             if (shuoshuo_per === 0 && spage === 0) {
-                string = "<ul class=\"cbp_tmtimeline\" id=\"maina\"><li><span class=\"shuoshuo_author_img\"><img src=\"https://cdn.jsdelivr.net/gh/drew233/cdn/logol.png\" class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"><p>" + text24 + "</p><p class=\"shuoshuo_time\"><span style=\"\"> 由Artitalk发表</span><span style=\"float:right;\"><svg t=\"1591350675688\"  viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"28653\" width=\"10\" height=\"10\" style=\"display: inline\"></svg> 2020-04-10 20:35:25</span></p></span></li></ul>";
+                string = "<ul class=\"cbp_tmtimeline\" id=\"maina\"><li><span class=\"shuoshuo_author_img\"><img src=\"https://cdn.jsdelivr.net/gh/drew233/cdn/logol.png\" class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"><p>" + langbase.text24 + "</p><p class=\"shuoshuo_time\"><span style=\"\"> 由Artitalk发表</span><span style=\"float:right;\"><svg t=\"1591350675688\"  viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"28653\" width=\"10\" height=\"10\" style=\"display: inline\"></svg> 2020-04-10 20:35:25</span></p></span></li></ul>";
             }
             document.getElementById("ccontent").innerHTML = string;
 
@@ -817,7 +823,7 @@
     }
 
 
-    var upload = textup;
+    var upload = langbase.textup;
     var imgurl = "![](" + upload + ")";
     var personal_url_img;
 
@@ -842,7 +848,7 @@
         // console.log(mamato);
         document.getElementById("neirong").value += imgurl;
         if (lazy != 0) {
-            document.getElementById("loading_txt").innerHTML = text25;
+            document.getElementById("loading_txt").innerHTML = langbase.text25;
         }
         // $('#lazy').fadeIn();
         el_fadein("lazy");
@@ -864,7 +870,7 @@
                 if (msg.statusText == "Unprocessable Entity") {
                     // $('#lazy').fadeOut();
                     el_fadeout("lazy");
-                    document.getElementById("loading_txt").innerHTML = loadingTxT;
+                    document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
                     var x = document.getElementById("neirong").value;
                     imgurl = "![](" + picurl + ")";
                     document.getElementById("neirong").value = x.replace("![](" + upload + ")", imgurl);
@@ -873,16 +879,16 @@
                 } else {
                     // $('#lazy').fadeOut();
                     el_fadeout("lazy");
-                    document.getElementById("loading_txt").innerHTML = loadingTxT;
+                    document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
                     var x = document.getElementById("neirong").value;
-                    document.getElementById("neirong").value = x.replace("![](" + upload + ")", text14);
+                    document.getElementById("neirong").value = x.replace("![](" + upload + ")", langbase.text14);
                 }
             }
         };
         $.ajax(settings).done(function (response) {
             // $('#lazy').fadeOut();
             el_fadeout("lazy");
-            document.getElementById("loading_txt").innerHTML = loadingTxT;
+            document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
             var x = document.getElementById("neirong").value;
             imgurl = "![](" + picurl + ")";
             document.getElementById("neirong").value = x.replace("![](" + upload + ")", imgurl);
@@ -895,7 +901,7 @@
         var x = document.getElementById("neirong").value;
         imgurl = "![](" + upload + ")";
         document.getElementById("neirong").value = x.replace("![](" + upload + ")", imgurl);
-        upload = textup;
+        upload = langbase.textup;
         imgurl = "![](" + upload + ")";
     }
 
@@ -918,17 +924,17 @@
             if (!checkImgType(img.files[0])) {
                 // $('#lazy').fadeOut();
                 el_fadeout("lazy");
-                document.getElementById("loading_txt").innerHTML = loadingTxT;
+                document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
                 document.getElementById('preview').classList.remove('preview_now');
-                document.getElementById("preview").innerHTML = "<center><pre><code>" + text33 + "</code></pre></center>";
+                document.getElementById("preview").innerHTML = "<center><pre><code>" + langbase.text33 + "</code></pre></center>";
                 return;
             }
             if (imgsize > img_limit) {
                 // $('#lazy').fadeOut();
                 el_fadeout("lazy");
-                document.getElementById("loading_txt").innerHTML = loadingTxT;
+                document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
                 document.getElementById('preview').classList.remove('preview_now');
-                document.getElementById("preview").innerHTML = "<center><pre><code>" + text30 + "</code></pre></center>";
+                document.getElementById("preview").innerHTML = "<center><pre><code>" + langbase.text30 + "</code></pre></center>";
             } else {
                 uploadimg(base64url);
             }
@@ -992,7 +998,7 @@
             el_fadein("shuoshuo_input");
             pic_drag()
         } else {
-            document.getElementById("logw").innerHTML = "<center><pre><code>" + text15 + "</code></pre></center>";
+            document.getElementById("logw").innerHTML = "<center><pre><code>" + langbase.text15 + "</code></pre></center>";
             Show();
         }
     }
@@ -1021,7 +1027,7 @@
             // location.reload();
             Hide();
         }, function (error) {
-            document.getElementById("logw").innerHTML = "<center><pre><code>" + text17 + "</code></pre></center>";
+            document.getElementById("logw").innerHTML = "<center><pre><code>" + langbase.text17 + "</code></pre></center>";
         });
     }
 
@@ -1041,7 +1047,7 @@
         var currentUser = AV.User.current();
         if (currentUser) {
             document.getElementById('userinfo').classList.remove('hide');
-            document.getElementById("status").innerHTML = text4 + ":\t" + currentUser.attributes.username;
+            document.getElementById("status").innerHTML = langbase.text4 + ":\t" + currentUser.attributes.username;
             // $("#tui").show();
             el_fadein("tui");
         } else {
@@ -1070,9 +1076,9 @@
         if (currentUser) {
             document.getElementById('shade').classList.remove('hide');
             document.getElementById('shanchur').classList.remove('hide');
-            document.getElementById('delete1').innerHTML = "<input type=\"button\" class=\"at_button\" value=\"" + text5 + "\" onclick=\"really_shanchu(\'" + id + "\')\"><input type=\"button\" class=\"at_button\" value=\"" + text10 + "\" onclick=\"hide4()\">";
+            document.getElementById('delete1').innerHTML = "<input type=\"button\" class=\"at_button\" value=\"" + langbase.text5 + "\" onclick=\"really_shanchu(\'" + id + "\')\"><input type=\"button\" class=\"at_button\" value=\"" + langbase.text10 + "\" onclick=\"hide4()\">";
         } else {
-            document.getElementById("logw").innerHTML = "<center><pre><code>" + text15 + "</code></pre></center>";
+            document.getElementById("logw").innerHTML = "<center><pre><code>" + langbase.text15 + "</code></pre></center>";
             Show();
             return;
         }
@@ -1256,9 +1262,9 @@
             if (!checkaudioType(audio.files[0])) {
                 // $('#lazy').fadeOut();
                 el_fadeout("lazy");
-                document.getElementById("loading_txt").innerHTML = loadingTxT;
+                document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
                 document.getElementById('preview').classList.remove('preview_now');
-                document.getElementById("preview").innerHTML = "<center><pre><code>" + text34 + "</code></pre></center>";
+                document.getElementById("preview").innerHTML = "<center><pre><code>" + langbase.text34 + "</code></pre></center>";
                 return;
             }
             var audioFile = ev.target.result;
@@ -1269,9 +1275,9 @@
             if (audiosize > audio_limit) {
                 // $('#lazy').fadeOut();
                 el_fadeout("lazy");
-                document.getElementById("loading_txt").innerHTML = loadingTxT;
+                document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
                 document.getElementById('preview').classList.remove('preview_now');
-                document.getElementById("preview").innerHTML = "<center><pre><code>" + text31 + "</code></pre></center>";
+                document.getElementById("preview").innerHTML = "<center><pre><code>" + langbase.text31 + "</code></pre></center>";
             } else {
                 uploadaudio(base64url_audio, audio.files[0].name);
             }
@@ -1284,7 +1290,7 @@
     function uploadaudio(file, audioname) {
         var mamato = "Bearer " + get_token();
         if (lazy != 0) {
-            document.getElementById("loading_txt").innerHTML = text25;
+            document.getElementById("loading_txt").innerHTML = langbase.text25;
         }
         // $('#lazy').fadeIn();
         el_fadein("lazy");
@@ -1306,22 +1312,22 @@
                 if (msg.statusText == "Unprocessable Entity") {
                     // $('#lazy').fadeOut();
                     el_fadeout("lazy");
-                    document.getElementById("loading_txt").innerHTML = loadingTxT;
+                    document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
                     var audiohtml = "<audio controls><source src='" + audiourl + "'></audio>";
                     insert_atemoji(audiohtml);
                 } else {
                     // $('#lazy').fadeOut();
                     el_fadeout("lazy");
-                    document.getElementById("loading_txt").innerHTML = loadingTxT;
+                    document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
                     document.getElementById('preview').classList.remove('preview_now');
-                    document.getElementById("preview").innerHTML = "<center><pre><code>" + text14 + "</code></pre></center>";
+                    document.getElementById("preview").innerHTML = "<center><pre><code>" + langbase.text14 + "</code></pre></center>";
                 }
             }
         };
         $.ajax(settings).done(function (response) {
             // $('#lazy').fadeOut();
             el_fadeout("lazy");
-            document.getElementById("loading_txt").innerHTML = loadingTxT;
+            document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
             var audiohtml = "<audio controls><source src='" + audiourl + "'></audio>";
             insert_atemoji(audiohtml);
         });
@@ -1345,9 +1351,9 @@
             if (!checkvideoType(video.files[0])) {
                 // $('#lazy').fadeOut();
                 el_fadeout("lazy");
-                document.getElementById("loading_txt").innerHTML = loadingTxT;
+                document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
                 document.getElementById('preview').classList.remove('preview_now');
-                document.getElementById("preview").innerHTML = "<center><pre><code>" + text35 + "</code></pre></center>";
+                document.getElementById("preview").innerHTML = "<center><pre><code>" + langbase.text35 + "</code></pre></center>";
                 return;
             }
             var videoFile = ev.target.result;
@@ -1358,9 +1364,9 @@
             if (videosize > video_limit) {
                 // $('#lazy').fadeOut();
                 el_fadeout("lazy");
-                document.getElementById("loading_txt").innerHTML = loadingTxT;
+                document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
                 document.getElementById('preview').classList.remove('preview_now');
-                document.getElementById("preview").innerHTML = "<center><pre><code>" + text32 + "</code></pre></center>";
+                document.getElementById("preview").innerHTML = "<center><pre><code>" + langbase.text32 + "</code></pre></center>";
             } else {
                 uploadvideo(base64url_video);
             }
@@ -1373,7 +1379,7 @@
     function uploadvideo(file) {
         var mamato = "Bearer " + get_token();
         if (lazy != 0) {
-            document.getElementById("loading_txt").innerHTML = text25;
+            document.getElementById("loading_txt").innerHTML = langbase.text25;
         }
         // $('#lazy').fadeIn();
         el_fadein("lazy");
@@ -1395,22 +1401,22 @@
                 if (msg.statusText == "Unprocessable Entity") {
                     // $('#lazy').fadeOut();
                     el_fadeout("lazy");
-                    document.getElementById("loading_txt").innerHTML = loadingTxT;
+                    document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
                     var videohtml = "<video controls width=\"100%\" height=\"auto\"><source src=\"" + videourl + "\"></video>";
                     insert_atemoji(videohtml);
                 } else {
                     // $('#lazy').fadeOut();
                     el_fadeout("lazy");
-                    document.getElementById("loading_txt").innerHTML = loadingTxT;
+                    document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
                     document.getElementById('preview').classList.remove('preview_now');
-                    document.getElementById("preview").innerHTML = "<center><pre><code>" + text14 + "</code></pre></center>";
+                    document.getElementById("preview").innerHTML = "<center><pre><code>" + langbase.text14 + "</code></pre></center>";
                 }
             }
         };
         $.ajax(settings).done(function (response) {
             // $('#lazy').fadeOut();
             el_fadeout("lazy");
-            document.getElementById("loading_txt").innerHTML = loadingTxT;
+            document.getElementById("loading_txt").innerHTML = langbase.loadingTxT;
             var videohtml = "<video controls width=\"100%\" max-height=\"200px\" height=\"auto\"><source src=\"" + videourl + "\"></video>";
             insert_atemoji(videohtml);
         });
