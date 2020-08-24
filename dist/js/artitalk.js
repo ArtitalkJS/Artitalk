@@ -566,11 +566,11 @@ function el_fadeout(id){
         slang = window.artitalkConfig.lang || "zh",
         lazy = window.artitalkConfig.motion != "undefine" ? window.artitalkConfig.motion : 1;
 
-    let langbase = {};
+    window.langbase = {};
 
     switch (slang) {
         case "zh": 
-            langbase = {
+            window.langbase = {
                 text0: "由",
                 text00: "发表",
                 text1: "加载更多...",
@@ -611,7 +611,7 @@ function el_fadeout(id){
                 loadingTxT: "加载中"
             }
         case "en": 
-            langbase = {
+            window.langbase = {
                 text0: "Published by",
                 text00: "",
                 text1: "load more...",
@@ -652,7 +652,7 @@ function el_fadeout(id){
                 loadingTxT: "Loading"
             }
         case "es": 
-            langbase = {
+            window.langbase = {
                 text0: "Publicado por",
                 text00: "",
                 text1: "Carga más...",
