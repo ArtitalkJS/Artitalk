@@ -27,12 +27,12 @@ el.style.display = display || "";
 }
 
 function el_fadein(id){
-    if(id=="lazy"&&lazy==0) return;
+    if(id=="lazy"&&artitalkVar.lazy==0) return;
     var el = document.getElementById(id);
     fadeIn(el);
 }
 function el_fadeout(id){
-    if(id=="lazy"&&lazy==0) return;
+    if(id=="lazy"&&artitalkVar.lazy==0) return;
     var el = document.getElementById(id);
     fadeOut(el);
 }
