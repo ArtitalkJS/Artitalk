@@ -568,7 +568,7 @@ artitalkVar.lazy = window.artitalkConfig.motion != "undefine" ? window.artitalkC
 window.langbase = {};
 
 switch (artitalkVar.slang) {
-    case "zh": 
+    case "zh":
         window.langbase = {
             text0: "由",
             text00: "发表",
@@ -609,7 +609,8 @@ switch (artitalkVar.slang) {
             textup: "上传ing",
             loadingTxT: "加载中"
         }
-    case "en": 
+        break;
+    case "en":
         window.langbase = {
             text0: "Published by",
             text00: "",
@@ -650,7 +651,8 @@ switch (artitalkVar.slang) {
             textup: "Uploading",
             loadingTxT: "Loading"
         }
-    case "es": 
+        break;
+    case "es":
         window.langbase = {
             text0: "Publicado por",
             text00: "",
@@ -691,6 +693,7 @@ switch (artitalkVar.slang) {
             textup: "Cargando",
             loadingTxT: "Cargando"
         }
+        break;
 }
 
 artitalkVar.placeholder2 = window.artitalkConfig.placeholder2 || langbase.text18;
