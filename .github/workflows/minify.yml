@@ -12,8 +12,18 @@ jobs:
       with:
         node-version: '10.x'
 
-    - name: Setup
-      run: yarn install
+    - name: Use cached node_modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: nodeModules-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          nodeModules-
+
+    - name: Install Dependencies
+      run: yarn install --frozen-lockfile
+      env:
+        CI: true 
 
     - name: Minify
       run: yarn gulp
