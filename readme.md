@@ -36,3 +36,9 @@ src
 - **lazy.html**: 加载动画源自 CodePen：https://codepen.io/tholman/pen/yenku
 - **showdown.min.js**: https://github.com/showdownjs/showdown
 - **browser.js**: https://github.com/natee/js-detect-browser-os/blob/master/src/browser.js
+
+## ✨ 参与贡献
+
+1. fork本项目
+2. 在dev分支下修改想修改的部分
+3. 向dev分支发起pr
