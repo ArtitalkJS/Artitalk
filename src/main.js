@@ -664,7 +664,8 @@ atEvery.prototype._init=function(){
             let converte = new showdown.Converter();
             converte.setOption('strikethrough', 1);
             let shuoshuoContentHtml = converte.makeHtml(shuoshuoContent);
-            let atAvatar = document.getElementById('touxiang').value === '' ? currentUser.attributes.img : document.getElementById('touxiang').value;
+            let deFaultavatar = typeof(currentUser.attributes.img) === "undefined" ? "https://cdn.jsdelivr.net/gh/drew233/cdn/logol.png":deFaultavatar;
+            let atAvatar = document.getElementById('touxiang').value === '' ? deFaultavatar : document.getElementById('touxiang').value;
             let userOs = boInfo.os;
             let starInit = 0;
             atObject.set('atContentHtml',shuoshuoContentHtml);
