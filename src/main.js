@@ -1,5 +1,11 @@
 'use strict'
-const version = "2.5.0";
+const version = "3.0.0";
+if(typeof(appID) !== 'undefined'){
+    let update = confirm("　　3.0版本更新需要重新更换一次配置，深感抱歉，但是为了更好的体验不得不这样。\n　　如果不想更换或者不想舍弃已有的数据，可以继续使用2.4.2版本，这也是比较成熟的版本了，但是以后不会再维护。更换详情请点击确定前往文档查看");
+    if(update == true){
+        location.href = 'https://artitalk.js.org'
+    }
+}
 //emoji init
 const atEmojiQQ = {
     qq_aini: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/aini.gif",
@@ -465,9 +471,10 @@ atEvery.prototype._init=function(){
                     beforTran = beforTran.replace(keyAt,emojiAt);
                 }
             }
-            for(let key in atEmojiDefault){
+            // console.log(atEmoji);
+            for(let key in atEmoji){
                 let keyAt = '['+key+']';
-                let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmojiDefault[key] + "'/>";
+                let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmoji[key] + "'/>";
                 while(beforTran.indexOf(keyAt)!=-1){
                     beforTran = beforTran.replace(keyAt,emojiAt);
                 }
@@ -547,7 +554,7 @@ atEvery.prototype._init=function(){
         pubButton.onclick=function(){
             let currentUser = AV.User.current();
             if(currentUser){
-                if(document.getElementById('shuoshuo_input').style.display==""){
+                if(document.getElementById('shuoshuo_input').style.display===""){
                     fadeOut('shuoshuo_input');
                 }else{
                     fadeIn('shuoshuo_input');
@@ -649,7 +656,7 @@ atEvery.prototype._init=function(){
                 preCon.classList.add('preview_now');
             }
         }
-        saveContent.onclick = function(){
+        saveContent.onclick = function save(){
             let currentUser = AV.User.current();
             if(!currentUser){
                 pubButton.click();
@@ -770,7 +777,6 @@ atEvery.prototype.seeContent=function(pageNum,option){
             color2,
             color3,
         } = root.config;
-        let atEmojiDefault = atEmoji;
         lang = typeof(lang) === "undefined" || lang === ''?'zh':lang;
         switch(lang){
             case 'zh':
@@ -1053,6 +1059,15 @@ atEvery.prototype.seeContent=function(pageNum,option){
 
         atEvery.prototype.atEditsave=function(id){
             fadeIn('lazy');
+            let beginPreview = document.getElementById('preview');
+            beginPreview.onclick = function(){
+                let preCon = document.getElementById('preview');
+                if(preCon.className.indexOf('preview_now')!==-1){
+                    preCon.classList.remove('preview_now');
+                }else{
+                    preCon.classList.add('preview_now');
+                }
+            }
             function translate(beforTran){
                 if(typeof beforTran === 'undefined')   return ;
                 for(let key in atEmojiQQ){
@@ -1076,9 +1091,9 @@ atEvery.prototype.seeContent=function(pageNum,option){
                         beforTran = beforTran.replace(keyAt,emojiAt);
                     }
                 }
-                for(let key in atEmojiDefault){
+                for(let key in atEmoji){
                     let keyAt = '['+key+']';
-                    let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmojiDefault[key] + "'/>";
+                    let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmoji[key] + "'/>";
                     while(beforTran.indexOf(keyAt)!=-1){
                         beforTran = beforTran.replace(keyAt,emojiAt);
                     }
@@ -1099,53 +1114,10 @@ atEvery.prototype.seeContent=function(pageNum,option){
             let shuoshuoContentHtml = converte.makeHtml(shuoshuoContent);
             atEditOver.set('atContentHtml',shuoshuoContentHtml);
             atEditOver.save().then(function(){
-                document.getElementById("ccontent").innerHTML="";
-                document.getElementById("neirong").value="";
-                fadeIn('lazy');
-                fadeIn('touxiang');
-                fadeOut('shuoshuo_input');
-                root.seeContent(0,root.config);
+                location.reload();  
             });
         }
     }catch(error){
         console.log(error);
     }
 }
-// new Artitalk({
-    // appId: 'ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI',
-    // appKey: 'nHXLd3N3Jgh460t2iRQKWAtr',
-    /*国内*/
-    // appId: 'KMCVQexdtNC78LikkmBV4zqA-gzGzoHsz',
-    // appKey: '3m1lW84Uohja6k8g2EAYvneU',
-    // serverURL: 'https://kmcvqexd.lc-cn-n1-shared.com',
-    // lang: 'zh',
-    // pageSize: 5,
-    // motion: 1,
-    // bgImg: 'https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp',
-    // atEmoji: {
-    //     baiyan: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/baiyan.png",
-    //     bishi: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/bishi.png",
-    //     bizui: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/bizui.png",
-    //     chan: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/chan.png",
-    //     daku: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/daku.png",
-    //     dalao: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/dalao.png",
-    //     dalian: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/dalian.png",
-    //     dianzan: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/dianzan.png",
-    //     doge: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/doge.png",
-    //     facai: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/facai.png",
-    //     fadai: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/fadai.png",
-    //     fanu: "https://cdn.jsdelivr.net/gh/Artitalk/Artitalk-emoji/fanu.png",
-    // },
-    // cssUrl: '',
-    // shuoPla: '',
-    // avatarPla: '',
-    // color1: '',
-    // color2: '',
-    // color3: '',
-// })
-// var at = new Artitalk();
-// at.init({
-//     appId: 'ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI',
-//     appKey: 'nHXLd3N3Jgh460t2iRQKWAtr',  
-// })
-
