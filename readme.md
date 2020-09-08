@@ -5,7 +5,7 @@
 ![](https://img.shields.io/npm/v/artitalk.svg)
 ![](https://img.shields.io/badge/language-JavaScript-red)
 
-### 详细使用教程请移步文档：https://artitalk.js.org/
+### 详细使用教程请移步 [文档](https://artitalk.js.org/)
 
 ## 👀 特性
 
@@ -39,6 +39,6 @@ src
 
 ## ✨ 参与贡献
 
-1. fork本项目
-2. 在dev分支下修改想修改的部分
-3. 向dev分支发起pr
+1. Fork 本项目
+2. 在 dev 分支下修改想修改的部分
+3. 向 dev 分支发起 PR
