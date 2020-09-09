@@ -555,4 +555,11 @@ div#artitalk_main {
 	height: 1px;
 	opacity: 0;
 }
-}"
+}
+p.shuoshuo_time>span>a:hover {
+    color: red;
+}
+p.shuoshuo_time>span>a {
+    color: blue;
+    text-decoration: none;
+}
