@@ -27,6 +27,7 @@ src
 └─ plugins                      # 第三方 js
        ├─ av-min.js             # LeanCloud 提供的 SDK
        ├─ browser.js            # 返回用户操作系统
+       ├─ md5.js                # md5转码
        └─ showdown.min.js       # Markdown 转换
 ```
 
@@ -36,6 +37,7 @@ src
 - **lazy.html**: 加载动画源自 CodePen：https://codepen.io/tholman/pen/yenku
 - **showdown.min.js**: https://github.com/showdownjs/showdown
 - **browser.js**: https://github.com/natee/js-detect-browser-os/blob/master/src/browser.js
+- **md5.js**: https://github.com/blueimp/JavaScript-MD5
 
 ## ✨ 参与贡献
 
