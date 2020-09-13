@@ -41,6 +41,41 @@ src
 
 ## ✨ 参与贡献
 
+### 在线构建
+
 1. Fork 本项目
 2. 在 dev 分支下修改想修改的部分
 3. 向 dev 分支发起 PR
+
+### 本地构建
+
+1. 首先，`clone` Artitalk的`dev`分支
+
+```
+git clone https://github.com/ArtitalkJS/Artitalk.git -b dev
+```
+
+> 当然你也可以用阿里的github镜像：git clone https://github.com.cnpmjs.org/ArtitalkJS/Artitalk.git -b dev
+
+2. 安装依赖
+
+```
+npm i
+```
+
+3. 开始构建
+
+```
+npm run gulp
+```
+
+4. 构建的文件会生成在`./dist`下，分别为：
+
+```
+./dist
+       -js
+              -artitalk.js
+              -artitalk.min.js
+       -css
+              -artitalk.min.css
+```
