@@ -35,6 +35,7 @@ jobs:
         git add dist/css/artitalk.min.css -f
         git add dist/js/artitalk.js -f
         git add dist/js/artitalk.min.js -f
+        git add dist/js/artitalk.automin.js -f
         git commit -m ":zap: Successful minify" -a
 
     - name: Push
