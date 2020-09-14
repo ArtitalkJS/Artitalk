@@ -39,3 +39,11 @@ gulp.task('dist', gulp.parallel(
 ))
 
 gulp.task('default', gulp.series('dist'));
+
+
+gulp.task('jsTask', function () {
+    gulp.src(['./src/plugins/av-min.js','./src/plugins/browser.js','./src/plugins/md5.js','./src/plugins/showdown.min.js','./src/main.js',])
+        .pipe(uglify()) // 压缩 js 文件
+        .pipe(concat('artitalk.automin.js')) // 合并为all.min.js 文件
+        .pipe(gulp.dest('./dist/js')) // js 输出的路径
+})
