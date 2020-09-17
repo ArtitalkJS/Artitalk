@@ -30,6 +30,7 @@ jobs:
 
     - name: Commit
       run: |
+        ls
         git config --global user.email artitalk-bot@email.com
         git config --global user.name artitalk-bot
         git add dist/css/artitalk.min.css -f
