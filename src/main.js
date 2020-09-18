@@ -1319,11 +1319,11 @@ atEvery.prototype.seeContent=function(pageNum,option){
             originString += mid + '</ul>';
             document.getElementById('ccontent').innerHTML = originString;
         }).then(function(){
+            fadeIn('email');
             if(currentUser){
                 fadeOut('commentNick');
                 fadeOut('email');
             } 
-            fadeIn('email');
             fadeOut('lazy');
         })
         let saveComment = document.getElementById('commentSave');
