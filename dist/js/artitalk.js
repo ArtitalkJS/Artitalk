@@ -1489,6 +1489,7 @@ atEvery.prototype.seeContent=function(pageNum,option){
                 fadeOut('commentNick');
                 fadeOut('email');
             } 
+            fadeIn('email');
             fadeOut('lazy');
         })
         let saveComment = document.getElementById('commentSave');
