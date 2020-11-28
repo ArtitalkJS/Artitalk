@@ -1,6 +1,7 @@
 {
   "name": "artitalk",
   "version": "2.4.2",
+  "index": "./dist/js/artitalk.min.js",
   "scripts": {
     "gulp": "gulp --config gulpfile.js",
     "lint": "eslint src",
