@@ -26,7 +26,7 @@ jobs:
         CI: true 
 
     - name: Minify
-      run: yarn gulp
+      run: yarn build
 
     - name: Commit
       run: |
