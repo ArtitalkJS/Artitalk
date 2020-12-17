@@ -258,6 +258,7 @@ atEvery.prototype.init=function(option){
     !!option && root._init();
     return root;
 }
+let _initialized = false;
 atEvery.prototype._init=function(){
     let root=this;
     let {
@@ -444,27 +445,30 @@ atEvery.prototype._init=function(){
     color3 = typeof(color3)==="undefined" || color3 === '' ? "white":color3;
     pageSize = typeof(pageSize)==="undefined" ? '5':pageSize;
     let apiUrl="";
-    try{
-        if(serverURL !== ''){
-            AV.init({
-                appId: appId,
-                appKey: appKey,
-                serverURL: serverURL,
-            });
-        }else{
-            AV.init({
-                appId: appId,
-                appKey: appKey,
-            });
+    if (!_initialized){
+        try{
+            if(serverURL !== ''){
+                AV.init({
+                    appId: appId,
+                    appKey: appKey,
+                    serverURL: serverURL,
+                });
+            }else{
+                AV.init({
+                    appId: appId,
+                    appKey: appKey,
+                });
+            }
+            _initialized = true;
         }
-    }
-    catch(error){
-        let err=error.toString();
-        console.error(err);
-        if(err.indexOf('appId is not defined')!=-1){
-            console.log("appId没找到");
-        }else if(err.indexOf('appKey is not defined')!=-1){
-            console.log("appKey没找到");
+        catch(error){
+            let err=error.toString();
+            console.error(err);
+            if(err.indexOf('appId is not defined')!=-1){
+                console.log("appId没找到");
+            }else if(err.indexOf('appKey is not defined')!=-1){
+                console.log("appKey没找到");
+            }
         }
     }
     //emoji translate
