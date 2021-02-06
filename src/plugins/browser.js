@@ -1,103 +1,137 @@
-/*!
- * 获取浏览器和操作系统的信息
+/**
+ * 浏览器识别
+ * @author houchuanjie
  */
-(function(win) {
-    var boInfo = {};
+;(function(window, document) {
+	var Engine = function() {
+		var name = null;
+		var version = null;
+	};
 
-    var ua = navigator.userAgent.toLowerCase();
-    var platform = navigator.platform;
+	var System = function() {
+		var name = null;
+		var version = null;
+	};
 
-    var tem;
-
-    // ['Chrome/52','Chrome','52']
-    var bsInfo = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-    if (/trident/i.test(bsInfo[1])) {
-        tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
-        bsInfo[1] = 'IE';
-        bsInfo[2] = tem[1] || ''; // IE浏览器版本
-    }
-
-    if (bsInfo[1] === 'Chrome') {
-        tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
-        if (tem != null) {
-            // return tem.slice(1).join(' ').replace('OPR', 'Opera');
-            bsInfo[1] = 'Opera';
-            bsInfo[2] = tem[1] || '';
-        }
-    }
-
-    bsInfo = bsInfo[2] ? [bsInfo[1], bsInfo[2]] : [navigator.appName, navigator.appVersion, '-?'];
-    if ((tem = ua.match(/version\/(\d+)/i)) != null) {
-        bsInfo.splice(1, 1, tem[1]);
-    }
-
-    boInfo.browser = bsInfo[0];
-    boInfo.browserVersion = bsInfo[1];
-
-    var clientStrings = [
-        { s: 'Windows 10', r: /(Windows 10.0|Windows NT 10.0)/ },
-        { s: 'Windows 8.1', r: /(Windows 8.1|Windows NT 6.3)/ },
-        { s: 'Windows 8', r: /(Windows 8|Windows NT 6.2)/ },
-        { s: 'Windows 7', r: /(Windows 7|Windows NT 6.1)/ },
-        { s: 'Windows Vista', r: /Windows NT 6.0/ },
-        { s: 'Windows Server 2003', r: /Windows NT 5.2/ },
-        { s: 'Windows XP', r: /(Windows NT 5.1|Windows XP)/ },
-        { s: 'Windows 2000', r: /(Windows NT 5.0|Windows 2000)/ },
-        { s: 'Windows ME', r: /(Win 9x 4.90|Windows ME)/ },
-        { s: 'Windows 98', r: /(Windows 98|Win98)/ },
-        { s: 'Windows 95', r: /(Windows 95|Win95|Windows_95)/ },
-        { s: 'Windows NT 4.0', r: /(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/ },
-        { s: 'Windows CE', r: /Windows CE/ },
-        { s: 'Windows 3.11', r: /Win16/ },
-        { s: 'Android', r: /Android/ },
-        { s: 'Open BSD', r: /OpenBSD/ },
-        { s: 'Sun OS', r: /SunOS/ },
-        { s: 'Linux', r: /(Linux|X11)/ },
-        { s: 'iOS', r: /(iPhone|iPad|iPod)/ },
-        { s: 'Mac OS X', r: /Mac OS X/ },
-        { s: 'Mac OS', r: /(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/ },
-        { s: 'QNX', r: /QNX/ },
-        { s: 'UNIX', r: /UNIX/ },
-        { s: 'BeOS', r: /BeOS/ },
-        { s: 'OS/2', r: /OS\/2/ },
-        { s: 'Search Bot', r: /(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/ }
-    ];
-
-    var os;
-    var osVersion;
-
-    for (var id in clientStrings) {
-        var cs = clientStrings[id];
-
-        // 注意不要用ua，ua是小写化
-        if (cs.r.test(navigator.userAgent)) {
-            os = cs.s;
-            break;
-        }
-    }
-
-    if (/Windows/.test(os)) {
-        osVersion = /Windows (.*)/.exec(os)[1];
-        os = 'Windows';
-    }
-
-    switch (os) {
-        case 'Mac OS X':
-            osVersion = /Mac OS X (10[\.\_\d]+)/.exec(navigator.userAgent)[1];
-            break;
-
-        case 'Android':
-            osVersion = /Android ([\.\_\d]+)/.exec(navigator.userAgent)[1];
-            break;
-
-        case 'iOS':
-            osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(navigator.appVersion);
-            osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
-            break;
-    }
-
-    boInfo.os = os;
-    boInfo.osVersion = osVersion;
-
-    win.boInfo = boInfo;
-})(window);
+	var Browser = function() {
+		var name = null; //浏览器名称
+		var version = null; //浏览器版本号
+	};
+	var Client = function() {
+		this.browser = new Browser(),
+		this.engine = new Engine(),
+		this.system = new System(),
+		this.init();
+		console.log("Engine ：" + this.engine.name + " " + this.engine.version);
+		console.log("Browser：" + this.browser.name + " " + this.browser.version);
+		console.log("System ：" + this.system.name + " " + this.system.version);
+		return {browser: this.browser, engine: this.engine, system: this.system};
+	};
+	Client.prototype = {
+		init: function(){
+			this.judgeBrowser();
+			this.judgeSystem();
+		},
+		judgeBrowser: function() {
+			var ua = navigator.userAgent.toString();
+			if (/AppleWebKit\/(\S+)/.test(ua)) { //匹配Webkit内核浏览器(Chrome、Safari、新Opera、新Konqueror)
+				this.engine.name = "WebKit";
+				this.engine.version = RegExp["$1"];
+				if (/OPR\/(\S+)/.test(ua)) { //确定是不是引用了Webkit内核的Opera
+					this.browser.name = "Opera";
+					this.browser.version = RegExp["$1"];
+				} else if (/Edge\/(\S+)/.test(ua)) {
+					this.browser.name = "Edge";
+					this.browser.version = RegExp["$1"];
+				} else if (/Chrome\/(\S+)/.test(ua)) { //确定是不是Chrome
+					this.browser.name = "Chrome";
+					this.browser.version = RegExp["$1"];
+				} else if (/konqueror\/(\S+)/.test(ua)) { //
+					this.browser.name = "Konqueror";
+					this.browser.version = RegExp["$1"];
+				} else if (/Safari\/(\S+)/.test(ua)) { //确定是不是高版本（3+）的Safari
+					this.browser.name = "Safari";
+					if (/Version\/(\S+)/.test(ua)) {
+						this.browser.version = RegExp["$1"];
+					} else { //近似地确定低版本Safafi版本号
+						var SafariVersion = 1;
+						var wk = parseFloat(engine.version);
+						if (wk < 100) {
+							SafariVersion = 1;
+						} else if (wk < 312) {
+							SafariVersion = 1.2;
+						} else if (wk < 412) {
+							SafariVersion = 1.3;
+						} else {
+							SafariVersion = 2;
+						}
+						this.browser.version = SafariVersion;
+					}
+				}
+			} else if (window.opera) { //只匹配拥有Presto内核的老版本Opera 5+(12.15-)
+				this.engine.name = "Presto";
+				this.browser.name = "Opera";
+				this.engine.version = this.browser.version = window.opera.version();
+			} else if (/Opera[\/\s](\S+)/.test(ua)) { //匹配不支持window.opera的Opera 5-或伪装的Opera
+				this.engine.name = "Presto";
+				this.browser.name = "Opera";
+				this.engine.version = browser.version = RegExp["$1"];
+			} else if (/KHTML\/(\S+)/.test(ua)) { //KHTML内核
+				this.browser.name = "Konqueror";
+				this.engine.name = "KHTML";
+				this.engine.version = browser.version = RegExp["$1"];
+			} else if (/Konqueror\/([^;]+)/.test(ua)) { //Konqueror内核
+				this.browser.name = "Konqueror";
+				this.engine.name = "Konqueror";
+				this.engine.version = browser.version = RegExp["$1"];
+			} else if (/rv:([^\)]+)\) Gecko\/\d{8}/.test(ua)) { //判断是不是基于Gecko内核
+				this.engine.name = "Gecko";
+				this.engine.version = RegExp["$1"];
+				if (/Firefox\/(\S+)/.test(ua)) { //确定是不是Firefox
+					this.browser.name = "Firefox";
+					this.browser.version = RegExp["$1"];
+				}
+			} else if (/Trident\/([\d\.]+)/.test(ua)) { //确定是否是Trident内核的浏览器（IE8+）
+				this.engine.name = "Trident";
+				this.engine.version = RegExp["$1"];
+				if (/rv\:([\d\.]+)/.test(ua) || /MSIE ([^;]+)/.test(ua)) { //匹配IE8-11+
+					this.browser.name = "IE";
+					this.browser.version = RegExp["$1"];
+				}
+			} else if (/MSIE ([^;]+)/.test(ua)) { //匹配IE6、IE7
+				this.engine.name = "Trident";
+				this.engine.version = this.browser.version - 4.0; //模拟IE6、IE7中的Trident值
+				this.browser.name = "IE";
+				this.browser.version = RegExp["$1"];
+			}
+		},
+		judgeSystem: function() {
+			var ua = navigator.userAgent.toString();
+			var p = navigator.platform; //判断操作系统
+			this.system.name = p.indexOf("Win") == 0 ? "Windows" : this.system.name;
+			this.system.name = p.indexOf("Mac") == 0 ? "Mac" : this.system.name;
+			this.system.name = p.indexOf("Linux") > -1 ? "Linux" : p.indexOf("SunOS") > -1 ? "Solaris" : p.indexOf("FreeBSD") > -1 ? "FreeBSD" : p
+				.indexOf("X11") > -1 ? "X11" : this.system.name;
+			if (this.system.name == "Windows") {
+				if (/Win(?:dows )?([^do]{2})\s?(\d+\.\d+)?/.test(ua)) {
+					if (RegExp["$1"] == "NT") {
+						this.system.version = ({
+							"5.0": "2000",
+							"5.1": "XP",
+							"6.0": "Vista",
+							"6.1": "7",
+							"6.2": "8",
+							"6.3": "8.1",
+							"10.0": "10"
+						})[RegExp["$2"]] || "NT " + RegExp["$2"];
+					} else if (RegExp["$1"] == "9x") {
+						this.system.version = "ME";
+					} else {
+						this.system.version = RegExp["$1"];
+					}
+				}
+			}
+		}
+	};
+	window.Client = Client;
+}(window, document))
