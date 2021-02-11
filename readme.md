@@ -36,7 +36,7 @@ src
 - **av-min.js**: 由 LeanCloud 提供：https://cdn.jsdelivr.net/npm/leancloud-storage@4.5.3/dist/av-min.js
 - **lazy.html**: 加载动画源自 CodePen：https://codepen.io/tholman/pen/yenku
 - **showdown.min.js**: https://github.com/showdownjs/showdown
-- **browser.js**: https://github.com/natee/js-detect-browser-os/blob/master/src/browser.js
+- **browser.js**: https://github.com/ok-dok/judge-browser/blob/master/judge-browser.js
 - **md5.js**: https://github.com/blueimp/JavaScript-MD5
 
 ## ✨ 参与贡献

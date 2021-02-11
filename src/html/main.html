@@ -1,49 +1,48 @@
 <div id='artitalk_part1'>
-<div id="main" class="site-main" role="main">
-    <div id="shuoshuo_content">
-    <div id="ccontent"></div>
-    <center>
-        <button id="readmore" class="at_button" onclick="shuoshuo_readmore()" style="margin-bottom: 15px;display: none">" + text1 + "</button></center>
-    </div>
-    <div id="shuoshuo_input" class="shuoshuo_active" style="display: none;">
-    <div id="shuoshuo_edit">
-        <textarea class="shuoshuo_text" oninput="preview()" id="neirong" placeholder="" + placeholder1 + ""style="background-image: url(" + bgimg + ");z-index: 0"></textarea>
-        <span id="drag_area" class="z-index: -1;"></span>
-    </div>
-    <div id="shuoshuo_parttwo" class="shuoshuo_parttwo">
-        <div id="shuoshuo_emoji_Tieba" class="shuoshuo_emoji hide"></div>
-        <div id="shuoshuo_emoji_BiliBili" class="shuoshuo_emoji hide"></div>
-        <div id="shuoshuo_emoji_QQ" class="shuoshuo_emoji hide"></div>
-        <div id="shuoshuo_emoji_custom" class="shuoshuo_emoji hide"></div>
-        <div id="shuoshuo_emojiswitch" class="shuoshuo_emojiswitch hide">
-        <div id="switch_1" class="shuoshuo_emoji_part zuiliangdezai" onclick="shuoshuo_emoji_Tieba()">Tieba</div>
-        <div id="switch_2" class="shuoshuo_emoji_part" onclick="shuoshuo_emoji_BiliBili()">BiliBili</div>
-        <div id="switch_3" class="shuoshuo_emoji_part" onclick="shuoshuo_emoji_QQ()">QQ</div>
-        <div id="switch_4" class="shuoshuo_emoji_part" onclick="shuoshuo_emoji_Custom()">Custom</div></div>
-        <div id="preview" class="preview_now"></div>
-    </div>
-    <div class="shuoshuo_submit">
-        <div class="shuoshuo_row">
-        <input class="artitalk_child shuoshuo_inputs" id="touxiang" value="" placeholder="" + text18 + "">
-        <div class="artitalk_child">
-            <button class="at_button" onclick="savecontent()" style="float: right;">" + text3 + "</button>
-            <button class="at_button" onclick="preview_ohuo();" style="float: right;">" + text2 + "</button>
-            <button class="at_button" onclick="upload_in()" style="float: right;">" + text29 + "</button>
-            <button class="at_button" onclick="shuoshuo_emoji_lovefancybox()" style="float: right;">" + text22 + "</button></div>
-        </div>
-    </div>
-    </div>
+  <div id="shuoshuo_content">
+  <div id="ccontent"></div>
+  <center>
+      <button id="readmore" class="at_button" onclick="shuoshuo_readmore()" style="margin-bottom: 15px;display: none">" + text1 + "</button></center>
+  </div>
+  <div id="shuoshuo_input" class="shuoshuo_active" style="display: none;">
+  <div id="shuoshuo_edit">
+      <textarea class="shuoshuo_text" oninput="preview()" id="neirong" placeholder="" + placeholder1 + ""style="background-image: url(" + bgimg + ");z-index: 0"></textarea>
+      <span id="drag_area" class="z-index: -1;"></span>
+  </div>
+  <div id="shuoshuo_parttwo" class="shuoshuo_parttwo">
+      <div id="shuoshuo_emoji_Tieba" class="shuoshuo_emoji hide"></div>
+      <div id="shuoshuo_emoji_BiliBili" class="shuoshuo_emoji hide"></div>
+      <div id="shuoshuo_emoji_QQ" class="shuoshuo_emoji hide"></div>
+      <div id="shuoshuo_emoji_custom" class="shuoshuo_emoji hide"></div>
+      <div id="shuoshuo_emojiswitch" class="shuoshuo_emojiswitch hide">
+      <div id="switch_1" class="shuoshuo_emoji_part zuiliangdezai" onclick="shuoshuo_emoji_Tieba()">Tieba</div>
+      <div id="switch_2" class="shuoshuo_emoji_part" onclick="shuoshuo_emoji_BiliBili()">BiliBili</div>
+      <div id="switch_3" class="shuoshuo_emoji_part" onclick="shuoshuo_emoji_QQ()">QQ</div>
+      <div id="switch_4" class="shuoshuo_emoji_part" onclick="shuoshuo_emoji_Custom()">Custom</div></div>
+      <div id="preview" class="preview_now"></div>
+  </div>
+  <div class="shuoshuo_submit">
+      <div class="shuoshuo_row">
+      <input class="artitalk_child shuoshuo_inputs" id="touxiang" value="" placeholder="" + text18 + "">
+      <div class="artitalk_child">
+          <button class="at_button" onclick="savecontent()" style="float: right;">" + text3 + "</button>
+          <button class="at_button" onclick="preview_ohuo();" style="float: right;">" + text2 + "</button>
+          <button class="at_button" onclick="upload_in()" style="float: right;">" + text29 + "</button>
+          <button class="at_button" onclick="shuoshuo_emoji_lovefancybox()" style="float: right;">" + text22 + "</button></div>
+      </div>
+  </div>
+  </div>
 </div>
 <div class="power">
 <div style="font-size: 25px;display: inline; cursor: pointer" onclick="artitalk(); "title="" + text11 + "">
 <svg t="1591347684072" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9731" width="30" height="30" style="display: inline">
-    <path d="M512 0C229.23 0 0 229.23 0 512s229.23 512 512 512 512-229.23 512-512S794.77 0 512 0z m0 953.62C268.49 953.62 70.38 755.51 70.38 512S268.49 70.38 512 70.38 953.62 268.49 953.62 512 755.51 953.62 512 953.62z" p-id="9732" fill="#707070"></path>
-    <path d="M771.1 726.4H514.8c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23h256.3c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM771.1 654.55H587.92c-15.56 0-28.23 12.66-28.23 28.23S572.35 711 587.92 711H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.22-28.23-28.22zM771.1 582.69H654.22c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM809.25 361.96c0-14.79-5.74-28.68-16.17-39.1L657.66 187.45c-10.43-10.43-24.32-16.17-39.1-16.17s-28.67 5.74-39.1 16.17L207.23 559.67c-5.06 5.06-7.88 12.06-7.72 19.21l3.61 172.49a26.32 26.32 0 0 0 25.8 25.83l172.6 3.81c0.22 0.01 0.44 0.01 0.67 0.01 6.95 0 13.76-2.82 18.66-7.73l372.22-372.22c10.43-10.43 16.18-24.32 16.18-39.11z m-53.5 1.79L391.5 727.99l-136.14-3-2.85-135.96 364.25-364.26c0.99-0.98 2.59-0.98 3.58-0.01l135.4 135.41c0.99 0.99 0.99 2.59 0.01 3.58z" p-id="9733" fill="#707070"></path>
+  <path d="M512 0C229.23 0 0 229.23 0 512s229.23 512 512 512 512-229.23 512-512S794.77 0 512 0z m0 953.62C268.49 953.62 70.38 755.51 70.38 512S268.49 70.38 512 70.38 953.62 268.49 953.62 512 755.51 953.62 512 953.62z" p-id="9732" fill="#707070"></path>
+  <path d="M771.1 726.4H514.8c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23h256.3c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM771.1 654.55H587.92c-15.56 0-28.23 12.66-28.23 28.23S572.35 711 587.92 711H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.22-28.23-28.22zM771.1 582.69H654.22c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM809.25 361.96c0-14.79-5.74-28.68-16.17-39.1L657.66 187.45c-10.43-10.43-24.32-16.17-39.1-16.17s-28.67 5.74-39.1 16.17L207.23 559.67c-5.06 5.06-7.88 12.06-7.72 19.21l3.61 172.49a26.32 26.32 0 0 0 25.8 25.83l172.6 3.81c0.22 0.01 0.44 0.01 0.67 0.01 6.95 0 13.76-2.82 18.66-7.73l372.22-372.22c10.43-10.43 16.18-24.32 16.18-39.11z m-53.5 1.79L391.5 727.99l-136.14-3-2.85-135.96 364.25-364.26c0.99-0.98 2.59-0.98 3.58-0.01l135.4 135.41c0.99 0.99 0.99 2.59 0.01 3.58z" p-id="9733" fill="#707070"></path>
 </svg>
 </div>
 <div style="font-size: 25px;display: inline; cursor: pointer" onclick="swtichuser()" title="" + text9 + "">
 <svg t="1591347848063" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12288" width="30" height="30" style="display: inline">
-    <path d="M515.541449 7.082899c-280.359429 0-508.458551 228.120391-508.458551 508.458551s228.120391 508.458551 508.458551 508.458551 508.458551-228.120391 508.458551-508.458551S795.900879 7.082899 515.541449 7.082899zM515.541449 981.864196c-257.132626 0-466.301477-209.190121-466.301477-466.322747 0-257.132626 209.168851-466.322747 466.301477-466.322747s466.301477 209.190121 466.301477 466.322747S772.674075 981.864196 515.541449 981.864196zM614.574414 524.177056 614.574414 524.177056c47.751075-31.96876 79.230625-86.398604 79.230625-148.187857 0-98.437405-79.804915-178.24232-178.24232-178.24232-98.437405 0-178.24232 79.804915-178.24232 178.24232 0 61.810523 31.479551 116.219097 79.251895 148.187857-100.266622 39.519598-171.244501 137.170014-171.244501 251.453545 0 0.23397 0 0.446669 0.02127 0.659369 0 0.04254-0.02127 0.10635-0.02127 0.14889 0 15.612155 12.65563 28.246516 28.267786 28.246516 15.590885 0 21.886796-12.63436 21.886796-28.246516 0-0.340319-0.08508-0.659369-0.10635-1.020958 0.10635-118.005774 102.159649-219.995264 220.207964-219.995264 118.112124 0 220.207964 102.095839 220.207964 220.207964 0 0.14889-1.467628 29.054774 21.971875 29.054774 15.505806 0 28.076356-12.57055 28.076356-28.055086 0-0.06381-0.02127-0.12762-0.02127-0.2127 0-0.25524 0.02127-0.510479 0.02127-0.786989C785.797645 661.34707 714.798496 563.696654 614.574414 524.177056zM515.541449 510.734437c-74.402343 0-134.723968-60.321625-134.723968-134.723968 0-74.423613 60.321625-134.723968 134.723968-134.723968 74.423613 0 134.723968 60.321625 134.723968 134.723968S589.943792 510.734437 515.541449 510.734437z" p-id="12289" fill="#707070"></path>
+  <path d="M515.541449 7.082899c-280.359429 0-508.458551 228.120391-508.458551 508.458551s228.120391 508.458551 508.458551 508.458551 508.458551-228.120391 508.458551-508.458551S795.900879 7.082899 515.541449 7.082899zM515.541449 981.864196c-257.132626 0-466.301477-209.190121-466.301477-466.322747 0-257.132626 209.168851-466.322747 466.301477-466.322747s466.301477 209.190121 466.301477 466.322747S772.674075 981.864196 515.541449 981.864196zM614.574414 524.177056 614.574414 524.177056c47.751075-31.96876 79.230625-86.398604 79.230625-148.187857 0-98.437405-79.804915-178.24232-178.24232-178.24232-98.437405 0-178.24232 79.804915-178.24232 178.24232 0 61.810523 31.479551 116.219097 79.251895 148.187857-100.266622 39.519598-171.244501 137.170014-171.244501 251.453545 0 0.23397 0 0.446669 0.02127 0.659369 0 0.04254-0.02127 0.10635-0.02127 0.14889 0 15.612155 12.65563 28.246516 28.267786 28.246516 15.590885 0 21.886796-12.63436 21.886796-28.246516 0-0.340319-0.08508-0.659369-0.10635-1.020958 0.10635-118.005774 102.159649-219.995264 220.207964-219.995264 118.112124 0 220.207964 102.095839 220.207964 220.207964 0 0.14889-1.467628 29.054774 21.971875 29.054774 15.505806 0 28.076356-12.57055 28.076356-28.055086 0-0.06381-0.02127-0.12762-0.02127-0.2127 0-0.25524 0.02127-0.510479 0.02127-0.786989C785.797645 661.34707 714.798496 563.696654 614.574414 524.177056zM515.541449 510.734437c-74.402343 0-134.723968-60.321625-134.723968-134.723968 0-74.423613 60.321625-134.723968 134.723968-134.723968 74.423613 0 134.723968 60.321625 134.723968 134.723968S589.943792 510.734437 515.541449 510.734437z" p-id="12289" fill="#707070"></path>
 </svg>
 </div>
 <br>Powered By
@@ -55,49 +54,49 @@
 <input type="file" id="myvideo" onchange="videoChange(this)" style="display: none" accept="video/*">
 <div id="shade" class="c1 hide"></div>
 <div id="shuoshuo-modal" class="c2 hide">
-  <center>
-    <p>" + text7 + "：
-      <input type="text" class="shuoshuo_input_log" id="username"/></p>
-    <p>" + text8 + "：
-      <input type="password" class="shuoshuo_input_log" id="pwd"/></p>
-    <p>
-      <input type="button" value="" + text9 + "" class="at_button" onclick="Login();">&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="button" value="" + text10 + "" class="at_button" onclick="Hide();"></p></center>
-  <center>
-    <div id="logw"></div>
-  </center>
+<center>
+  <p>" + text7 + "：
+    <input type="text" class="shuoshuo_input_log" id="username"/></p>
+  <p>" + text8 + "：
+    <input type="password" class="shuoshuo_input_log" id="pwd"/></p>
+  <p>
+    <input type="button" value="" + text9 + "" class="at_button" onclick="Login();">&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" value="" + text10 + "" class="at_button" onclick="Hide();"></p></center>
+<center>
+  <div id="logw"></div>
+</center>
 </div>
 <div id="userinfo" class="c2 hide">
-  <center>
-    <p>
-      <div id="status"></div>
-    </p>
-    <p>
-      <input type="button" class="at_button" value="" + text5 + "" onclick="hideuser();">&nbsp;&nbsp;&nbsp;&nbsp;
-      <input id="tui" type="button" value="" + text6 + "" class="at_button" style="display: none;" onclick="Louout();"></p></center>
+<center>
+  <p>
+    <div id="status"></div>
+  </p>
+  <p>
+    <input type="button" class="at_button" value="" + text5 + "" onclick="hideuser();">&nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="tui" type="button" value="" + text6 + "" class="at_button" style="display: none;" onclick="Louout();"></p></center>
 </div>
 <div id="shanchu" class="c2 hide">
-  <center>
-    <p>" + text20 + "</p>
-    <p>
-      <input type="button" class="at_button" value="" + text5 + "" onclick="hide3();"></p>
-    <center></div>
+<center>
+  <p>" + text20 + "</p>
+  <p>
+    <input type="button" class="at_button" value="" + text5 + "" onclick="hide3();"></p>
+  <center></div>
 <div id="shanchur" class="c2 hide">
-  <center>
-    <p>" + text19 + "</p>
-    <p>
-      <div id="delete1"></div>
-    </p>
-    <center></div>
+<center>
+  <p>" + text19 + "</p>
+  <p>
+    <div id="delete1"></div>
+  </p>
+  <center></div>
 <div id="upload_parttwo" class="c2 hide">
-  <center>
-    <p>
-    </p>
-    <div id="status">" + text29 + "</div>
-    <p>
-      <input type="button" class="at_button" value="" + text26 + "" onclick="myimg.click();">
-      <input type="button" class="at_button" value="" + text27 + "" onclick="myaudio.click();">
-      <input type="button" class="at_button" value="" + text28 + "" onclick="myvideo.click();">
-      <input type="button" class="at_button" value="" + text10 + "" onclick="upload_out();"></p>
-  </center>
+<center>
+  <p>
+  </p>
+  <div id="status">" + text29 + "</div>
+  <p>
+    <input type="button" class="at_button" value="" + text26 + "" onclick="myimg.click();">
+    <input type="button" class="at_button" value="" + text27 + "" onclick="myaudio.click();">
+    <input type="button" class="at_button" value="" + text28 + "" onclick="myvideo.click();">
+    <input type="button" class="at_button" value="" + text10 + "" onclick="upload_out();"></p>
+</center>
 </div>
