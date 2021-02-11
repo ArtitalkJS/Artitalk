@@ -1038,8 +1038,11 @@ atEvery.prototype.beginUpload=function(file){
         }
     });
     xhr.open("POST", "https://7bu.top/api/upload");
-    xhr.setRequestHeader("Authorization", "Basic VGVzdDoxMjM0NTY=");
-    xhr.setRequestHeader("token","79013f458a4420de64ade90c72347429");
+    let imgToken = AV.User.current().attributes.imgToken;
+    if(imgToken !== undefined){
+        xhr.setRequestHeader("Authorization", "Basic VGVzdDoxMjM0NTY=");
+        xhr.setRequestHeader("token",imgToken);
+    }
     xhr.send(data);
 }
 
