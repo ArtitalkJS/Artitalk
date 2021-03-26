@@ -1,4 +1,4 @@
-//此脚本由MHuiG - MiniValine写成，ChenYFan将其做少量修改制成，此脚本仅实用于Artitalk
+//此脚本由MHuiG - MiniValine写成，ChenYFan将其做少量修改制成，此脚本仅适用于Artitalk
 
 AppId = APPID
 AppKey = APPKEY
