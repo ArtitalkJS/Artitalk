@@ -1,6 +1,6 @@
 ## Artitalk-Cfworker
 
-通过 `Cloudflare` 提供的KV作为存储，`worker` 作为后端实现 `Artitalk`
+通过 `Cloudflare` 提供的 `KV` 以及 `worker` 服务实现 `Artitalk`
 
 ### 日志
 
