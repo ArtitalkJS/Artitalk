@@ -1,6 +1,6 @@
 ## Artitalk-Cfworker
 
-通过 `Cloudflare` 提供的KV作为存储，worker作为后端实现Artitalk
+通过 `Cloudflare` 提供的KV作为存储，`worker` 作为后端实现 `Artitalk`
 
 ### 日志
 
@@ -15,7 +15,7 @@
 
 ### 使用说明
 
-1. 在cloudflare中新建worker并将worker.js中的代码复制粘贴进去，填写Artitalk用户信息（用户名，密码，可选的头像和图床token）,支持多用户。
+1. 在 `cloudflare` 中新建 `worker` 并将 `worker.js` 中的代码复制粘贴进去，填写 `Artitalk` 用户信息（用户名，密码，可选的头像和图床`token`）,支持多用户。至少需要用户名和密码，头像和token如果不需要配置请不要添加此项，即禁止`"img" : ""` 或`"imgToken" : ""`.
 
 填写示例
 ```
@@ -27,13 +27,12 @@ const Users = {
     },
     "testt":{
         "password" : "12345",
-        "img" : ""
     }
 }
 ```
 
-2. 新建KV空间，并在worker的设置中绑定KV命名空间。变量名称填写'Artitalk'。
-3. 在Html页面中添加如下代码
+2. 新建 `KV` 空间，并在 `worker` 的设置中绑定 `KV命名空间` 。变量名称填写 `Artitalk` 。
+3. 在 `Html` 页面中添加如下代码
 ```
 <html>
     <script src='browser.js'></script>
@@ -42,7 +41,6 @@ const Users = {
     <script src='main.js'></script>
     <div id="artitalk_main"></div>
     <script>
-    const workerDomain = "https://test.miaodrew.workers.dev";
     new Artitalk({
         wokerDomain : "";  /*此项为必填项，value为cf worker分到的域名，若无自定义，默认格式为xxx.xxx.workers.dev*/
         /*支持主版本的配置项*/
