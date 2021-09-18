@@ -115,11 +115,19 @@ t.exports=function(t){return null!=t&&(n(t)||r(t)||!!t._isBuffer)}},function(t,e
 		},
 		judgeSystem: function() {
 			var ua = navigator.userAgent.toString();
-			var p = navigator.platform; //判断操作系统
-			this.system.name = p.indexOf("Win") == 0 ? "Windows" : this.system.name;
-			this.system.name = p.indexOf("Mac") == 0 ? "Mac" : this.system.name;
-			this.system.name = p.indexOf("Linux") > -1 ? "Linux" : p.indexOf("SunOS") > -1 ? "Solaris" : p.indexOf("FreeBSD") > -1 ? "FreeBSD" : p
-				.indexOf("X11") > -1 ? "X11" : this.system.name;
+			var p = navigator.appVersion; //判断操作系统
+			this.system.name = p.indexOf("Win") != -1 ? "Windows" : this.system.name;
+			this.system.name = p.indexOf("Mac") != -1 ? "Mac" : this.system.name;
+			this.system.name = p.indexOf("like Mac") != -1 ? "like Mac" : this.system.name;
+			// Android系统的判断需要在linux后面，因为Android的navigator.appVersion属性里包含Linux
+			this.system.name = p.indexOf("Linux") != -1 ? (p.indexOf("Android") != -1 ? "Android" : "Linux")
+			                : p.indexOf("SunOS") != -1 ? "Solaris" 
+							: p.indexOf("FreeBSD") != -1 ? "FreeBSD" 
+							: p.indexOf("X11") != -1 ? "X11" 
+							: this.system.name;
+			// 华为手机里面有linux和Android，所以放在后面，但不是所有华为手机都是HarmonyOS。。。。。所以这个要不要呢？
+			// this.system.name = p.indexOf("HUAWEI") != -1 ? "HarmonyOS" : this.system.name;
+
 			if (this.system.name == "Windows") {
 				if (/Win(?:dows )?([^do]{2})\s?(\d+\.\d+)?/.test(ua)) {
 					if (RegExp["$1"] == "NT") {
