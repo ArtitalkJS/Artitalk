@@ -1,8 +1,8 @@
 'use strict'
-const atVersion = "3.2.2";
-if(typeof(appID) !== 'undefined'){
+const atVersion = "3.3";
+if (typeof (appID) !== 'undefined') {
     let update = confirm("　　3.x版本更新需要修改一下配置，深感抱歉，但是为了更好的体验不得不这样。\n　　如果不想更换，可以继续使用2.4.2版本，这也是比较成熟的版本了，但是以后不会再维护。更换详情请点击确定前往文档查看");
-    if(update == true){
+    if (update == true) {
         location.href = 'https://artitalk.js.org/release.html'
     }
 }
@@ -216,81 +216,81 @@ const atEmojiBB = {
 var atEmojiQ = "";
 var atEmojiT = "";
 var atEmojiB = "";
-for(let key in atEmojiQQ){
-    atEmojiQ = atEmojiQ +  "<img alt='[" + key + "]' title='" + key + "' onclick='insertEmoji(\"[" + key + "]\")' class='atemoji gallery-group-img' src='" + atEmojiQQ[key] + "'/>";
+for (let key in atEmojiQQ) {
+    atEmojiQ = atEmojiQ + "<img alt='[" + key + "]' title='" + key + "' onclick='insertEmoji(\"[" + key + "]\")' class='atemoji gallery-group-img' src='" + atEmojiQQ[key] + "'/>";
 }
-for(let key in atEmojiTB){
-    atEmojiT = atEmojiT +  "<img alt='[" + key + "]' title='" + key + "' onclick='insertEmoji(\"[" + key + "]\")' class='atemoji gallery-group-img' src='" + atEmojiTB[key] + "'/>";
+for (let key in atEmojiTB) {
+    atEmojiT = atEmojiT + "<img alt='[" + key + "]' title='" + key + "' onclick='insertEmoji(\"[" + key + "]\")' class='atemoji gallery-group-img' src='" + atEmojiTB[key] + "'/>";
 }
-for(let key in atEmojiBB){
-    atEmojiB = atEmojiB +  "<img alt='[" + key + "]' title='" + key + "' onclick='insertEmoji(\"[" + key + "]\")' class='atemoji gallery-group-img' src='" + atEmojiBB[key] + "'/>";
+for (let key in atEmojiBB) {
+    atEmojiB = atEmojiB + "<img alt='[" + key + "]' title='" + key + "' onclick='insertEmoji(\"[" + key + "]\")' class='atemoji gallery-group-img' src='" + atEmojiBB[key] + "'/>";
 }
-function Logout(){
+function Logout() {
     AV.User.logOut();
     location.reload();
 }
-function insertEmoji(str){
+function insertEmoji(str) {
     let now = document.getElementById('neirong');
     let nowlength = now.value.length;
     now.focus();
-    if(typeof(document.selection) !== "undefined"){
+    if (typeof (document.selection) !== "undefined") {
         document.selection.createRange().text = str;
-    }else{
-        now.value = now.value.substr(0,now.selectionStart) + str + now.value.substring(now.selectionStart,nowlength);
+    } else {
+        now.value = now.value.substr(0, now.selectionStart) + str + now.value.substring(now.selectionStart, nowlength);
     }
     preview();
 }
-function preview(){
+function preview() {
     let clickPre = document.getElementById('clickForPreview');
     clickPre.click();
 }
-function Artitalk(options){
+function Artitalk(options) {
     return new atEvery(options);
 }
-function atEvery(option){
-    let root=this;
+function atEvery(option) {
+    let root = this;
     root.init(option);
     return root;
 }
-atEvery.prototype.init=function(option){
-    let root=this;
-    root['config']=option;
+atEvery.prototype.init = function (option) {
+    let root = this;
+    root['config'] = option;
     console.log(window.AV);
-    if(!window.AV){
+    if (!window.AV) {
         let avMin = document.createElement("script");
-        avMin.setAttribute("type","text/javascript");
-        avMin.src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.10.0/dist/av-min.js";
+        avMin.setAttribute("type", "text/javascript");
+        avMin.src = "https://unpkg.com/leancloud-storage@4.10.0/dist/av-min.js";
         document.body.appendChild(avMin);
-        if ( window.ActiveXObject || "ActiveXObject" in window){ //判断是否是ie
-            if(avMin.readyState){ //判断是否支持readyState
-                avMin.onreadystatechange = function() {
-                    if(this.readyState == "loaded" || this.readyState == "complete"){
+        if (window.ActiveXObject || "ActiveXObject" in window) { //判断是否是ie
+            if (avMin.readyState) { //判断是否支持readyState
+                avMin.onreadystatechange = function () {
+                    if (this.readyState == "loaded" || this.readyState == "complete") {
                         // console.log("ie10及以下加载完成");   
                         !!option && root._init();
                         return root;
                     }
                 }
-            }else{
-                avMin.onload = function() {
+            } else {
+                avMin.onload = function () {
                     // console.log("ie11及Edge加载完成");   
                     !!option && root._init();
                     return root;
                 }
             }
-        }else{    //不是ie
-            avMin.onload = function() {
+        } else {    //不是ie
+            avMin.onload = function () {
                 // console.log('非ie浏览器加载完成');   
                 !!option && root._init();
                 return root;
             }
         }
-    }else{
+    } else {
         !!option && root._init();
         return root;
     }
 }
-atEvery.prototype._init=function(){
-    let root=this;
+atEvery.prototype._init = function () {
+    let root = this;
     let {
         appId,
         appKey,
@@ -307,9 +307,9 @@ atEvery.prototype._init=function(){
         color2,
         color3,
     } = root.config;
-    lang = typeof(lang) === "undefined" || lang === ''?'zh':lang;
-    bgImg = typeof(bgImg) === "undefined" || bgImg === ''?'https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp':bgImg;
-    switch(lang){
+    lang = typeof (lang) === "undefined" || lang === '' ? 'zh' : lang;
+    bgImg = typeof (bgImg) === "undefined" || bgImg === '' ? 'https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp' : bgImg;
+    switch (lang) {
         case 'zh':
             var text0 = "由";
             var text00 = "发表";
@@ -463,87 +463,87 @@ atEvery.prototype._init=function(){
             var text45 = "No se pudo encontrar el usuario.";
             var text46 = "Ha introducido contraseñas incorrectas demasiadas veces. Inténtelo más tarde o restablezca su contraseña.";
             break;
-    } 
+    }
     let atEmojiDefault = "";
-    for(let key in atEmoji){
+    for (let key in atEmoji) {
         atEmojiDefault = atEmojiDefault + "<img alt='[" + key + "]' title='" + key + "' onclick='insertEmoji(\"[" + key + "]\")' class='atemoji gallery-group-img' src='" + atEmoji[key] + "'/>";
     }
-    shuoPla = typeof(shuoPla)==="undefined" ? '':shuoPla;
-    avatarPla = typeof(avatarPla)==="undefined" ? '':avatarPla;
-    color1 = typeof(color1)==="undefined" || color1 === '' ? "RGBA(255, 125, 73, 0.75)":color1;
-    color2 = typeof(color2)==="undefined" || color2 === '' ? "#9BCD9B":color2;
-    color3 = typeof(color3)==="undefined" || color3 === '' ? "white":color3;
-    pageSize = typeof(pageSize)==="undefined" ? '5':pageSize;
-    let apiUrl="";
-    try{
-        if(serverURL !== ''){
+    shuoPla = typeof (shuoPla) === "undefined" ? '' : shuoPla;
+    avatarPla = typeof (avatarPla) === "undefined" ? '' : avatarPla;
+    color1 = typeof (color1) === "undefined" || color1 === '' ? "RGBA(255, 125, 73, 0.75)" : color1;
+    color2 = typeof (color2) === "undefined" || color2 === '' ? "#9BCD9B" : color2;
+    color3 = typeof (color3) === "undefined" || color3 === '' ? "white" : color3;
+    pageSize = typeof (pageSize) === "undefined" ? '5' : pageSize;
+    let apiUrl = "";
+    try {
+        if (serverURL !== '') {
             AV.init({
                 appId: appId,
                 appKey: appKey,
                 serverURL: serverURL,
             });
-        }else{
+        } else {
             AV.init({
                 appId: appId,
                 appKey: appKey,
             });
         }
     }
-    catch(error){
-        let err=error.toString();
+    catch (error) {
+        let err = error.toString();
         console.error(err);
-        if(err.indexOf('appId is not defined')!=-1){
+        if (err.indexOf('appId is not defined') != -1) {
             console.log("appId没找到");
-        }else if(err.indexOf('appKey is not defined')!=-1){
+        } else if (err.indexOf('appKey is not defined') != -1) {
             console.log("appKey没找到");
         }
     }
     //emoji translate
-    function translate(beforTran){
-        if(typeof beforTran === 'undefined')   return ;
-        for(let key in atEmojiQQ){
-            let keyAt = '['+key+']';
+    function translate(beforTran) {
+        if (typeof beforTran === 'undefined') return;
+        for (let key in atEmojiQQ) {
+            let keyAt = '[' + key + ']';
             let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmojiQQ[key] + "'/>";
-            while(beforTran.indexOf(keyAt)!=-1){
-                beforTran = beforTran.replace(keyAt,emojiAt);
+            while (beforTran.indexOf(keyAt) != -1) {
+                beforTran = beforTran.replace(keyAt, emojiAt);
             }
         }
-        for(let key in atEmojiTB){
-            let keyAt = '['+key+']';
+        for (let key in atEmojiTB) {
+            let keyAt = '[' + key + ']';
             let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmojiTB[key] + "'/>";
-            while(beforTran.indexOf(keyAt)!=-1){
-                beforTran = beforTran.replace(keyAt,emojiAt);
+            while (beforTran.indexOf(keyAt) != -1) {
+                beforTran = beforTran.replace(keyAt, emojiAt);
             }
         }
-        for(let key in atEmojiBB){
-            let keyAt = '['+key+']';
+        for (let key in atEmojiBB) {
+            let keyAt = '[' + key + ']';
             let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmojiBB[key] + "'/>";
-            while(beforTran.indexOf(keyAt)!=-1){
-                beforTran = beforTran.replace(keyAt,emojiAt);
+            while (beforTran.indexOf(keyAt) != -1) {
+                beforTran = beforTran.replace(keyAt, emojiAt);
             }
         }
         // console.log(atEmoji);
-        for(let key in atEmoji){
-            let keyAt = '['+key+']';
+        for (let key in atEmoji) {
+            let keyAt = '[' + key + ']';
             let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmoji[key] + "'/>";
-            while(beforTran.indexOf(keyAt)!=-1){
-                beforTran = beforTran.replace(keyAt,emojiAt);
+            while (beforTran.indexOf(keyAt) != -1) {
+                beforTran = beforTran.replace(keyAt, emojiAt);
             }
         }
         return beforTran;
     }
     //In & Out
-    function fadeIn(id){
-        if(!document.getElementById(id)) return ;
+    function fadeIn(id) {
+        if (!document.getElementById(id)) return;
         let nowEle = document.getElementById(id);
         nowEle.style.display = '';
-    }   
-    function fadeOut(id){
-        if(!document.getElementById(id)) return ;
+    }
+    function fadeOut(id) {
+        if (!document.getElementById(id)) return;
         let nowEle = document.getElementById(id);
         nowEle.style.display = 'none';
-    }        
-    function Show(){
+    }
+    function Show() {
         fadeIn('shade');
         fadeIn('shuoshuo-modal');
     }
@@ -553,35 +553,35 @@ atEvery.prototype._init=function(){
     }
     //Insert css
     let atCss = "";
-    if(!document.getElementById('add-Artitalk_Style')){
-        if(cssUrl === "" || typeof(cssUrl) === "undefined"){
+    if (!document.getElementById('add-Artitalk_Style')) {
+        if (cssUrl === "" || typeof (cssUrl) === "undefined") {
             atCss = "div#artitalk_main {    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);  }  #artitalk_main .shuoshuo_row {  width: 100%;  margin-top: 10px;  display: flex;  }  #artitalk_main .artitalk_child {  width: 100%;  }  #artitalk_main #shuoshuo_content {  padding: 10px;  /* min-height: 500px; */  }  #artitalk_main body.theme-dark .cbp_tmtimeline::before {  background: RGBA(255, 255, 255, 0.06);  }  #artitalk_main ul.cbp_tmtimeline {  padding: 0;  }  #artitalk_main .cbp_tmtimeline {  margin: 30px 0 0 0;  padding: 0;  list-style: none;  display: inline;  position: relative;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime {  display: block;  /* width: 29%; */  /* padding-right: 110px; */  max-width: 70px;  position: absolute;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime span {  display: block;  text-align: right;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime span:first-child {  font-size: 0.9em;  color: #bdd0db;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime span:last-child {  font-size: 1.2em;  color: #9bcd9b;  }  #artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmtime span:last-child {  color: RGBA(255, 125, 73, 0.75);  }  #artitalk_main div.cbp_tmlabel>p {  margin-bottom: 0;  }  #artitalk_main div class.cdp_tmlabel>li .cbp_tmlabel {  margin-bottom: 0;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmlabel {  margin: 0 0 45px 65px;  z-index: 1;  background: " + color2 + ";  color: " + color3 + " ;  padding: 0.8em 1.2em 0.4em 1.2em;  /* font-size: 1.2em; */  font-weight: 300;  line-height: 1.4;  position: relative;  border-radius: 5px;  transition: all 0.3s ease 0s;  box-shadow: 0 1px 2px rgba(0,0,0,0.15); display: block;  }  #artitalk_main .cbp_tmlabel:hover {  /* transform: scale(1.05); */  transform: translateY(-3px);  z-index: 1;  box-shadow: 0 15px 32px rgba(0,0,0,0.15) ;  }  #artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {    background: " + color1 + ";  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmlabel:after {  right: 100%;  border: solid transparent;  z-index: -1;  content: \" \";  height: 0;  width: 0;  position: absolute;  pointer-events: none;  border-right-color: " + color2 + ";  border-width: 10px;  top: 4px;  }  #artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {    border-right-color: " + color1 + ";  }  #artitalk_main p.shuoshuo_time {  margin-top: 10px;  border-top: 1px dashed #fff;  padding-top: 5px;  font-size: 12px;  }  @media screen and (max-width: 65.375em) {  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime span:last-child {    font-size: 1.2em;  }  }  #artitalk_main .shuoshuo_author_img img {  border: 1px solid #ddd;  padding: 2px;  float: left;  border-radius: 64px;  transition: all 1s;  }  #artitalk_main .artitalk_avatar {  border-radius: 100% ;  -moz-border-radius: 100% ;  box-shadow: inset 0 -1px 0 3333sf;  -webkit-box-shadow: inset 0 -1px 0 3333sf;  -webkit-transition: 0.4s;  -webkit-transition: -webkit-transform 0.4s ease-out;  transition: transform 0.4s ease-out;  -moz-transition: -moz-transform 0.4s ease-out;  }  #artitalk_main .artitalk_avatar:hover {  -webkit-transform: rotateZ(360deg);  -moz-transform: rotateZ(360deg);  -o-transform: rotateZ(360deg);  -ms-transform: rotateZ(360deg);  transform: rotateZ(360deg);  }  #artitalk_main .shuoshuo_text {  width: 100%;  height: 130px;  padding: 8px 16px;  background-repeat: no-repeat;  background-position: right;  transition: all 0.35s ease-in-out 0s;  outline-style: none;  border: 1px solid #ccc;  border-radius: 6px;  resize: none;  background-color: transparent;  color: #999;  }  #artitalk_main .shuoshuo_inputs {  outline-style: none;  border: 1px solid #ccc;  padding: 8px 16px;  width: 40%;  font-size: 12px;  background-color: transparent;  color: #999;  }  #operare_artitalk .at_button,  #artitalk_main .at_button {    background-color: " + color1 + ";  /* Green */  border: none;  margin-left: 5px;  color: " + color3 + ";  padding: 8px 16px;  text-align: center;  text-decoration: none;  height: auto;  line-height: 20px;  display: inline-block;  font-size: 12px;  border-radius: 12px;  /* circle */  outline: none;  cursor: pointer;  }  #operare_artitalk .at_button:hover,  #artitalk_main .at_button:hover {      background-color: " + color2 + ";  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.24), 0 8px 16px 0 rgba(0,0,0,0.19);  }  #artitalk_main #article-container ul p {  margin: 0 0 1rem;  }  #artitalk_main .power {  text-align: right;  color: #999;  margin-top: 10px;  font-size: 0.75em;  padding: 0.5em 0;  }  #artitalk_main .power a {  font-size: 0.75em;  position: relative;  cursor: pointer;  color: #1abc9c;  text-decoration: none;  display: inline-block;  }  #artitalk_main .shuoshuo_row .col.col-80 {  width: 80%;  float: left;  }  #artitalk_main .shuoshuo_row .col.col-20 {  width: 20%;  float: right;  text-align: right;  }  #artitalk_main #preview {  width: 100%;  float: left;  margin: 0.5rem 0 0;  padding: 7px;  box-shadow: 0 0 1px #f0f0f0;  }  #artitalk_main #lazy {  background: #fff;  bottom: 0;  left: 0;  position: fixed;  right: 0;  top: 0;  z-index: 9999;  }  #artitalk_main .preloader {  position: absolute;  margin-left: -55px;  margin-top: -100px;  height: 110px;  width: 110px;  left: 50%;  top: 50%;  }  #artitalk_main .preloader>svg>g>path {  stroke: #9ea1a4;  stroke-width: 0.25;  }  #artitalk_main .preloader>svg>path {  stroke: #9ea1a4;  stroke-width: 0.25;  }  #artitalk_main #cloud {  position: relative;  z-index: 2;  }  #artitalk_main #cloud path {  fill: #efefef;  }  #artitalk_main #sun {  margin-left: -10px;  margin-top: 6px;  opacity: 0;  width: 60px;  height: 60px;  position: absolute;  left: 45px;  top: 15px;  z-index: 1;  animation-name: rotate;  animation-duration: 16000ms;  animation-iteration-count: infinite;  animation-timing-function: linear;  }  #artitalk_main #sun path {  stroke-width: 0.18;  fill: #9ea1a4;  }  #artitalk_main .rain {  position: absolute;  width: 70px;  height: 70px;  margin-top: -32px;  margin-left: 19px;  }  #artitalk_main .drop {  opacity: 1;  background: #9ea1a4;  display: block;  float: left;  width: 3px;  height: 10px;  margin-left: 4px;  border-radius: 0px 0px 6px 6px;  animation-name: drop;  animation-duration: 350ms;  animation-iteration-count: infinite;  }  #artitalk_main .drop:nth-child(1) {  animation-delay: -130ms;  }  #artitalk_main .drop:nth-child(2) {  animation-delay: -240ms;  }  #artitalk_main .drop:nth-child(3) {  animation-delay: -390ms;  }  #artitalk_main .drop:nth-child(4) {  animation-delay: -525ms;  }  #artitalk_main .drop:nth-child(5) {  animation-delay: -640ms;  }  #artitalk_main .drop:nth-child(6) {  animation-delay: -790ms;  }  #artitalk_main .drop:nth-child(7) {  animation-delay: -900ms;  }  #artitalk_main .drop:nth-child(8) {  animation-delay: -1050ms;  }  #artitalk_main .drop:nth-child(9) {  animation-delay: -1130ms;  }  #artitalk_main .drop:nth-child(10) {  animation-delay: -1300ms;  }  #artitalk_main .artitalk_loading_text {  font-family: Helvetica, \" Helvetica Neue \", sans-serif;  letter-spacing: 1px;  text-align: center;  margin-left: -43px;  font-weight: bold;  margin-top: 20px;  font-size: 11px;  color: #a0a0a0;  width: 200px;  }  #artitalk_main .shuoshuoimg {  cursor: pointer;  transition: all 1s;  z-index: 2;  }  #artitalk_main .shuoshuoimg:hover {  transform: scale(3.5);  }  #artitalk_main .hide,  #operare_artitalk .hide {  display: none;  }  #operare_artitalk .c1 {  position: fixed;  top: 0;  bottom: 0;  left: 0;right: 0;  background: rgba(0,0,0,0.5);  z-index: 2;  }  #operare_artitalk .c2 {  background-color: #fff;  position: fixed;  width: 400px;  height: auto;  top: 50%;  left: 50%;  z-index: 3; margin-top: -150px;  margin-left: -200px;  box-shadow: 0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07);  opacity: 0.85;  border: 0;  border-radius: 10px;  }  #operare_artitalk .shuoshuo_input_log {  outline-style: none;  margin-top: 10px;  border: 1px solid #ccc;  border-radius: 6px;  padding: 8px 16px;  font-size: 12px;  background-color: transparent;  color: #999;  }  #artitalk_main .delete_right {  cursor: pointer;  width: 12px;  height: 12px;  position: absolute;  right: 12px;  }  #artitalk_main svg {  display: inline;  }  #artitalk_main .cbp_tmlabel>p,  #artitalk_main h1,  #artitalk_main h2,  #artitalk_main h3,  #artitalk_main h4,  #artitalk_main h5,  #artitalk_main h6,  #artitalk_main em {  word-wrap: break-word;  word-break: break-all;  }  #artitalk_main .shuoshuo_emoji {  border: 1px solid #ccc;  border-radius: 6px 6px 0 0;  height: 120px;  overflow: auto;  margin-top: 10px;  border-bottom: none;  }  #artitalk_main .atemoji {  max-height: 28px;  width: 28px;  display: inline;  vertical-align: middle;  }  #artitalk_main .shuoshuo_emoji>.atemoji {  cursor: pointer;  margin: 0 0 0 10px;  display: inline;  }  #artitalk_main i>.atemoji {  cursor: pointer;  margin: 0 0 0 10px;  }  #artitalk_main .shuoshuo_emoji>a {  display: inline;  }  #artitalk_main #preview>p>.atemoji {  display: inline;  }  #artitalk_main .shuoshuo_emoji>.atemoji:hover {  transform: scale(1.5);  }  #artitalk_main div#shuoshuo_emojiswitch {  height: 40px;  width: auto;  border-radius: 0 0 6px 6px;  border-collapse: collapse;  border: 1px solid #ccc;  border-top: none;  }  #artitalk_main .shuoshuo_emoji_part {  width: 25%;  cursor: pointer;  align-content: center;  text-align: center;  line-height: 40px;  }  #artitalk_main .shuoshuo_emoji_part:hover {  background-color: #ccc;  color: #fff;  }  #artitalk_main .zuiliangdezai {  background-color: #ccc;  color: #fff;  }  #artitalk_main .pingjun {  display: flex;  }  #artitalk_main #article-container img {  margin: 0 0 0 0;  }  #artitalk_main .preview_now {  display: none;  }  #artitalk_main div#loading_txt {  font-size: 20px;  }  #artitalk_main audio {  display: block;  width: 100%;  outline: none;  opacity: 0.8;  }  #artitalk_main video {  z-index: 0;  }p.shuoshuo_time>span>a:hover {color: red;}p.shuoshuo_time>span>a {color: black;text-decoration: none;}  #artitalk_main textarea#neirong:focus {  background-position-y: 150px;  transition: all 0.35s ease-in-out 0s;  }  #artitalk_main img.atemoji {  max-height: 28px;  width: 28px;  display: inline;  vertical-align: middle;  }  #artitalk_main span.cbp_tmlabel>p {  overflow: unset;  }  #artitalk_main ul#maina>li {  list-style: none;  }  #artitalk_main div#artitalk_main {  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);  }  #artitalk_main .c2>center>p {  margin-top: 10px;  margin-bottom: 10px;  }  @-moz-keyframes rotate {  0% {    transform: rotateZ(0deg);  }  100% {    transform: rotateZ(360deg);  }  }  @-webkit-keyframes rotate {  0% {    transform: rotateZ(0deg);  }  100% {    transform: rotateZ(360deg);  }  }  @-o-keyframes rotate {  0% {    transform: rotateZ(0deg);  }  100% {    transform: rotateZ(360deg);  }  }  @keyframes rotate {  0% {    transform: rotateZ(0deg);  }  100% {    transform: rotateZ(360deg);  }  }  @-moz-keyframes drop {  50% {    height: 45px;    opacity: 0;  }  51% {    opacity: 0;  }  100% {    height: 1px;    opacity: 0;  }  }  @-webkit-keyframes drop {  50% {    height: 45px;    opacity: 0;  }  51% {    opacity: 0;  }  100% {    height: 1px;    opacity: 0;  }  }  @-o-keyframes drop {  50% {    height: 45px;    opacity: 0;  }  51% {    opacity: 0;  }  100% {    height: 1px;    opacity: 0;  }  }  @keyframes drop {  50% {    height: 45px;    opacity: 0;  }  51% {    opacity: 0;  }  100% {    height: 1px;    opacity: 0;  }  }";
             let atStyle = document.createElement("style");
-            atStyle.type = "text/css";  
+            atStyle.type = "text/css";
             atStyle.innerHTML = atCss;
             atStyle.id = "add-Artitalk-Style";
             document.head.appendChild(atStyle);
-        }else{
+        } else {
             let atStyle = document.createElement('link');
             atStyle.rel = 'stylesheet';
             atStyle.href = cssUrl;
             atStyle.id = "add-Artitalk-Style";
             document.head.appendChild(atStyle);
         }
-    } 
+    }
     //Insert html part
-    var atHtml = "<div id='artitalk_part1'><div id=\"shuoshuo_content\"><div id=\"ccontent\"></div><div id='readButton' style=''><center><button id=\"readmore\" class=\"at_button\" style=\"margin-bottom: 15px;display: none\">" + text1 + "</button></center></div></div><div id=\"shuoshuo_input\" class=\"shuoshuo_active\" style=\"display: none;\"><div id=\"shuoshuo_edit\"><textarea class=\"shuoshuo_text\" oninput=\"preview()\" id=\"neirong\" placeholder=\"" + shuoPla + "\"style=\"background-image: url(" + bgImg + ");z-index: 0\"></textarea><span id=\"drag_area\" class=\"z-index: -1;\"></span></div><div id=\"shuoshuo_parttwo\" class=\"shuoshuo_parttwo\"><div id=\"shuoshuo_emoji_Tieba\" class=\"shuoshuo_emoji\" style='display: none'></div><div id=\"shuoshuo_emoji_BiliBili\" class=\"shuoshuo_emoji\" style='display: none'></div><div id=\"shuoshuo_emoji_QQ\" class=\"shuoshuo_emoji\" style='display: none'></div><div id=\"shuoshuo_emoji_custom\" class=\"shuoshuo_emoji\" style='display: none'></div><div id=\"shuoshuo_emojiswitch\" class=\"shuoshuo_emojiswitch\" style='display: none'><div id=\"switch_1\" class=\"shuoshuo_emoji_part zuiliangdezai\">Tieba</div><div id=\"switch_2\" class=\"shuoshuo_emoji_part\">BiliBili</div><div id=\"switch_3\" class=\"shuoshuo_emoji_part\">QQ</div><div id=\"switch_4\" class=\"shuoshuo_emoji_part\">Custom</div></div><div id=\"preview\" class=\"preview_now\"></div></div><div class=\"shuoshuo_submit\"><div class=\"shuoshuo_row\"><input class=\"artitalk_child shuoshuo_inputs\" style='display: none' id=\"email\" value=\"\"  placeholder=\" "   + text18 + "\"><input class=\"artitalk_child shuoshuo_inputs\" style=\"display: none\" id=\"commentNick\" value=\"\" placeholder=\"" + text18 + "\"><div class=\"artitalk_child\"><button class=\"at_button\" id='atSave' style=\"float: right;\">" + text3 + "</button><button class=\"at_button\" id='commentSave' style=\"display:none;float: right;\">" + text3 + "</button><button class=\"at_button\" id='atPreview' style=\"float: right;\">" + text2 + "</button><button class=\"at_button\" id='loadEmoji' style=\"float: right;\">" + text22 + "</button></div></div></div></div></div><div class=\"power\"><div style=\"font-size: 25px;display: none; cursor: pointer\" id=\"pubComment\"><svg t=\"1591347684072\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"9731\" width=\"30\" height=\"30\" style=\"\"><path d=\"M512 0C229.23 0 0 229.23 0 512s229.23 512 512 512 512-229.23 512-512S794.77 0 512 0z m0 953.62C268.49 953.62 70.38 755.51 70.38 512S268.49 70.38 512 70.38 953.62 268.49 953.62 512 755.51 953.62 512 953.62z\" p-id=\"9732\" fill=\"#707070\"></path><path d=\"M771.1 726.4H514.8c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23h256.3c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM771.1 654.55H587.92c-15.56 0-28.23 12.66-28.23 28.23S572.35 711 587.92 711H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.22-28.23-28.22zM771.1 582.69H654.22c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM809.25 361.96c0-14.79-5.74-28.68-16.17-39.1L657.66 187.45c-10.43-10.43-24.32-16.17-39.1-16.17s-28.67 5.74-39.1 16.17L207.23 559.67c-5.06 5.06-7.88 12.06-7.72 19.21l3.61 172.49a26.32 26.32 0 0 0 25.8 25.83l172.6 3.81c0.22 0.01 0.44 0.01 0.67 0.01 6.95 0 13.76-2.82 18.66-7.73l372.22-372.22c10.43-10.43 16.18-24.32 16.18-39.11z m-53.5 1.79L391.5 727.99l-136.14-3-2.85-135.96 364.25-364.26c0.99-0.98 2.59-0.98 3.58-0.01l135.4 135.41c0.99 0.99 0.99 2.59 0.01 3.58z\" p-id=\"9733\" fill=\"#707070\"></path></svg></div><div style=\"font-size: 25px;display: inline; cursor: pointer\" id=\"pubShuo\"title=\"" + text11 + "\"><svg t=\"1591347684072\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"9731\" width=\"30\" height=\"30\"  style=\"display: inline\"><path d=\"M512 0C229.23 0 0 229.23 0 512s229.23 512 512 512 512-229.23 512-512S794.77 0 512 0z m0 953.62C268.49 953.62 70.38 755.51 70.38 512S268.49 70.38 512 70.38 953.62 268.49 953.62 512 755.51 953.62 512 953.62z\" p-id=\"9732\" fill=\"#707070\"></path><path d=\"M771.1 726.4H514.8c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23h256.3c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM771.1 654.55H587.92c-15.56 0-28.23 12.66-28.23 28.23S572.35 711 587.92 711H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.22-28.23-28.22zM771.1 582.69H654.22c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM809.25 361.96c0-14.79-5.74-28.68-16.17-39.1L657.66 187.45c-10.43-10.43-24.32-16.17-39.1-16.17s-28.67 5.74-39.1 16.17L207.23 559.67c-5.06 5.06-7.88 12.06-7.72 19.21l3.61 172.49a26.32 26.32 0 0 0 25.8 25.83l172.6 3.81c0.22 0.01 0.44 0.01 0.67 0.01 6.95 0 13.76-2.82 18.66-7.73l372.22-372.22c10.43-10.43 16.18-24.32 16.18-39.11z m-53.5 1.79L391.5 727.99l-136.14-3-2.85-135.96 364.25-364.26c0.99-0.98 2.59-0.98 3.58-0.01l135.4 135.41c0.99 0.99 0.99 2.59 0.01 3.58z\" p-id=\"9733\" fill=\"#707070\"></path></svg></div><div style=\"font-size: 25px;display: inline; cursor: pointer\" id=\"switchUser\" title=\"" + text9 + "\"><svg t=\"1591347848063\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"12288\" width=\"30\" height=\"30\"  style=\"display: inline\"><path d=\"M515.541449 7.082899c-280.359429 0-508.458551 228.120391-508.458551 508.458551s228.120391 508.458551 508.458551 508.458551 508.458551-228.120391 508.458551-508.458551S795.900879 7.082899 515.541449 7.082899zM515.541449 981.864196c-257.132626 0-466.301477-209.190121-466.301477-466.322747 0-257.132626 209.168851-466.322747 466.301477-466.322747s466.301477 209.190121 466.301477 466.322747S772.674075 981.864196 515.541449 981.864196zM614.574414 524.177056 614.574414 524.177056c47.751075-31.96876 79.230625-86.398604 79.230625-148.187857 0-98.437405-79.804915-178.24232-178.24232-178.24232-98.437405 0-178.24232 79.804915-178.24232 178.24232 0 61.810523 31.479551 116.219097 79.251895 148.187857-100.266622 39.519598-171.244501 137.170014-171.244501 251.453545 0 0.23397 0 0.446669 0.02127 0.659369 0 0.04254-0.02127 0.10635-0.02127 0.14889 0 15.612155 12.65563 28.246516 28.267786 28.246516 15.590885 0 21.886796-12.63436 21.886796-28.246516 0-0.340319-0.08508-0.659369-0.10635-1.020958 0.10635-118.005774 102.159649-219.995264 220.207964-219.995264 118.112124 0 220.207964 102.095839 220.207964 220.207964 0 0.14889-1.467628 29.054774 21.971875 29.054774 15.505806 0 28.076356-12.57055 28.076356-28.055086 0-0.06381-0.02127-0.12762-0.02127-0.2127 0-0.25524 0.02127-0.510479 0.02127-0.786989C785.797645 661.34707 714.798496 563.696654 614.574414 524.177056zM515.541449 510.734437c-74.402343 0-134.723968-60.321625-134.723968-134.723968 0-74.423613 60.321625-134.723968 134.723968-134.723968 74.423613 0 134.723968 60.321625 134.723968 134.723968S589.943792 510.734437 515.541449 510.734437z\" p-id=\"12289\" fill=\"#707070\"></path></svg></div><div style=\"font-size: 25px;display: inline; cursor: pointer\" id=\"uploadSource\" title=\"\" + text29 + \"\"><svg t=\"1606385459524\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"2943\" width=\"30\" height=\"30\" style=\"display: inline\"><path d=\"M275.815618 476.43815a20.004001 20.004001 0 0 1-14.139971-34.143972l251.284545-251.295976 249.387023 249.387023a20.004001 20.004001 0 0 1-28.291373 28.291373L512.960192 247.580948 289.955589 470.585551a19.946847 19.946847 0 0 1-14.139971 5.852599z\" p-id=\"2944\" fill=\"#707070\"></path><path d=\"M512.011431 854.730956a20.004001 20.004001 0 0 1-20.004001-20.004001V225.279344a20.004001 20.004001 0 1 1 40.008002 0v609.390456a20.004001 20.004001 0 0 1-20.004001 20.061156z\" p-id=\"2945\" fill=\"#707070\"></path><path d=\"M512.011431 1023.999097a510.467814 510.467814 0 1 1 199.297004-40.24805 508.810339 508.810339 0 0 1-199.297004 40.24805z m0-983.991095a470.459811 470.459811 0 1 0 183.659591 37.081703A469.030954 469.030954 0 0 0 512.011431 40.008002z\" p-id=\"2946\" fill=\"#707070\"></path></svg></div><br>Powered By <a href=\"https://artitalk.js.org\" target=\"_blank\">Artitalk</a><br>" + atVersion + "</div><input type='file' id='realUpload' onchange='atEvery.prototype.beginUpload(this.files[0])' style=\"width: 0;height: 0;display: none\"></input></div>";
+    var atHtml = "<div id='artitalk_part1'><div id=\"shuoshuo_content\"><div id=\"ccontent\"></div><div id='readButton' style=''><center><button id=\"readmore\" class=\"at_button\" style=\"margin-bottom: 15px;display: none\">" + text1 + "</button></center></div></div><div id=\"shuoshuo_input\" class=\"shuoshuo_active\" style=\"display: none;\"><div id=\"shuoshuo_edit\"><textarea class=\"shuoshuo_text\" oninput=\"preview()\" id=\"neirong\" placeholder=\"" + shuoPla + "\"style=\"background-image: url(" + bgImg + ");z-index: 0\"></textarea><span id=\"drag_area\" class=\"z-index: -1;\"></span></div><div id=\"shuoshuo_parttwo\" class=\"shuoshuo_parttwo\"><div id=\"shuoshuo_emoji_Tieba\" class=\"shuoshuo_emoji\" style='display: none'></div><div id=\"shuoshuo_emoji_BiliBili\" class=\"shuoshuo_emoji\" style='display: none'></div><div id=\"shuoshuo_emoji_QQ\" class=\"shuoshuo_emoji\" style='display: none'></div><div id=\"shuoshuo_emoji_custom\" class=\"shuoshuo_emoji\" style='display: none'></div><div id=\"shuoshuo_emojiswitch\" class=\"shuoshuo_emojiswitch\" style='display: none'><div id=\"switch_1\" class=\"shuoshuo_emoji_part zuiliangdezai\">Tieba</div><div id=\"switch_2\" class=\"shuoshuo_emoji_part\">BiliBili</div><div id=\"switch_3\" class=\"shuoshuo_emoji_part\">QQ</div><div id=\"switch_4\" class=\"shuoshuo_emoji_part\">Custom</div></div><div id=\"preview\" class=\"preview_now\"></div></div><div class=\"shuoshuo_submit\"><div class=\"shuoshuo_row\"><input class=\"artitalk_child shuoshuo_inputs\" style='display: none' id=\"email\" value=\"\"  placeholder=\" " + text18 + "\"><input class=\"artitalk_child shuoshuo_inputs\" style=\"display: none\" id=\"commentNick\" value=\"\" placeholder=\"" + text18 + "\"><div class=\"artitalk_child\"><button class=\"at_button\" id='atSave' style=\"float: right;\">" + text3 + "</button><button class=\"at_button\" id='commentSave' style=\"display:none;float: right;\">" + text3 + "</button><button class=\"at_button\" id='atPreview' style=\"float: right;\">" + text2 + "</button><button class=\"at_button\" id='loadEmoji' style=\"float: right;\">" + text22 + "</button></div></div></div></div></div><div class=\"power\"><div style=\"font-size: 25px;display: none; cursor: pointer\" id=\"pubComment\"><svg t=\"1591347684072\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"9731\" width=\"30\" height=\"30\" style=\"\"><path d=\"M512 0C229.23 0 0 229.23 0 512s229.23 512 512 512 512-229.23 512-512S794.77 0 512 0z m0 953.62C268.49 953.62 70.38 755.51 70.38 512S268.49 70.38 512 70.38 953.62 268.49 953.62 512 755.51 953.62 512 953.62z\" p-id=\"9732\" fill=\"#707070\"></path><path d=\"M771.1 726.4H514.8c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23h256.3c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM771.1 654.55H587.92c-15.56 0-28.23 12.66-28.23 28.23S572.35 711 587.92 711H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.22-28.23-28.22zM771.1 582.69H654.22c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM809.25 361.96c0-14.79-5.74-28.68-16.17-39.1L657.66 187.45c-10.43-10.43-24.32-16.17-39.1-16.17s-28.67 5.74-39.1 16.17L207.23 559.67c-5.06 5.06-7.88 12.06-7.72 19.21l3.61 172.49a26.32 26.32 0 0 0 25.8 25.83l172.6 3.81c0.22 0.01 0.44 0.01 0.67 0.01 6.95 0 13.76-2.82 18.66-7.73l372.22-372.22c10.43-10.43 16.18-24.32 16.18-39.11z m-53.5 1.79L391.5 727.99l-136.14-3-2.85-135.96 364.25-364.26c0.99-0.98 2.59-0.98 3.58-0.01l135.4 135.41c0.99 0.99 0.99 2.59 0.01 3.58z\" p-id=\"9733\" fill=\"#707070\"></path></svg></div><div style=\"font-size: 25px;display: inline; cursor: pointer\" id=\"pubShuo\"title=\"" + text11 + "\"><svg t=\"1591347684072\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"9731\" width=\"30\" height=\"30\"  style=\"display: inline\"><path d=\"M512 0C229.23 0 0 229.23 0 512s229.23 512 512 512 512-229.23 512-512S794.77 0 512 0z m0 953.62C268.49 953.62 70.38 755.51 70.38 512S268.49 70.38 512 70.38 953.62 268.49 953.62 512 755.51 953.62 512 953.62z\" p-id=\"9732\" fill=\"#707070\"></path><path d=\"M771.1 726.4H514.8c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23h256.3c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM771.1 654.55H587.92c-15.56 0-28.23 12.66-28.23 28.23S572.35 711 587.92 711H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.22-28.23-28.22zM771.1 582.69H654.22c-15.57 0-28.23 12.66-28.23 28.23s12.66 28.23 28.23 28.23H771.1c15.57 0 28.23-12.66 28.23-28.23s-12.67-28.23-28.23-28.23zM809.25 361.96c0-14.79-5.74-28.68-16.17-39.1L657.66 187.45c-10.43-10.43-24.32-16.17-39.1-16.17s-28.67 5.74-39.1 16.17L207.23 559.67c-5.06 5.06-7.88 12.06-7.72 19.21l3.61 172.49a26.32 26.32 0 0 0 25.8 25.83l172.6 3.81c0.22 0.01 0.44 0.01 0.67 0.01 6.95 0 13.76-2.82 18.66-7.73l372.22-372.22c10.43-10.43 16.18-24.32 16.18-39.11z m-53.5 1.79L391.5 727.99l-136.14-3-2.85-135.96 364.25-364.26c0.99-0.98 2.59-0.98 3.58-0.01l135.4 135.41c0.99 0.99 0.99 2.59 0.01 3.58z\" p-id=\"9733\" fill=\"#707070\"></path></svg></div><div style=\"font-size: 25px;display: inline; cursor: pointer\" id=\"switchUser\" title=\"" + text9 + "\"><svg t=\"1591347848063\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"12288\" width=\"30\" height=\"30\"  style=\"display: inline\"><path d=\"M515.541449 7.082899c-280.359429 0-508.458551 228.120391-508.458551 508.458551s228.120391 508.458551 508.458551 508.458551 508.458551-228.120391 508.458551-508.458551S795.900879 7.082899 515.541449 7.082899zM515.541449 981.864196c-257.132626 0-466.301477-209.190121-466.301477-466.322747 0-257.132626 209.168851-466.322747 466.301477-466.322747s466.301477 209.190121 466.301477 466.322747S772.674075 981.864196 515.541449 981.864196zM614.574414 524.177056 614.574414 524.177056c47.751075-31.96876 79.230625-86.398604 79.230625-148.187857 0-98.437405-79.804915-178.24232-178.24232-178.24232-98.437405 0-178.24232 79.804915-178.24232 178.24232 0 61.810523 31.479551 116.219097 79.251895 148.187857-100.266622 39.519598-171.244501 137.170014-171.244501 251.453545 0 0.23397 0 0.446669 0.02127 0.659369 0 0.04254-0.02127 0.10635-0.02127 0.14889 0 15.612155 12.65563 28.246516 28.267786 28.246516 15.590885 0 21.886796-12.63436 21.886796-28.246516 0-0.340319-0.08508-0.659369-0.10635-1.020958 0.10635-118.005774 102.159649-219.995264 220.207964-219.995264 118.112124 0 220.207964 102.095839 220.207964 220.207964 0 0.14889-1.467628 29.054774 21.971875 29.054774 15.505806 0 28.076356-12.57055 28.076356-28.055086 0-0.06381-0.02127-0.12762-0.02127-0.2127 0-0.25524 0.02127-0.510479 0.02127-0.786989C785.797645 661.34707 714.798496 563.696654 614.574414 524.177056zM515.541449 510.734437c-74.402343 0-134.723968-60.321625-134.723968-134.723968 0-74.423613 60.321625-134.723968 134.723968-134.723968 74.423613 0 134.723968 60.321625 134.723968 134.723968S589.943792 510.734437 515.541449 510.734437z\" p-id=\"12289\" fill=\"#707070\"></path></svg></div><div style=\"font-size: 25px;display: inline; cursor: pointer\" id=\"uploadSource\" title=\"\" + text29 + \"\"><svg t=\"1606385459524\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"2943\" width=\"30\" height=\"30\" style=\"display: inline\"><path d=\"M275.815618 476.43815a20.004001 20.004001 0 0 1-14.139971-34.143972l251.284545-251.295976 249.387023 249.387023a20.004001 20.004001 0 0 1-28.291373 28.291373L512.960192 247.580948 289.955589 470.585551a19.946847 19.946847 0 0 1-14.139971 5.852599z\" p-id=\"2944\" fill=\"#707070\"></path><path d=\"M512.011431 854.730956a20.004001 20.004001 0 0 1-20.004001-20.004001V225.279344a20.004001 20.004001 0 1 1 40.008002 0v609.390456a20.004001 20.004001 0 0 1-20.004001 20.061156z\" p-id=\"2945\" fill=\"#707070\"></path><path d=\"M512.011431 1023.999097a510.467814 510.467814 0 1 1 199.297004-40.24805 508.810339 508.810339 0 0 1-199.297004 40.24805z m0-983.991095a470.459811 470.459811 0 1 0 183.659591 37.081703A469.030954 469.030954 0 0 0 512.011431 40.008002z\" p-id=\"2946\" fill=\"#707070\"></path></svg></div><br>Powered By <a href=\"https://artitalk.js.org\" target=\"_blank\">Artitalk</a><br>" + atVersion + "</div><input type='file' id='realUpload' onchange='atEvery.prototype.beginUpload(this.files[0])' style=\"width: 0;height: 0;display: none\"></input></div>";
     var motionHtml = "<div id='lazy'><div class=\"preloader\" style=\"opacity: 1; \"><svg version=\"1.1\" id=\"sun\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\"y=\"0px\" width=\"10px\" height=\"10px\" viewBox=\"0 0 10 10\" enable-background=\"new 0 0 10 10\" xml:space=\"preserve\"style=\"opacity: 1; margin-left: 0px; margin-top: 0px;\"><g><path fill=\"none\"d=\"M6.942,3.876c-0.4-0.692-1.146-1.123-1.946-1.123c-0.392,0-0.779,0.104-1.121,0.301c-1.072,0.619-1.44,1.994-0.821,3.067C3.454,6.815,4.2,7.245,5,7.245c0.392,0,0.779-0.104,1.121-0.301C6.64,6.644,7.013,6.159,7.167,5.581C7.321,5,7.243,4.396,6.942,3.876z M6.88,5.505C6.745,6.007,6.423,6.427,5.973,6.688C5.676,6.858,5.34,6.948,5,6.948c-0.695,0-1.343-0.373-1.69-0.975C2.774,5.043,3.093,3.849,4.024,3.312C4.32,3.14,4.656,3.05,4.996,3.05c0.695,0,1.342,0.374,1.69,0.975C6.946,4.476,7.015,5,6.88,5.505z\"></path><path fill=\"none\"d=\"M8.759,2.828C8.718,2.757,8.626,2.732,8.556,2.774L7.345,3.473c-0.07,0.041-0.094,0.132-0.053,0.202C7.319,3.723,7.368,3.75,7.419,3.75c0.025,0,0.053-0.007,0.074-0.02l1.211-0.699C8.774,2.989,8.8,2.899,8.759,2.828z\"></path><path fill=\"none\"d=\"M1.238,7.171c0.027,0.047,0.077,0.074,0.128,0.074c0.025,0,0.051-0.008,0.074-0.02l1.211-0.699c0.071-0.041,0.095-0.133,0.054-0.203S2.574,6.228,2.503,6.269l-1.21,0.699C1.221,7.009,1.197,7.101,1.238,7.171z\"></path><path fill=\"none\"d=\"M6.396,2.726c0.052,0,0.102-0.026,0.13-0.075l0.349-0.605C6.915,1.976,6.89,1.885,6.819,1.844c-0.07-0.042-0.162-0.017-0.202,0.054L6.269,2.503C6.228,2.574,6.251,2.666,6.322,2.706C6.346,2.719,6.371,2.726,6.396,2.726z\"></path><path fill=\"none\"d=\"M3.472,7.347L3.123,7.952c-0.041,0.07-0.017,0.162,0.054,0.203C3.2,8.169,3.226,8.175,3.25,8.175c0.052,0,0.102-0.027,0.129-0.074l0.349-0.605c0.041-0.07,0.017-0.16-0.054-0.203C3.603,7.251,3.513,7.276,3.472,7.347z\"></path><path fill=\"none\"d=\"M3.601,2.726c0.025,0,0.051-0.007,0.074-0.02C3.746,2.666,3.77,2.574,3.729,2.503l-0.35-0.604C3.338,1.828,3.248,1.804,3.177,1.844C3.106,1.886,3.082,1.976,3.123,2.047l0.35,0.604C3.5,2.7,3.549,2.726,3.601,2.726z\"></path><path fill=\"none\"d=\"M6.321,7.292c-0.07,0.043-0.094,0.133-0.054,0.203l0.351,0.605c0.026,0.047,0.076,0.074,0.127,0.074c0.025,0,0.051-0.006,0.074-0.02c0.072-0.041,0.096-0.133,0.055-0.203l-0.35-0.605C6.483,7.276,6.393,7.253,6.321,7.292z\"></path><path fill=\"none\"d=\"M2.202,5.146c0.082,0,0.149-0.065,0.149-0.147S2.284,4.851,2.202,4.851H1.503c-0.082,0-0.148,0.066-0.148,0.148s0.066,0.147,0.148,0.147H2.202z\"></path><path fill=\"none\"d=\"M8.493,4.851H7.794c-0.082,0-0.148,0.066-0.148,0.148s0.066,0.147,0.148,0.147l0,0h0.699c0.082,0,0.148-0.065,0.148-0.147S8.575,4.851,8.493,4.851L8.493,4.851z\"></path><path fill=\"none\"d=\"M5.146,2.203V0.805c0-0.082-0.066-0.148-0.148-0.148c-0.082,0-0.148,0.066-0.148,0.148v1.398c0,0.082,0.066,0.149,0.148,0.149C5.08,2.352,5.146,2.285,5.146,2.203z\"></path><path fill=\"none\"d=\"M4.85,7.796v1.396c0,0.082,0.066,0.15,0.148,0.15c0.082,0,0.148-0.068,0.148-0.15V7.796c0-0.082-0.066-0.148-0.148-0.148C4.917,7.647,4.85,7.714,4.85,7.796z\"></path><path fill=\"none\"d=\"M2.651,3.473L1.44,2.774C1.369,2.732,1.279,2.757,1.238,2.828C1.197,2.899,1.221,2.989,1.292,3.031l1.21,0.699c0.023,0.013,0.049,0.02,0.074,0.02c0.051,0,0.101-0.026,0.129-0.075C2.747,3.604,2.722,3.514,2.651,3.473z\"></path><path fill=\"none\"d=\"M8.704,6.968L7.493,6.269c-0.07-0.041-0.162-0.016-0.201,0.055c-0.041,0.07-0.018,0.162,0.053,0.203l1.211,0.699c0.023,0.012,0.049,0.02,0.074,0.02c0.051,0,0.102-0.027,0.129-0.074C8.8,7.101,8.776,7.009,8.704,6.968z\"</path></g></svg><svg version=\"1.1\" id=\"cloud\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"x=\"0px\" y=\"0px\" width=\"110px\" height=\"110px\" viewBox=\"0 0 10 10\" enable-background=\"new 0 0 10 10\"xml:space=\"preserve\"><path fill=\"none\"d=\"M8.528,5.624H8.247c-0.085,0-0.156-0.068-0.156-0.154c0-0.694-0.563-1.257-1.257-1.257c-0.098,0-0.197,0.013-0.3,0.038C6.493,4.259,6.45,4.252,6.415,4.229C6.38,4.208,6.356,4.172,6.348,4.131C6.117,3.032,5.135,2.235,4.01,2.235c-1.252,0-2.297,0.979-2.379,2.23c-0.004,0.056-0.039,0.108-0.093,0.13C1.076,4.793,0.776,5.249,0.776,5.752c0,0.693,0.564,1.257,1.257,1.257h6.495c0.383,0,0.695-0.31,0.695-0.692S8.911,5.624,8.528,5.624z\"></path></svg><div class=\"rain\"><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span><span class=\"drop\"></span></div><div class=\"artitalk_loading_text\" id=\"loading_txt\">" + loadingTxT + "</div></div></div>";
     var atOpHtml = "<div id=\"shade\" class=\"c1\" style='display: none'></div><div id=\"shuoshuo-modal\" class=\"c2\" style='display: none' ><center><p>" + text7 + "：<input type=\"text\" class=\"shuoshuo_input_log\" id=\"username\"/></p><p>" + text8 + "：<input type=\"password\" class=\"shuoshuo_input_log\"  id=\"pwd\"/></p><p><input type=\"button\" value=\"" + text9 + "\" class=\"at_button\" id='login'>&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"button\" value=\"" + text10 + "\"  class=\"at_button\" id = 'celLogin'></p></center><center><div id=\"logw\" style='color: red'></div></center></div><div id=\"userinfo\" class=\"c2\" style='display: none'><center><p><div id=\"status\"></div></p><p><input type=\"button\" class=\"at_button\" value=\"" + text5 + "\" id=\"hideuser\">&nbsp;&nbsp;&nbsp;&nbsp;<input id=\"tui\" type=\"button\" value=\"" + text6 + "\" class=\"at_button\" style=\"display: none;\" onclick=\"Logout();\"></p></center></div><div id=\"shanchu\" class=\"c2\" style='display: none'><center><p>" + text20 + "</p><p><input type=\"button\" class=\"at_button\" value=\"" + text5 + "\" id=\"deleteSus\"></p><center></div><div id=\"shanchur\" class=\"c2\" style='display: none'><center><p>" + text19 + "</p><p><div id=\"delete1\"></div></p><center></div><div id='clickForPreview'></div>";
     var atOp = document.createElement('div');
-    atOp.id='operare_artitalk';
+    atOp.id = 'operare_artitalk';
     document.body.append(atOp);
-    document.getElementById('operare_artitalk').innerHTML=atOpHtml;
-    motionHtml = motion === 0?"":motionHtml;
+    document.getElementById('operare_artitalk').innerHTML = atOpHtml;
+    motionHtml = motion === 0 ? "" : motionHtml;
     atHtml = motionHtml + atHtml;
     document.getElementById('artitalk_main').innerHTML = atHtml;
     // 开始加载说说
-    root.seeContent(0,root.config);
+    root.seeContent(0, root.config);
     let rmButton = document.getElementById('readmore');//readmore
     let pubButton = document.getElementById('pubShuo');//publish shuo
     let switchLogin = document.getElementById('switchUser');//login or exit
@@ -599,82 +599,82 @@ atEvery.prototype._init=function(){
     let deleteSus = document.getElementById('deleteSus');//Delete successful
     let uploadSource = document.getElementById('uploadSource');//Upload image or video
     let pNum = 0;
-    rmButton.onclick=function(){
+    rmButton.onclick = function () {
         pNum = pNum + 1;
-        root.seeContent(pNum,root.config);
+        root.seeContent(pNum, root.config);
     }
-    pubButton.onclick=function(){
+    pubButton.onclick = function () {
         let currentUser = AV.User.current();
-        if(currentUser){
-            if(document.getElementById('shuoshuo_input').style.display===""){
+        if (currentUser) {
+            if (document.getElementById('shuoshuo_input').style.display === "") {
                 fadeOut('shuoshuo_input');
-            }else{
+            } else {
                 fadeIn('shuoshuo_input');
             }
-        }else{
-            document.getElementById('logw').innerHTML= "<center><pre><code>" + text15 + "</code></pre></center>";
+        } else {
+            document.getElementById('logw').innerHTML = "<center><pre><code>" + text15 + "</code></pre></center>";
             Show();
         }
     }
-    switchLogin.onclick=function(){
+    switchLogin.onclick = function () {
         document.getElementById("logw").innerHTML = "";
         let currentUser = AV.User.current();
         fadeIn('shade');
-        if(currentUser){
+        if (currentUser) {
             fadeIn('userinfo');
             document.getElementById("status").innerHTML = text4 + ":\t" + currentUser.attributes.username;
             fadeIn('tui');
-        }else{
+        } else {
             fadeIn('tui');
             fadeIn('shuoshuo-modal');
             Show();
         }
     }
-    cancelLogin.onclick=function(){
+    cancelLogin.onclick = function () {
         Hide();
     }
-    login.onclick=function(){
+    login.onclick = function () {
         let passWord = document.getElementById('pwd').value;
-        document.getElementById('logw').style.color='black';
+        document.getElementById('logw').style.color = 'black';
         document.getElementById('logw').innerHTML = 'loading...';
-        if(passWord === ""){
-            document.getElementById('logw').style.color='red';
+        if (passWord === "") {
+            document.getElementById('logw').style.color = 'red';
             document.getElementById('logw').innerHTML = text37;
-            return ;
+            return;
         }
         let userName = document.getElementById('username').value;
-        if(userName === ""){
-            document.getElementById('logw').style.color='red';
+        if (userName === "") {
+            document.getElementById('logw').style.color = 'red';
             document.getElementById('logw').innerHTML = text36;
-            return ;
+            return;
         }
-        AV.User.logIn(userName,passWord).then((user) => {
-            document.getElementById("ccontent").innerHTML="";
-            document.getElementById("neirong").value="";
+        AV.User.logIn(userName, passWord).then((user) => {
+            document.getElementById("ccontent").innerHTML = "";
+            document.getElementById("neirong").value = "";
             fadeIn('lazy');
-            root.seeContent(0,root.config);
+            root.seeContent(0, root.config);
             Hide();
         }, (error) => {
             let errLogin = error.message;
-            document.getElementById('logw').style.color='red';
+            document.getElementById('logw').style.color = 'red';
             // console.log(errLogin);
-            if(errLogin.indexOf('mismatch')!=-1){
-                errLogin=text43;
-            }else if(errLogin.indexOf('terminated')!=-1){
-                errLogin=text44;
-            }else if(errLogin.indexOf('Could not find user.')!=-1){
-                errLogin=text45;
-            }else if(errLogin.indexOf('Please try later or reset your password.')!=-1){
-                errLogin=text46;
+            if (errLogin.indexOf('mismatch') != -1) {
+                errLogin = text43;
+            } else if (errLogin.indexOf('terminated') != -1) {
+                errLogin = text44;
+            } else if (errLogin.indexOf('Could not find user.') != -1) {
+                errLogin = text45;
+            } else if (errLogin.indexOf('Please try later or reset your password.') != -1) {
+                errLogin = text46;
             }
             document.getElementById('logw').innerHTML = errLogin;
         });
     }
-    hideUser.onclick=function() {
+    hideUser.onclick = function () {
         fadeOut('shade');
         fadeOut('userinfo');
     }
-    loadEmoji.onclick = function(){
+    loadEmoji.onclick = function () {
         document.getElementById('switch_1').classList.add('zuiliangdezai');
         document.getElementById('switch_2').classList.remove('zuiliangdezai');
         document.getElementById('switch_3').classList.remove('zuiliangdezai');
@@ -694,220 +694,220 @@ atEvery.prototype._init=function(){
             fadeOut('shuoshuo_emoji_QQ');
             fadeOut('shuoshuo_emojiswitch');
             document.getElementById('shuoshuo_emojiswitch').classList.remove('pingjun');
-        }            
+        }
     }
-    switchTb.onclick = function(){
+    switchTb.onclick = function () {
         switchTb.classList.add('zuiliangdezai');
-        switchQQ.classList.remove('zuiliangdezai');switchBB.classList.remove('zuiliangdezai');switchCustom.classList.remove('zuiliangdezai');
+        switchQQ.classList.remove('zuiliangdezai'); switchBB.classList.remove('zuiliangdezai'); switchCustom.classList.remove('zuiliangdezai');
         fadeIn('shuoshuo_emoji_Tieba');
-        fadeOut('shuoshuo_emoji_QQ');fadeOut('shuoshuo_emoji_BiliBili');fadeOut('shuoshuo_emoji_custom');
+        fadeOut('shuoshuo_emoji_QQ'); fadeOut('shuoshuo_emoji_BiliBili'); fadeOut('shuoshuo_emoji_custom');
     }
-    switchQQ.onclick = function(){
+    switchQQ.onclick = function () {
         switchQQ.classList.add('zuiliangdezai');
-        switchTb.classList.remove('zuiliangdezai');switchBB.classList.remove('zuiliangdezai');switchCustom.classList.remove('zuiliangdezai');
+        switchTb.classList.remove('zuiliangdezai'); switchBB.classList.remove('zuiliangdezai'); switchCustom.classList.remove('zuiliangdezai');
         fadeIn('shuoshuo_emoji_QQ');
-        fadeOut('shuoshuo_emoji_Tieba');fadeOut('shuoshuo_emoji_BiliBili');fadeOut('shuoshuo_emoji_custom');
+        fadeOut('shuoshuo_emoji_Tieba'); fadeOut('shuoshuo_emoji_BiliBili'); fadeOut('shuoshuo_emoji_custom');
     }
-    switchBB.onclick = function(){
+    switchBB.onclick = function () {
         switchBB.classList.add('zuiliangdezai');
-        switchQQ.classList.remove('zuiliangdezai');switchTb.classList.remove('zuiliangdezai');switchCustom.classList.remove('zuiliangdezai');
+        switchQQ.classList.remove('zuiliangdezai'); switchTb.classList.remove('zuiliangdezai'); switchCustom.classList.remove('zuiliangdezai');
         fadeIn('shuoshuo_emoji_BiliBili');
-        fadeOut('shuoshuo_emoji_QQ');fadeOut('shuoshuo_emoji_Tieba');fadeOut('shuoshuo_emoji_custom');
+        fadeOut('shuoshuo_emoji_QQ'); fadeOut('shuoshuo_emoji_Tieba'); fadeOut('shuoshuo_emoji_custom');
     }
-    switchCustom.onclick = function(){
+    switchCustom.onclick = function () {
         switchCustom.classList.add('zuiliangdezai');
-        switchQQ.classList.remove('zuiliangdezai');switchBB.classList.remove('zuiliangdezai');switchTb.classList.remove('zuiliangdezai');
+        switchQQ.classList.remove('zuiliangdezai'); switchBB.classList.remove('zuiliangdezai'); switchTb.classList.remove('zuiliangdezai');
         fadeIn('shuoshuo_emoji_custom');
-        fadeOut('shuoshuo_emoji_QQ');fadeOut('shuoshuo_emoji_BiliBili');fadeOut('shuoshuo_emoji_Tieba');
+        fadeOut('shuoshuo_emoji_QQ'); fadeOut('shuoshuo_emoji_BiliBili'); fadeOut('shuoshuo_emoji_Tieba');
     }
-    beginPreview.onclick = function(){
+    beginPreview.onclick = function () {
         let preCon = document.getElementById('preview');
-        if(preCon.className.indexOf('preview_now')!==-1){
+        if (preCon.className.indexOf('preview_now') !== -1) {
             preCon.classList.remove('preview_now');
-        }else{
+        } else {
             preCon.classList.add('preview_now');
         }
     }
-    saveContent.onclick = function save(){
+    saveContent.onclick = function save() {
         let currentUser = AV.User.current();
-        if(!currentUser){
+        if (!currentUser) {
             pubButton.click();
         }
         let shuoshuoContent = document.getElementById('neirong').value;
-        if(shuoshuoContent === '') throw '说说内容不能为空'
+        if (shuoshuoContent === '') throw '说说内容不能为空'
         let artitalkObject = AV.Object.extend('shuoshuo');
         let atObject = new artitalkObject();
         let shuoshuoContentMd = shuoshuoContent;
-        atObject.set('atContentMd',shuoshuoContentMd);
+        atObject.set('atContentMd', shuoshuoContentMd);
         shuoshuoContent = translate(shuoshuoContent);
         let converte = new showdown.Converter();
         converte.setOption('strikethrough', 1);
         let shuoshuoContentHtml = converte.makeHtml(shuoshuoContent);
-        let atAvatar = typeof(currentUser.attributes.img) === "undefined" ? "https://cdn.jsdelivr.net/gh/drew233/cdn/logol.png":currentUser.attributes.img;
+        let atAvatar = typeof (currentUser.attributes.img) === "undefined" ? "https://s1.ax1x.com/2022/05/22/OvT2X4.png" : currentUser.attributes.img;
         // alert(deFaultavatar);
         let userClient = new Client();
         // console.log("Engine ：" + client.engine.name + " " + client.engine.version);
         // console.log("Browser：" + client.browser.name + " " + client.browser.version);
         // console.log("System ：" + client.system.name + " " + client.system.version);
         let userOs = userClient.system.name;
-        atObject.set('atContentHtml',shuoshuoContentHtml);
-        atObject.set('userOs',userOs);
-        atObject.set('avatar',atAvatar);
+        atObject.set('atContentHtml', shuoshuoContentHtml);
+        atObject.set('userOs', userOs);
+        atObject.set('avatar', atAvatar);
         fadeIn('lazy');
         atObject.save().then(function (res) {
-            document.getElementById("ccontent").innerHTML="";
-            document.getElementById("neirong").value="";
+            document.getElementById("ccontent").innerHTML = "";
+            document.getElementById("neirong").value = "";
             fadeOut('preview');
-            root.seeContent(0,root.config);
+            root.seeContent(0, root.config);
             fadeOut('shuoshuo_input');
-        })            
+        })
     }
-    clickPre.onclick = function(){
+    clickPre.onclick = function () {
         let unPre = document.getElementById('neirong').value;
-        unPre = translate(unPre);    
+        unPre = translate(unPre);
         let converter = new showdown.Converter();
         converter.setOption('strikethrough', 1);
         let finishPre = converter.makeHtml(unPre);
-        document.getElementById('preview').innerHTML = finishPre;  
+        document.getElementById('preview').innerHTML = finishPre;
     }
-    deleteSus.onclick = function(){
-        fadeOut('shanchu');fadeOut('shade');fadeIn('lazy');
+    deleteSus.onclick = function () {
+        fadeOut('shanchu'); fadeOut('shade'); fadeIn('lazy');
         document.getElementById('ccontent').innerHTML = "";
-        root.seeContent(0,root.config);
+        root.seeContent(0, root.config);
     }
-    uploadSource.onclick = function(){
-        function Show(){
+    uploadSource.onclick = function () {
+        function Show() {
             fadeIn('shade');
             fadeIn('shuoshuo-modal');
         }
         let currentUser = AV.User.current();
-        if(currentUser){
+        if (currentUser) {
             // console.log(currentUser);
-        }else{
-            document.getElementById('logw').innerHTML= "<center><pre><code>" + text15 + "</code></pre></center>";
+        } else {
+            document.getElementById('logw').innerHTML = "<center><pre><code>" + text15 + "</code></pre></center>";
             Show();
-            return ;
+            return;
         }
         document.getElementById('realUpload').click();
     }
     // function beginUpload(file){
     //     console.log(file.files);
     // }
-    atEvery.prototype.delete = function(id){
-        function fadeOut(id){
-            if(!document.getElementById(id)) return ;
+    atEvery.prototype.delete = function (id) {
+        function fadeOut(id) {
+            if (!document.getElementById(id)) return;
             let nowEle = document.getElementById(id);
             nowEle.style.display = 'none';
-        }      
-        function fadeIn(id){
-            if(!document.getElementById(id)) return ;
+        }
+        function fadeIn(id) {
+            if (!document.getElementById(id)) return;
             let nowEle = document.getElementById(id);
             nowEle.style.display = '';
-        }   
+        }
         let currentUser = AV.User.current();
-        if(currentUser){
-            fadeIn('shade');fadeIn('shanchur');
+        if (currentUser) {
+            fadeIn('shade'); fadeIn('shanchur');
             document.getElementById('delete1').innerHTML = "<input type=\"button\" class=\"at_button\" value=\"" + text5 + "\" id=\"Delete\"><input type=\"button\" class=\"at_button\" value=\"" + text10 + "\" id=\"cancelDelete\">";
-        }else{
+        } else {
             let pubButton = document.getElementById('pubShuo');
             pubButton.click();
-            return ;
+            return;
         }
         let cancelDelete = document.getElementById('cancelDelete');
         let rlyDelete = document.getElementById('Delete');
-        cancelDelete.onclick=function(){
-            fadeOut('shade');fadeOut('shanchur');
+        cancelDelete.onclick = function () {
+            fadeOut('shade'); fadeOut('shanchur');
         }
-        rlyDelete.onclick=function(){
+        rlyDelete.onclick = function () {
             // console.log(id);
             cancelDelete.click();
             fadeIn('lazy');
-            const deletes = AV.Object.createWithoutData('shuoshuo',id);
-            deletes.destroy().then(function(success){
+            const deletes = AV.Object.createWithoutData('shuoshuo', id);
+            deletes.destroy().then(function (success) {
                 fadeIn('shade');
                 fadeIn('shanchu');
-            },function (error){
+            }, function (error) {
                 console.log(error.rawMessage);
             })
         }
     }
 }
 
-atEvery.prototype.beginUpload=function(file){
-    function Show(){
+atEvery.prototype.beginUpload = function (file) {
+    function Show() {
         fadeIn('shade');
         fadeIn('shuoshuo-modal');
     }
     let currentUser = AV.User.current();
-    if(currentUser){
+    if (currentUser) {
         // console.log(currentUser);
-    }else{
+    } else {
         // document.getElementById('logw').innerHTML= "<center><pre><code>" + text15 + "</code></pre></center>";
         Show();
-        return ;
+        return;
     }
     if (!/\.(jpg|gif|jpeg|ico|png|svg|mp4|mov)$/.test(file.name)) {
         alert('不支持的文件类型，支持的文件格式有jpg|gif|jpeg|ico|png|svg|mp4|mov');
-        return ;
+        return;
     }
     let fileType = "";
     let sourceSize = (file.size / 1024).toFixed(0);
-    let sourceSizeLimit = 1024*50;
-    if(sourceSize > sourceSizeLimit){
+    let sourceSizeLimit = 1024 * 50;
+    if (sourceSize > sourceSizeLimit) {
         alert('资源上传最大限制为50M');
-        return ;
+        return;
     }
-    if(/\.(jpg|gif|jpeg|ico|png|svg)$/.test(file.name)) {
+    if (/\.(jpg|gif|jpeg|ico|png|svg)$/.test(file.name)) {
         fileType = "image";
-    }else if(/\.(mp4|mov)$/.test(file.name)) {
+    } else if (/\.(mp4|mov)$/.test(file.name)) {
         fileType = "video";
     }
-    function fadeIn(id){
-        if(!document.getElementById(id)) return ;
+    function fadeIn(id) {
+        if (!document.getElementById(id)) return;
         let nowEle = document.getElementById(id);
         nowEle.style.display = '';
     }
-    function fadeOut(id){
-        if(!document.getElementById(id)) return ;
+    function fadeOut(id) {
+        if (!document.getElementById(id)) return;
         let nowEle = document.getElementById(id);
         nowEle.style.display = 'none';
-    } 
+    }
     fadeIn('lazy');
     let data = new FormData();
-    data.append("image",file);
+    data.append("image", file);
     let xhr = new XMLHttpRequest();
-    xhr.withCredentials=false;
-    xhr.addEventListener("readystatechange",function(){
-        if(this.readyState === 4 && this.status === 200){
+    xhr.withCredentials = false;
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4 && this.status === 200) {
             let sourceUrl = eval('(' + this.responseText + ')');
             // let Md = "![]("+imgUrl.data.url+")";
             let sourceMd = "";
             // insertEmoji(imgMd);
-            if(fileType === "video"){
+            if (fileType === "video") {
                 sourceMd = "<video controls width=\"100%\" height=\"auto\"><source src=\"" + sourceUrl.data.url + "\"></video>";
-            }else if(fileType === "image"){
-                sourceMd = "![]("+sourceUrl.data.url+")";
+            } else if (fileType === "image") {
+                sourceMd = "![](" + sourceUrl.data.url + ")";
             }
             insertEmoji(sourceMd);
             document.getElementById('pubShuo').click();
             fadeOut('lazy');
-        }else if(this.readyState === 4 && this.status === 500){
+        } else if (this.readyState === 4 && this.status === 500) {
             fadeOut('lazy');
         }
     });
     xhr.open("POST", "https://7bu.top/api/upload");
     let imgToken = AV.User.current().attributes.imgToken;
-    if(imgToken !== undefined){
+    if (imgToken !== undefined) {
         xhr.setRequestHeader("Authorization", "Basic VGVzdDoxMjM0NTY=");
-        xhr.setRequestHeader("token",imgToken);
+        xhr.setRequestHeader("token", imgToken);
     }
     xhr.send(data);
 }
 
 
-atEvery.prototype.seeContent=function(pageNum,option){
-    let root=this;
-    let mid="";
+atEvery.prototype.seeContent = function (pageNum, option) {
+    let root = this;
+    let mid = "";
 
     let {
         lang,
@@ -919,8 +919,8 @@ atEvery.prototype.seeContent=function(pageNum,option){
         color3,
         atComment,
     } = root.config;
-    lang = typeof(lang) === "undefined" || lang === ''?'zh':lang;
-    switch(lang){
+    lang = typeof (lang) === "undefined" || lang === '' ? 'zh' : lang;
+    switch (lang) {
         case 'zh':
             var text0 = "由";
             var text00 = "发表";
@@ -966,7 +966,7 @@ atEvery.prototype.seeContent=function(pageNum,option){
             var text39 = "保存";
             var text40 = "评论";
             var text41 = "邮箱";
-            var text42 = "昵称";        
+            var text42 = "昵称";
             var text43 = "用户名与密码不匹配";
             var text44 = "登陆失败，常见错误有<br><li style='text-align:left;'>网络错误</li><li style='text-align:left;'>域名不在leancloud的域名白名单中被限制登录</li><li style='text-align:left;'>当前页面使用了其他leancloud应用导致登录到了其他应用所以失败</li>";
             var text45 = "未找到此用户";
@@ -1074,36 +1074,36 @@ atEvery.prototype.seeContent=function(pageNum,option){
             var text45 = "No se pudo encontrar el usuario.";
             var text46 = "Ha introducido contraseñas incorrectas demasiadas veces. Inténtelo más tarde o restablezca su contraseña.";
             break;
-    } 
-    color1 = typeof(color1)==="undefined" || color1 === '' ? "RGBA(255, 125, 73, 0.75)":color1;
-    color2 = typeof(color2)==="undefined" || color2 === '' ? "#9BCD9B":color2;
-    color3 = typeof(color3)==="undefined" || color3 === '' ? "white":color3;
-    pageSize = typeof(pageSize)==="undefined" ? '5':pageSize;
-    function fadeIn(id){
-        if(!document.getElementById(id)) return ;
+    }
+    color1 = typeof (color1) === "undefined" || color1 === '' ? "RGBA(255, 125, 73, 0.75)" : color1;
+    color2 = typeof (color2) === "undefined" || color2 === '' ? "#9BCD9B" : color2;
+    color3 = typeof (color3) === "undefined" || color3 === '' ? "white" : color3;
+    pageSize = typeof (pageSize) === "undefined" ? '5' : pageSize;
+    function fadeIn(id) {
+        if (!document.getElementById(id)) return;
         let nowEle = document.getElementById(id);
         nowEle.style.display = '';
-    }   
-    function fadeOut(id){
-        if(!document.getElementById(id)) return ;
+    }
+    function fadeOut(id) {
+        if (!document.getElementById(id)) return;
         let nowEle = document.getElementById(id);
         nowEle.style.display = 'none';
-    }        
+    }
     // console.log(option);
     fadeIn('lazy');
     let query = new AV.Query('shuoshuo');
     let shuoNum = 0;
     query.descending('createdAt');
     query.limit(pageSize);
-    query.skip(pageSize*pageNum);
-    query.find().then(function (shuoContent){
+    query.skip(pageSize * pageNum);
+    query.find().then(function (shuoContent) {
         mid = "";
-        shuoContent.forEach(function(atContent){
+        shuoContent.forEach(function (atContent) {
             shuoNum = shuoNum + 1;
             //OS icon judge
             let atOs = atContent.attributes.userOs;
-            let osSvg="";
-            switch(atOs){
+            let osSvg = "";
+            switch (atOs) {
                 case "windows":
                     osSvg = "<svg t=\"1591348521231\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"16474\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M412.224 511.904c-47.712-24.512-94.08-36.96-137.888-36.96-5.952 0-11.936 0.192-17.952 0.704-55.872 4.64-106.912 19.36-139.744 30.816-8.704 3.2-17.632 6.56-26.816 10.304l-89.824 311.392c61.696-22.816 116.288-33.952 166.272-33.952 80.832 0 139.52 30.208 188 61.312 22.976-77.92 78.048-266.08 94.496-322.336-11.936-7.296-24.064-14.56-36.512-21.312zM528.352 591.072l-90.432 314.144c26.816 15.36 117.088 64.064 186.208 64.064 55.808 0 118.24-14.304 190.848-43.808l86.368-301.984c-58.624 18.912-114.88 28.512-167.456 28.512-95.936 0-163.104-31.104-205.504-60.96zM292.832 368.8c77.12 0.8 134.144 30.208 181.408 60.512l92.768-317.344c-19.552-11.2-70.816-39.104-107.872-48.608-24.384-5.696-50.016-8.608-77.216-8.608-51.808 0.96-108.384 13.952-172.896 39.808l-88.448 310.592c64.8-24.448 120.64-36.352 172.096-36.352 0.032 0 0.128 0 0.128 0zM1024 198.112c-58.816 22.816-116.192 34.464-171.04 34.464-91.68 0-159.296-31.808-203.104-62.368l-91.936 318.24c61.76 39.712 128.288 59.872 198.112 59.872 56.96 0 115.936-13.664 175.456-40.672l-0.192-2.208 3.744-0.896 88.928-306.432z\" p-id=\"16475\" fill=\"" + color3 + "\"></path></svg>" + " ";
                 case "Android":
@@ -1119,25 +1119,25 @@ atEvery.prototype.seeContent=function(pageNum,option){
             }
             // Avatar init
             let shuoAvatar = atContent.attributes.avatar;
-            shuoAvatar = typeof(shuoAvatar)==="undefined"?"https://cdn.jsdelivr.net/gh/drew233/cdn/logol.png":shuoAvatar;
+            shuoAvatar = typeof (shuoAvatar) === "undefined" ? "https://s1.ax1x.com/2022/05/22/OvT2X4.png" : shuoAvatar;
             let currentUser = AV.User.current();
-            let hideIcon = currentUser?'':'style="display: none"';
+            let hideIcon = currentUser ? '' : 'style="display: none"';
             //Time process
             let timeForm = atContent.createdAt;
             let nowDate = new Date(timeForm);
-            function timeFormat(time){
-                return time < 10 ? '0'+time : time;
+            function timeFormat(time) {
+                return time < 10 ? '0' + time : time;
             }
-            let resDate = nowDate.getFullYear() + '-' + timeFormat(nowDate.getMonth()+1) + '-' + timeFormat(nowDate.getDate());
+            let resDate = nowDate.getFullYear() + '-' + timeFormat(nowDate.getMonth() + 1) + '-' + timeFormat(nowDate.getDate());
             let resTime = timeFormat(nowDate.getHours()) + ':' + timeFormat(nowDate.getMinutes()) + ':' + timeFormat(nowDate.getSeconds());
             let atHour = nowDate.getHours();
             let timeSvg = "";
-            switch(timeSvg){
+            switch (timeSvg) {
                 case atHour >= 0 && atHour < 5:
                     timeSvg = "<svg t=\"1591350196611\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"24683\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M171.605333 622.933333a341.333333 341.333333 0 1 1 680.789334 0h150.186666a21.333333 21.333333 0 1 1 0 42.666667H21.418667a21.333333 21.333333 0 1 1 0-42.666667h150.229333z m637.994667 0a298.666667 298.666667 0 1 0-595.2 0h595.2z\" fill=\"" + color3 + "\" p-id=\"24684\"></path></svg>" + " ";
-                case atHour >=5 && atHour < 6:
+                case atHour >= 5 && atHour < 6:
                     timeSvg = "<svg t=\"1591350273094\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"24973\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M512 409.6c121.6 0 220.8 99.2 220.8 220.8 0 9.6-1.6 19.2-3.2 32l-6.4 36.8h152v8H145.6v-8h152l-6.4-36.8c-1.6-12.8-3.2-22.4-3.2-32 3.2-121.6 102.4-220.8 224-220.8m0-32c-139.2 0-252.8 113.6-252.8 252.8 0 12.8 1.6 24 3.2 36.8H131.2c-9.6 0-17.6 8-17.6 17.6v36.8c0 9.6 8 17.6 17.6 17.6h760c9.6 0 17.6-8 17.6-17.6v-36.8c0-9.6-8-17.6-17.6-17.6h-129.6c1.6-11.2 3.2-24 3.2-36.8 0-140.8-113.6-252.8-252.8-252.8zM817.6 329.6l6.4 6.4-57.6 57.6-6.4-6.4 57.6-57.6m0-38.4c-4.8 0-9.6 1.6-12.8 4.8l-76.8 76.8c-6.4 6.4-6.4 19.2 0 25.6l25.6 25.6c3.2 3.2 8 4.8 12.8 4.8s9.6-1.6 12.8-4.8l76.8-76.8c6.4-6.4 6.4-19.2 0-25.6l-25.6-25.6c-3.2-3.2-8-4.8-12.8-4.8zM516.8 211.2v81.6h-8v-81.6h8m12.8-32h-36.8c-9.6 0-17.6 8-17.6 17.6v108.8c0 9.6 8 17.6 17.6 17.6h36.8c9.6 0 17.6-8 17.6-17.6v-108.8c1.6-9.6-6.4-17.6-17.6-17.6zM232 828.8h560M792 844.8h-560c-9.6 0-16-6.4-16-16s6.4-16 16-16h561.6c9.6 0 16 6.4 16 16s-8 16-17.6 16zM233.6 308.8l57.6 57.6-6.4 6.4-57.6-57.6 6.4-6.4m0-36.8c-4.8 0-9.6 1.6-12.8 4.8l-25.6 25.6c-6.4 6.4-6.4 19.2 0 25.6l76.8 76.8c3.2 3.2 8 4.8 12.8 4.8s9.6-1.6 12.8-4.8l25.6-25.6c6.4-6.4 6.4-19.2 0-25.6l-76.8-76.8c-3.2-3.2-8-4.8-12.8-4.8z\" fill=\"" + color3 + "\" p-id=\"24974\"></path></svg>" + " ";
-                case atHour >=6 && atHour < 8:
+                case atHour >= 6 && atHour < 8:
                     timeSvg = "<svg t=\"1591350470149\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"25217\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M574.2 236.3V96.8H454.6v139c19-2.9 38.5-4.4 58.3-4.4 20.8 0 41.3 1.7 61.3 4.9zM245.5 340.1l-114.1-78.5-67.9 98.5 113.8 78.4c17.6-36.1 40.6-69.3 68.2-98.4zM812 588.5c0-164.9-134.2-299.1-299.1-299.1-164.9 0-299.1 134.2-299.1 299.1M778.1 341l114.1-78.5L960 361l-113.8 78.4c-17.5-36.1-40.5-69.3-68.1-98.4zM911.6 746.2H113.8c-26.2 0-47.5-21.3-47.5-47.5s21.3-47.5 47.5-47.5h797.8c26.2 0 47.5 21.3 47.5 47.5 0 26.3-21.3 47.5-47.5 47.5zM766.6 882h-494c-21 0-38-17-38-38s17-38 38-38h494c21 0 38 17 38 38s-17 38-38 38z\" fill=\"" + color3 + "\" p-id=\"25218\"></path></svg>" + " ";
                 case atHour >= 8 && atHour < 11:
                     timeSvg = "<svg t=\"1591350526184\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"26011\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M814.592 409.63l96.075-96.105-81.77-81.77-95.924 95.865a381.803 381.803 0 0 1 81.619 82.01zM881.965 572.597c2.952 18.823 4.427 38.189 4.427 57.826 0 19.606-1.505 38.972-4.427 57.825h136.011V572.597h-136.01zM569.826 259.223V124.446H454.174v134.355c18.402-2.801 37.195-4.247 56.38-4.277 20.15 0 39.936 1.627 59.272 4.699zM289.792 326.415l-94.66-94.66-81.77 81.77 94.42 94.449c22.98-31.202 50.658-58.76 82.01-81.559zM134.686 630.423c0-19.697 1.506-38.973 4.458-57.826H6.024v115.651h133.12c-2.952-18.853-4.458-38.159-4.458-57.825zM227.358 688.67h566.423c3.885-18.823 5.903-38.31 5.903-58.278 0-159.412-129.687-289.16-289.13-289.16-159.382 0-289.099 129.718-289.099 289.16 0 19.968 2.018 39.455 5.903 58.278zM902.837 779.083h-783.06c-33.249 0-60.234 26.986-60.234 60.236s26.985 60.235 60.235 60.235h783.059c33.25 0 60.235-26.986 60.235-60.235s-26.985-60.236-60.235-60.236z\" p-id=\"26012\" fill=\"" + color3 + "\"></path></svg>" + " ";
@@ -1152,70 +1152,70 @@ atEvery.prototype.seeContent=function(pageNum,option){
             }
             //Content process
             let atCommentTrue = "";
-            if(atComment === 0){
+            if (atComment === 0) {
                 atCommentTrue = "display: none";
             }
             let id = atContent.id;
             let shuoshuoPerContent = atContent.attributes.atContentHtml;
-            let commentSvg = "<svg t=\"1599605913184\" class=\"icon\" viewBox=\"0 0 1024 1024\" cursor=\"pointer\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"3173\" width=\"16\" height=\"16\" fill=\""+color3+"\"><path d=\"M512 0C226.742857 0 0 197.485714 0 446.171429c0 138.971429 73.142857 270.628571 190.171429 351.085714L190.171429 1024l226.742857-138.971429c29.257143 7.314286 65.828571 7.314286 95.085714 7.314286 285.257143 0 512-197.485714 512-446.171429C1024 197.485714 797.257143 0 512 0zM256 512C219.428571 512 190.171429 482.742857 190.171429 446.171429S219.428571 380.342857 256 380.342857c36.571429 0 65.828571 29.257143 65.828571 65.828571S292.571429 512 256 512zM512 512C475.428571 512 446.171429 482.742857 446.171429 446.171429S475.428571 380.342857 512 380.342857c36.571429 0 65.828571 29.257143 65.828571 65.828571S548.571429 512 512 512zM768 512C731.428571 512 702.171429 482.742857 702.171429 446.171429s29.257143-65.828571 65.828571-65.828571c36.571429 0 65.828571 29.257143 65.828571 65.828571S804.571429 512 768 512z\" p-id=\"3174\" fill=\""+color3+"\"></path></svg>";
-            let contengMid = "<li><span class=\"shuoshuo_author_img\" onclick='atEvery.prototype.atEdit(\""+id+"\")'><img  id='atAvatar"+id+"'  src=\"" + shuoAvatar + "\"class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\" id='atId"+id+"' ><div " + hideIcon + "id='operate"+id+"'  class=\"delete_right\"><svg t=\"1591347978744\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"14459\" width=\"20\" height=\"20\" style=\"display: inline\"  onclick=\"atEvery.prototype.delete('"+id+"')\"  ><path d=\"M512 883.2A371.2 371.2 0 1 0 140.8 512 371.2 371.2 0 0 0 512 883.2z m0 64a435.2 435.2 0 1 1 435.2-435.2 435.2 435.2 0 0 1-435.2 435.2z\" p-id=\"14460\" fill=\"" + color3 + "\"></path><path d=\"M557.056 512l122.368 122.368a31.744 31.744 0 1 1-45.056 45.056L512 557.056l-122.368 122.368a31.744 31.744 0 1 1-45.056-45.056L466.944 512 344.576 389.632a31.744 31.744 0 1 1 45.056-45.056L512 466.944l122.368-122.368a31.744 31.744 0 1 1 45.056 45.056z\" p-id=\"14461\" fill=\"" + color3 + "\"></path></svg></div><div id='forEdit"+id+"'>" + shuoshuoPerContent + "</div><p class=\"shuoshuo_time\">" + "<span style=\"\"> " + " " + osSvg + atOs + "</span><span>&nbsp&nbsp" + timeSvg + resDate + " " + resTime + "" + "</span><span style='float: right'><span style='"+atCommentTrue+";vertical-align:top;' onclick='atEvery.prototype.commentInit(\""+id+"\")'  id='atCoInit"+id+"'>"+commentSvg+"<span style='padding: 0 0 0 8px;color:"+color3+"'; id= 'coValue"+id+"'>loading</span></span>&nbsp<span style='vertical-align:top;' id='"+id+"'></span></p></span></li>";
+            let commentSvg = "<svg t=\"1599605913184\" class=\"icon\" viewBox=\"0 0 1024 1024\" cursor=\"pointer\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"3173\" width=\"16\" height=\"16\" fill=\"" + color3 + "\"><path d=\"M512 0C226.742857 0 0 197.485714 0 446.171429c0 138.971429 73.142857 270.628571 190.171429 351.085714L190.171429 1024l226.742857-138.971429c29.257143 7.314286 65.828571 7.314286 95.085714 7.314286 285.257143 0 512-197.485714 512-446.171429C1024 197.485714 797.257143 0 512 0zM256 512C219.428571 512 190.171429 482.742857 190.171429 446.171429S219.428571 380.342857 256 380.342857c36.571429 0 65.828571 29.257143 65.828571 65.828571S292.571429 512 256 512zM512 512C475.428571 512 446.171429 482.742857 446.171429 446.171429S475.428571 380.342857 512 380.342857c36.571429 0 65.828571 29.257143 65.828571 65.828571S548.571429 512 512 512zM768 512C731.428571 512 702.171429 482.742857 702.171429 446.171429s29.257143-65.828571 65.828571-65.828571c36.571429 0 65.828571 29.257143 65.828571 65.828571S804.571429 512 768 512z\" p-id=\"3174\" fill=\"" + color3 + "\"></path></svg>";
+            let contengMid = "<li><span class=\"shuoshuo_author_img\" onclick='atEvery.prototype.atEdit(\"" + id + "\")'><img  id='atAvatar" + id + "'  src=\"" + shuoAvatar + "\"class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\" id='atId" + id + "' ><div " + hideIcon + "id='operate" + id + "'  class=\"delete_right\"><svg t=\"1591347978744\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"14459\" width=\"20\" height=\"20\" style=\"display: inline\"  onclick=\"atEvery.prototype.delete('" + id + "')\"  ><path d=\"M512 883.2A371.2 371.2 0 1 0 140.8 512 371.2 371.2 0 0 0 512 883.2z m0 64a435.2 435.2 0 1 1 435.2-435.2 435.2 435.2 0 0 1-435.2 435.2z\" p-id=\"14460\" fill=\"" + color3 + "\"></path><path d=\"M557.056 512l122.368 122.368a31.744 31.744 0 1 1-45.056 45.056L512 557.056l-122.368 122.368a31.744 31.744 0 1 1-45.056-45.056L466.944 512 344.576 389.632a31.744 31.744 0 1 1 45.056-45.056L512 466.944l122.368-122.368a31.744 31.744 0 1 1 45.056 45.056z\" p-id=\"14461\" fill=\"" + color3 + "\"></path></svg></div><div id='forEdit" + id + "'>" + shuoshuoPerContent + "</div><p class=\"shuoshuo_time\">" + "<span style=\"\"> " + " " + osSvg + atOs + "</span><span>&nbsp&nbsp" + timeSvg + resDate + " " + resTime + "" + "</span><span style='float: right'><span style='" + atCommentTrue + ";vertical-align:top;' onclick='atEvery.prototype.commentInit(\"" + id + "\")'  id='atCoInit" + id + "'>" + commentSvg + "<span style='padding: 0 0 0 8px;color:" + color3 + "'; id= 'coValue" + id + "'>loading</span></span>&nbsp<span style='vertical-align:top;' id='" + id + "'></span></p></span></li>";
             mid += contengMid;
-        })  
+        })
         let originString = document.getElementById('ccontent').innerHTML;
-        originString = originString === ''?"<ul class=\"cbp_tmtimeline\" id=\"maina\">":originString;
-        originString = originString.replace(/(.*)<\/ul>/,'$1 ');
+        originString = originString === '' ? "<ul class=\"cbp_tmtimeline\" id=\"maina\">" : originString;
+        originString = originString.replace(/(.*)<\/ul>/, '$1 ');
         originString += mid + '</ul>';
         // console.log(originString);
         if (shuoNum === 0 && pageNum === 0) {
-            originString = "<ul class=\"cbp_tmtimeline\" id=\"maina\"><li><span class=\"shuoshuo_author_img\"><img src=\"https://cdn.jsdelivr.net/gh/drew233/cdn/logol.png\" class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"><p>" + text24 + "</p><p class=\"shuoshuo_time\"><span style=\"\"> 由Artitalk发表</span><span style=\"float:right;\"><svg t=\"1591350675688\"  viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"28653\" width=\"10\" height=\"10\" style=\"display: inline\"></svg> 2020-04-10 20:35:25</span></p></span></li></ul>";
+            originString = "<ul class=\"cbp_tmtimeline\" id=\"maina\"><li><span class=\"shuoshuo_author_img\"><img src=\"https://s1.ax1x.com/2022/05/22/OvT2X4.png\" class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"><p>" + text24 + "</p><p class=\"shuoshuo_time\"><span style=\"\"> 由Artitalk发表</span><span style=\"float:right;\"><svg t=\"1591350675688\"  viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"28653\" width=\"10\" height=\"10\" style=\"display: inline\"></svg> 2020-04-10 20:35:25</span></p></span></li></ul>";
         }
         document.getElementById('ccontent').innerHTML = originString;
-        if(atComment !== 0){
-            shuoContent.forEach(function(count){
+        if (atComment !== 0) {
+            shuoContent.forEach(function (count) {
                 let countQuery = new AV.Query('atComment');
                 let id = count.id;
-                countQuery.equalTo('atId',id);
+                countQuery.equalTo('atId', id);
                 countQuery.descending('createdAt');
                 countQuery.find().then(res => {
-                    let countId = 'coValue'+id;
+                    let countId = 'coValue' + id;
                     document.getElementById(countId).innerHTML = res.length;
-                })            
+                })
             })
         }
         fadeOut('lazy');
-        if(shuoNum !== 0){
+        if (shuoNum !== 0) {
             fadeIn('readmore');
-        }else if(pageNum !== 0){
+        } else if (pageNum !== 0) {
             document.getElementById('readButton').innerHTML = '<center>已经到底了哦~</center>';
             document.getElementById('readButton').style.opacity = '0.5';
         }
     })
 
-    atEvery.prototype.atEdit=function(id){
-        function fadeIn(id){
-            if(!document.getElementById(id)) return ;
+    atEvery.prototype.atEdit = function (id) {
+        function fadeIn(id) {
+            if (!document.getElementById(id)) return;
             let nowEle = document.getElementById(id);
             nowEle.style.display = '';
-        }   
-        function fadeOut(id){
-            if(!document.getElementById(id)) return ;
+        }
+        function fadeOut(id) {
+            if (!document.getElementById(id)) return;
             let nowEle = document.getElementById(id);
             nowEle.style.display = 'none';
-        }        
+        }
         let currentuser = AV.User.current();
-        if(!currentuser)    return ;
+        if (!currentuser) return;
         fadeIn('lazy');
         let queryEdit = new AV.Query('shuoshuo');
-        queryEdit.equalTo('objectId',id);
-        queryEdit.find().then(res =>{
-            res.forEach(function(atom){
-                let originString = "<ul class=\"cbp_tmtimeline\" id=\"maina\"><li><span class=\"shuoshuo_author_img\"><img src=\"https://cdn.jsdelivr.net/gh/drew233/cdn/logol.png\" class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"><p>" + text38 + "</p><p class=\"shuoshuo_time\"><span style=\"\"> 由Artitalk发表</span><span style=\"float:right;\"><svg t=\"1591350675688\"  viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"28653\" width=\"10\" height=\"10\" style=\"display: inline\"></svg> 2020-04-10 20:35:25</span></p></span></li></ul>";
+        queryEdit.equalTo('objectId', id);
+        queryEdit.find().then(res => {
+            res.forEach(function (atom) {
+                let originString = "<ul class=\"cbp_tmtimeline\" id=\"maina\"><li><span class=\"shuoshuo_author_img\"><img src=\"https://s1.ax1x.com/2022/05/22/OvT2X4.png\" class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"><p>" + text38 + "</p><p class=\"shuoshuo_time\"><span style=\"\"> 由Artitalk发表</span><span style=\"float:right;\"><svg t=\"1591350675688\"  viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"28653\" width=\"10\" height=\"10\" style=\"display: inline\"></svg> 2020-04-10 20:35:25</span></p></span></li></ul>";
                 document.getElementById('ccontent').innerHTML = originString;
                 let changeId = document.getElementById('atSave');
-                changeId.id='atEditsaveButton';
+                changeId.id = 'atEditsaveButton';
                 document.getElementById('atEditsaveButton').innerHTML = text39;
                 fadeOut('readmore');
-                changeId.setAttribute('onclick',"atEvery.prototype.atEditsave(\""+id+"\")");
+                changeId.setAttribute('onclick', "atEvery.prototype.atEditsave(\"" + id + "\")");
                 pubShuo.click();
                 document.getElementById('neirong').value = atom.attributes.atContentMd;
                 fadeOut('lazy');
@@ -1223,108 +1223,108 @@ atEvery.prototype.seeContent=function(pageNum,option){
         })
     }
 
-    atEvery.prototype.atEditsave=function(id){
+    atEvery.prototype.atEditsave = function (id) {
         fadeIn('lazy');
         let beginPreview = document.getElementById('preview');
-        beginPreview.onclick = function(){
+        beginPreview.onclick = function () {
             let preCon = document.getElementById('preview');
-            if(preCon.className.indexOf('preview_now')!==-1){
+            if (preCon.className.indexOf('preview_now') !== -1) {
                 preCon.classList.remove('preview_now');
-            }else{
+            } else {
                 preCon.classList.add('preview_now');
             }
         }
-        function translate(beforTran){
-            if(typeof beforTran === 'undefined')   return ;
-            for(let key in atEmojiQQ){
-                let keyAt = '['+key+']';
+        function translate(beforTran) {
+            if (typeof beforTran === 'undefined') return;
+            for (let key in atEmojiQQ) {
+                let keyAt = '[' + key + ']';
                 let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmojiQQ[key] + "'/>";
-                while(beforTran.indexOf(keyAt)!=-1){
-                    beforTran = beforTran.replace(keyAt,emojiAt);
+                while (beforTran.indexOf(keyAt) != -1) {
+                    beforTran = beforTran.replace(keyAt, emojiAt);
                 }
             }
-            for(let key in atEmojiTB){
-                let keyAt = '['+key+']';
+            for (let key in atEmojiTB) {
+                let keyAt = '[' + key + ']';
                 let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmojiTB[key] + "'/>";
-                while(beforTran.indexOf(keyAt)!=-1){
-                    beforTran = beforTran.replace(keyAt,emojiAt);
+                while (beforTran.indexOf(keyAt) != -1) {
+                    beforTran = beforTran.replace(keyAt, emojiAt);
                 }
             }
-            for(let key in atEmojiBB){
-                let keyAt = '['+key+']';
+            for (let key in atEmojiBB) {
+                let keyAt = '[' + key + ']';
                 let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmojiBB[key] + "'/>";
-                while(beforTran.indexOf(keyAt)!=-1){
-                    beforTran = beforTran.replace(keyAt,emojiAt);
+                while (beforTran.indexOf(keyAt) != -1) {
+                    beforTran = beforTran.replace(keyAt, emojiAt);
                 }
             }
-            for(let key in atEmoji){
-                let keyAt = '['+key+']';
+            for (let key in atEmoji) {
+                let keyAt = '[' + key + ']';
                 let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmoji[key] + "'/>";
-                while(beforTran.indexOf(keyAt)!=-1){
-                    beforTran = beforTran.replace(keyAt,emojiAt);
+                while (beforTran.indexOf(keyAt) != -1) {
+                    beforTran = beforTran.replace(keyAt, emojiAt);
                 }
             }
             return beforTran;
         }
         let shuoshuoContent = document.getElementById('neirong').value;
         let shuoshuoContentMd = shuoshuoContent;
-        let atEditOver = AV.Object.createWithoutData('shuoshuo',id);
-        atEditOver.set('atContentMd',shuoshuoContentMd);
+        let atEditOver = AV.Object.createWithoutData('shuoshuo', id);
+        atEditOver.set('atContentMd', shuoshuoContentMd);
         shuoshuoContent = translate(shuoshuoContent);
-        if(shuoshuoContent === ''){
+        if (shuoshuoContent === '') {
             location.reload();
-            return ;
+            return;
         }
         let converte = new showdown.Converter();
         converte.setOption('strikethrough', 1);
         let shuoshuoContentHtml = converte.makeHtml(shuoshuoContent);
-        atEditOver.set('atContentHtml',shuoshuoContentHtml);
-        atEditOver.save().then(function(){
-            location.reload();  
+        atEditOver.set('atContentHtml', shuoshuoContentHtml);
+        atEditOver.save().then(function () {
+            location.reload();
         });
     }
-    
-    atEvery.prototype.saveComment=function(id,option){
+
+    atEvery.prototype.saveComment = function (id, option) {
         document.getElementById('shuoshuo_input').style.display = 'none'
-        function fadeIn(id){
-            if(!document.getElementById(id)) return ;
+        function fadeIn(id) {
+            if (!document.getElementById(id)) return;
             let nowEle = document.getElementById(id);
             nowEle.style.display = '';
-        }   
-        function fadeOut(id){
-            if(!document.getElementById(id)) return ;
+        }
+        function fadeOut(id) {
+            if (!document.getElementById(id)) return;
             let nowEle = document.getElementById(id);
             nowEle.style.display = 'none';
-        } 
-        function translate(beforTran){
-            if(typeof beforTran === 'undefined')   return ;
-            for(let key in atEmojiQQ){
-                let keyAt = '['+key+']';
+        }
+        function translate(beforTran) {
+            if (typeof beforTran === 'undefined') return;
+            for (let key in atEmojiQQ) {
+                let keyAt = '[' + key + ']';
                 let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmojiQQ[key] + "'/>";
-                while(beforTran.indexOf(keyAt)!=-1){
-                    beforTran = beforTran.replace(keyAt,emojiAt);
+                while (beforTran.indexOf(keyAt) != -1) {
+                    beforTran = beforTran.replace(keyAt, emojiAt);
                 }
             }
-            for(let key in atEmojiTB){
-                let keyAt = '['+key+']';
+            for (let key in atEmojiTB) {
+                let keyAt = '[' + key + ']';
                 let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmojiTB[key] + "'/>";
-                while(beforTran.indexOf(keyAt)!=-1){
-                    beforTran = beforTran.replace(keyAt,emojiAt);
+                while (beforTran.indexOf(keyAt) != -1) {
+                    beforTran = beforTran.replace(keyAt, emojiAt);
                 }
             }
-            for(let key in atEmojiBB){
-                let keyAt = '['+key+']';
+            for (let key in atEmojiBB) {
+                let keyAt = '[' + key + ']';
                 let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmojiBB[key] + "'/>";
-                while(beforTran.indexOf(keyAt)!=-1){
-                    beforTran = beforTran.replace(keyAt,emojiAt);
+                while (beforTran.indexOf(keyAt) != -1) {
+                    beforTran = beforTran.replace(keyAt, emojiAt);
                 }
             }
             // console.log(atEmoji);
-            for(let key in atEmoji){
-                let keyAt = '['+key+']';
+            for (let key in atEmoji) {
+                let keyAt = '[' + key + ']';
                 let emojiAt = "<img class='atemoji gallery-group-img' src='" + atEmoji[key] + "'/>";
-                while(beforTran.indexOf(keyAt)!=-1){
-                    beforTran = beforTran.replace(keyAt,emojiAt);
+                while (beforTran.indexOf(keyAt) != -1) {
+                    beforTran = beforTran.replace(keyAt, emojiAt);
                 }
             }
             return beforTran;
@@ -1341,28 +1341,28 @@ atEvery.prototype.seeContent=function(pageNum,option){
         let comEmail = document.getElementById('email').value;
         let comNick = document.getElementById('commentNick').value;
         let comEmailMd5 = md5(comEmail);
-        if(!currentUser){
-            if(comNick ==="" || comEmail === ""){
+        if (!currentUser) {
+            if (comNick === "" || comEmail === "") {
                 document.getElementById('neirong').value = "昵称，邮箱均为必填项\n" + document.getElementById('neirong').value
                 fadeOut('lazy');
-                return ;
+                return;
             }
         }
-        let atGravatar = "https://cdn.staticdn.net/avatar/"+comEmailMd5+"?d=mp&s=80";
+        let atGravatar = "https://cdn.staticdn.net/avatar/" + comEmailMd5 + "?d=mp&s=80";
         let nowDate = new Date();
-        function timeFormat(time){
-            return time < 10 ? '0'+time : time;
+        function timeFormat(time) {
+            return time < 10 ? '0' + time : time;
         }
-        let resDate = nowDate.getFullYear() + '-' + timeFormat(nowDate.getMonth()+1) + '-' + timeFormat(nowDate.getDate());
+        let resDate = nowDate.getFullYear() + '-' + timeFormat(nowDate.getMonth() + 1) + '-' + timeFormat(nowDate.getDate());
         let resTime = timeFormat(nowDate.getHours()) + ':' + timeFormat(nowDate.getMinutes()) + ':' + timeFormat(nowDate.getSeconds());
         let atHour = nowDate.getHours();
         let timeSvg = "";
-        switch(timeSvg){
+        switch (timeSvg) {
             case atHour >= 0 && atHour < 5:
                 timeSvg = "<svg t=\"1591350196611\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"24683\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M171.605333 622.933333a341.333333 341.333333 0 1 1 680.789334 0h150.186666a21.333333 21.333333 0 1 1 0 42.666667H21.418667a21.333333 21.333333 0 1 1 0-42.666667h150.229333z m637.994667 0a298.666667 298.666667 0 1 0-595.2 0h595.2z\" fill=\"" + color3 + "\" p-id=\"24684\"></path></svg>" + " ";
-            case atHour >=5 && atHour < 6:
+            case atHour >= 5 && atHour < 6:
                 timeSvg = "<svg t=\"1591350273094\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"24973\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M512 409.6c121.6 0 220.8 99.2 220.8 220.8 0 9.6-1.6 19.2-3.2 32l-6.4 36.8h152v8H145.6v-8h152l-6.4-36.8c-1.6-12.8-3.2-22.4-3.2-32 3.2-121.6 102.4-220.8 224-220.8m0-32c-139.2 0-252.8 113.6-252.8 252.8 0 12.8 1.6 24 3.2 36.8H131.2c-9.6 0-17.6 8-17.6 17.6v36.8c0 9.6 8 17.6 17.6 17.6h760c9.6 0 17.6-8 17.6-17.6v-36.8c0-9.6-8-17.6-17.6-17.6h-129.6c1.6-11.2 3.2-24 3.2-36.8 0-140.8-113.6-252.8-252.8-252.8zM817.6 329.6l6.4 6.4-57.6 57.6-6.4-6.4 57.6-57.6m0-38.4c-4.8 0-9.6 1.6-12.8 4.8l-76.8 76.8c-6.4 6.4-6.4 19.2 0 25.6l25.6 25.6c3.2 3.2 8 4.8 12.8 4.8s9.6-1.6 12.8-4.8l76.8-76.8c6.4-6.4 6.4-19.2 0-25.6l-25.6-25.6c-3.2-3.2-8-4.8-12.8-4.8zM516.8 211.2v81.6h-8v-81.6h8m12.8-32h-36.8c-9.6 0-17.6 8-17.6 17.6v108.8c0 9.6 8 17.6 17.6 17.6h36.8c9.6 0 17.6-8 17.6-17.6v-108.8c1.6-9.6-6.4-17.6-17.6-17.6zM232 828.8h560M792 844.8h-560c-9.6 0-16-6.4-16-16s6.4-16 16-16h561.6c9.6 0 16 6.4 16 16s-8 16-17.6 16zM233.6 308.8l57.6 57.6-6.4 6.4-57.6-57.6 6.4-6.4m0-36.8c-4.8 0-9.6 1.6-12.8 4.8l-25.6 25.6c-6.4 6.4-6.4 19.2 0 25.6l76.8 76.8c3.2 3.2 8 4.8 12.8 4.8s9.6-1.6 12.8-4.8l25.6-25.6c6.4-6.4 6.4-19.2 0-25.6l-76.8-76.8c-3.2-3.2-8-4.8-12.8-4.8z\" fill=\"" + color3 + "\" p-id=\"24974\"></path></svg>" + " ";
-            case atHour >=6 && atHour < 8:
+            case atHour >= 6 && atHour < 8:
                 timeSvg = "<svg t=\"1591350470149\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"25217\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M574.2 236.3V96.8H454.6v139c19-2.9 38.5-4.4 58.3-4.4 20.8 0 41.3 1.7 61.3 4.9zM245.5 340.1l-114.1-78.5-67.9 98.5 113.8 78.4c17.6-36.1 40.6-69.3 68.2-98.4zM812 588.5c0-164.9-134.2-299.1-299.1-299.1-164.9 0-299.1 134.2-299.1 299.1M778.1 341l114.1-78.5L960 361l-113.8 78.4c-17.5-36.1-40.5-69.3-68.1-98.4zM911.6 746.2H113.8c-26.2 0-47.5-21.3-47.5-47.5s21.3-47.5 47.5-47.5h797.8c26.2 0 47.5 21.3 47.5 47.5 0 26.3-21.3 47.5-47.5 47.5zM766.6 882h-494c-21 0-38-17-38-38s17-38 38-38h494c21 0 38 17 38 38s-17 38-38 38z\" fill=\"" + color3 + "\" p-id=\"25218\"></path></svg>" + " ";
             case atHour >= 8 && atHour < 11:
                 timeSvg = "<svg t=\"1591350526184\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"26011\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M814.592 409.63l96.075-96.105-81.77-81.77-95.924 95.865a381.803 381.803 0 0 1 81.619 82.01zM881.965 572.597c2.952 18.823 4.427 38.189 4.427 57.826 0 19.606-1.505 38.972-4.427 57.825h136.011V572.597h-136.01zM569.826 259.223V124.446H454.174v134.355c18.402-2.801 37.195-4.247 56.38-4.277 20.15 0 39.936 1.627 59.272 4.699zM289.792 326.415l-94.66-94.66-81.77 81.77 94.42 94.449c22.98-31.202 50.658-58.76 82.01-81.559zM134.686 630.423c0-19.697 1.506-38.973 4.458-57.826H6.024v115.651h133.12c-2.952-18.853-4.458-38.159-4.458-57.825zM227.358 688.67h566.423c3.885-18.823 5.903-38.31 5.903-58.278 0-159.412-129.687-289.16-289.13-289.16-159.382 0-289.099 129.718-289.099 289.16 0 19.968 2.018 39.455 5.903 58.278zM902.837 779.083h-783.06c-33.249 0-60.234 26.986-60.234 60.236s26.985 60.235 60.235 60.235h783.059c33.25 0 60.235-26.986 60.235-60.235s-26.985-60.236-60.235-60.236z\" p-id=\"26012\" fill=\"" + color3 + "\"></path></svg>" + " ";
@@ -1375,24 +1375,24 @@ atEvery.prototype.seeContent=function(pageNum,option){
             case atHour >= 18 && atHour < 21:
                 timeSvg = "<svg t=\"1591350675688\"  viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"28653\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M784.896 767.488c-291.84 0-528.384-236.544-528.384-528.384 0-81.92 19.456-159.744 52.736-228.864C132.608 95.744 10.24 275.968 10.24 485.376 10.24 777.216 246.784 1013.76 538.624 1013.76c209.408 0 390.144-122.368 475.136-299.008-69.12 33.28-146.944 52.736-228.864 52.736z m-246.272 176.128c-252.416 0-457.728-205.312-457.728-457.728 0-111.104 38.912-214.528 107.52-294.912-1.536 16.384-2.048 32.256-2.048 48.64 0 330.24 268.288 598.528 598.528 598.528 16.384 0 32.256-0.512 48.64-2.048-80.896 68.096-184.32 107.52-294.912 107.52z m127.488-633.344l65.536-32.256 65.536 32.256-9.216-75.264 49.152-55.296-70.656-14.336-34.816-66.56-34.816 66.56-70.656 14.336 49.152 55.296-9.216 75.264zM441.344 432.64l43.52-21.504 43.52 21.504-6.144-50.176 32.768-36.864-47.616-9.728-22.528-44.032-23.04 44.032-47.104 9.728 32.768 36.864-6.144 50.176z m313.344 79.872l-23.04-44.032-23.04 44.032-47.104 9.728 32.768 36.864-6.144 50.176 43.52-21.504 43.52 21.504-6.144-50.176 32.768-36.864-47.104-9.728z\" p-id=\"28654\" fill=\"" + color3 + "\"></path></svg>" + " ";
         }
-        if(currentUser){
-            let adminAvatar = typeof(currentUser.attributes.img) === "undefined" ? "https://cdn.jsdelivr.net/gh/drew233/cdn/logol.png":currentUser.attributes.img;
-            atComment.set('adminAvatar',adminAvatar);
+        if (currentUser) {
+            let adminAvatar = typeof (currentUser.attributes.img) === "undefined" ? "https://s1.ax1x.com/2022/05/22/OvT2X4.png" : currentUser.attributes.img;
+            atComment.set('adminAvatar', adminAvatar);
             atGravatar = adminAvatar;
             comNick = currentUser.attributes.username;
         }
-        atComment.set('atId',id);
-        atComment.set('commentContent',atCommentHtml);
-        if(!currentUser){
-            atComment.set('email',comEmailMd5);
+        atComment.set('atId', id);
+        atComment.set('commentContent', atCommentHtml);
+        if (!currentUser) {
+            atComment.set('email', comEmailMd5);
         }
-        atComment.set('nick',comNick);
+        atComment.set('nick', comNick);
         atComment.save().then(function (res) {
-            let replySvg = "<span style=\"float: right\"><svg t=\"1599635243920\" cursor=\"pointer\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"2431\" width=\"16\" height=\"16\" fill=\""+color3+"\"><path d=\"M853.3 893.6c-17.5 0-34.6-6.8-47.5-19.8l-44.4-44.4c-77.9-78.3-133-133.6-221.7-147.3v119.6c0 27.3-16.3 51.6-41.5 62.1s-53.9 4.7-73.2-14.6l-302-302c-26.2-26.2-26.2-68.8 0-95l302.1-302.1c19.3-19.3 48-25 73.2-14.6 25.2 10.4 41.5 34.8 41.5 62.1v145.5c140.6 4.1 249.5 73.7 315.4 202.1 48.2 93.9 65.4 206.8 65.4 281.2 0 27.3-16.3 51.7-41.5 62.1-8.3 3.4-17.1 5.1-25.8 5.1zM450.2 589.3H495c153.9 0 235.5 82 330 177l2.5 2.5c-5.4-48.3-18.7-118-52-182.6-52.3-101.9-136.1-153.6-248.8-153.6h-76.5V251.7l-248 248 248 248V589.3z\" p-id=\"2432\" fill=\""+color3+"\"></path></svg></span>";
+            let replySvg = "<span style=\"float: right\"><svg t=\"1599635243920\" cursor=\"pointer\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"2431\" width=\"16\" height=\"16\" fill=\"" + color3 + "\"><path d=\"M853.3 893.6c-17.5 0-34.6-6.8-47.5-19.8l-44.4-44.4c-77.9-78.3-133-133.6-221.7-147.3v119.6c0 27.3-16.3 51.6-41.5 62.1s-53.9 4.7-73.2-14.6l-302-302c-26.2-26.2-26.2-68.8 0-95l302.1-302.1c19.3-19.3 48-25 73.2-14.6 25.2 10.4 41.5 34.8 41.5 62.1v145.5c140.6 4.1 249.5 73.7 315.4 202.1 48.2 93.9 65.4 206.8 65.4 281.2 0 27.3-16.3 51.7-41.5 62.1-8.3 3.4-17.1 5.1-25.8 5.1zM450.2 589.3H495c153.9 0 235.5 82 330 177l2.5 2.5c-5.4-48.3-18.7-118-52-182.6-52.3-101.9-136.1-153.6-248.8-153.6h-76.5V251.7l-248 248 248 248V589.3z\" p-id=\"2432\" fill=\"" + color3 + "\"></path></svg></span>";
             let originComment = document.getElementById('ccontent').innerHTML;
             let comList = "<li style=\"margin: 0 0 0 48px\"><span class=\"shuoshuo_author_img\"><img src=\"" + atGravatar + "\"class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"  >  <div>" + atCommentHtml + "</div><p class=\"shuoshuo_time\">" + "<span>" + comNick + "</span><span>&nbsp&nbsp" + timeSvg + resDate + " " + resTime + replySvg + "</span></p></span></li>";
             let positon = originComment.indexOf('</li>') + 5;
-            let nowComment = originComment.slice(0,positon) + comList + originComment.slice(positon);
+            let nowComment = originComment.slice(0, positon) + comList + originComment.slice(positon);
             document.getElementById('ccontent').innerHTML = "";
             document.getElementById('neirong').value = "";
             document.getElementById('email').value = "";
@@ -1400,66 +1400,66 @@ atEvery.prototype.seeContent=function(pageNum,option){
             document.getElementById('ccontent').innerHTML = nowComment;
             fadeOut('preview');
             fadeOut('lazy');
-        })            
+        })
     }
-    atEvery.prototype.atReplay=function(){
+    atEvery.prototype.atReplay = function () {
         document.getElementById('pubComment').click();
     }
-    atEvery.prototype.commentInit = function(id,option){
-        function fadeIn(id){
-            if(!document.getElementById(id)) return ;
+    atEvery.prototype.commentInit = function (id, option) {
+        function fadeIn(id) {
+            if (!document.getElementById(id)) return;
             let nowEle = document.getElementById(id);
             nowEle.style.display = '';
-        }   
-        function fadeOut(id){
-            if(!document.getElementById(id)) return ;
+        }
+        function fadeOut(id) {
+            if (!document.getElementById(id)) return;
             let nowEle = document.getElementById(id);
             nowEle.style.display = 'none';
-        } 
+        }
         document.getElementById('neirong').placeholder = "";
-        let initButton = 'atCoInit'+id;
-        let countId = "coValue"+id;
+        let initButton = 'atCoInit' + id;
+        let countId = "coValue" + id;
         fadeOut(countId);
-        document.getElementById(initButton).setAttribute('onclick','location.reload()');
-        fadeIn('commentNick');fadeOut('atSave');fadeIn('commentSave');fadeIn('lazy');fadeIn('pubComment');fadeOut('readmore');fadeOut('pubShuo');fadeOut('switchUser');
+        document.getElementById(initButton).setAttribute('onclick', 'location.reload()');
+        fadeIn('commentNick'); fadeOut('atSave'); fadeIn('commentSave'); fadeIn('lazy'); fadeIn('pubComment'); fadeOut('readmore'); fadeOut('pubShuo'); fadeOut('switchUser');
         document.getElementById('pubComment').title = text40;
         document.getElementById('pubComment').style.display = 'inline';
         let nowButton = document.getElementById('pubComment');
-        nowButton.onclick = function(){
-            if(document.getElementById('shuoshuo_input').style.display===""){
+        nowButton.onclick = function () {
+            if (document.getElementById('shuoshuo_input').style.display === "") {
                 fadeOut('shuoshuo_input');
-            }else{
+            } else {
                 fadeIn('shuoshuo_input');
             }
         }
         document.getElementById('email').placeholder = text41;
         document.getElementById('commentNick').placeholder = text42;
-        let originShuo = document.getElementById("atId"+id).innerHTML;
-        let originAvatar = document.getElementById('atAvatar'+id).src;
-        let originString = "<ul class=\"cbp_tmtimeline\" id=\"maina\"><li><span class=\"shuoshuo_author_img\"><img src=\""+originAvatar+"\" class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\">"+originShuo+"</p></span></li></ul>";
-        document.getElementById('ccontent').innerHTML = originString;    
-        let mid="";        
+        let originShuo = document.getElementById("atId" + id).innerHTML;
+        let originAvatar = document.getElementById('atAvatar' + id).src;
+        let originString = "<ul class=\"cbp_tmtimeline\" id=\"maina\"><li><span class=\"shuoshuo_author_img\"><img src=\"" + originAvatar + "\" class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\">" + originShuo + "</p></span></li></ul>";
+        document.getElementById('ccontent').innerHTML = originString;
+        let mid = "";
         let currentUser = AV.User.current();
         let commentQuery = new AV.Query('atComment');
-        commentQuery.equalTo('atId',id);
+        commentQuery.equalTo('atId', id);
         commentQuery.descending('createdAt');
         commentQuery.find().then(res => {
-            res.forEach(function(comment){
+            res.forEach(function (comment) {
                 let timeForm = comment.createdAt;
-                function timeFormat(time){
-                    return time < 10 ? '0'+time : time;
+                function timeFormat(time) {
+                    return time < 10 ? '0' + time : time;
                 }
                 let nowDate = new Date(timeForm);
-                let resDate = nowDate.getFullYear() + '-' + timeFormat(nowDate.getMonth()+1) + '-' + timeFormat(nowDate.getDate());
+                let resDate = nowDate.getFullYear() + '-' + timeFormat(nowDate.getMonth() + 1) + '-' + timeFormat(nowDate.getDate());
                 let resTime = timeFormat(nowDate.getHours()) + ':' + timeFormat(nowDate.getMinutes()) + ':' + timeFormat(nowDate.getSeconds());
                 let atHour = nowDate.getHours();
                 let timeSvg = "";
-                switch(timeSvg){
+                switch (timeSvg) {
                     case atHour >= 0 && atHour < 5:
                         timeSvg = "<svg t=\"1591350196611\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"24683\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M171.605333 622.933333a341.333333 341.333333 0 1 1 680.789334 0h150.186666a21.333333 21.333333 0 1 1 0 42.666667H21.418667a21.333333 21.333333 0 1 1 0-42.666667h150.229333z m637.994667 0a298.666667 298.666667 0 1 0-595.2 0h595.2z\" fill=\"" + color3 + "\" p-id=\"24684\"></path></svg>" + " ";
-                    case atHour >=5 && atHour < 6:
+                    case atHour >= 5 && atHour < 6:
                         timeSvg = "<svg t=\"1591350273094\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"24973\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M512 409.6c121.6 0 220.8 99.2 220.8 220.8 0 9.6-1.6 19.2-3.2 32l-6.4 36.8h152v8H145.6v-8h152l-6.4-36.8c-1.6-12.8-3.2-22.4-3.2-32 3.2-121.6 102.4-220.8 224-220.8m0-32c-139.2 0-252.8 113.6-252.8 252.8 0 12.8 1.6 24 3.2 36.8H131.2c-9.6 0-17.6 8-17.6 17.6v36.8c0 9.6 8 17.6 17.6 17.6h760c9.6 0 17.6-8 17.6-17.6v-36.8c0-9.6-8-17.6-17.6-17.6h-129.6c1.6-11.2 3.2-24 3.2-36.8 0-140.8-113.6-252.8-252.8-252.8zM817.6 329.6l6.4 6.4-57.6 57.6-6.4-6.4 57.6-57.6m0-38.4c-4.8 0-9.6 1.6-12.8 4.8l-76.8 76.8c-6.4 6.4-6.4 19.2 0 25.6l25.6 25.6c3.2 3.2 8 4.8 12.8 4.8s9.6-1.6 12.8-4.8l76.8-76.8c6.4-6.4 6.4-19.2 0-25.6l-25.6-25.6c-3.2-3.2-8-4.8-12.8-4.8zM516.8 211.2v81.6h-8v-81.6h8m12.8-32h-36.8c-9.6 0-17.6 8-17.6 17.6v108.8c0 9.6 8 17.6 17.6 17.6h36.8c9.6 0 17.6-8 17.6-17.6v-108.8c1.6-9.6-6.4-17.6-17.6-17.6zM232 828.8h560M792 844.8h-560c-9.6 0-16-6.4-16-16s6.4-16 16-16h561.6c9.6 0 16 6.4 16 16s-8 16-17.6 16zM233.6 308.8l57.6 57.6-6.4 6.4-57.6-57.6 6.4-6.4m0-36.8c-4.8 0-9.6 1.6-12.8 4.8l-25.6 25.6c-6.4 6.4-6.4 19.2 0 25.6l76.8 76.8c3.2 3.2 8 4.8 12.8 4.8s9.6-1.6 12.8-4.8l25.6-25.6c6.4-6.4 6.4-19.2 0-25.6l-76.8-76.8c-3.2-3.2-8-4.8-12.8-4.8z\" fill=\"" + color3 + "\" p-id=\"24974\"></path></svg>" + " ";
-                    case atHour >=6 && atHour < 8:
+                    case atHour >= 6 && atHour < 8:
                         timeSvg = "<svg t=\"1591350470149\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"25217\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M574.2 236.3V96.8H454.6v139c19-2.9 38.5-4.4 58.3-4.4 20.8 0 41.3 1.7 61.3 4.9zM245.5 340.1l-114.1-78.5-67.9 98.5 113.8 78.4c17.6-36.1 40.6-69.3 68.2-98.4zM812 588.5c0-164.9-134.2-299.1-299.1-299.1-164.9 0-299.1 134.2-299.1 299.1M778.1 341l114.1-78.5L960 361l-113.8 78.4c-17.5-36.1-40.5-69.3-68.1-98.4zM911.6 746.2H113.8c-26.2 0-47.5-21.3-47.5-47.5s21.3-47.5 47.5-47.5h797.8c26.2 0 47.5 21.3 47.5 47.5 0 26.3-21.3 47.5-47.5 47.5zM766.6 882h-494c-21 0-38-17-38-38s17-38 38-38h494c21 0 38 17 38 38s-17 38-38 38z\" fill=\"" + color3 + "\" p-id=\"25218\"></path></svg>" + " ";
                     case atHour >= 8 && atHour < 11:
                         timeSvg = "<svg t=\"1591350526184\"  viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"26011\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M814.592 409.63l96.075-96.105-81.77-81.77-95.924 95.865a381.803 381.803 0 0 1 81.619 82.01zM881.965 572.597c2.952 18.823 4.427 38.189 4.427 57.826 0 19.606-1.505 38.972-4.427 57.825h136.011V572.597h-136.01zM569.826 259.223V124.446H454.174v134.355c18.402-2.801 37.195-4.247 56.38-4.277 20.15 0 39.936 1.627 59.272 4.699zM289.792 326.415l-94.66-94.66-81.77 81.77 94.42 94.449c22.98-31.202 50.658-58.76 82.01-81.559zM134.686 630.423c0-19.697 1.506-38.973 4.458-57.826H6.024v115.651h133.12c-2.952-18.853-4.458-38.159-4.458-57.825zM227.358 688.67h566.423c3.885-18.823 5.903-38.31 5.903-58.278 0-159.412-129.687-289.16-289.13-289.16-159.382 0-289.099 129.718-289.099 289.16 0 19.968 2.018 39.455 5.903 58.278zM902.837 779.083h-783.06c-33.249 0-60.234 26.986-60.234 60.236s26.985 60.235 60.235 60.235h783.059c33.25 0 60.235-26.986 60.235-60.235s-26.985-60.236-60.235-60.236z\" p-id=\"26012\" fill=\"" + color3 + "\"></path></svg>" + " ";
@@ -1476,31 +1476,31 @@ atEvery.prototype.seeContent=function(pageNum,option){
                 let commentNick = comment.attributes.nick;
                 let comEmail = comment.attributes.email;
                 let adminAvatar = comment.attributes.adminAvatar;
-                let atGravatar = "https://cdn.staticdn.net/avatar/"+comEmail+"?d=mp&s=80";
-                if(typeof(adminAvatar) !== "undefined"){
+                let atGravatar = "https://cdn.staticdn.net/avatar/" + comEmail + "?d=mp&s=80";
+                if (typeof (adminAvatar) !== "undefined") {
                     atGravatar = adminAvatar;
                 }
                 let comAvatar = atGravatar;
-                let replySvg = "<span style=\"float: right\"><svg t=\"1599635243920\" onclick='atEvery.prototype.atReplay()' cursor=\"pointer\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"2431\" width=\"16\" height=\"16\" fill=\""+color3+"\"><path d=\"M853.3 893.6c-17.5 0-34.6-6.8-47.5-19.8l-44.4-44.4c-77.9-78.3-133-133.6-221.7-147.3v119.6c0 27.3-16.3 51.6-41.5 62.1s-53.9 4.7-73.2-14.6l-302-302c-26.2-26.2-26.2-68.8 0-95l302.1-302.1c19.3-19.3 48-25 73.2-14.6 25.2 10.4 41.5 34.8 41.5 62.1v145.5c140.6 4.1 249.5 73.7 315.4 202.1 48.2 93.9 65.4 206.8 65.4 281.2 0 27.3-16.3 51.7-41.5 62.1-8.3 3.4-17.1 5.1-25.8 5.1zM450.2 589.3H495c153.9 0 235.5 82 330 177l2.5 2.5c-5.4-48.3-18.7-118-52-182.6-52.3-101.9-136.1-153.6-248.8-153.6h-76.5V251.7l-248 248 248 248V589.3z\" p-id=\"2432\" fill=\""+color3+"\"></path></svg></span>";
+                let replySvg = "<span style=\"float: right\"><svg t=\"1599635243920\" onclick='atEvery.prototype.atReplay()' cursor=\"pointer\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"2431\" width=\"16\" height=\"16\" fill=\"" + color3 + "\"><path d=\"M853.3 893.6c-17.5 0-34.6-6.8-47.5-19.8l-44.4-44.4c-77.9-78.3-133-133.6-221.7-147.3v119.6c0 27.3-16.3 51.6-41.5 62.1s-53.9 4.7-73.2-14.6l-302-302c-26.2-26.2-26.2-68.8 0-95l302.1-302.1c19.3-19.3 48-25 73.2-14.6 25.2 10.4 41.5 34.8 41.5 62.1v145.5c140.6 4.1 249.5 73.7 315.4 202.1 48.2 93.9 65.4 206.8 65.4 281.2 0 27.3-16.3 51.7-41.5 62.1-8.3 3.4-17.1 5.1-25.8 5.1zM450.2 589.3H495c153.9 0 235.5 82 330 177l2.5 2.5c-5.4-48.3-18.7-118-52-182.6-52.3-101.9-136.1-153.6-248.8-153.6h-76.5V251.7l-248 248 248 248V589.3z\" p-id=\"2432\" fill=\"" + color3 + "\"></path></svg></span>";
                 let comList = "<li style=\"margin: 0 0 0 48px\"><span class=\"shuoshuo_author_img\"><img src=\"" + comAvatar + "\"class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"  >  <div>" + comContent + "</div><p class=\"shuoshuo_time\">" + "<span>" + commentNick + "</span><span>&nbsp&nbsp" + timeSvg + resDate + " " + resTime + replySvg + "</span></p></span></li>";
                 mid += comList;
             })
             let originString = document.getElementById('ccontent').innerHTML;
-            originString = originString.replace(/(.*)<\/ul>/,'$1 ');
+            originString = originString.replace(/(.*)<\/ul>/, '$1 ');
             originString += mid + '</ul>';
             document.getElementById('ccontent').innerHTML = originString;
-        }).then(function(){
+        }).then(function () {
             fadeIn('email');
-            if(currentUser){
+            if (currentUser) {
                 fadeOut('commentNick');
                 fadeOut('email');
-            } 
+            }
             fadeIn('email');
             fadeOut('lazy');
         })
         let saveComment = document.getElementById('commentSave');
-        saveComment.onclick=function(){
-            atEvery.prototype.saveComment(id,option);
+        saveComment.onclick = function () {
+            atEvery.prototype.saveComment(id, option);
         }
     }
 
