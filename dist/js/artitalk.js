@@ -899,7 +899,7 @@ atEvery.prototype._init = function () {
         let converte = new showdown.Converter();
         converte.setOption('strikethrough', 1);
         let shuoshuoContentHtml = converte.makeHtml(shuoshuoContent);
-        let atAvatar = typeof (currentUser.attributes.img) === "undefined" ? "https://s1.ax1x.com/2022/05/22/OvT2X4.png" : currentUser.attributes.img;
+        let atAvatar = typeof (currentUser.attributes.img) === "undefined" ? "https://fastly.jsdelivr.net/gh/drew233/cdn/logol.png" : currentUser.attributes.img;
         // alert(deFaultavatar);
         let userClient = new Client();
         // console.log("Engine ：" + client.engine.name + " " + client.engine.version);
@@ -1275,7 +1275,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
             }
             // Avatar init
             let shuoAvatar = atContent.attributes.avatar;
-            shuoAvatar = typeof (shuoAvatar) === "undefined" ? "https://s1.ax1x.com/2022/05/22/OvT2X4.png" : shuoAvatar;
+            shuoAvatar = typeof (shuoAvatar) === "undefined" ? "https://fastly.jsdelivr.net/gh/drew233/cdn/logol.png" : shuoAvatar;
             let currentUser = AV.User.current();
             let hideIcon = currentUser ? '' : 'style="display: none"';
             //Time process
@@ -1323,7 +1323,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
         originString += mid + '</ul>';
         // console.log(originString);
         if (shuoNum === 0 && pageNum === 0) {
-            originString = "<ul class=\"cbp_tmtimeline\" id=\"maina\"><li><span class=\"shuoshuo_author_img\"><img src=\"https://s1.ax1x.com/2022/05/22/OvT2X4.png\" class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"><p>" + text24 + "</p><p class=\"shuoshuo_time\"><span style=\"\"> 由Artitalk发表</span><span style=\"float:right;\"><svg t=\"1591350675688\"  viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"28653\" width=\"10\" height=\"10\" style=\"display: inline\"></svg> 2020-04-10 20:35:25</span></p></span></li></ul>";
+            originString = "<ul class=\"cbp_tmtimeline\" id=\"maina\"><li><span class=\"shuoshuo_author_img\"><img src=\"https://fastly.jsdelivr.net/gh/drew233/cdn/logol.png\" class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"><p>" + text24 + "</p><p class=\"shuoshuo_time\"><span style=\"\"> 由Artitalk发表</span><span style=\"float:right;\"><svg t=\"1591350675688\"  viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"28653\" width=\"10\" height=\"10\" style=\"display: inline\"></svg> 2020-04-10 20:35:25</span></p></span></li></ul>";
         }
         document.getElementById('ccontent').innerHTML = originString;
         if (atComment !== 0) {
@@ -1365,7 +1365,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
         queryEdit.equalTo('objectId', id);
         queryEdit.find().then(res => {
             res.forEach(function (atom) {
-                let originString = "<ul class=\"cbp_tmtimeline\" id=\"maina\"><li><span class=\"shuoshuo_author_img\"><img src=\"https://s1.ax1x.com/2022/05/22/OvT2X4.png\" class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"><p>" + text38 + "</p><p class=\"shuoshuo_time\"><span style=\"\"> 由Artitalk发表</span><span style=\"float:right;\"><svg t=\"1591350675688\"  viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"28653\" width=\"10\" height=\"10\" style=\"display: inline\"></svg> 2020-04-10 20:35:25</span></p></span></li></ul>";
+                let originString = "<ul class=\"cbp_tmtimeline\" id=\"maina\"><li><span class=\"shuoshuo_author_img\"><img src=\"https://fastly.jsdelivr.net/gh/drew233/cdn/logol.png\" class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"><p>" + text38 + "</p><p class=\"shuoshuo_time\"><span style=\"\"> 由Artitalk发表</span><span style=\"float:right;\"><svg t=\"1591350675688\"  viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"28653\" width=\"10\" height=\"10\" style=\"display: inline\"></svg> 2020-04-10 20:35:25</span></p></span></li></ul>";
                 document.getElementById('ccontent').innerHTML = originString;
                 let changeId = document.getElementById('atSave');
                 changeId.id = 'atEditsaveButton';
@@ -1532,7 +1532,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
                 timeSvg = "<svg t=\"1591350675688\"  viewBox=\"0 0 1025 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"28653\" width=\"10\" height=\"10\"  style=\"display: inline\"><path d=\"M784.896 767.488c-291.84 0-528.384-236.544-528.384-528.384 0-81.92 19.456-159.744 52.736-228.864C132.608 95.744 10.24 275.968 10.24 485.376 10.24 777.216 246.784 1013.76 538.624 1013.76c209.408 0 390.144-122.368 475.136-299.008-69.12 33.28-146.944 52.736-228.864 52.736z m-246.272 176.128c-252.416 0-457.728-205.312-457.728-457.728 0-111.104 38.912-214.528 107.52-294.912-1.536 16.384-2.048 32.256-2.048 48.64 0 330.24 268.288 598.528 598.528 598.528 16.384 0 32.256-0.512 48.64-2.048-80.896 68.096-184.32 107.52-294.912 107.52z m127.488-633.344l65.536-32.256 65.536 32.256-9.216-75.264 49.152-55.296-70.656-14.336-34.816-66.56-34.816 66.56-70.656 14.336 49.152 55.296-9.216 75.264zM441.344 432.64l43.52-21.504 43.52 21.504-6.144-50.176 32.768-36.864-47.616-9.728-22.528-44.032-23.04 44.032-47.104 9.728 32.768 36.864-6.144 50.176z m313.344 79.872l-23.04-44.032-23.04 44.032-47.104 9.728 32.768 36.864-6.144 50.176 43.52-21.504 43.52 21.504-6.144-50.176 32.768-36.864-47.104-9.728z\" p-id=\"28654\" fill=\"" + color3 + "\"></path></svg>" + " ";
         }
         if (currentUser) {
-            let adminAvatar = typeof (currentUser.attributes.img) === "undefined" ? "https://s1.ax1x.com/2022/05/22/OvT2X4.png" : currentUser.attributes.img;
+            let adminAvatar = typeof (currentUser.attributes.img) === "undefined" ? "https://fastly.jsdelivr.net/gh/drew233/cdn/logol.png" : currentUser.attributes.img;
             atComment.set('adminAvatar', adminAvatar);
             atGravatar = adminAvatar;
             comNick = currentUser.attributes.username;
