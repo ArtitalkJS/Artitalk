@@ -307,6 +307,9 @@ atEvery.prototype._init = function () {
         color2,
         color3,
         blackAndWhiteTheme,
+        onLogin,
+        onShuoPublished,
+        onCommentsPublished,
     } = root.config;
     lang = typeof (lang) === "undefined" || lang === '' ? 'zh' : lang;
     bgImg = typeof (bgImg) === "undefined" || bgImg === '' ? 'https://fastly.jsdelivr.net/gh/drew233/cdn/20200409110727.webp' : bgImg;
@@ -476,6 +479,9 @@ atEvery.prototype._init = function () {
     color3 = typeof (color3) === "undefined" || color3 === '' ? "white" : color3;
     pageSize = typeof (pageSize) === "undefined" ? '5' : pageSize;
     blackAndWhiteTheme = typeof (blackAndWhiteTheme) === "undefined" || blackAndWhiteTheme === '' ? false : blackAndWhiteTheme;
+    onLogin = typeof (onLogin) === "function" ? onLogin : function () {  };
+    onShuoPublished = typeof (onShuoPublished) === "function" ? onShuoPublished : function () {  };
+    onCommentsPublished = typeof (onCommentsPublished) === "function" ? onCommentsPublished : function () {  };
     let apiUrl = "";
     try {
         if (serverURL !== '') {
@@ -671,6 +677,7 @@ atEvery.prototype._init = function () {
             fadeIn('lazy');
             root.seeContent(0, root.config);
             Hide();
+            onLogin(userName);
         }, (error) => {
             let errLogin = error.message;
             document.getElementById('logw').style.color = 'red';
@@ -777,6 +784,7 @@ atEvery.prototype._init = function () {
             fadeOut('preview');
             root.seeContent(0, root.config);
             fadeOut('shuoshuo_input');
+            onShuoPublished();
         })
     }
     clickPre.onclick = function () {
@@ -935,6 +943,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
         color2,
         color3,
         atComment,
+        onCommentsPublished,
     } = root.config;
     lang = typeof (lang) === "undefined" || lang === '' ? 'zh' : lang;
     switch (lang) {
@@ -1096,6 +1105,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
     color2 = typeof (color2) === "undefined" || color2 === '' ? "#9BCD9B" : color2;
     color3 = typeof (color3) === "undefined" || color3 === '' ? "white" : color3;
     pageSize = typeof (pageSize) === "undefined" ? '5' : pageSize;
+    onCommentsPublished = typeof (onCommentsPublished) === "function" ? onCommentsPublished : function () {  };
     function fadeIn(id) {
         if (!document.getElementById(id)) return;
         let nowEle = document.getElementById(id);
@@ -1417,6 +1427,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
             document.getElementById('ccontent').innerHTML = nowComment;
             fadeOut('preview');
             fadeOut('lazy');
+            onCommentsPublished();
         })
     }
     atEvery.prototype.atReplay = function () {
