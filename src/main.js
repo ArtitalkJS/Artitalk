@@ -1430,7 +1430,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
             onCommentsPublished();
         })
     }
-    atEvery.prototype.atReplay = function () {
+    atEvery.prototype.atReply = function () {
         document.getElementById('pubComment').click();
     }
     atEvery.prototype.commentInit = function (id, option) {
@@ -1509,7 +1509,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
                     atGravatar = adminAvatar;
                 }
                 let comAvatar = atGravatar;
-                let replySvg = "<span style=\"float: right\"><svg t=\"1599635243920\" onclick='atEvery.prototype.atReplay()' cursor=\"pointer\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"2431\" width=\"16\" height=\"16\" fill=\"" + color3 + "\"><path d=\"M853.3 893.6c-17.5 0-34.6-6.8-47.5-19.8l-44.4-44.4c-77.9-78.3-133-133.6-221.7-147.3v119.6c0 27.3-16.3 51.6-41.5 62.1s-53.9 4.7-73.2-14.6l-302-302c-26.2-26.2-26.2-68.8 0-95l302.1-302.1c19.3-19.3 48-25 73.2-14.6 25.2 10.4 41.5 34.8 41.5 62.1v145.5c140.6 4.1 249.5 73.7 315.4 202.1 48.2 93.9 65.4 206.8 65.4 281.2 0 27.3-16.3 51.7-41.5 62.1-8.3 3.4-17.1 5.1-25.8 5.1zM450.2 589.3H495c153.9 0 235.5 82 330 177l2.5 2.5c-5.4-48.3-18.7-118-52-182.6-52.3-101.9-136.1-153.6-248.8-153.6h-76.5V251.7l-248 248 248 248V589.3z\" p-id=\"2432\" fill=\"" + color3 + "\"></path></svg></span>";
+                let replySvg = "<span style=\"float: right\"><svg t=\"1599635243920\" onclick='atEvery.prototype.atReply()' cursor=\"pointer\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"2431\" width=\"16\" height=\"16\" fill=\"" + color3 + "\"><path d=\"M853.3 893.6c-17.5 0-34.6-6.8-47.5-19.8l-44.4-44.4c-77.9-78.3-133-133.6-221.7-147.3v119.6c0 27.3-16.3 51.6-41.5 62.1s-53.9 4.7-73.2-14.6l-302-302c-26.2-26.2-26.2-68.8 0-95l302.1-302.1c19.3-19.3 48-25 73.2-14.6 25.2 10.4 41.5 34.8 41.5 62.1v145.5c140.6 4.1 249.5 73.7 315.4 202.1 48.2 93.9 65.4 206.8 65.4 281.2 0 27.3-16.3 51.7-41.5 62.1-8.3 3.4-17.1 5.1-25.8 5.1zM450.2 589.3H495c153.9 0 235.5 82 330 177l2.5 2.5c-5.4-48.3-18.7-118-52-182.6-52.3-101.9-136.1-153.6-248.8-153.6h-76.5V251.7l-248 248 248 248V589.3z\" p-id=\"2432\" fill=\"" + color3 + "\"></path></svg></span>";
                 let comList = "<li style=\"margin: 0 0 0 48px\"><span class=\"shuoshuo_author_img\"><img src=\"" + comAvatar + "\"class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"  >  <div>" + comContent + "</div><p class=\"shuoshuo_time\">" + "<span>" + commentNick + "</span><span>&nbsp&nbsp" + timeSvg + resDate + " " + resTime + replySvg + "</span></p></span></li>";
                 mid += comList;
             })
