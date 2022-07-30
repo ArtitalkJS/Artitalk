@@ -784,7 +784,7 @@ atEvery.prototype._init = function () {
             fadeOut('preview');
             root.seeContent(0, root.config);
             fadeOut('shuoshuo_input');
-            onShuoPublished();
+            onShuoPublished(currentUser.attributes.username, shuoshuoContent);
         })
     }
     clickPre.onclick = function () {
@@ -1427,7 +1427,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
             document.getElementById('ccontent').innerHTML = nowComment;
             fadeOut('preview');
             fadeOut('lazy');
-            onCommentsPublished();
+            onCommentsPublished(comNick, comContent);
         })
     }
     atEvery.prototype.atReply = function () {
