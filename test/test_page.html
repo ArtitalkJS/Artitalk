@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artitalk Test Page</title>
+</head>
+<body>
+    <style>
+        body {
+            width: 70vw;
+            margin: 0 auto;
+        }
+        #artitalk_main {
+            margin-top: 5vh;
+        }
+    </style>
+    <script src="../src/plugins/showdown.min.js"></script>
+    <script src="../src/plugins/md5.js"></script>
+    <script src="../src/plugins/browser.js"></script>
+    <script src="../src/main.js"></script>
+    <div id="artitalk_main"></div>
+    <script>
+        // Username: Test
+        // Password: Test123456
+        new Artitalk({
+            appId: "1niyPOfWinhKctVmU3b3ViDH-MdYXbMMI",
+            appKey: "eQ4dPpuRgEA3BSuEngLAtIFY",
+            blackAndWhiteTheme: true,
+            onLogin: function(user) {
+                console.log("Login !");
+                console.log(`User: ${user}`)
+            },
+            onShuoPublished: function(user, content) {
+                console.log("Shuo Published !");
+                console.log(`User: ${user}`);
+                console.log(`Content: ${content}`);
+            },
+            onCommentsPublished: function(user, content) {
+                console.log("Comments Published !");
+                console.log(`User: ${user}`);
+                console.log(`Content: ${content}`);
+            }
+        });
+    </script>
+</body>
+</html>
