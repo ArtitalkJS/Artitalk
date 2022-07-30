@@ -155,7 +155,7 @@
 //# sourceMappingURL=showdown.min.js.map
 
 'use strict'
-const atVersion = "3.3.1";
+const atVersion = "3.3.4";
 if (typeof (appID) !== 'undefined') {
     let update = confirm("　　3.x版本更新需要修改一下配置，深感抱歉，但是为了更好的体验不得不这样。\n　　如果不想更换，可以继续使用2.4.2版本，这也是比较成熟的版本了，但是以后不会再维护。更换详情请点击确定前往文档查看");
     if (update == true) {
@@ -462,6 +462,10 @@ atEvery.prototype._init = function () {
         color1,
         color2,
         color3,
+        blackAndWhiteTheme,
+        onLogin,
+        onShuoPublished,
+        onCommentsPublished,
     } = root.config;
     lang = typeof (lang) === "undefined" || lang === '' ? 'zh' : lang;
     bgImg = typeof (bgImg) === "undefined" || bgImg === '' ? 'https://fastly.jsdelivr.net/gh/drew233/cdn/20200409110727.webp' : bgImg;
@@ -630,6 +634,10 @@ atEvery.prototype._init = function () {
     color2 = typeof (color2) === "undefined" || color2 === '' ? "#9BCD9B" : color2;
     color3 = typeof (color3) === "undefined" || color3 === '' ? "white" : color3;
     pageSize = typeof (pageSize) === "undefined" ? '5' : pageSize;
+    blackAndWhiteTheme = typeof (blackAndWhiteTheme) === "undefined" || blackAndWhiteTheme === '' ? false : blackAndWhiteTheme;
+    onLogin = typeof (onLogin) === "function" ? onLogin : function () { };
+    onShuoPublished = typeof (onShuoPublished) === "function" ? onShuoPublished : function () { };
+    onCommentsPublished = typeof (onCommentsPublished) === "function" ? onCommentsPublished : function () { };
     let apiUrl = "";
     try {
         if (serverURL !== '') {
@@ -709,6 +717,11 @@ atEvery.prototype._init = function () {
     }
     //Insert css
     let atCss = "";
+    // If the black and white theme is enabled while the cssUrl is not defined, its style will be loaded after 
+    //  the default atStyle, which makes it possible to preserve original settings.
+    // If the black and white theme is enabled yet the cssUrl is set, its style will be loaded before
+    //  the customized style, ensuring the user defined style will be accepted.
+    const blackAndWhiteStyle = `#artitalk_main{margin-top:5vh}#artitalk_main .cbp_tmtimeline>li .cbp_tmlabel{font-size:large;font-weight:400;color:#3d3d3d;background:#fff!important;box-shadow:0 1px 12px rgb(0 0 0 / 30%);border-radius:12px}#artitalk_main p.shuoshuo_time{font-size:small;border-top:1px dashed}p.shuoshuo_time span:first-child{font-size:medium}p.shuoshuo_time span:nth-child(3)>span>span{vertical-align:inherit;color:#3d3d3d!important}#artitalk_main .cbp_tmtimeline>li .cbp_tmlabel:after,#artitalk_main span.cbp_tmlabel>p:nth-child(4){display:none}#artitalk_main span.cbp_tmlabel>p{margin-bottom:5px}#artitalk_main .delete_right{right:2rem}#artitalk_main .shuoshuo_author_img img{border:none;box-shadow:0 0 6px rgb(0 0 0 / 30%)}#artitalk_main svg{width:1.5rem;height:1.5rem}#artitalk_main svg>path{fill:#3d3d3d}#artitalk_main .shuoshuo_text{background-image:url(https://leolovedairy.life/images/kanwo.png)!important;background-repeat:no-repeat;background-size:contain;color:#3d3d3d;box-shadow:0 0 12px rgb(0 0 0 / 30%);border:none;font-size:large;border-radius:12px}#artitalk_main .shuoshuo_inputs{color:#3d3d3d;box-shadow:0 0 12px rgb(0 0 0 / 30%);border:none;font-size:medium;border-radius:8px}#artitalk_main .at_button,#operare_artitalk .at_button{background-color:#fff;border:none;color:#3d3d3d;font-size:medium;font-weight:500;border-radius:8px;outline:0;box-shadow:0 0 8px rgb(0 0 0 / 30%)}#artitalk_main .at_button:hover,#operare_artitalk .at_button:hover{background-color:#fff}#artitalk_main .shuoshuo_emoji{border:none;padding:1rem;border-radius:12px 12px 0 0;box-shadow:0 -2px 4px rgb(0 0 0 / 30%);margin-top:2rem}#artitalk_main div#shuoshuo_emojiswitch{border:none;box-shadow:0 0 4px rgb(0 0 0 / 30%);border-radius:0 0 12px 12px}#artitalk_main .shuoshuo_emoji_part{font-size:medium;border-radius:inherit}#artitalk_main .shuoshuo_emoji_part:hover{background-color:#3d3d3daa}#artitalk_main .zuiliangdezai{background-color:#3d3d3d}#artitalk_main .shuoshuo_row{margin-top:2rem}#artitalk_main #preview{font-size:large;margin:2rem 0;padding:1rem 2rem;border-radius:12px;box-shadow:0 0 16px rgb(0 0 0 / 30%)}#artitalk_main .power a{font-size:1.5rem;font-weight:500;color:#3d3d3d;margin-left:.5rem}#artitalk_main .power>div{margin:0 .5rem;width:4rem;height:4rem;padding:8px;background-size:80%;background-repeat:no-repeat;background-position:center}#artitalk_main .power>div>svg{opacity:0}#pubComment,#pubShuo{background-image:url("https://leolovedairy.life/images/icon_write.svg")}#switchUser{background-image:url("https://leolovedairy.life/images/icon_smile.svg")}#uploadSource{background-image:url("https://leolovedairy.life/images/icon_upload.svg")}#operare_artitalk .c2{opacity:1}`;
     if (!document.getElementById('add-Artitalk_Style')) {
         if (cssUrl === "" || typeof (cssUrl) === "undefined") {
             atCss = "div#artitalk_main {    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);  }  #artitalk_main .shuoshuo_row {  width: 100%;  margin-top: 10px;  display: flex;  }  #artitalk_main .artitalk_child {  width: 100%;  }  #artitalk_main #shuoshuo_content {  padding: 10px;  /* min-height: 500px; */  }  #artitalk_main body.theme-dark .cbp_tmtimeline::before {  background: RGBA(255, 255, 255, 0.06);  }  #artitalk_main ul.cbp_tmtimeline {  padding: 0;  }  #artitalk_main .cbp_tmtimeline {  margin: 30px 0 0 0;  padding: 0;  list-style: none;  display: inline;  position: relative;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime {  display: block;  /* width: 29%; */  /* padding-right: 110px; */  max-width: 70px;  position: absolute;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime span {  display: block;  text-align: right;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime span:first-child {  font-size: 0.9em;  color: #bdd0db;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime span:last-child {  font-size: 1.2em;  color: #9bcd9b;  }  #artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmtime span:last-child {  color: RGBA(255, 125, 73, 0.75);  }  #artitalk_main div.cbp_tmlabel>p {  margin-bottom: 0;  }  #artitalk_main div class.cdp_tmlabel>li .cbp_tmlabel {  margin-bottom: 0;  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmlabel {  margin: 0 0 45px 65px;  z-index: 1;  background: " + color2 + ";  color: " + color3 + " ;  padding: 0.8em 1.2em 0.4em 1.2em;  /* font-size: 1.2em; */  font-weight: 300;  line-height: 1.4;  position: relative;  border-radius: 5px;  transition: all 0.3s ease 0s;  box-shadow: 0 1px 2px rgba(0,0,0,0.15); display: block;  }  #artitalk_main .cbp_tmlabel:hover {  /* transform: scale(1.05); */  transform: translateY(-3px);  z-index: 1;  box-shadow: 0 15px 32px rgba(0,0,0,0.15) ;  }  #artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {    background: " + color1 + ";  }  #artitalk_main .cbp_tmtimeline>li .cbp_tmlabel:after {  right: 100%;  border: solid transparent;  z-index: -1;  content: \" \";  height: 0;  width: 0;  position: absolute;  pointer-events: none;  border-right-color: " + color2 + ";  border-width: 10px;  top: 4px;  }  #artitalk_main .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {    border-right-color: " + color1 + ";  }  #artitalk_main p.shuoshuo_time {  margin-top: 10px;  border-top: 1px dashed #fff;  padding-top: 5px;  font-size: 12px;  }  @media screen and (max-width: 65.375em) {  #artitalk_main .cbp_tmtimeline>li .cbp_tmtime span:last-child {    font-size: 1.2em;  }  }  #artitalk_main .shuoshuo_author_img img {  border: 1px solid #ddd;  padding: 2px;  float: left;  border-radius: 64px;  transition: all 1s;  }  #artitalk_main .artitalk_avatar {  border-radius: 100% ;  -moz-border-radius: 100% ;  box-shadow: inset 0 -1px 0 3333sf;  -webkit-box-shadow: inset 0 -1px 0 3333sf;  -webkit-transition: 0.4s;  -webkit-transition: -webkit-transform 0.4s ease-out;  transition: transform 0.4s ease-out;  -moz-transition: -moz-transform 0.4s ease-out;  }  #artitalk_main .artitalk_avatar:hover {  -webkit-transform: rotateZ(360deg);  -moz-transform: rotateZ(360deg);  -o-transform: rotateZ(360deg);  -ms-transform: rotateZ(360deg);  transform: rotateZ(360deg);  }  #artitalk_main .shuoshuo_text {  width: 100%;  height: 130px;  padding: 8px 16px;  background-repeat: no-repeat;  background-position: right;  transition: all 0.35s ease-in-out 0s;  outline-style: none;  border: 1px solid #ccc;  border-radius: 6px;  resize: none;  background-color: transparent;  color: #999;  }  #artitalk_main .shuoshuo_inputs {  outline-style: none;  border: 1px solid #ccc;  padding: 8px 16px;  width: 40%;  font-size: 12px;  background-color: transparent;  color: #999;  }  #operare_artitalk .at_button,  #artitalk_main .at_button {    background-color: " + color1 + ";  /* Green */  border: none;  margin-left: 5px;  color: " + color3 + ";  padding: 8px 16px;  text-align: center;  text-decoration: none;  height: auto;  line-height: 20px;  display: inline-block;  font-size: 12px;  border-radius: 12px;  /* circle */  outline: none;  cursor: pointer;  }  #operare_artitalk .at_button:hover,  #artitalk_main .at_button:hover {      background-color: " + color2 + ";  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.24), 0 8px 16px 0 rgba(0,0,0,0.19);  }  #artitalk_main #article-container ul p {  margin: 0 0 1rem;  }  #artitalk_main .power {  text-align: right;  color: #999;  margin-top: 10px;  font-size: 0.75em;  padding: 0.5em 0;  }  #artitalk_main .power a {  font-size: 0.75em;  position: relative;  cursor: pointer;  color: #1abc9c;  text-decoration: none;  display: inline-block;  }  #artitalk_main .shuoshuo_row .col.col-80 {  width: 80%;  float: left;  }  #artitalk_main .shuoshuo_row .col.col-20 {  width: 20%;  float: right;  text-align: right;  }  #artitalk_main #preview {  width: 100%;  float: left;  margin: 0.5rem 0 0;  padding: 7px;  box-shadow: 0 0 1px #f0f0f0;  }  #artitalk_main #lazy {  background: #fff;  bottom: 0;  left: 0;  position: fixed;  right: 0;  top: 0;  z-index: 9999;  }  #artitalk_main .preloader {  position: absolute;  margin-left: -55px;  margin-top: -100px;  height: 110px;  width: 110px;  left: 50%;  top: 50%;  }  #artitalk_main .preloader>svg>g>path {  stroke: #9ea1a4;  stroke-width: 0.25;  }  #artitalk_main .preloader>svg>path {  stroke: #9ea1a4;  stroke-width: 0.25;  }  #artitalk_main #cloud {  position: relative;  z-index: 2;  }  #artitalk_main #cloud path {  fill: #efefef;  }  #artitalk_main #sun {  margin-left: -10px;  margin-top: 6px;  opacity: 0;  width: 60px;  height: 60px;  position: absolute;  left: 45px;  top: 15px;  z-index: 1;  animation-name: rotate;  animation-duration: 16000ms;  animation-iteration-count: infinite;  animation-timing-function: linear;  }  #artitalk_main #sun path {  stroke-width: 0.18;  fill: #9ea1a4;  }  #artitalk_main .rain {  position: absolute;  width: 70px;  height: 70px;  margin-top: -32px;  margin-left: 19px;  }  #artitalk_main .drop {  opacity: 1;  background: #9ea1a4;  display: block;  float: left;  width: 3px;  height: 10px;  margin-left: 4px;  border-radius: 0px 0px 6px 6px;  animation-name: drop;  animation-duration: 350ms;  animation-iteration-count: infinite;  }  #artitalk_main .drop:nth-child(1) {  animation-delay: -130ms;  }  #artitalk_main .drop:nth-child(2) {  animation-delay: -240ms;  }  #artitalk_main .drop:nth-child(3) {  animation-delay: -390ms;  }  #artitalk_main .drop:nth-child(4) {  animation-delay: -525ms;  }  #artitalk_main .drop:nth-child(5) {  animation-delay: -640ms;  }  #artitalk_main .drop:nth-child(6) {  animation-delay: -790ms;  }  #artitalk_main .drop:nth-child(7) {  animation-delay: -900ms;  }  #artitalk_main .drop:nth-child(8) {  animation-delay: -1050ms;  }  #artitalk_main .drop:nth-child(9) {  animation-delay: -1130ms;  }  #artitalk_main .drop:nth-child(10) {  animation-delay: -1300ms;  }  #artitalk_main .artitalk_loading_text {  font-family: Helvetica, \" Helvetica Neue \", sans-serif;  letter-spacing: 1px;  text-align: center;  margin-left: -43px;  font-weight: bold;  margin-top: 20px;  font-size: 11px;  color: #a0a0a0;  width: 200px;  }  #artitalk_main .shuoshuoimg {  cursor: pointer;  transition: all 1s;  z-index: 2;  }  #artitalk_main .shuoshuoimg:hover {  transform: scale(3.5);  }  #artitalk_main .hide,  #operare_artitalk .hide {  display: none;  }  #operare_artitalk .c1 {  position: fixed;  top: 0;  bottom: 0;  left: 0;right: 0;  background: rgba(0,0,0,0.5);  z-index: 2;  }  #operare_artitalk .c2 {  background-color: #fff;  position: fixed;  width: 400px;  height: auto;  top: 50%;  left: 50%;  z-index: 3; margin-top: -150px;  margin-left: -200px;  box-shadow: 0 15px 35px rgba(50,50,93,0.1), 0 5px 15px rgba(0,0,0,0.07);  opacity: 0.85;  border: 0;  border-radius: 10px;  }  #operare_artitalk .shuoshuo_input_log {  outline-style: none;  margin-top: 10px;  border: 1px solid #ccc;  border-radius: 6px;  padding: 8px 16px;  font-size: 12px;  background-color: transparent;  color: #999;  }  #artitalk_main .delete_right {  cursor: pointer;  width: 12px;  height: 12px;  position: absolute;  right: 12px;  }  #artitalk_main svg {  display: inline;  }  #artitalk_main .cbp_tmlabel>p,  #artitalk_main h1,  #artitalk_main h2,  #artitalk_main h3,  #artitalk_main h4,  #artitalk_main h5,  #artitalk_main h6,  #artitalk_main em {  word-wrap: break-word;  word-break: break-all;  }  #artitalk_main .shuoshuo_emoji {  border: 1px solid #ccc;  border-radius: 6px 6px 0 0;  height: 120px;  overflow: auto;  margin-top: 10px;  border-bottom: none;  }  #artitalk_main .atemoji {  max-height: 28px;  width: 28px;  display: inline;  vertical-align: middle;  }  #artitalk_main .shuoshuo_emoji>.atemoji {  cursor: pointer;  margin: 0 0 0 10px;  display: inline;  }  #artitalk_main i>.atemoji {  cursor: pointer;  margin: 0 0 0 10px;  }  #artitalk_main .shuoshuo_emoji>a {  display: inline;  }  #artitalk_main #preview>p>.atemoji {  display: inline;  }  #artitalk_main .shuoshuo_emoji>.atemoji:hover {  transform: scale(1.5);  }  #artitalk_main div#shuoshuo_emojiswitch {  height: 40px;  width: auto;  border-radius: 0 0 6px 6px;  border-collapse: collapse;  border: 1px solid #ccc;  border-top: none;  }  #artitalk_main .shuoshuo_emoji_part {  width: 25%;  cursor: pointer;  align-content: center;  text-align: center;  line-height: 40px;  }  #artitalk_main .shuoshuo_emoji_part:hover {  background-color: #ccc;  color: #fff;  }  #artitalk_main .zuiliangdezai {  background-color: #ccc;  color: #fff;  }  #artitalk_main .pingjun {  display: flex;  }  #artitalk_main #article-container img {  margin: 0 0 0 0;  }  #artitalk_main .preview_now {  display: none;  }  #artitalk_main div#loading_txt {  font-size: 20px;  }  #artitalk_main audio {  display: block;  width: 100%;  outline: none;  opacity: 0.8;  }  #artitalk_main video {  z-index: 0;  }p.shuoshuo_time>span>a:hover {color: red;}p.shuoshuo_time>span>a {color: black;text-decoration: none;}  #artitalk_main textarea#neirong:focus {  background-position-y: 150px;  transition: all 0.35s ease-in-out 0s;  }  #artitalk_main img.atemoji {  max-height: 28px;  width: 28px;  display: inline;  vertical-align: middle;  }  #artitalk_main span.cbp_tmlabel>p {  overflow: unset;  }  #artitalk_main ul#maina>li {  list-style: none;  }  #artitalk_main div#artitalk_main {  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);  }  #artitalk_main .c2>center>p {  margin-top: 10px;  margin-bottom: 10px;  }  @-moz-keyframes rotate {  0% {    transform: rotateZ(0deg);  }  100% {    transform: rotateZ(360deg);  }  }  @-webkit-keyframes rotate {  0% {    transform: rotateZ(0deg);  }  100% {    transform: rotateZ(360deg);  }  }  @-o-keyframes rotate {  0% {    transform: rotateZ(0deg);  }  100% {    transform: rotateZ(360deg);  }  }  @keyframes rotate {  0% {    transform: rotateZ(0deg);  }  100% {    transform: rotateZ(360deg);  }  }  @-moz-keyframes drop {  50% {    height: 45px;    opacity: 0;  }  51% {    opacity: 0;  }  100% {    height: 1px;    opacity: 0;  }  }  @-webkit-keyframes drop {  50% {    height: 45px;    opacity: 0;  }  51% {    opacity: 0;  }  100% {    height: 1px;    opacity: 0;  }  }  @-o-keyframes drop {  50% {    height: 45px;    opacity: 0;  }  51% {    opacity: 0;  }  100% {    height: 1px;    opacity: 0;  }  }  @keyframes drop {  50% {    height: 45px;    opacity: 0;  }  51% {    opacity: 0;  }  100% {    height: 1px;    opacity: 0;  }  }";
@@ -717,7 +730,17 @@ atEvery.prototype._init = function () {
             atStyle.innerHTML = atCss;
             atStyle.id = "add-Artitalk-Style";
             document.head.appendChild(atStyle);
+            if (blackAndWhiteTheme) {
+                let blackAndWhiteStyleElement = document.createElement("style");
+                blackAndWhiteStyleElement.innerHTML = blackAndWhiteStyle;
+                document.head.appendChild(blackAndWhiteStyleElement);
+            }
         } else {
+            if (blackAndWhiteTheme) {
+                let blackAndWhiteStyleElement = document.createElement("style");
+                blackAndWhiteStyleElement.innerHTML = blackAndWhiteStyle;
+                document.head.appendChild(blackAndWhiteStyleElement);
+            }
             let atStyle = document.createElement('link');
             atStyle.rel = 'stylesheet';
             atStyle.href = cssUrl;
@@ -810,6 +833,7 @@ atEvery.prototype._init = function () {
             fadeIn('lazy');
             root.seeContent(0, root.config);
             Hide();
+            onLogin(userName);
         }, (error) => {
             let errLogin = error.message;
             document.getElementById('logw').style.color = 'red';
@@ -916,6 +940,7 @@ atEvery.prototype._init = function () {
             fadeOut('preview');
             root.seeContent(0, root.config);
             fadeOut('shuoshuo_input');
+            onShuoPublished(currentUser.attributes.username, shuoshuoContent);
         })
     }
     clickPre.onclick = function () {
@@ -1074,6 +1099,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
         color2,
         color3,
         atComment,
+        onCommentsPublished,
     } = root.config;
     lang = typeof (lang) === "undefined" || lang === '' ? 'zh' : lang;
     switch (lang) {
@@ -1235,6 +1261,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
     color2 = typeof (color2) === "undefined" || color2 === '' ? "#9BCD9B" : color2;
     color3 = typeof (color3) === "undefined" || color3 === '' ? "white" : color3;
     pageSize = typeof (pageSize) === "undefined" ? '5' : pageSize;
+    onCommentsPublished = typeof (onCommentsPublished) === "function" ? onCommentsPublished : function () { };
     function fadeIn(id) {
         if (!document.getElementById(id)) return;
         let nowEle = document.getElementById(id);
@@ -1556,9 +1583,10 @@ atEvery.prototype.seeContent = function (pageNum, option) {
             document.getElementById('ccontent').innerHTML = nowComment;
             fadeOut('preview');
             fadeOut('lazy');
+            onCommentsPublished(comNick, comContent);
         })
     }
-    atEvery.prototype.atReplay = function () {
+    atEvery.prototype.atReply = function () {
         document.getElementById('pubComment').click();
     }
     atEvery.prototype.commentInit = function (id, option) {
@@ -1637,7 +1665,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
                     atGravatar = adminAvatar;
                 }
                 let comAvatar = atGravatar;
-                let replySvg = "<span style=\"float: right\"><svg t=\"1599635243920\" onclick='atEvery.prototype.atReplay()' cursor=\"pointer\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"2431\" width=\"16\" height=\"16\" fill=\"" + color3 + "\"><path d=\"M853.3 893.6c-17.5 0-34.6-6.8-47.5-19.8l-44.4-44.4c-77.9-78.3-133-133.6-221.7-147.3v119.6c0 27.3-16.3 51.6-41.5 62.1s-53.9 4.7-73.2-14.6l-302-302c-26.2-26.2-26.2-68.8 0-95l302.1-302.1c19.3-19.3 48-25 73.2-14.6 25.2 10.4 41.5 34.8 41.5 62.1v145.5c140.6 4.1 249.5 73.7 315.4 202.1 48.2 93.9 65.4 206.8 65.4 281.2 0 27.3-16.3 51.7-41.5 62.1-8.3 3.4-17.1 5.1-25.8 5.1zM450.2 589.3H495c153.9 0 235.5 82 330 177l2.5 2.5c-5.4-48.3-18.7-118-52-182.6-52.3-101.9-136.1-153.6-248.8-153.6h-76.5V251.7l-248 248 248 248V589.3z\" p-id=\"2432\" fill=\"" + color3 + "\"></path></svg></span>";
+                let replySvg = "<span style=\"float: right\"><svg t=\"1599635243920\" onclick='atEvery.prototype.atReply()' cursor=\"pointer\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"2431\" width=\"16\" height=\"16\" fill=\"" + color3 + "\"><path d=\"M853.3 893.6c-17.5 0-34.6-6.8-47.5-19.8l-44.4-44.4c-77.9-78.3-133-133.6-221.7-147.3v119.6c0 27.3-16.3 51.6-41.5 62.1s-53.9 4.7-73.2-14.6l-302-302c-26.2-26.2-26.2-68.8 0-95l302.1-302.1c19.3-19.3 48-25 73.2-14.6 25.2 10.4 41.5 34.8 41.5 62.1v145.5c140.6 4.1 249.5 73.7 315.4 202.1 48.2 93.9 65.4 206.8 65.4 281.2 0 27.3-16.3 51.7-41.5 62.1-8.3 3.4-17.1 5.1-25.8 5.1zM450.2 589.3H495c153.9 0 235.5 82 330 177l2.5 2.5c-5.4-48.3-18.7-118-52-182.6-52.3-101.9-136.1-153.6-248.8-153.6h-76.5V251.7l-248 248 248 248V589.3z\" p-id=\"2432\" fill=\"" + color3 + "\"></path></svg></span>";
                 let comList = "<li style=\"margin: 0 0 0 48px\"><span class=\"shuoshuo_author_img\"><img src=\"" + comAvatar + "\"class=\"artitalk_avatar gallery-group-img\" width=\"48\" height=\"48\"></span><span class=\"cbp_tmlabel\"  >  <div>" + comContent + "</div><p class=\"shuoshuo_time\">" + "<span>" + commentNick + "</span><span>&nbsp&nbsp" + timeSvg + resDate + " " + resTime + replySvg + "</span></p></span></li>";
                 mid += comList;
             })

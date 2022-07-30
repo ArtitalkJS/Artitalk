@@ -1,5 +1,5 @@
 'use strict'
-const atVersion = "3.3.1";
+const atVersion = "3.3.4";
 if (typeof (appID) !== 'undefined') {
     let update = confirm("　　3.x版本更新需要修改一下配置，深感抱歉，但是为了更好的体验不得不这样。\n　　如果不想更换，可以继续使用2.4.2版本，这也是比较成熟的版本了，但是以后不会再维护。更换详情请点击确定前往文档查看");
     if (update == true) {
@@ -479,9 +479,9 @@ atEvery.prototype._init = function () {
     color3 = typeof (color3) === "undefined" || color3 === '' ? "white" : color3;
     pageSize = typeof (pageSize) === "undefined" ? '5' : pageSize;
     blackAndWhiteTheme = typeof (blackAndWhiteTheme) === "undefined" || blackAndWhiteTheme === '' ? false : blackAndWhiteTheme;
-    onLogin = typeof (onLogin) === "function" ? onLogin : function () {  };
-    onShuoPublished = typeof (onShuoPublished) === "function" ? onShuoPublished : function () {  };
-    onCommentsPublished = typeof (onCommentsPublished) === "function" ? onCommentsPublished : function () {  };
+    onLogin = typeof (onLogin) === "function" ? onLogin : function () { };
+    onShuoPublished = typeof (onShuoPublished) === "function" ? onShuoPublished : function () { };
+    onCommentsPublished = typeof (onCommentsPublished) === "function" ? onCommentsPublished : function () { };
     let apiUrl = "";
     try {
         if (serverURL !== '') {
@@ -578,7 +578,7 @@ atEvery.prototype._init = function () {
                 let blackAndWhiteStyleElement = document.createElement("style");
                 blackAndWhiteStyleElement.innerHTML = blackAndWhiteStyle;
                 document.head.appendChild(blackAndWhiteStyleElement);
-            } 
+            }
         } else {
             if (blackAndWhiteTheme) {
                 let blackAndWhiteStyleElement = document.createElement("style");
@@ -1105,7 +1105,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
     color2 = typeof (color2) === "undefined" || color2 === '' ? "#9BCD9B" : color2;
     color3 = typeof (color3) === "undefined" || color3 === '' ? "white" : color3;
     pageSize = typeof (pageSize) === "undefined" ? '5' : pageSize;
-    onCommentsPublished = typeof (onCommentsPublished) === "function" ? onCommentsPublished : function () {  };
+    onCommentsPublished = typeof (onCommentsPublished) === "function" ? onCommentsPublished : function () { };
     function fadeIn(id) {
         if (!document.getElementById(id)) return;
         let nowEle = document.getElementById(id);
