@@ -37,9 +37,9 @@
                 console.log(`User: ${user}`);
                 console.log(`Content: ${content}`);
             },
-            onCommentsPublished: function(user, content) {
+            onCommentsPublished: function(user, content, email) {
                 console.log("Comments Published !");
-                console.log(`User: ${user}`);
+                console.log(`User: ${user}, Email: ${email}`);
                 console.log(`Content: ${content}`);
             }
         });

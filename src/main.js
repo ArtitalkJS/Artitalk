@@ -1427,7 +1427,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
             document.getElementById('ccontent').innerHTML = nowComment;
             fadeOut('preview');
             fadeOut('lazy');
-            onCommentsPublished(comNick, comContent);
+            onCommentsPublished(comNick, comContent, comEmail);
         })
     }
     atEvery.prototype.atReply = function () {
