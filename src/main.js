@@ -307,6 +307,7 @@ atEvery.prototype._init = function () {
         color2,
         color3,
         blackAndWhiteTheme,
+        ascendingComments,
         onLogin,
         onShuoPublished,
         onCommentsPublished,
@@ -479,6 +480,7 @@ atEvery.prototype._init = function () {
     color3 = typeof (color3) === "undefined" || color3 === '' ? "white" : color3;
     pageSize = typeof (pageSize) === "undefined" ? '5' : pageSize;
     blackAndWhiteTheme = typeof (blackAndWhiteTheme) === "undefined" || blackAndWhiteTheme === '' ? false : blackAndWhiteTheme;
+    ascendingComments = typeof (ascendingComments) === "undefined" || ascendingComments === '' ? false : ascendingComments;
     onLogin = typeof (onLogin) === "function" ? onLogin : function () {  };
     onShuoPublished = typeof (onShuoPublished) === "function" ? onShuoPublished : function () {  };
     onCommentsPublished = typeof (onCommentsPublished) === "function" ? onCommentsPublished : function () {  };
@@ -943,6 +945,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
         color2,
         color3,
         atComment,
+        ascendingComments,
         onCommentsPublished,
     } = root.config;
     lang = typeof (lang) === "undefined" || lang === '' ? 'zh' : lang;
@@ -1105,6 +1108,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
     color2 = typeof (color2) === "undefined" || color2 === '' ? "#9BCD9B" : color2;
     color3 = typeof (color3) === "undefined" || color3 === '' ? "white" : color3;
     pageSize = typeof (pageSize) === "undefined" ? '5' : pageSize;
+    ascendingComments = typeof (ascendingComments) === "undefined" || ascendingComments === '' ? false : ascendingComments;
     onCommentsPublished = typeof (onCommentsPublished) === "function" ? onCommentsPublished : function () {  };
     function fadeIn(id) {
         if (!document.getElementById(id)) return;
@@ -1470,7 +1474,7 @@ atEvery.prototype.seeContent = function (pageNum, option) {
         let currentUser = AV.User.current();
         let commentQuery = new AV.Query('atComment');
         commentQuery.equalTo('atId', id);
-        commentQuery.descending('createdAt');
+        ascendingComments ? commentQuery.ascending('createdAt') : commentQuery.descending('createdAt');
         commentQuery.find().then(res => {
             res.forEach(function (comment) {
                 let timeForm = comment.createdAt;
