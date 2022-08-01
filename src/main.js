@@ -768,9 +768,9 @@ atEvery.prototype._init = function () {
         let shuoshuoContentMd = shuoshuoContent;
         atObject.set('atContentMd', shuoshuoContentMd);
         shuoshuoContent = translate(shuoshuoContent);
-        let converte = new showdown.Converter();
-        converte.setOption('strikethrough', 1);
-        let shuoshuoContentHtml = converte.makeHtml(shuoshuoContent);
+        let converter = new showdown.Converter();
+        converter.setOption('strikethrough', 1);
+        let shuoshuoContentHtml = converter.makeHtml(shuoshuoContent);
         let atAvatar = typeof (currentUser.attributes.img) === "undefined" ? "https://fastly.jsdelivr.net/gh/drew233/cdn/logol.png" : currentUser.attributes.img;
         // alert(deFaultavatar);
         let userClient = new Client();
@@ -794,8 +794,10 @@ atEvery.prototype._init = function () {
     clickPre.onclick = function () {
         let unPre = document.getElementById('neirong').value;
         unPre = translate(unPre);
-        let converter = new showdown.Converter();
-        converter.setOption('strikethrough', 1);
+        let converter = new showdown.Converter({
+            strikethrough: true,
+            metadata: true,
+        });
         let finishPre = converter.makeHtml(unPre);
         document.getElementById('preview').innerHTML = finishPre;
     }
@@ -1308,9 +1310,9 @@ atEvery.prototype.seeContent = function (pageNum, option) {
             location.reload();
             return;
         }
-        let converte = new showdown.Converter();
-        converte.setOption('strikethrough', 1);
-        let shuoshuoContentHtml = converte.makeHtml(shuoshuoContent);
+        let converter = new showdown.Converter();
+        converter.setOption('strikethrough', 1);
+        let shuoshuoContentHtml = converter.makeHtml(shuoshuoContent);
         atEditOver.set('atContentHtml', shuoshuoContentHtml);
         atEditOver.save().then(function () {
             location.reload();
@@ -1367,9 +1369,11 @@ atEvery.prototype.seeContent = function (pageNum, option) {
         let comment = AV.Object.extend('atComment');
         let atComment = new comment();
         comContent = translate(comContent);
-        let converte = new showdown.Converter();
-        converte.setOption('strikethrough', 1);
-        let atCommentHtml = converte.makeHtml(comContent);
+        let converter = new showdown.Converter({
+            strikethrough: true,
+            metadata: true,
+        });
+        let atCommentHtml = converter.makeHtml(comContent);
         let currentUser = AV.User.current();
         let comEmail = document.getElementById('email').value;
         let comNick = document.getElementById('commentNick').value;
