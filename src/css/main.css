@@ -1,3 +1,22 @@
+blockquote {
+	background: #f9f9f9;
+	border-left: 6px solid #ccc;
+	
+	margin: 1.5em 10px;
+	padding: 0.5em 10px;
+}
+
+blockquote cite {
+	color: #6bbbdb;
+	font-weight: 500;
+	font-style: normal;
+}
+  
+blockquote * {
+	display: inline;
+	color: #aaa;
+}
+
 div#artitalk_main {
 	transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 }
