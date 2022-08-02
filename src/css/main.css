@@ -486,8 +486,31 @@ div#artitalk_main {
 	vertical-align: middle;
 }
 #artitalk_main span.cbp_tmlabel>p {
+	display: flex;
+	flex-wrap: wrap;
+
 	overflow: unset;
 }
+
+@media screen and (max-width: 768px) {
+	#artitalk_main span.cbp_tmlabel>p {
+    	flex-direction: row-reverse;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	#artitalk_main span.cbp_tmlabel>p {
+		flex-direction: row;
+    	align-items: flex-end;
+	}
+
+	#artitalk_main span.cbp_tmlabel > p.shuoshuo_time .label_attachment {
+		flex-grow: 1;
+		flex-basis: 3%;
+		text-align: right;
+	}
+}
+
 #artitalk_main ul#maina>li {
 	list-style: none;
 }
