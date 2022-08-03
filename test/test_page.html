@@ -22,12 +22,15 @@
     <script src="../src/main.js"></script>
     <div id="artitalk_main"></div>
     <script>
+        // 请注意：现在由于 Lean Cloud 不允许国内流量访问通用域名，请使用全局境外代理
+        //
         // Username: Test
         // Password: Test123456
         new Artitalk({
             appId: "1niyPOfWinhKctVmU3b3ViDH-MdYXbMMI",
             appKey: "eQ4dPpuRgEA3BSuEngLAtIFY",
             blackAndWhiteTheme: true,
+            ascendingComments: true,
             onLogin: function(user) {
                 console.log("Login !");
                 console.log(`User: ${user}`)
@@ -37,9 +40,9 @@
                 console.log(`User: ${user}`);
                 console.log(`Content: ${content}`);
             },
-            onCommentsPublished: function(user, content) {
+            onCommentsPublished: function(user, content, email) {
                 console.log("Comments Published !");
-                console.log(`User: ${user}`);
+                console.log(`User: ${user}, Email: ${email}`);
                 console.log(`Content: ${content}`);
             }
         });
