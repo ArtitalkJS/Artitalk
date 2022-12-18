@@ -1090,7 +1090,7 @@ atEvery.prototype.beginUpload = function (file) {
             fadeOut('lazy');
         }
     });
-    xhr.open("POST", "https://7bu.top/api/upload");
+    xhr.open("POST", "https://7bu.top/api/v1/upload");
     let imgToken = AV.User.current().attributes.imgToken;
     if (imgToken !== undefined) {
         xhr.setRequestHeader("Authorization", "Basic VGVzdDoxMjM0NTY=");
