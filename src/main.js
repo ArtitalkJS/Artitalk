@@ -930,7 +930,7 @@ atEvery.prototype.beginUpload = function (file) {
             fadeOut('lazy');
         }
     });
-    xhr.open("POST", "https://tc.wyblog1.tk");
+    xhr.open("POST", "https://tc.wyblog1.tk/");
     let imgToken = AV.User.current().attributes.imgToken;
     if (imgToken !== undefined) {
         xhr.setRequestHeader("Authorization", "Basic VGVzdDoxMjM0NTY=");
