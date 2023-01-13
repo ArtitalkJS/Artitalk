@@ -215,6 +215,9 @@ const atEmojiBB = {
     zhoumei: "https://fastly.jsdelivr.net/gh/Artitalk/Artitalk-emoji/zhoumei.png",
     zhuakuang: "https://fastly.jsdelivr.net/gh/Artitalk/Artitalk-emoji/zhuakuang.png"
 }
+const HEO = {
+    3d:'https://cdn.jsdelivr.net/npm/sticker-heo@2022.7.5/Sticker-100/3d%E7%9C%BC%E9%95%9C.png'
+}    
 var atEmojiQ = "";
 var atEmojiT = "";
 var atEmojiB = "";
